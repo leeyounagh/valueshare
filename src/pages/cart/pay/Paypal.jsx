@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Cart = () => {
+const Paypal = () => {
     return (
         <div>
-            Cart
+            Paypal
         </div>
     );
 };
 
-export default Cart;
-
+export default Paypal;

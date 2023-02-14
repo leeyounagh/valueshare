@@ -4,21 +4,23 @@ import Login from "./pages/login/Login";
 import Main from "./pages/main/Main";
 import Mypage from "./pages/mypage/MyPage";
 import Register from "./pages/register/Register";
-import Pay from "./pages/pay/Pay";
+import BestSeller from "./pages/bestseller/BestSeller";
 import Cart from "./pages/cart/Cart";
 import Header from "./component/layout/header/Header";
 import Footer from "./component/layout/footer/Footer";
 import UserInfo from "./pages/mypage/utils/UserInfo";
-import Detail from "./pages/category/detail/Detail";
+import Detail from "./pages/products/detail/Detail";
 import Admin from "./pages/admin/Admin";
 import OrderedList from "./pages/admin/management/OrderedList";
 import History from "./pages/mypage/utils/History";
 import Resign from "./pages/mypage/utils/Resign";
 import DeliveryList from "./pages/admin/management/DeliveryList";
 import CanceledList from "./pages/admin/management/CanceledList";
-import AddProduct from "./pages/admin/management/category/AddProduct";
+import UploadProduct from "./pages/admin/management/category/UploadProduct";
 import DeleteProduct from "./pages/admin/management/category/DeleteProduct";
 import EditProduct from "./pages/admin/management/category/EditProduct";
+import LookBook from "./pages/lookbook/LookBook";
+import Membership from "./pages/membership/Membership";
 
 function App() {
   return (
@@ -34,12 +36,15 @@ function App() {
         <Route exact path="/mypage/resign" element={<Resign />} />
         <Route exact path="/mypage/userinfo" element={<UserInfo />} />
 
-        <Route exact path="/pay" element={<Pay />} />
         <Route exact path="/cart" element={<Cart />} />
 
         <Route exact path="/:id" element={<Detail />} />
 
-        <Route exact path="/pay" element={<Pay />}></Route>
+        <Route exact path="/bestseller" element={<BestSeller />} />
+
+        <Route exact path="/lookbook" element={<LookBook />} />
+
+        <Route exact path="/membership" element={<Membership />} />
 
         {/* 어드민 페이지  */}
         <Route exact path="/admin" element={<Admin />} />
@@ -49,7 +54,7 @@ function App() {
         <Route
           exact
           path="/admin/category/addproduct"
-          element={<AddProduct />}
+          element={<UploadProduct />}
         />
         <Route
           exact
