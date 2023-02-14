@@ -7,10 +7,11 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "plugin:prettier/recommended",
   ],
-  parser: "babel-eslint",
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -25,7 +26,6 @@ module.exports = {
     "react/jsx-filename-extension": 0,
     "react/jsx-one-expression-per-line": 0,
     "no-nested-ternary": 0,
-
     "prettier/prettier": [
       "error",
       {
