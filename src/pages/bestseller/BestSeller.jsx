@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const BestSeller = () => {
-    return (
-        <div>
-            BestSeller
-        </div>
-    );
-};
+function BestSeller() {
+  return <div>BestSeller</div>;
+}
 
 export default BestSeller;

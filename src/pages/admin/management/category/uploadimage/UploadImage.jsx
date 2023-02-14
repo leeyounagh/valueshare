@@ -1,13 +1,15 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 
-const UploadImage = ({ handleChange, data }) => {
+function UploadImage() {
   const [image, setImage] = useState([]);
 
   const handleDrop = async (files) => {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append("file", files[0]);
+
     try {
       const response = await axios.post("요청주소", formData);
       const data = await response.data;
@@ -30,6 +32,7 @@ const UploadImage = ({ handleChange, data }) => {
                 border: "1px solid black",
                 borderRadius: "10px",
               }}
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...getRootProps()}
             >
               <input {...getInputProps()} />
@@ -40,15 +43,11 @@ const UploadImage = ({ handleChange, data }) => {
       </Dropzone>
       <div>
         {image.map((item) => {
-          return (
-            <>
-              <img src={item.name}></img>
-            </>
-          );
+          return <img src={item.name} alt={item.name} />;
         })}
       </div>
     </div>
   );
-};
+}
 
 export default UploadImage;
