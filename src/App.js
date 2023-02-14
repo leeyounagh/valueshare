@@ -16,7 +16,7 @@ import History from "./pages/mypage/utils/History";
 import Resign from "./pages/mypage/utils/Resign";
 import DeliveryList from "./pages/admin/management/DeliveryList";
 import CanceledList from "./pages/admin/management/CanceledList";
-import AddProduct from "./pages/admin/management/category/AddProduct";
+import UploadProduct from "./pages/admin/management/category/UploadProduct";
 import DeleteProduct from "./pages/admin/management/category/DeleteProduct";
 import EditProduct from "./pages/admin/management/category/EditProduct";
 import LookBook from "./pages/lookbook/LookBook";
@@ -54,7 +54,7 @@ function App() {
         <Route
           exact
           path="/admin/category/addproduct"
-          element={<AddProduct />}
+          element={<UploadProduct />}
         />
         <Route
           exact
