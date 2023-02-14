@@ -25,7 +25,6 @@ import Membership from "./pages/membership/Membership";
 function App() {
   return (
     <div>
-      <Header />
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route exact path="/login" element={<Login />} />
@@ -67,6 +66,9 @@ function App() {
           element={<EditProduct />}
         />
       </Routes>
+
+      <Header />
+
       <Footer />
     </div>
   );
