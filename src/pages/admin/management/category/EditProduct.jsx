@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const EditProduct = () => {
-    return (
-        <div>
-            EditProduct
-        </div>
-    );
-};
+function EditProduct() {
+  return <div>EditProduct</div>;
+}
 
 export default EditProduct;

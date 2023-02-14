@@ -1,15 +1,21 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import UploadImage from "./uploadimage/UploadImage";
 import Continent from "./uploadimage/data/Continent";
 import Brand from "./uploadimage/data/Brand";
-const UploadProduct = () => {
+
+function UploadProduct() {
+  const image = useSelector((state) => {
+    return state.image.image;
+  });
+
   const [data, setData] = useState({
     title: "",
     stock: "",
     price: "",
     category: "",
     brand: "",
-    image: "",
   });
 
   const handleChange = (event) => {
@@ -21,8 +27,24 @@ const UploadProduct = () => {
     };
     setData(newData);
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    const { title, stock, price, category, brand } = data;
     event.preventDefault();
+    const body = {
+      productTitle: title,
+      productStock: stock,
+      productPrice: price,
+      productCategory: category,
+      productBrand: brand,
+      productImage: image,
+    };
+    try {
+      const response = await axios.post("요청예정url", body);
+      const status = await response.status;
+      console.log(status);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -44,13 +66,13 @@ const UploadProduct = () => {
         />
       </div>
       <div>
-        <input name="stock" onChange={handleChange} placeholder="재고"></input>
+        <input name="stock" onChange={handleChange} placeholder="재고" />
       </div>
       <div>
-        <input name="price" onChange={handleChange} placeholder="가격"></input>
+        <input name="price" onChange={handleChange} placeholder="가격" />
       </div>
 
-      <UploadImage handleChange={handleChange}></UploadImage>
+      <UploadImage setData={setData} />
 
       <div>
         <select
@@ -60,15 +82,13 @@ const UploadProduct = () => {
         >
           {Continent.map((item) => {
             return (
-              <>
-                <option
-                  style={{ textAlignLast: "center" }}
-                  value={item.value}
-                  key={item.key}
-                >
-                  {item.value}
-                </option>
-              </>
+              <option
+                style={{ textAlignLast: "center" }}
+                value={item.value}
+                key={item.key}
+              >
+                {item.value}
+              </option>
             );
           })}
         </select>
@@ -78,27 +98,25 @@ const UploadProduct = () => {
         <select onChange={handleChange} name={Brand[0].id} value={Brand}>
           {Brand.map((item) => {
             return (
-              <>
-                <option
-                  style={{ textAlignLast: "center" }}
-                  value={item.key}
-                  key={item.key}
-                >
-                  {item.value}
-                </option>
-              </>
+              <option
+                style={{ textAlignLast: "center" }}
+                value={item.key}
+                key={item.key}
+              >
+                {item.value}
+              </option>
             );
           })}
         </select>
       </div>
       <div>
-        <textarea placeholder="상품설명"></textarea>
+        <textarea placeholder="상품설명" />
       </div>
       <div>
         <button type="submit">등록</button>
       </div>
     </form>
   );
-};
+}
 
 export default UploadProduct;

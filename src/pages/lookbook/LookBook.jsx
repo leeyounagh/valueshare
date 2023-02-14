@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const LookBook = () => {
-    return (
-        <div>
-            LookBook
-        </div>
-    );
-};
+function LookBook() {
+  return <div>LookBook</div>;
+}
 
 export default LookBook;
