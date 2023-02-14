@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import UploadImage from "./uploadimage/UploadImage";
 import Continent from "./uploadimage/data/Continent";
 import Brand from "./uploadimage/data/Brand";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 function UploadProduct() {
+  let image = useSelector((state) => {
+    return state.productImage.image;
+  });
+
   const [data, setData] = useState({
     title: "",
     stock: "",
     price: "",
     category: "",
     brand: "",
-    image: "",
   });
-  console.log(data);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -22,8 +27,24 @@ function UploadProduct() {
     };
     setData(newData);
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    const { title, stock, price, category, brand } = data;
     event.preventDefault();
+    const uploadData = {
+      title: title,
+      stock: stock,
+      price: price,
+      category: category,
+      brand: brand,
+      image: image,
+    };
+    try {
+      const response = await axios.post("요청예정url", body);
+      const status = await response.status;
+      console.log(status);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
