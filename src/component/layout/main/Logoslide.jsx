@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import color from "../../../styles/color";
 
 const SlayOut = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
   height: auto;
-  background-color: ${color.white};
   padding 0 5%;
 `;
 

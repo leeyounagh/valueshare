@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import color from "../../../styles/color";
+import MainbannerIcn from "./MainbannerIcn";
 
 const SlayOut = styled.div`
   display: flex;
@@ -30,12 +31,6 @@ const SbannerIcon = styled.div`
   width: auto;
   height: auto;
   margin-top: 40px;
-`;
-
-const SbannerIconImg = styled.img`
-  margin-right: 10px;
-  width: 100px;
-  height: 100px;
 `;
 
 const Sbanner = styled.div`
@@ -92,9 +87,7 @@ function Carousel() {
           쇼핑몰 목적, 소개문구,
         </p>
         <SbannerIcon>
-          <SbannerIconImg src="asset/icn-main1.svg" />
-          <SbannerIconImg src="asset/icn-main2.svg" />
-          <SbannerIconImg src="asset/icn-main3.svg" />
+          <MainbannerIcn />
         </SbannerIcon>
       </SbannerText>
       <Sbanner>
