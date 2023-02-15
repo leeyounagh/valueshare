@@ -37,7 +37,6 @@ function UploadImage() {
                 border: "1px solid black",
                 borderRadius: "10px",
               }}
-              // eslint-disable-next-line react/jsx-props-no-spreading
               {...getRootProps()}
             >
               <input {...getInputProps()} />
