@@ -80,7 +80,7 @@ const SLayoutInnerDiv = styled.div`
   display: flex;
   margin-left: 54px;
 `;
-function Navbar() {
+function BestSellerNavbar() {
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -101,4 +101,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default BestSellerNavbar;
