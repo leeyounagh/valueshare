@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./Navbar";
+import BestSellerNavbar from "./BestSellerNavbar";
 
 function BestSeller() {
   return (
     <div>
-      <Navbar />
+      <BestSellerNavbar />
     </div>
   );
 }
