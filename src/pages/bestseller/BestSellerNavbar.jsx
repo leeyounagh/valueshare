@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import color from "../../styles/color";
+// import color from "../../styles/color";
+import color from "styles/color";
 
 const { gray4 } = color;
 
