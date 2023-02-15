@@ -80,10 +80,10 @@ const SPageTitleDiv = styled.div`
 function Navbar() {
   const text = useSelector((state) => {
     console.log("state", state);
-    return state;
+    return state.pageTitle;
   });
   if (text !== undefined) {
-    console.log(text.rootTitle);
+    console.log(text);
   }
 
   return (

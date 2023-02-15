@@ -11,7 +11,7 @@ export const PageSlice = createSlice({
   reducers: {
     PageInfo: (state, action) => {
       // eslint-disable-next-line no-param-reassign
-      state.image = action.payload;
+      state = action.payload;
     },
   },
 });

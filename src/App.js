@@ -9,8 +9,8 @@ import BestSeller from "./pages/bestseller/BestSeller";
 import Cart from "./pages/cart/Cart";
 import Header from "./component/layout/header/Header";
 import Footer from "./component/layout/footer/Footer";
-import UserInfo from "./pages/mypage/utils/UserInfo";
-import Detail from "./pages/products/detail/Detail";
+import UserInfo from "pages/mypage/utils/UserInfo";
+import Detail from "./pages/productdeail/Detail";
 import Admin from "./pages/admin/Admin";
 import OrderedList from "./pages/admin/management/OrderedList";
 import History from "./pages/mypage/utils/History";
@@ -29,7 +29,7 @@ function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   if (pathname === "/product") {
-    dispatch(PageInfo({ rootTitle: "Category", PageTitle: "Products" }));
+    dispatch(PageInfo({ rootTitle: "Category", pageTitle: "Products" }));
   }
   return (
     <div>
