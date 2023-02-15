@@ -23,13 +23,13 @@ import EditProduct from "./pages/admin/management/category/EditProduct";
 import LookBook from "./pages/lookbook/LookBook";
 import Membership from "./pages/membership/Membership";
 import Product from "./pages/products/Product";
-import { PageInfo } from "./slice/PageSlice";
+import { setPageInfo } from "./slice/PageSlice";
 
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   if (pathname === "/product") {
-    dispatch(PageInfo({ rootTitle: "Category", pageTitle: "Products" }));
+    dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));
   }
   return (
     <div>
