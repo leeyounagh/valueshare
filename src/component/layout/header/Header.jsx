@@ -8,7 +8,6 @@ const { white, gray4 } = color;
 const SlayOut = styled.header`
   width: 100%;
   height: 140px;
-  margin: 0 0 16px;
   padding: 35px 0 0;
   background-color: ${white};
   border-bottom: 1px solid ${gray4};
@@ -136,7 +135,6 @@ const SProfileMenuImg = styled.img`
 `;
 const SLayoutIconItem = styled.div`
   margin: 5px;
-
   height: 100%;
   width: 20%;
 `;

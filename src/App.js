@@ -21,6 +21,7 @@ import DeleteProduct from "./pages/admin/management/category/DeleteProduct";
 import EditProduct from "./pages/admin/management/category/EditProduct";
 import LookBook from "./pages/lookbook/LookBook";
 import Membership from "./pages/membership/Membership";
+import Product from "./pages/products/Product";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
 
         <Route exact path="/:id" element={<Detail />} />
+        <Route exact path="/product" element={<Product />} />
 
         <Route exact path="/bestseller" element={<BestSeller />} />
 
