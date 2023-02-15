@@ -24,35 +24,34 @@ function UploadImage() {
 			console.log(err);
 		}
 	};
+  return (
+    <div>
+      <Dropzone onDrop={handleDrop}>
+        {({ getRootProps, getInputProps }) => (
+          <section>
+            <div
+              style={{
+                width: 250,
+                height: 240,
+                border: "1px solid black",
+                borderRadius: "10px",
+              }}
+              {...getRootProps()}
+            >
+              <input {...getInputProps()} />
+              이미지 업로드
+            </div>
+          </section>
+        )}
+      </Dropzone>
 
-	return (
-		<div>
-			<Dropzone onDrop={handleDrop}>
-				{({ getRootProps, getInputProps }) => (
-					<section>
-						<div
-							style={{
-								width: 250,
-								height: 240,
-								border: "1px solid black",
-								borderRadius: "10px",
-							}}
-							// eslint-disable-next-line react/jsx-props-no-spreading
-							{...getRootProps()}
-						>
-							<input {...getInputProps()} />
-							이미지 업로드
-						</div>
-					</section>
-				)}
-			</Dropzone>
-			<div>
-				{image.map((item) => {
-					return <img key={item.id} src={item.name} alt={item.name} />;
-				})}
-			</div>
-		</div>
-	);
+      <div>
+        {image.map((item) => {
+          return <img key={item.id} src={item.name} alt={item.name} />;
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default UploadImage;
