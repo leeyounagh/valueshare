@@ -46,6 +46,7 @@ function UploadImage() {
           </section>
         )}
       </Dropzone>
+
       <div>
         {image.map((item) => {
           return <img key={item.id} src={item.name} alt={item.name} />;
