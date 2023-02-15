@@ -1,9 +1,5 @@
-*,body{
- margin:0;
- padding: 0;
- width: 1920px;
- height: 2154px;
- flex-grow: 0;
- background-color: #ffffff;
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

@@ -1,36 +1,42 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
-const { white } = color;
+const { white, gray4 } = color;
 
 const SlayOut = styled.header`
-  border: 1px solid black;
   width: 100%;
   height: 140px;
   margin: 0 0 16px;
   padding: 35px 0 0;
   background-color: ${white};
+  border-bottom: 1px solid ${gray4};
   display: flex;
+  justify-content: center;
+  a {
+    text-decoration: none;
+    border: black;
+  }
 `;
-const SLogoSpan = styled.span`
-  width: 251px;
-  height: 67px;
-  margin: 0 169px 11px 44px;
-  font-family: PlayfairDisplay;
-  font-size: 50px;
+const SLogoDiv = styled.div`
+  width: 30%;
+  height: 100%;
+  font-size: 45px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000;
+  color: black;
+  white-space: nowrap;
+  a {
+    color: black;
+  }
 `;
-const SBestSellerSpan = styled.span`
-  width: 105px;
-  height: 24px;
-  margin: 30px 159px 24px 169px;
+const SBestSellerDiv = styled.div`
+  height: 100%;
   font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
@@ -42,10 +48,8 @@ const SBestSellerSpan = styled.span`
   color: #000;
 `;
 
-const SProductSpan = styled.span`
-  width: 92px;
-  height: 24px;
-  margin: 30px 140px 24px 159px;
+const SProductDiv = styled.div`
+  height: 100%;
   font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
@@ -57,10 +61,8 @@ const SProductSpan = styled.span`
   color: #000;
 `;
 
-const SLookBookSpan = styled.span`
-  width: 95px;
-  height: 24px;
-  margin: 30px 132px 24px 140px;
+const SLookBookDiv = styled.div`
+  height: 100%;
   font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
@@ -72,10 +74,9 @@ const SLookBookSpan = styled.span`
   color: #000;
 `;
 
-const SMembershipSpan = styled.span`
-  width: 95px;
-  height: 24px;
-  margin: 30px 132px 24px 140px;
+const SMembershipDiv = styled.div`
+  height: 100%;
+  width: 130px;
   font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
@@ -85,15 +86,121 @@ const SMembershipSpan = styled.span`
   letter-spacing: normal;
   text-align: left;
   color: #000;
+`;
+const SLineDiv = styled.div`
+  width: 1px;
+  height: 50px;
+  transform: rotate(-180deg);
+  background-color: #ccd1d8;
+`;
+const SLayoutInnerDiv = styled.div`
+  display: flex;
+  height: 67px;
+  width: 100%;
+  padding-left: 40px;
+`;
+const SLayoutMenuDiv = styled.div`
+  width: 100%;
+  height: 67px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+`;
+const SLayoutIconDiv = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  margin-left: 60px;
+`;
+const SAlarmImg = styled.img`
+  width: 46px;
+  height: 40px;
+  object-fit: contain;
+`;
+const SBasketImg = styled.img`
+  width: 46px;
+  height: 40px;
+  object-fit: contain;
+`;
+const SProfileImg = styled.img`
+  width: 70px;
+  height: 60px;
+`;
+const SProfileMenuImg = styled.img`
+  width: 26px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 15px;
+  object-fit: contain;
+`;
+const SLayoutIconItem = styled.div`
+  margin: 5px;
+
+  height: 100%;
+  width: 20%;
+`;
+const SInnerItemDiv = styled.div`
+  justify-content: space-between;
+  width: 60%;
+  height: 100%;
+  display: flex;
+`;
+const SLayoutProfileDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  margin-bottom: 20px;
+`;
+const SLayoutProfileInnerDiv = styled.div`
+  width: 30%;
+  height: 100%;
+  margin-left: 10px;
 `;
 function Header() {
   return (
     <SlayOut>
-      <SLogoSpan>Value shop</SLogoSpan>
-      <SBestSellerSpan>Best seller</SBestSellerSpan>
-      <SProductSpan>Products</SProductSpan>
-      <SLookBookSpan>lookbook</SLookBookSpan>
-      <SMembershipSpan>Membership</SMembershipSpan>
+      <SLayoutInnerDiv>
+        <SLogoDiv>
+          <Link to="/">Value shop</Link>
+        </SLogoDiv>
+
+        <SLayoutMenuDiv>
+          <SInnerItemDiv>
+            <Link to="/bestseller">
+              <SBestSellerDiv>Best seller</SBestSellerDiv>
+            </Link>
+            <Link to="/product">
+              <SProductDiv>Products</SProductDiv>
+            </Link>
+            <Link to="/lookbook">
+              <SLookBookDiv>lookbook</SLookBookDiv>
+            </Link>
+            <Link to="/Membership">
+              <SMembershipDiv>Membership</SMembershipDiv>
+            </Link>
+          </SInnerItemDiv>
+
+          <SLayoutIconDiv>
+            <SLayoutIconItem>
+              <SAlarmImg src="asset/headerAlarm.svg" />
+            </SLayoutIconItem>
+            <SLayoutIconItem>
+              <SBasketImg src="asset/icn-basket.svg" />
+            </SLayoutIconItem>
+            <SLineDiv />
+            <SLayoutProfileDiv>
+              <SLayoutProfileInnerDiv>
+                <SProfileImg src="asset/icn-profile.svg" />
+              </SLayoutProfileInnerDiv>
+              <SLayoutProfileInnerDiv>
+                <SProfileMenuImg src="asset/Chevrons_chevron-right.svg" />
+              </SLayoutProfileInnerDiv>
+            </SLayoutProfileDiv>
+          </SLayoutIconDiv>
+        </SLayoutMenuDiv>
+      </SLayoutInnerDiv>
     </SlayOut>
   );
 }
