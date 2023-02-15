@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import color from "../styles/color";
+
+const { gray4 } = color;
 
 const SLayout = styled.nav`
-  border: 1px solid black;
   width: 100%;
   height: 233px;
   padding: 33px 0 0;
   background-color: var(--white);
+  border-bottom: 1px solid ${gray4};
 `;
 
 const SRootHomeDiv = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid black;
+
   width: 50px;
   height: 100%;
 `;
@@ -29,13 +32,25 @@ const SHomeImg = styled.img`
 `;
 const SRootTitle = styled.div``;
 const SRootDiv = styled.div`
-  border: 1px solid black;
   display: flex;
   width: 50%;
   height: 30%;
   margin-left: 54px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 `;
-const SRootIconDiv = styled.div``;
+const SRootIconDiv = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
 const SRootIcontImg = styled.img`
   width: 36px;
   height: 30px;
@@ -43,9 +58,13 @@ const SRootIcontImg = styled.img`
   margin-top: 10px;
 `;
 const SCategoryDiv = styled.div``;
-const SCategoryTitle = styled.div``;
+const SCategoryTitle = styled.div`
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
 const SPageTitleDiv = styled.div`
-  border: 1px solid black;
   width: 100%;
   height: 70%;
   margin-left: 54px;
