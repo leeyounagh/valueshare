@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { productImage } from "../../../../../slice/ImageSlice";
 
 function UploadImage() {
-	const [image, setImage] = useState([]);
+  const [image, setImage] = useState([]);
 	const dispatch = useDispatch();
 
 	const handleDrop = async (files) => {
@@ -15,7 +15,7 @@ function UploadImage() {
 		console.log(files[0]);
 
 		try {
-			const response = await axios.post("요청주소", formData);
+      const response = await axios.post("요청주소", formData);
 			const data = await response.data;
 			setImage((prev) => [...prev, ...data]);
 			dispatch(productImage(image));
