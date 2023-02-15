@@ -181,7 +181,7 @@ function Header() {
             <Link to="/lookbook">
               <SLookBookDiv>lookbook</SLookBookDiv>
             </Link>
-            <Link to="/Membership">
+            <Link to="/membership">
               <SMembershipDiv>Membership</SMembershipDiv>
             </Link>
           </SInnerItemDiv>

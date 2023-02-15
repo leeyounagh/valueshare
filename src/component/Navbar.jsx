@@ -59,7 +59,6 @@ const SRootIcontImg = styled.img`
 `;
 const SCategoryDiv = styled.div``;
 const SCategoryTitle = styled.div`
-  width: 150px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -79,12 +78,8 @@ const SPageTitleDiv = styled.div`
 `;
 function Navbar() {
   const text = useSelector((state) => {
-    console.log("state", state);
-    return state.pageTitle;
+    return state.pageTitleReducer;
   });
-  if (text !== undefined) {
-    console.log(text);
-  }
 
   return (
     <SLayout>
@@ -99,11 +94,11 @@ function Navbar() {
           <SRootIcontImg src="asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>Category</SCategoryTitle>
+          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
         </SCategoryDiv>
       </SRootDiv>
 
-      <SPageTitleDiv>Products</SPageTitleDiv>
+      <SPageTitleDiv>{text.currentTitle}</SPageTitleDiv>
     </SLayout>
   );
 }

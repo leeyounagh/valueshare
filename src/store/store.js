@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productImageReducer from "../slice/ImageSlice";
-import pageTitleReducer from "../slice/PageSlice";
+import productImageReducer from "slice/ImageSlice";
+import pageTitleReducer from "slice/PageSlice";
 
 export default configureStore({
   reducer: {
