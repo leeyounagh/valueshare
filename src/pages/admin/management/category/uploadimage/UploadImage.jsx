@@ -46,11 +46,7 @@ function UploadImage() {
           </section>
         )}
       </Dropzone>
-      <div>
-        {image.map((item) => {
-          return <img src={item.name} alt={item.name} />;
-        })}
-      </div>
+      <div>{/* 나중에 이미지 파일 출력할 자리 */}</div>
     </div>
   );
 }
