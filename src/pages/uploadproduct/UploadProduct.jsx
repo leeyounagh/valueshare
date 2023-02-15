@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import UploadImage from "./uploadimage/UploadImage";
-import Continent from "./uploadimage/data/Continent";
-import Brand from "./uploadimage/data/Brand";
+import UploadImage from "component/uploadimage/UploadImage";
+import Continent from "data/Continent";
+import Brand from "data/Brand";
 
 function UploadProduct() {
   const image = useSelector((state) => {

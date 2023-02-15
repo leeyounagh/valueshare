@@ -21,17 +21,21 @@ const SlayOut = styled.header`
 const SLogoDiv = styled.div`
   width: 30%;
   height: 100%;
-  font-size: 45px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
+
   color: black;
   white-space: nowrap;
   a {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
     color: black;
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    font-size: 38px;
+    align-items: center;
   }
 `;
 const SBestSellerDiv = styled.div`
@@ -161,7 +165,9 @@ function Header() {
     <SlayOut>
       <SLayoutInnerDiv>
         <SLogoDiv>
-          <Link to="/">Value shop</Link>
+          <Link to="/">
+            <h2>Value shop</h2>
+          </Link>
         </SLogoDiv>
 
         <SLayoutMenuDiv>
@@ -175,7 +181,7 @@ function Header() {
             <Link to="/lookbook">
               <SLookBookDiv>lookbook</SLookBookDiv>
             </Link>
-            <Link to="/Membership">
+            <Link to="/membership">
               <SMembershipDiv>Membership</SMembershipDiv>
             </Link>
           </SInnerItemDiv>
@@ -184,9 +190,12 @@ function Header() {
             <SLayoutIconItem>
               <SAlarmImg src="asset/headerAlarm.svg" />
             </SLayoutIconItem>
-            <SLayoutIconItem>
-              <SBasketImg src="asset/icn-basket.svg" />
-            </SLayoutIconItem>
+            <Link to="/cart">
+              <SLayoutIconItem>
+                <SBasketImg src="asset/icn-basket.svg" />
+              </SLayoutIconItem>
+            </Link>
+
             <SLineDiv />
             <SLayoutProfileDiv>
               <SLayoutProfileInnerDiv>

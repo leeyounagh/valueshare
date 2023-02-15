@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { productImage } from "../../../../../slice/ImageSlice";
+import { productImage } from "slice/ImageSlice";
 
 function UploadImage() {
   const [image, setImage] = useState([]);

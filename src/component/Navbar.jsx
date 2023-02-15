@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import color from "../styles/color";
 
@@ -15,7 +16,6 @@ const SLayout = styled.nav`
 const SRootHomeDiv = styled.div`
   display: flex;
   align-items: center;
-
   width: 50px;
   height: 100%;
 `;
@@ -59,7 +59,6 @@ const SRootIcontImg = styled.img`
 `;
 const SCategoryDiv = styled.div``;
 const SCategoryTitle = styled.div`
-  width: 150px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -78,6 +77,10 @@ const SPageTitleDiv = styled.div`
   color: #000;
 `;
 function Navbar() {
+  const text = useSelector((state) => {
+    return state.pageTitleReducer;
+  });
+
   return (
     <SLayout>
       <SRootDiv>
@@ -91,11 +94,11 @@ function Navbar() {
           <SRootIcontImg src="asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>Category</SCategoryTitle>
+          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
         </SCategoryDiv>
       </SRootDiv>
 
-      <SPageTitleDiv>Products</SPageTitleDiv>
+      <SPageTitleDiv>{text.currentTitle}</SPageTitleDiv>
     </SLayout>
   );
 }

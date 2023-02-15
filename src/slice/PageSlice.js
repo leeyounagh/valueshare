@@ -1,20 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  query: "",
+  rootTitle: "",
+  currentTitle: "",
 };
 
 export const PageSlice = createSlice({
   name: "pageInfo",
   initialState,
   reducers: {
-    PageInfo: (state, action) => {
+    setPageInfo: (state, action) => {
       // eslint-disable-next-line no-param-reassign
-      state.image = action.payload;
+
+      state.rootTitle = action.payload.rootTitle;
+      // eslint-disable-next-line no-param-reassign
+      state.currentTitle = action.payload.currentTitle;
     },
   },
 });
 
-export const { PageInfo } = PageSlice.actions;
+export const { setPageInfo } = PageSlice.actions;
 
 export default PageSlice.reducer;
