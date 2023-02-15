@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import color from "../styles/color";
 
@@ -15,7 +16,6 @@ const SLayout = styled.nav`
 const SRootHomeDiv = styled.div`
   display: flex;
   align-items: center;
-
   width: 50px;
   height: 100%;
 `;
@@ -78,6 +78,14 @@ const SPageTitleDiv = styled.div`
   color: #000;
 `;
 function Navbar() {
+  const text = useSelector((state) => {
+    console.log("state", state);
+    return state;
+  });
+  if (text !== undefined) {
+    console.log(text.rootTitle);
+  }
+
   return (
     <SLayout>
       <SRootDiv>

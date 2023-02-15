@@ -1,5 +1,6 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Login from "./pages/login/Login";
 import Main from "./pages/main/Main";
 import Mypage from "./pages/mypage/MyPage";
@@ -22,8 +23,14 @@ import EditProduct from "./pages/admin/management/category/EditProduct";
 import LookBook from "./pages/lookbook/LookBook";
 import Membership from "./pages/membership/Membership";
 import Product from "./pages/products/Product";
+import { PageInfo } from "./slice/PageSlice";
 
 function App() {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  if (pathname === "/product") {
+    dispatch(PageInfo({ rootTitle: "Category", PageTitle: "Products" }));
+  }
   return (
     <div>
       <Header />

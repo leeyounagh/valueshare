@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  query: "",
+  rootTitle: "",
+  pageTitle: "",
 };
 
 export const PageSlice = createSlice({
