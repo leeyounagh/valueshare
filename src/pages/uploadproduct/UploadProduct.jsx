@@ -55,8 +55,6 @@ function UploadProduct() {
     try {
       const response = await axios.post("http://10.10.5.246:3000/", body);
       console.log(response);
-      // const status = await response.status;
-      // console.log(status);
     } catch (err) {
       console.log(err);
     }
