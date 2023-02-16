@@ -16,10 +16,11 @@ const SlayOut = styled.header`
   a {
     text-decoration: none;
     border: black;
+    font-family: "Montserrat", "Noto Sans KR", "Rufina", "sans-serif";
   }
 `;
 const SLogoDiv = styled.div`
-  width: 30%;
+  width: 20%;
   height: 100%;
 
   color: black;
@@ -92,7 +93,7 @@ const SMembershipDiv = styled.div`
 `;
 const SLineDiv = styled.div`
   width: 1px;
-  height: 50px;
+  height: 60px;
   transform: rotate(-180deg);
   background-color: #ccd1d8;
 `;
@@ -103,17 +104,18 @@ const SLayoutInnerDiv = styled.div`
   padding-left: 40px;
 `;
 const SLayoutMenuDiv = styled.div`
-  width: 100%;
+  width: 60%;
   height: 67px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 25px;
 `;
 const SLayoutIconDiv = styled.div`
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 40px;
   width: 25%;
+  padding-top: 10px;
   margin-left: 60px;
 `;
 const SAlarmImg = styled.img`
@@ -130,7 +132,7 @@ const SProfileImg = styled.img`
   width: 70px;
   height: 60px;
 `;
-const SProfileMenuImg = styled.img`
+const SProfileMenuImg = styleds.img`
   width: 26px;
   height: 30px;
   margin-left: 10px;
@@ -156,9 +158,7 @@ const SLayoutProfileDiv = styled.div`
   margin-bottom: 20px;
 `;
 const SLayoutProfileInnerDiv = styled.div`
-  width: 30%;
-  height: 100%;
-  margin-left: 10px;
+  width: 25%;
 `;
 function Header() {
   return (
@@ -185,28 +185,24 @@ function Header() {
               <SMembershipDiv>Membership</SMembershipDiv>
             </Link>
           </SInnerItemDiv>
-
-          <SLayoutIconDiv>
-            <SLayoutIconItem>
-              <SAlarmImg src="asset/headerAlarm.svg" />
-            </SLayoutIconItem>
-            <Link to="/cart">
-              <SLayoutIconItem>
-                <SBasketImg src="asset/icn-basket.svg" />
-              </SLayoutIconItem>
-            </Link>
-
-            <SLineDiv />
-            <SLayoutProfileDiv>
-              <SLayoutProfileInnerDiv>
-                <SProfileImg src="asset/icn-profile.svg" />
-              </SLayoutProfileInnerDiv>
-              <SLayoutProfileInnerDiv>
-                <SProfileMenuImg src="asset/Chevrons_chevron-right.svg" />
-              </SLayoutProfileInnerDiv>
-            </SLayoutProfileDiv>
-          </SLayoutIconDiv>
         </SLayoutMenuDiv>
+        <SLayoutIconDiv>
+          <SLayoutIconItem>
+            <SAlarmImg src="asset/headerAlarm.svg" />
+          </SLayoutIconItem>
+          <SLayoutIconItem>
+            <SBasketImg src="asset/icn-basket.svg" />
+          </SLayoutIconItem>
+          <SLineDiv />
+          <SLayoutProfileDiv>
+            <SLayoutProfileInnerDiv>
+              <SProfileImg src="asset/icn-profile.svg" />
+            </SLayoutProfileInnerDiv>
+            <SLayoutProfileInnerDiv>
+              <SProfileMenuImg src="asset/Chevrons_chevron-right.svg" />
+            </SLayoutProfileInnerDiv>
+          </SLayoutProfileDiv>
+        </SLayoutIconDiv>
       </SLayoutInnerDiv>
     </SlayOut>
   );
