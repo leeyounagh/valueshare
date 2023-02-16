@@ -6,3 +6,6 @@
   box-sizing: border-box;
   font-family: "Montserrat", "Noto Sans KR", "Rufina", "sans-serif";
 }
+body {
+  overflow-x: hidden;
+}

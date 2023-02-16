@@ -6,15 +6,19 @@ import Card from "component/produts/Card";
 import Filters from "component/produts/Filters";
 
 const SLayout = styled.div`
-  border: 1px solid black;
   width: 100%;
 `;
 
-const SCategoryDiv = styled.div``;
+const SCategoryDiv = styled.div`
+  width: 20%;
+`;
 
-const SCardDiv = styled.div``;
-const SItemInnerDiv = styled.div`
+const SCardDiv = styled.div`
   border: 1px solid black;
+  width: 80%;
+`;
+const SItemInnerDiv = styled.div`
+  display: flex;
 `;
 
 function Product() {
