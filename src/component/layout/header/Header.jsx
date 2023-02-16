@@ -132,7 +132,7 @@ const SProfileImg = styled.img`
   width: 70px;
   height: 60px;
 `;
-const SProfileMenuImg = styleds.img`
+const SProfileMenuImg = styled.img`
   width: 26px;
   height: 30px;
   margin-left: 10px;
