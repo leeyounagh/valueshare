@@ -8,7 +8,6 @@ const { white, gray4 } = color;
 const SlayOut = styled.header`
   width: 100%;
   height: 140px;
-  margin: 0 0 16px;
   padding: 35px 0 0;
   background-color: ${white};
   border-bottom: 1px solid ${gray4};
@@ -23,17 +22,21 @@ const SlayOut = styled.header`
 const SLogoDiv = styled.div`
   width: 20%;
   height: 100%;
-  font-size: 45px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
+
   color: black;
   white-space: nowrap;
   a {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
     color: black;
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    font-size: 38px;
+    align-items: center;
   }
 `;
 const SBestSellerDiv = styled.div`
@@ -129,7 +132,7 @@ const SProfileImg = styled.img`
   width: 70px;
   height: 60px;
 `;
-const SProfileMenuImg = styled.img`
+const SProfileMenuImg = styleds.img`
   width: 26px;
   height: 30px;
   margin-left: 10px;
@@ -138,7 +141,6 @@ const SProfileMenuImg = styled.img`
 `;
 const SLayoutIconItem = styled.div`
   margin: 5px;
-
   height: 100%;
   width: 20%;
 `;
@@ -163,7 +165,9 @@ function Header() {
     <SlayOut>
       <SLayoutInnerDiv>
         <SLogoDiv>
-          <Link to="/">Value shop</Link>
+          <Link to="/">
+            <h2>Value shop</h2>
+          </Link>
         </SLogoDiv>
 
         <SLayoutMenuDiv>
@@ -177,7 +181,7 @@ function Header() {
             <Link to="/lookbook">
               <SLookBookDiv>lookbook</SLookBookDiv>
             </Link>
-            <Link to="/Membership">
+            <Link to="/membership">
               <SMembershipDiv>Membership</SMembershipDiv>
             </Link>
           </SInnerItemDiv>

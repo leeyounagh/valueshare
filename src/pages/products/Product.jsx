@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../component/Navbar";
 
-function LookBook() {
+function Product() {
   return (
     <div>
       <Navbar />
@@ -9,4 +9,4 @@ function LookBook() {
   );
 }
 
-export default LookBook;
+export default Product;
