@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useRef } from "react";
 import axios from "axios";
-import UploadImage from "component/uploadimage/UploadImage";
 import Continent from "data/Continent";
 import Brand from "data/Brand";
 
 function UploadProduct() {
-  const image = useSelector((state) => {
-    return state.image.image;
-  });
+  const [imgFile, setImgFile] = useState([]);
+  const imgRef = useRef();
 
   const [data, setData] = useState({
     title: "",
@@ -27,9 +24,25 @@ function UploadProduct() {
     };
     setData(newData);
   };
+
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgFile((prev) => {
+        const newImgFile = [...prev];
+        newImgFile.push(reader.result);
+        return newImgFile;
+      });
+    };
+  };
   const handleSubmit = async (event) => {
     const { title, stock, price, category, brand } = data;
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("imageFile", JSON.stringify(imgFile));
     //  이미지를 formdata에 넣는다
     const body = {
       productTitle: title,
@@ -37,12 +50,13 @@ function UploadProduct() {
       productPrice: price,
       productCategory: category,
       productBrand: brand,
-      productImage: image,
+      productImage: formData,
     };
     try {
-      const response = await axios.post("요청예정url", body);
-      const status = await response.status;
-      console.log(status);
+      const response = await axios.post("http://10.10.5.246:3000/", body);
+      console.log(response);
+      // const status = await response.status;
+      // console.log(status);
     } catch (err) {
       console.log(err);
     }
@@ -73,7 +87,24 @@ function UploadProduct() {
         <input name="price" onChange={handleChange} placeholder="가격" />
       </div>
 
-      <UploadImage setData={setData} />
+      <div>
+        {imgFile.map((item) => {
+          return (
+            <img
+              style={{ width: "100px", height: "100" }}
+              src={item}
+              alt="프로필 이미지"
+            />
+          );
+        })}
+        <input
+          type="file"
+          accept="image/"
+          id="profileImg"
+          onChange={saveImgFile}
+          ref={imgRef}
+        />
+      </div>
 
       <div>
         <select
