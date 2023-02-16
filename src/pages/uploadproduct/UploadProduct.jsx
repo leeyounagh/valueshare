@@ -30,6 +30,7 @@ function UploadProduct() {
   const handleSubmit = async (event) => {
     const { title, stock, price, category, brand } = data;
     event.preventDefault();
+    //  이미지를 formdata에 넣는다
     const body = {
       productTitle: title,
       productStock: stock,

@@ -10,7 +10,8 @@ export const ImageSlice = createSlice({
   reducers: {
     productImage: (state, action) => {
       // eslint-disable-next-line no-param-reassign
-      state.image = action.payload;
+      // state.image = action.payload;
+      return state.image.concat(action.payload);
     },
   },
 });
