@@ -18,6 +18,16 @@ function UploadImage() {
     };
   };
 
+		try {
+			const response = await axios.post("요청주소", formData);
+			const data = await response.data;
+			setImage((prev) => [...prev, ...data]);
+			dispatch(productImage(image));
+		} catch (err) {
+			alert("이미지 업로드에 실패했습니다.");
+			console.log(err);
+		}
+	};
   return (
     <div>
       <div>
