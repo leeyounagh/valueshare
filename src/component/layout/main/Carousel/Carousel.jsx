@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import color from "../../../styles/color";
+import color from "../../../../styles/color";
 import MainbannerIcn from "./MainbannerIcn";
 
 const SlayOut = styled.div`
@@ -21,6 +21,7 @@ const SbannerText = styled.div`
   }
 
   p {
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
     font-size: 18px;
     line-height: 2;
   }

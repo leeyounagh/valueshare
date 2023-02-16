@@ -1,20 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import color from "../../../styles/color";
 
 const SlayOut = styled.div`
   display: flex;
-  width: 30%;
+  width: 70%;
   height: auto;
-  background-color: ${color.white};
 
-  p {
-    font-size: 12px;
-  }
   div {
-    font-size: 16px;
-    font-weight: 600;
-    padding-right: 30px;
+    width: calc(100% / 3);
+    padding-right: 60px;
+
+    div {
+      font-size: 16px;
+      font-weight: 600;
+
+      p {
+        font-size: 12px;
+      }
+    }
   }
 `;
 
