@@ -34,5 +34,6 @@ module.exports = {
     ],
     "import/no-unresolved": 0,
     "no-param-reassign": 0,
+    "react/jsx-props-no-spreading": "off",
   },
 };
