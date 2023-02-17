@@ -7,6 +7,7 @@ import FeaturedBrands from "./featuredBrands/FeaturedBrands";
 import Lookbooks from "./lookbook/Lookbooks";
 import Customersay from "./customersay/Customersay";
 import Membership from "./membership/Membership";
+import MultipleItems from "./bestseller/BestsellerSample";
 
 const SlayOut = styled.div`
   width: 100%;
@@ -44,6 +45,7 @@ function MainLayout() {
     <SlayOut>
       <Carousel />
       <LogoSlide />
+      <MultipleItems />
       <BestsellerList />
       <FeaturedBrands />
       <Lookbooks />

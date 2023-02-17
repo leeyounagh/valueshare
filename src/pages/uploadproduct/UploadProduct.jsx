@@ -13,6 +13,7 @@ function UploadProduct() {
     price: "",
     category: "",
     brand: "",
+    desc: "",
   });
 
   const handleChange = (event) => {
@@ -38,7 +39,7 @@ function UploadProduct() {
     };
   };
   const handleSubmit = async (event) => {
-    const { title, stock, price, category, brand } = data;
+    const { title, stock, price, category, brand, desc } = data;
     event.preventDefault();
     //  이미지를 formdata에 넣는다
     const formData = new FormData();
@@ -49,6 +50,7 @@ function UploadProduct() {
       productCategory: category,
       productBrand: brand,
       productImage: imgFile,
+      productDesc: desc,
     };
 
     formData.append("productTitle", title);
@@ -66,7 +68,9 @@ function UploadProduct() {
       const status = await response.status;
       console.log(status);
     } catch (err) {
-      console.log(err);
+      if (err) {
+        alert("상품 등록에 실해했습니다");
+      }
     }
   };
 
@@ -150,7 +154,12 @@ function UploadProduct() {
         </select>
       </div>
       <div>
-        <textarea placeholder="상품설명" />
+        <textarea
+          placeholder="상품설명"
+          name="desc"
+          value={data.desc}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <button type="submit">등록</button>

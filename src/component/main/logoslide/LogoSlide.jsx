@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import AutoPlay from "./LogoSlideSample";
 
 const SlayOut = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ const Logoimg = styled.img`
 function LogoSlide() {
   return (
     <SlayOut>
+      <AutoPlay />
       <Logoimg src="../asset/img-logo1.png" />
       <Logoimg src="../asset/img-logo2.png" />
       <Logoimg src="../asset/img-logo3.png" />
@@ -26,6 +28,7 @@ function LogoSlide() {
       <Logoimg src="../asset/img-logo2.png" />
       <Logoimg src="../asset/img-logo3.png" />
       <Logoimg src="../asset/img-logo4.png" />
+      <AutoPlay />
     </SlayOut>
   );
 }
