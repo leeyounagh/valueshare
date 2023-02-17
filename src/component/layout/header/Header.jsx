@@ -191,20 +191,20 @@ function Header() {
         </SLayoutMenuDiv>
         <SLayoutIconDiv>
           <SLayoutIconItem>
-            <SAlarmImg src="asset/headerAlarm.svg" />
+            <SAlarmImg src="/asset/headerAlarm.svg" />
           </SLayoutIconItem>
           <SLayoutIconItem>
             <Link to="/cart">
-              <SBasketImg src="asset/icn-basket.svg" />
+              <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
-              <SProfileImg src="asset/icn-profile.svg" />
+              <SProfileImg src="/asset/icn-profile.svg" />
             </SLayoutProfileInnerDiv>
             <SLayoutProfileInnerDiv>
-              <SProfileMenuImg src="asset/Chevrons_chevron-right.svg" />
+              <SProfileMenuImg src="/asset/Chevrons_chevron-right.svg" />
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

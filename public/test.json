@@ -1,0 +1,25 @@
+{
+  "cart": [
+    {
+      "src": "/테스트가방.png",
+      "id": 1,
+      "Brand": "입생로랑",
+      "ProductName": "트위스트 MM 핸드백",
+      "Price": 60000
+    },
+    {
+      "src": "/테스트가방.png",
+      "id": 2,
+      "Brand": "구찌",
+      "ProductName": "핸드백",
+      "Price": 60000
+    },
+    {
+      "src": "/테스트가방.png",
+      "id": 3,
+      "Brand": "샤넬",
+      "ProductName": "핸드백",
+      "Price": 60000
+    }
+  ]
+}

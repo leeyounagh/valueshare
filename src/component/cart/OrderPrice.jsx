@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
+// import Paypal from "component/cart/Paypal";
 
 const { white, gray3, gray1, gray4, gray5 } = color;
 
@@ -93,6 +94,7 @@ const SLastTotalPriceDiv = styled.div`
   color: #ff985f;
 `;
 const SOrderIcon = styled.div`
+  width: 100%;
   height: 80px;
   border-radius: 10px;
   background-color: ${gray4};
@@ -128,7 +130,9 @@ function OrderPrice() {
         <STotalTextDiv>합계</STotalTextDiv>
         <SLastTotalPriceDiv> ₩0</SLastTotalPriceDiv>
       </SLastTotalDiv>
+
       <SOrderIcon>
+        {/* <Paypal /> */}
         <SOrderIconText>주문하기</SOrderIconText>
       </SOrderIcon>
     </SLayout>

@@ -35,7 +35,7 @@ function EmptyCart() {
   return (
     <SLayout>
       <SItemDiv>
-        <SEmptyCartImg src="asset/emptycart.png" alt="빈장바구니 아이콘" />
+        <SEmptyCartImg src="/asset/emptycart.png" alt="빈장바구니 아이콘" />
       </SItemDiv>
       <SItemDiv>
         <SEmptyTitleDiv>장바구니에 상품이 없습니다.</SEmptyTitleDiv>

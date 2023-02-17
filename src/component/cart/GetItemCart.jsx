@@ -196,7 +196,7 @@ function GetItemCart() {
         <SCartTextInnerDiv>
           <STotalCheckBoxDiv>
             <STotalChecBoxImg
-              src="asset/beforecheckbox.svg"
+              src="/asset/beforecheckbox.svg"
               alt="장바구니체크박스"
             />
           </STotalCheckBoxDiv>
