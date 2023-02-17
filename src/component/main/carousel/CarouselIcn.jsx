@@ -3,11 +3,10 @@ import styled from "styled-components";
 
 const SlayOut = styled.div`
   display: flex;
-  width: 70%;
+  width: 800px
   height: auto;
 
   div {
-    width: calc(100% / 3);
     padding-right: 60px;
 
     div {
@@ -22,7 +21,7 @@ const SlayOut = styled.div`
 `;
 
 const SmainIcn = styled.img`
-  width: 100%;
+  width: 50%;
   height: 100%;
 `;
 

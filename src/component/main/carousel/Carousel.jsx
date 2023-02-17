@@ -8,7 +8,7 @@ const SlayOut = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 780px;
-  background-color: ${color.white};
+  padding-top: 40px;
 `;
 
 const SbannerText = styled.div`

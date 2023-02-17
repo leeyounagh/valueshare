@@ -9,15 +9,26 @@ const SlayOut = styled.div`
 
   h2 {
     margin-top: 100px;
-    font-size: 50px;
+    font-size: 2.5rem;
     text-align: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
   }
+`;
+const LouisVuittonImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 function LouisVuitton() {
   return (
     <SlayOut>
       <h2>LOUIS VUITTON</h2>
+      <LouisVuittonImg src="/asset/img-louisvuitton.png" />
     </SlayOut>
   );
 }

@@ -60,7 +60,7 @@ function UploadProduct() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/products",
+        "http://localhost:5000/api/product/upload",
         body
       );
       const status = await response.status;

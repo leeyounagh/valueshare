@@ -12,6 +12,7 @@ const SlayOut = styled.div`
 const Logoimg = styled.img`
   width: auto;
   height: auto;
+  object-fit: contain;
 `;
 
 function LogoSlide() {
