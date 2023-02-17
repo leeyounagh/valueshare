@@ -22,9 +22,9 @@ const SlayOut = styled.header`
 const SLogoDiv = styled.div`
   width: 20%;
   height: 100%;
-
   color: black;
   white-space: nowrap;
+
   a {
     font-weight: bold;
     font-stretch: normal;
@@ -132,7 +132,7 @@ const SProfileImg = styled.img`
   width: 70px;
   height: 60px;
 `;
-const SProfileMenuImg = styleds.img`
+const SProfileMenuImg = styled.img`
   width: 26px;
   height: 30px;
   margin-left: 10px;
@@ -191,7 +191,9 @@ function Header() {
             <SAlarmImg src="asset/headerAlarm.svg" />
           </SLayoutIconItem>
           <SLayoutIconItem>
-            <SBasketImg src="asset/icn-basket.svg" />
+            <Link to="/cart">
+              <SBasketImg src="asset/icn-basket.svg" />
+            </Link>
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>

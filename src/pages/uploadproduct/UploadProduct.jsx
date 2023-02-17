@@ -13,6 +13,7 @@ function UploadProduct() {
     price: "",
     category: "",
     brand: "",
+    desc: "",
   });
 
   const handleChange = (event) => {
@@ -38,12 +39,12 @@ function UploadProduct() {
     };
   };
   const handleSubmit = async (event) => {
-    const { title, stock, price, category, brand } = data;
+    const { title, stock, price, category, brand, desc } = data;
     event.preventDefault();
 
     const formData = new FormData();
     formData.append("imageFile", JSON.stringify(imgFile));
-    //  이미지를 formdata에 넣는다
+
     const body = {
       productTitle: title,
       productStock: stock,
@@ -51,12 +52,28 @@ function UploadProduct() {
       productCategory: category,
       productBrand: brand,
       productImage: formData,
+      productDescriptioin: desc,
     };
     try {
-      const response = await axios.post("http://10.10.5.246:3000/", body);
-      console.log(response.addedProduct);
+      const response = await axios.post(
+        "http://localhost:5000/admin/product/images",
+        body,
+        {
+          headers: {
+            "Content-Type":
+              "Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryT2qC6LDM8gOeffPY",
+          },
+        }
+      );
+      const responseData = await response.data;
+
+      if (responseData.status === 200) {
+        alert("상품 업로드에 성공하였습니다.");
+      }
     } catch (err) {
-      console.log(err);
+      if (err) {
+        alert("상품 등록에 실해했습니다");
+      }
     }
   };
 
@@ -91,7 +108,7 @@ function UploadProduct() {
             <img
               style={{ width: "100px", height: "100" }}
               src={item}
-              alt="프로필 이미지"
+              alt="미리보기이미지"
             />
           );
         })}
@@ -140,7 +157,12 @@ function UploadProduct() {
         </select>
       </div>
       <div>
-        <textarea placeholder="상품설명" />
+        <textarea
+          placeholder="상품설명"
+          name="desc"
+          value={data.desc}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <button type="submit">등록</button>

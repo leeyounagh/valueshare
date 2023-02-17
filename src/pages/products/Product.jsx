@@ -14,7 +14,8 @@ const SCategoryDiv = styled.div`
 `;
 
 const SCardDiv = styled.div`
-  border: 1px solid black;
+  padding-top: 100px;
+  padding-left: 50px;
   width: 80%;
 `;
 const SItemInnerDiv = styled.div`
