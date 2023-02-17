@@ -12,7 +12,7 @@ const SlayOut = styled.div`
     font-size: 2.5rem;
     text-align: center;
     position: absolute;
-    top: 0%;
+    top: 10%;
     left: 66%;
     width: 100%;
     transform: translate(-50%, -50%);
@@ -24,6 +24,13 @@ const SlayOut = styled.div`
     width: 100%;
     color: ${color.gray3};
   }
+`;
+const Button = styled.button`
+  position: absolute;
+  width: 136px;
+  height: 46px;
+  border-radius: 10px 10px 10px 0;
+  border: 1px solid ${color.gray1};
 `;
 
 const RollexImg = styled.img`
@@ -37,6 +44,7 @@ function Rollex() {
     <SlayOut>
       <h2>Rollex</h2>
       <p>1%를 위한 기술, 성공의 상징 되다</p>
+      <Button>view detial</Button>
       <RollexImg src="/asset/img-rollex.png" />
     </SlayOut>
   );

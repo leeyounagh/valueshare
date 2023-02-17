@@ -40,7 +40,7 @@ const Slayout = styled.div`
 
 const BgImg1 = styled.img`
   position: absolute;
-  left: 35%;
+  left: 40%;
   top: 1090px;
   z-index: -1;
   opacity: 0.6;
@@ -91,7 +91,7 @@ export default class BestsellerList extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: 5,
       slidesToScroll: 3,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
