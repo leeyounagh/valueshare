@@ -1,0 +1,32 @@
+import React from "react";
+import styled from "styled-components";
+import color from "../../../styles/color";
+
+const SlayOut = styled.div`
+  width: calc(80% / 3);
+  height: 600px;
+  padding: 0 20px;
+
+  p {
+    font-size: 20px;
+    color: ${color.gray3};
+  }
+`;
+
+const CardImg = styled.img`
+  width: auto;
+  height: 770px;
+  border-radius: 30px;
+`;
+
+function Card1() {
+  return (
+    <SlayOut>
+      <CardImg src="" />
+      <h3>Laura Chouette</h3>
+      <p>Coussin MM</p>
+    </SlayOut>
+  );
+}
+
+export default Card1;
