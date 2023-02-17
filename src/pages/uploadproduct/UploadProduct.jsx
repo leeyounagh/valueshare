@@ -54,14 +54,6 @@ function UploadProduct() {
       productImage: formData,
       productDescriptioin: desc,
     };
-
-    formData.append("productTitle", title);
-    formData.append("productStock", stock);
-    formData.append("productPrice", price);
-    formData.append("productCategory", category);
-    formData.append("productBrand", brand);
-    formData.append("productImage", imgFile);
-
     try {
       const response = await axios.post(
         "http://localhost:5000/admin/product/images",
@@ -80,7 +72,7 @@ function UploadProduct() {
       }
     } catch (err) {
       if (err) {
-        alert("상품 등록에 실해했습니다");
+        alert("상품 등록에 실패했습니다");
       }
     }
   };

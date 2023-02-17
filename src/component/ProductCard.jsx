@@ -74,7 +74,7 @@ function ProductCard() {
   return (
     <div>
       <SCardDiv>
-        <SCardImg src="asset/cardtest.png" alt="상품썸네일" />
+        <SCardImg src="/asset/cardtest.png" alt="상품썸네일" />
         <SCardTitleDiv>
           <SCardBrand>Converse All Star </SCardBrand>
           <SCardBrandNameDiv>1970s Hi</SCardBrandNameDiv>
@@ -82,7 +82,7 @@ function ProductCard() {
         <SCartDiv>
           <Link to="/cart">
             <SCartImgDiv>
-              <SCartImg src="asset/icn-basket.svg" alt="장바구니" />
+              <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
             </SCartImgDiv>
           </Link>
 

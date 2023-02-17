@@ -71,7 +71,7 @@ function Brands() {
                 <SBrandNameDiv>
                   <SCheckboxDiv>
                     <img
-                      src="asset/checkbox.svg"
+                      src="/asset/checkbox.svg"
                       width="24px"
                       height="24px"
                       alt="체크박스"

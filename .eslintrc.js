@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "prettier"],
   rules: {
+    "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": 0,
@@ -34,6 +35,5 @@ module.exports = {
     ],
     "import/no-unresolved": 0,
     "no-param-reassign": 0,
-    "react/jsx-props-no-spreading": "off",
   },
 };

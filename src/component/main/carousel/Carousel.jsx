@@ -8,7 +8,7 @@ const SlayOut = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 780px;
-  background-color: ${color.white};
+  padding-top: 40px;
 `;
 
 const SbannerText = styled.div`
@@ -18,12 +18,19 @@ const SbannerText = styled.div`
     font-family: "Rufina", serif;
     font-size: 50px;
     font-weight: 700;
+    padding: 10px 0;
   }
 
   p {
     font-family: "Montserrat", "Noto Sans KR", sans-serif;
     font-size: 18px;
-    line-height: 2;
+    line-height: 1.5;
+  }
+  div {
+    p {
+      font-size: 12px;
+      line-height: 1;
+    }
   }
 `;
 
