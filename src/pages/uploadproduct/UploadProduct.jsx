@@ -4,7 +4,10 @@ import Continent from "data/Continent";
 import Brand from "data/Brand";
 
 function UploadProduct() {
-  const [imgFile, setImgFile] = useState([]);
+  // 미리보기 이미지 배열
+  const [previewImages, setPreviewImages] = useState([]);
+  // 이미지 파일 배열
+  const [images, setImages] = useState([]);
   const imgRef = useRef();
 
   const [data, setData] = useState({
@@ -28,10 +31,12 @@ function UploadProduct() {
 
   const saveImgFile = () => {
     const file = imgRef.current.files[0];
+    setImages((prev) => [...prev, file]);
+
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      setImgFile((prev) => {
+      setPreviewImages((prev) => {
         const newImgFile = [...prev];
         newImgFile.push(reader.result);
         return newImgFile;
@@ -43,27 +48,28 @@ function UploadProduct() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("imageFile", JSON.stringify(imgFile));
+    // back-end에서 imageFile로 넘겨받고 있으므로 for문을 돌며 image를 formData에 셋팅해주세요.
+    images.forEach((image) => {
+      formData.append("imageFile", image);
+    });
+    formData.append("productTitle", title);
+    formData.append("productStock", stock);
+    formData.append("productPrice", price);
+    formData.append("productCategory", category);
+    formData.append("productBrand", brand);
+    formData.append("productDescriptioin", desc);
 
-    const body = {
-      productTitle: title,
-      productStock: stock,
-      productPrice: price,
-      productCategory: category,
-      productBrand: brand,
-      productImage: formData,
-      productDescriptioin: desc,
-    };
     try {
+      // 헤더값은 아래와 같이 설정해줍니다.
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
       const response = await axios.post(
-        "http://localhost:5000/admin/product/images",
-        body,
-        {
-          headers: {
-            "Content-Type":
-              "Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryT2qC6LDM8gOeffPY",
-          },
-        }
+        "http://localhost:4200/admin/product/images",
+        formData,
+        config
       );
       const responseData = await response.data;
 
@@ -103,9 +109,11 @@ function UploadProduct() {
       </div>
 
       <div>
-        {imgFile.map((item) => {
+        {previewImages.map((item, index) => {
           return (
             <img
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               style={{ width: "100px", height: "100" }}
               src={item}
               alt="미리보기이미지"
