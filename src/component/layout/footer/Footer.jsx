@@ -18,7 +18,7 @@ const Sfooter = styled.div`
   line-height: 1.5;
 
   h2 {
-    font-family: "Playfair Display", serif;
+    font-family: "Rufina", serif;
     font-weight: 700;
     font-size: 60px;
     align-items: center;
