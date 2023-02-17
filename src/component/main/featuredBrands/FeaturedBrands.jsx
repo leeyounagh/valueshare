@@ -11,13 +11,21 @@ const SlayOut = styled.div`
   width: 100%;
 
   h2 {
-    margin-top: 100px;
+    margin-top: 135px;
+    margin-bottom: 40px;
     font-size: 50px;
     text-align: center;
+    font-family: "Rufina", serif;
   }
 
   div {
     display: flex;
+    position: relative;
+    h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.3rem;
+      font-weight: 500;
+    }
   }
 `;
 
@@ -26,6 +34,24 @@ const Products2 = styled.div`
   margin-top: -390px;
   margin-left: calc(100% / 4);
 `;
+
+const BgImg1 = styled.img`
+  position: absolute;
+  right: 35%;
+  top: 1950px;
+  z-index: -1;
+  opacity: 0.6;
+  scale: 0.8;
+`;
+
+const BgImg2 = styled.img`
+  position: absolute;
+  right: 45%;
+  top: 1950px;
+  z-index: -1;
+  opacity: 0.6;
+`;
+
 function BestSellerProduct() {
   return (
     <SlayOut>
@@ -40,6 +66,8 @@ function BestSellerProduct() {
         <Versace />
       </Products2>
       <Add />
+      <BgImg1 src="/asset/bg-Ellipse3.svg" />
+      <BgImg2 src="/asset/bg-star.svg" />
     </SlayOut>
   );
 }

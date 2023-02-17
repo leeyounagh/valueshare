@@ -1,28 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import color from "styles/color";
 
 const SlayOut = styled.div`
   display: flex;
-  width: 70%;
+  width: 800px
   height: auto;
 
   div {
-    width: calc(100% / 3);
-    padding-right: 60px;
+    margin-right: 60px;
+    border-right: 1px solid ${color.gray4};
 
     div {
       font-size: 16px;
       font-weight: 600;
-
-      p {
-        font-size: 12px;
-      }
+      border:none;
     }
+  }
+  div:nth-child(3) {
+    border:none;
   }
 `;
 
 const SmainIcn = styled.img`
-  width: 100%;
+  width: 50%;
   height: 100%;
 `;
 
