@@ -38,6 +38,9 @@ const SLogoDiv = styled.div`
     font-size: 38px;
     align-items: center;
   }
+  h2 {
+    font-family: "Playfair Display", serif;
+  }
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
