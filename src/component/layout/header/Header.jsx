@@ -38,6 +38,9 @@ const SLogoDiv = styled.div`
     font-size: 38px;
     align-items: center;
   }
+  h2 {
+    font-family: "Playfair Display", serif;
+  }
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
@@ -166,7 +169,7 @@ function Header() {
       <SLayoutInnerDiv>
         <SLogoDiv>
           <Link to="/">
-            <h2>Value shop</h2>
+            <h2>value shop</h2>
           </Link>
         </SLogoDiv>
 

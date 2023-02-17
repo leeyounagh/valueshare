@@ -10,7 +10,7 @@ const SLayout = styled.div`
 `;
 
 const SCategoryDiv = styled.div`
-  width: 20%;
+  width: 17%;
 `;
 
 const SCardDiv = styled.div`
