@@ -32,7 +32,10 @@ const Slayout = styled.div`
   div {
     display: flex;
     margin-top: 40px;
-    transform: translate(17%, 0%);
+    margin-left: 20%;
+    div {
+      margin-left: 20px;
+    }
   }
 `;
 

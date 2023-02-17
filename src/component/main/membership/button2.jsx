@@ -3,11 +3,11 @@ import styled from "styled-components";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
-  width: auto;
+  width: 30%;
   height: auto;
 `;
 const Btn1 = styled.button`
-  width: 400px;
+  width: 100%;
   height: 60px;
   border-radius: 10px 0 10px 10px;
   background-color: ${color.gray1};

@@ -41,32 +41,35 @@ function UploadProduct() {
   const handleSubmit = async (event) => {
     const { title, stock, price, category, brand, desc } = data;
     event.preventDefault();
-    //  이미지를 formdata에 넣는다
+
     const formData = new FormData();
+    formData.append("imageFile", JSON.stringify(imgFile));
+
     const body = {
       productTitle: title,
       productStock: stock,
       productPrice: price,
       productCategory: category,
       productBrand: brand,
-      productImage: imgFile,
-      productDesc: desc,
+      productImage: formData,
+      productDescriptioin: desc,
     };
-
-    formData.append("productTitle", title);
-    formData.append("productStock", stock);
-    formData.append("productPrice", price);
-    formData.append("productCategory", category);
-    formData.append("productBrand", brand);
-    formData.append("productImage", imgFile);
-
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/product/upload",
-        body
+        "http://localhost:5000/admin/product/images",
+        body,
+        {
+          headers: {
+            "Content-Type":
+              "Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryT2qC6LDM8gOeffPY",
+          },
+        }
       );
-      const status = await response.status;
-      console.log(status);
+      const responseData = await response.data;
+
+      if (responseData.status === 200) {
+        alert("상품 업로드에 성공하였습니다.");
+      }
     } catch (err) {
       if (err) {
         alert("상품 등록에 실해했습니다");
@@ -105,7 +108,7 @@ function UploadProduct() {
             <img
               style={{ width: "100px", height: "100" }}
               src={item}
-              alt="프로필 이미지"
+              alt="미리보기이미지"
             />
           );
         })}

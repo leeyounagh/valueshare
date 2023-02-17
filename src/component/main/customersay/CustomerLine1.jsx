@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CustomerComponent from "./CustomerComponent";
 
 const Slayout = styled.div`
+  margin-left: -10%;
   width: 100%;
   height: auto;
 
@@ -20,19 +21,34 @@ const CardList = styled.div`
   height: auto;
   display: flex;
   background-color: #f5e5c7;
-  padding: 45px 0;
+  padding: 25px 0;
+  div {
+    padding: 0 20px;
+    div {
+      padding: 0;
+    }
+  }
 `;
 
-function CustomerLine() {
+function CustomerLine1() {
   return (
     <Slayout>
       <CardList>
-        <CustomerComponent />
-        <CustomerComponent />
-        <CustomerComponent />
+        <div>
+          <CustomerComponent />
+        </div>
+        <div>
+          <CustomerComponent />
+        </div>
+        <div>
+          <CustomerComponent />
+        </div>
+        <div>
+          <CustomerComponent />
+        </div>
       </CardList>
     </Slayout>
   );
 }
 
-export default CustomerLine;
+export default CustomerLine1;

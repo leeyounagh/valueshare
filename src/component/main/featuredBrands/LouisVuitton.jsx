@@ -12,7 +12,7 @@ const SlayOut = styled.div`
     font-size: 2.5rem;
     text-align: center;
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);

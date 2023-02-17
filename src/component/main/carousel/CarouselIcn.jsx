@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import color from "styles/color";
 
 const SlayOut = styled.div`
   display: flex;
@@ -7,16 +8,17 @@ const SlayOut = styled.div`
   height: auto;
 
   div {
-    padding-right: 60px;
+    margin-right: 60px;
+    border-right: 1px solid ${color.gray4};
 
     div {
       font-size: 16px;
       font-weight: 600;
-
-      p {
-        font-size: 12px;
-      }
+      border:none;
     }
+  }
+  div:nth-child(3) {
+    border:none;
   }
 `;
 
