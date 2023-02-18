@@ -12,11 +12,12 @@ const SLayout = styled.div`
 function Card() {
   return (
     <SLayout>
-      {Array.from({ length: 30 })
+      <ProductCard />;
+      {/* {Array.from({ length: 30 })
         .fill(0)
         .map(() => {
-          return <ProductCard />;
-        })}
+          return 
+        })} */}
     </SLayout>
   );
 }

@@ -11,12 +11,12 @@ function UploadProduct() {
   const imgRef = useRef();
 
   const [data, setData] = useState({
-    title: "",
-    stock: "",
-    price: "",
-    category: "",
-    brand: "",
-    desc: "",
+    title: "상품명",
+    stock: "재고",
+    price: "가격",
+    category: "카테고리",
+    brand: "브랜드",
+    desc: "설명",
   });
 
   const handleChange = (event) => {
@@ -57,7 +57,7 @@ function UploadProduct() {
     formData.append("productPrice", price);
     formData.append("productCategory", category);
     formData.append("productBrand", brand);
-    formData.append("productDescriptioin", desc);
+    formData.append("productDescription", desc);
 
     try {
       // 헤더값은 아래와 같이 설정해줍니다.
@@ -67,18 +67,25 @@ function UploadProduct() {
         },
       };
       const response = await axios.post(
-        "http://localhost:4200/admin/product/images",
+        "http://localhost:5000/admin/products",
         formData,
         config
       );
-      const responseData = await response.data;
 
-      if (responseData.status === 200) {
+      if (response.status === 200) {
+        setData({
+          title: "",
+          stock: "",
+          price: "",
+          category: "",
+          brand: "",
+          desc: "",
+        });
         alert("상품 업로드에 성공하였습니다.");
       }
     } catch (err) {
       if (err) {
-        alert("상품 등록에 실패했습니다");
+        alert("상품 등록에 실해했습니다");
       }
     }
   };
@@ -155,7 +162,7 @@ function UploadProduct() {
             return (
               <option
                 style={{ textAlignLast: "center" }}
-                value={item.key}
+                value={item.value}
                 key={item.key}
               >
                 {item.value}
