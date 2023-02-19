@@ -82,13 +82,14 @@ function Card() {
   const [productData, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/admin/products").then((res) =>
-      setData((prev) => {
-        return [...prev, ...res.data.result];
-      })
-    );
+    async function getProducts() {
+      const response = await axios.get("http://localhost:5000/admin/products");
+      setData(response.data.result);
+    }
+    getProducts();
   }, []);
 
+  console.log(productData);
   return (
     <SLayout>
       {productData.map((item) => {

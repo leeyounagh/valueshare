@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import color from "styles/color";
+// import handlePlusStock from "utils/handlePlusStock";
 
 const { gray1, gray3, gray4 } = color;
 
@@ -190,27 +191,71 @@ const SSelectedDeleteIconDiv = styled.div`
   justify-content: center;
   cursor: pointer;
 `;
-const SIconDiv = styled.div``;
+const SIconDiv = styled.div`
+  cursor: pointer;
+`;
 function GetItemCart() {
+  const [cartItems, setCartItems] = useState();
   const [isAllChecked, setIsAllCecked] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [checkedIndex, setCeckedIndex] = useState([]);
   const basketsItem = JSON.parse(localStorage.getItem("baskets"));
+  const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    console.log(cartItems, quantity);
+    setCartItems(basketsItem);
+  }, []);
+  console.log(basketsItem[0].quantity);
   const handleDeleteAllItem = () => {
-    console.log("체크");
     localStorage.removeItem("baskets");
   };
+  const handleDeleteCheckedItem = () => {
+    checkedIndex.forEach((index) => {
+      basketsItem.splice(index, 1);
 
+      if (basketsItem.length === 0) {
+        localStorage.removeItem("baskets");
+      }
+    });
+  };
   const handleAllItemCheck = () => {
     setIsAllCecked(!isAllChecked);
   };
+  const handleMinusStock = (item) => {
+    if (item.quantity === 1) {
+      return;
+    }
+    item.quantity -= 1;
+    setQuantity(item.quantity);
+    localStorage.setItem("baskets", JSON.stringify(basketsItem));
+  };
+  const handlePlusStock = (item) => {
+    if (item.productStock === item.quantity) {
+      return;
+    }
+    item.quantity += 1;
+    setQuantity(item.quantity);
+    localStorage.setItem("baskets", JSON.stringify(basketsItem));
+  };
+
   const handleItemCheck = (index) => {
     setIsChecked(!isChecked);
-    basketsItem.splice(index, 1);
-    localStorage.setItem("baskets", JSON.stringify(basketsItem));
-    if (basketsItem.length === 0) {
-      localStorage.removeItem("baskets");
+    const sameIndex = checkedIndex.findIndex((item) => item === index);
+    console.log(sameIndex);
+    if (sameIndex === -1 && isChecked === true) {
+      setCeckedIndex((prev) => {
+        const newCheckedItem = [...prev];
+        newCheckedItem.push(index);
+        return newCheckedItem;
+      });
     }
+
+    // basketsItem.splice(index, 1);
+    // localStorage.setItem("baskets", JSON.stringify(basketsItem));
+    // if (basketsItem.length === 0) {
+    //   localStorage.removeItem("baskets");
+    // }
   };
 
   return (
@@ -260,14 +305,28 @@ function GetItemCart() {
                   </SItemOptionBrandTitle>
                   <SProductName>{item.productTitle}</SProductName>
                 </SProductTextDiv>
-                <SIconDiv>
-                  <SQuantityPreviusImg src="asset/Chevrons_chevron-right.svg" />
+                <SIconDiv
+                  onClick={() => {
+                    handleMinusStock(item, index);
+                  }}
+                >
+                  <SQuantityPreviusImg
+                    src="asset/Chevrons_chevron-right.svg"
+                    alt="minus수량"
+                  />
                 </SIconDiv>
                 <SIconDiv>
-                  <SQuantityTextDiv>{item.productStock}</SQuantityTextDiv>
+                  <SQuantityTextDiv>{item.quantity}</SQuantityTextDiv>
                 </SIconDiv>
-                <SIconDiv>
-                  <SQuantityNextImg src="asset/Chevrons_chevron-right.svg" />
+                <SIconDiv
+                  onClick={() => {
+                    handlePlusStock(item, index);
+                  }}
+                >
+                  <SQuantityNextImg
+                    src="asset/Chevrons_chevron-right.svg"
+                    alt="plus수량"
+                  />
                 </SIconDiv>
 
                 <SItemPriceDiv> {item.productPrice}</SItemPriceDiv>
@@ -285,7 +344,9 @@ function GetItemCart() {
           {" "}
           전체 상품 삭제
         </SAllDeleteIconDiv>
-        <SSelectedDeleteIconDiv> 선택 상품 삭제</SSelectedDeleteIconDiv>
+        <SSelectedDeleteIconDiv onClick={() => handleDeleteCheckedItem()}>
+          선택 상품 삭제
+        </SSelectedDeleteIconDiv>
       </SCartIconDiv>
     </Slayout>
   );

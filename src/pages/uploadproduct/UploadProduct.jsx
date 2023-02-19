@@ -85,7 +85,7 @@ function UploadProduct() {
       }
     } catch (err) {
       if (err) {
-        alert("상품 등록에 실해했습니다");
+        alert("상품 등록에 실패했습니다");
       }
     }
   };
@@ -139,7 +139,7 @@ function UploadProduct() {
       <div>
         <select
           onChange={handleChange}
-          value={Continent}
+          defaultValue={Continent[0].value}
           name={Continent[0].id}
         >
           {Continent.map((item) => {
@@ -157,7 +157,11 @@ function UploadProduct() {
       </div>
 
       <div>
-        <select onChange={handleChange} name={Brand[0].id} value={Brand}>
+        <select
+          onChange={handleChange}
+          name={Brand[0].id}
+          defaultValue={Brand[0].value}
+        >
           {Brand.map((item) => {
             return (
               <option

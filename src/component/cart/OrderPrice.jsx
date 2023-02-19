@@ -115,12 +115,20 @@ const SOrderIconText = styled.div`
   color: ${gray5};
 `;
 function OrderPrice() {
+  const basketsItem = JSON.parse(localStorage.getItem("baskets"));
+  let sum = 0;
+  if (basketsItem) {
+    sum = basketsItem.reduce((acc, cur) => {
+      return acc + Number(cur.productPrice);
+    }, 0);
+  }
+
   return (
     <SLayout>
       <SOrderTitleDiv> Order</SOrderTitleDiv>
       <STotalPriceDiv>
         <STotalPricTexteDiv> 주문 금액 합계</STotalPricTexteDiv>
-        <STotalPriceDiv> ₩0</STotalPriceDiv>
+        <STotalPriceDiv> ₩{sum}</STotalPriceDiv>
       </STotalPriceDiv>
       <SDeliveryDiv>
         <STotalPricTexteDiv>배송비</STotalPricTexteDiv>
@@ -128,7 +136,7 @@ function OrderPrice() {
       </SDeliveryDiv>
       <SLastTotalDiv>
         <STotalTextDiv>합계</STotalTextDiv>
-        <SLastTotalPriceDiv> ₩0</SLastTotalPriceDiv>
+        <SLastTotalPriceDiv> ₩{sum}</SLastTotalPriceDiv>
       </SLastTotalDiv>
 
       <SOrderIcon>
