@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SCardDiv = styled.div`
   width: 360px;
@@ -70,56 +70,27 @@ const SCardBrandNameDiv = styled.div`
 `;
 const SCartImgDiv = styled.div``;
 
-function ProductCard() {
-  const [productData, setData] = useState([]);
-
-  const handleData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/admin/products");
-      const apiData = response.data.result;
-      setData((prev) => {
-        const newData = [...prev];
-        newData.push(apiData);
-        return newData;
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    handleData();
-  }, []);
-  console.log(productData);
+function BestSellerProductCard() {
   return (
     <div>
-      {productData.map((item) => {
-        return (
-          <div>
-            {" "}
-            <SCardDiv>
-              <SCardImg src="/asset/테스트가방.png" alt="상품썸네일" />
-              <SCardTitleDiv>
-                <SCardBrand>{item.productTitle} </SCardBrand>
-                <SCardBrandNameDiv>1970s Hi</SCardBrandNameDiv>
-              </SCardTitleDiv>
-              <SCartDiv>
-                <SCartImgDiv>
-                  <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
-                </SCartImgDiv>
-                <SPriceText> ₩ 60,000</SPriceText>
-              </SCartDiv>
-            </SCardDiv>
-          </div>
-        );
-      })}
+      <SCardDiv>
+        <SCardImg src="asset/cardtest.png" alt="상품썸네일" />
+        <SCardTitleDiv>
+          <SCardBrand>Converse All Star </SCardBrand>
+          <SCardBrandNameDiv>1970s Hi</SCardBrandNameDiv>
+        </SCardTitleDiv>
+        <SCartDiv>
+          <Link to="/cart">
+            <SCartImgDiv>
+              <SCartImg src="asset/icn-basket.svg" alt="장바구니" />
+            </SCartImgDiv>
+          </Link>
 
-      {/* {productData.map((item) => {
-        return (
-    
-        );
-      })} */}
+          <SPriceText> ₩ 60,000</SPriceText>
+        </SCartDiv>
+      </SCardDiv>
     </div>
   );
 }
 
-export default ProductCard;
+export default BestSellerProductCard;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Navbar from "component/Navbar";
 import styled from "styled-components";
 import color from "styles/color";
@@ -38,23 +37,9 @@ const SGetItemCartDiv = styled.div`
 `;
 function Cart() {
   const [isItem, setIsItem] = useState(false);
-  const [cartData, setCartData] = useState([]);
-
-  const handleGetItem = async () => {
-    const response = axios.get("/test.json");
-    const { data } = await response;
-    setCartData((prev) => {
-      const newData = [...prev];
-      newData.push(data);
-      return newData;
-    });
-  };
   useEffect(() => {
-    if (cartData.length > 0) {
-      setIsItem(true);
-    }
-    handleGetItem();
-  }, [cartData]);
+    setIsItem(true);
+  }, []);
 
   return (
     <div>
