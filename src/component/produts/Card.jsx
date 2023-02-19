@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import handleBasket from "utils/handleBasket";
 
 const SLayout = styled.div`
   width: 100%;
@@ -88,13 +89,6 @@ function Card() {
     );
   }, []);
 
-  const handleBasket = (item) => {
-    localStorage.setItem("baskets", JSON.stringify(item));
-    if (!localStorage.getItem("baskets")) {
-      localStorage.setItem("baskets", "[]");
-    }
-  };
-  console.log(productData);
   return (
     <SLayout>
       {productData.map((item) => {
@@ -105,7 +99,11 @@ function Card() {
               <SCardBrand>{item.productBrand} </SCardBrand>
               <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
             </SCardTitleDiv>
-            <SCartDiv onClick={handleBasket(item)}>
+            <SCartDiv
+              onClick={() => {
+                handleBasket(item);
+              }}
+            >
               <SCartImgDiv>
                 <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
               </SCartImgDiv>
