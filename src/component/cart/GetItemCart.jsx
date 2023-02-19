@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -35,6 +35,7 @@ const SCartTextInnerDiv = styled.div`
 const STotalChecBoxImg = styled.img`
   width: 24px;
   height: 24px;
+  cursor: pointer;
 `;
 const STotalCheckBoxDiv = styled.div`
   margin-left: 50px;
@@ -82,6 +83,7 @@ const SPriceText = styled.div`
   white-space: nowrap;
 `;
 const SItemImg = styled.img`
+  width: 13%;
   height: 80%;
   margin-left: 21px;
 `;
@@ -190,52 +192,99 @@ const SSelectedDeleteIconDiv = styled.div`
 `;
 const SIconDiv = styled.div``;
 function GetItemCart() {
+  const [isAllChecked, setIsAllCecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const basketsItem = JSON.parse(localStorage.getItem("baskets"));
+
+  const handleDeleteAllItem = () => {
+    console.log("체크");
+    localStorage.removeItem("baskets");
+  };
+
+  const handleAllItemCheck = () => {
+    setIsAllCecked(!isAllChecked);
+  };
+  const handleItemCheck = (index) => {
+    setIsChecked(!isChecked);
+    basketsItem.splice(index, 1);
+    localStorage.setItem("baskets", JSON.stringify(basketsItem));
+    if (basketsItem.length === 0) {
+      localStorage.removeItem("baskets");
+    }
+  };
+
   return (
     <Slayout>
       <SCartTextDiv>
         <SCartTextInnerDiv>
-          <STotalCheckBoxDiv>
-            <STotalChecBoxImg
-              src="/asset/beforecheckbox.svg"
-              alt="장바구니체크박스"
-            />
+          <STotalCheckBoxDiv onClick={handleAllItemCheck}>
+            {isAllChecked ? (
+              <STotalChecBoxImg
+                src="/asset/checkbox.svg"
+                alt="장바구니체크박스"
+              />
+            ) : (
+              <STotalChecBoxImg
+                src="/asset/beforecheckbox.svg"
+                alt="장바구니체크박스"
+              />
+            )}
           </STotalCheckBoxDiv>
           <SCartOptionTextDiv>상품/옵션 정보</SCartOptionTextDiv>
           <SQuantityText>수량</SQuantityText>
           <SPriceText>상품금액</SPriceText>
         </SCartTextInnerDiv>
       </SCartTextDiv>
-      {Array.from({ length: 10 })
-        .fill(0)
-        .map(() => {
-          return (
-            <SCartItemDiv>
-              <STotalChecBoxImg
-                src="asset/beforecheckbox.svg"
-                alt="장바구니체크박스"
-              />
-              <SItemImg src="asset/테스트가방.png" />
-              <SProductTextDiv>
-                <SItemOptionBrandTitle>Louis Vuitton</SItemOptionBrandTitle>
-                <SProductName> 트위스트 MM 핸드백</SProductName>
-              </SProductTextDiv>
-              <SIconDiv>
-                <SQuantityPreviusImg src="asset/Chevrons_chevron-right.svg" />
-              </SIconDiv>
-              <SIconDiv>
-                <SQuantityTextDiv>999</SQuantityTextDiv>
-              </SIconDiv>
-              <SIconDiv>
-                <SQuantityNextImg src="asset/Chevrons_chevron-right.svg" />
-              </SIconDiv>
+      {basketsItem
+        ? basketsItem.map((item, index) => {
+            return (
+              <SCartItemDiv>
+                {isAllChecked ? (
+                  <STotalChecBoxImg
+                    src="/asset/checkbox.svg"
+                    alt="장바구니체크박스"
+                  />
+                ) : (
+                  <STotalChecBoxImg
+                    onClick={() => {
+                      handleItemCheck(index);
+                    }}
+                    src="/asset/beforecheckbox.svg"
+                    alt="장바구니체크박스"
+                  />
+                )}
+                <SItemImg src={item.productImage[0]} />
+                <SProductTextDiv>
+                  <SItemOptionBrandTitle>
+                    {item.productBrand}
+                  </SItemOptionBrandTitle>
+                  <SProductName>{item.productTitle}</SProductName>
+                </SProductTextDiv>
+                <SIconDiv>
+                  <SQuantityPreviusImg src="asset/Chevrons_chevron-right.svg" />
+                </SIconDiv>
+                <SIconDiv>
+                  <SQuantityTextDiv>{item.productStock}</SQuantityTextDiv>
+                </SIconDiv>
+                <SIconDiv>
+                  <SQuantityNextImg src="asset/Chevrons_chevron-right.svg" />
+                </SIconDiv>
 
-              <SItemPriceDiv> ₩60,000</SItemPriceDiv>
-            </SCartItemDiv>
-          );
-        })}
+                <SItemPriceDiv> {item.productPrice}</SItemPriceDiv>
+              </SCartItemDiv>
+            );
+          })
+        : null}
 
       <SCartIconDiv>
-        <SAllDeleteIconDiv> 전체 상품 삭제</SAllDeleteIconDiv>
+        <SAllDeleteIconDiv
+          onClick={() => {
+            handleDeleteAllItem();
+          }}
+        >
+          {" "}
+          전체 상품 삭제
+        </SAllDeleteIconDiv>
         <SSelectedDeleteIconDiv> 선택 상품 삭제</SSelectedDeleteIconDiv>
       </SCartIconDiv>
     </Slayout>

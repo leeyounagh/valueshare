@@ -37,9 +37,16 @@ const SGetItemCartDiv = styled.div`
 `;
 function Cart() {
   const [isItem, setIsItem] = useState(false);
+  const basketsItem = JSON.parse(localStorage.getItem("baskets"));
+
   useEffect(() => {
-    setIsItem(true);
-  }, []);
+    if (basketsItem) {
+      setIsItem(true);
+    }
+    if (!basketsItem) {
+      setIsItem(false);
+    }
+  }, [basketsItem]);
 
   return (
     <div>
