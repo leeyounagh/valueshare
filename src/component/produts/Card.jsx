@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import handleBasket from "utils/handleBasket";
+import { Link } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -78,8 +79,14 @@ const SCardBrandNameDiv = styled.div`
 const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
+
 function Card() {
   const [productData, setData] = useState([]);
+
+  const PassIdHandler = (_id, data) => {
+    const product = data.filter((item) => item._id === _id);
+    localStorage.setItem("product", JSON.stringify(product));
+  };
 
   useEffect(() => {
     async function getProducts() {
@@ -88,27 +95,32 @@ function Card() {
     }
     getProducts();
   }, []);
-  console.log(productData);
+
   return (
     <SLayout>
       {productData.map((item) => {
         return (
           <SCardDiv>
-            <SCardImg src={item.productImage[0]} alt="상품썸네일" />
-            <SCardTitleDiv>
-              <SCardBrand>{item.productBrand} </SCardBrand>
-              <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
-            </SCardTitleDiv>
-            <SCartDiv
-              onClick={() => {
-                handleBasket(item);
-              }}
+            <Link
+              to={`/${item._id}`}
+              onClick={() => PassIdHandler(item._id, productData)}
             >
-              <SCartImgDiv>
-                <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
-              </SCartImgDiv>
-              <SPriceText> ₩{item.productPrice}</SPriceText>
-            </SCartDiv>
+              <SCardImg src={item.productImage[0]} alt="상품썸네일" />
+              <SCardTitleDiv>
+                <SCardBrand>{item.productBrand.brandName} </SCardBrand>
+                <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
+              </SCardTitleDiv>
+              <SCartDiv
+                onClick={() => {
+                  handleBasket(item);
+                }}
+              >
+                <SCartImgDiv>
+                  <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
+                </SCartImgDiv>
+                <SPriceText> ₩{item.productPrice}</SPriceText>
+              </SCartDiv>
+            </Link>
           </SCardDiv>
         );
       })}
