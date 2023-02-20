@@ -259,7 +259,15 @@ function GetItemCart({ cartItems, setCartItems }) {
 
   const handlePlusQuantity = (itemId) => {
     const newCartItems = cartItems.map((item) =>
-      item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+      item._id === itemId
+        ? {
+            ...item,
+            quantity:
+              item.quantity === item.productStock
+                ? item.productStock
+                : item.quantity + 1,
+          }
+        : item
     );
 
     setCartItems(newCartItems);
@@ -268,14 +276,22 @@ function GetItemCart({ cartItems, setCartItems }) {
 
   const handleMinusQuantity = (itemId) => {
     // 위의 handlePlusQuantity를 참고해서 만들어보세요!
+    const newCartItems = cartItems.map((item) =>
+      item._id === itemId
+        ? { ...item, quantity: item.quantity === 1 ? 1 : item.quantity - 1 }
+        : item
+    );
+
+    setCartItems(newCartItems);
+    localStorage.setItem("baskets", JSON.stringify(newCartItems));
   };
+  console.log(cartItems);
 
   return (
     <Slayout>
       <SCartTextDiv>
         <SCartTextInnerDiv>
           <STotalCheckBoxDiv>
-            {/* <STotalCheckBoxDiv onClick={handleAllItemCheck}> */}
             <SCheckInput
               type="checkbox"
               id="check"

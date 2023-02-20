@@ -1,6 +1,8 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import EditAdress from "./EditAdress";
 
 const { white, gray3, gray1 } = color;
 
@@ -12,6 +14,7 @@ const SLayout = styled.div`
   border-radius: 10px;
   background-color: ${white};
   margin-bottom: 20px;
+  z-index: 10;
 `;
 const SAddressTitle = styled.div`
   width: 100%;
@@ -84,6 +87,12 @@ const SEditAdress = styled.div`
   cursor: pointer;
 `;
 function Address() {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(!modalIsOpen);
+  }
+
   return (
     <SLayout>
       <SAddressTitle>Address</SAddressTitle>
@@ -107,7 +116,14 @@ function Address() {
         <SAdressTiltleDiv>이메일</SAdressTiltleDiv>
         <SAddressText> elice@test.com</SAddressText>
       </SItemDiv>
-      <SEditAdress> 배송지 수정</SEditAdress>
+      <SEditAdress
+        onClick={() => {
+          openModal();
+        }}
+      >
+        배송지 수정
+      </SEditAdress>
+      {modalIsOpen ? <EditAdress /> : null}
     </SLayout>
   );
 }
