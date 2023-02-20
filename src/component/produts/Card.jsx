@@ -101,7 +101,7 @@ function Card() {
         return (
           <SCardDiv>
             <Link
-              to={`/${item._id}`}
+              to={`${item._id}`}
               onClick={() => PassIdHandler(item._id, productData)}
             >
               <SCardImg src={item.productImage[0]} alt="상품썸네일" />

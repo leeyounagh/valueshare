@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -14,10 +14,11 @@ const Slayout = styled.div`
 
 function Detail() {
   const [productInformation, setProductInformation] = useState(null);
-  const item = useSelector((state) => state.product.product);
+  const { productId } = useParams();
+  console.log(productId);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/products/${item}`)
+      .get(`http://localhost:3000/admin/products/${productId}`)
       .then((res) => {
         setProductInformation(res.data);
       })
@@ -30,8 +31,7 @@ function Detail() {
     <Slayout>
       <div>
         <h1>{productInformation?.name}</h1>
-        <h1>{productInformation?.price}</h1>
-        <h1>{productInformation?.description}</h1>
+        <p>{productInformation?.description}</p>
       </div>
     </Slayout>
   );
