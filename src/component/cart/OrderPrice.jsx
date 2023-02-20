@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 // import Paypal from "component/cart/Paypal";
@@ -115,21 +115,12 @@ const SOrderIconText = styled.div`
   color: ${gray5};
 `;
 
-function OrderPrice() {
-  // eslint-disable-next-line no-unused-vars
-  const [totalItem, setTotalItem] = useState();
-
-  const basketsItem = JSON.parse(localStorage.getItem("baskets"));
-  let sum = 0;
-  useEffect(() => {
-    setTotalItem(sum);
-  }, [sum]);
-
-  if (basketsItem) {
-    sum = basketsItem.reduce((acc, cur) => {
+function OrderPrice({ cartItems }) {
+  const sum = useMemo(() => {
+    return cartItems.reduce((acc, cur) => {
       return acc + Number(cur.productPrice) * cur.quantity;
     }, 0);
-  }
+  }, [cartItems]);
 
   return (
     <SLayout>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "component/Navbar";
 import styled from "styled-components";
 import color from "styles/color";
@@ -17,7 +17,7 @@ const SLayout = styled.div`
 `;
 const SEmptyCartDiv = styled.div`
   width: 60%;
-  height: 595px;
+  height: 50%;
   padding: 158px 413px 159px;
   background-color: ${white};
   border-radius: 10px;
@@ -35,36 +35,32 @@ const SGetItemCartDiv = styled.div`
   margin-top: 80px;
   margin-left: 70px;
 `;
-function Cart() {
-  const [isItem, setIsItem] = useState(false);
-  const basketsItem = JSON.parse(localStorage.getItem("baskets"));
 
-  useEffect(() => {
-    if (basketsItem) {
-      setIsItem(true);
-    }
-    if (!basketsItem) {
-      setIsItem(false);
-    }
-  }, [basketsItem]);
+const getInitialCartItems = () => {
+  const items = localStorage.getItem("baskets");
+  return items ? JSON.parse(localStorage.getItem("baskets")) : [];
+};
+
+function Cart() {
+  const [cartItems, setCartItems] = useState(getInitialCartItems());
 
   return (
     <div>
       <Navbar />
       <SLayout>
-        {isItem ? (
-          <SGetItemCartDiv>
-            <GetItemCart setIsItem={setIsItem} />
-          </SGetItemCartDiv>
-        ) : (
+        {cartItems.length === 0 ? (
           <SEmptyCartDiv>
             <EmptyCart />
           </SEmptyCartDiv>
+        ) : (
+          <SGetItemCartDiv>
+            <GetItemCart cartItems={cartItems} setCartItems={setCartItems} />
+          </SGetItemCartDiv>
         )}
 
         <SOrderPriceDiv>
           <Address />
-          <OrderPrice />
+          <OrderPrice cartItems={cartItems} />
         </SOrderPriceDiv>
       </SLayout>
     </div>

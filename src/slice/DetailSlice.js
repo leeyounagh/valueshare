@@ -1,14 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: {
-    id: "",
-    productData: "",
-    name: "",
-    price: "",
-    description: "",
-    image: "",
-  },
+  id: "",
 };
 
 export const passIdSlice = createSlice({
@@ -16,13 +9,13 @@ export const passIdSlice = createSlice({
   initialState,
   reducers: {
     passId: (state, action) => {
-      state.value = action.payload;
+      state.id = action.payload;
     },
   },
 });
 
 export const { passId } = passIdSlice.actions;
 
-export const selectPassId = (state) => state.passId.value;
+// export const selectPassId = (state) => state.passId.value;
 
 export default passIdSlice.reducer;

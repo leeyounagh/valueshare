@@ -27,7 +27,11 @@ const CardList = styled.div`
 const BgImg1 = styled.img`
   position: absolute;
   right: 35%;
+<<<<<<< HEAD
+  top: 5000px;
+=======
   top: 4300px;
+>>>>>>> 0d99979710eb8d704353a2b29824de6cbc0e9dc2
   z-index: -1;
   opacity: 0.6;
   scale: 0.8;
