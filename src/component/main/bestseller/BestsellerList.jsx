@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import ProductCard from "../../ProductCard";
+import BestSellerCard from "../../BestSellerCard";
 
 const Slayout = styled.div`
   h2 {
@@ -102,40 +102,40 @@ export default class BestsellerList extends Component {
           <h2>Best Seller</h2>
           <Slider {...settings}>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
           </Slider>
         </div>
