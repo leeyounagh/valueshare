@@ -193,13 +193,21 @@ const SSelectedDeleteIconDiv = styled.div`
 const SIconDiv = styled.div`
   cursor: pointer;
 `;
+const SCheckInput = styled.input`
+  pointer: cursor;
+  width: 24px;
+  height: 24px;
+  border-radius: 10px;
+  &::after {
+    background-color: black;
+  }
+`;
 function GetItemCart(props) {
   const { setIsItem } = props;
   // eslint-disable-next-line no-unused-vars
   const [cartItems, setCartItems] = useState();
   const [isAllChecked, setIsAllCecked] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-  const [checkedIndex, setCeckedIndex] = useState([]);
+  const [checkedList, setCheckedList] = useState([]);
   const basketsItem = JSON.parse(localStorage.getItem("baskets"));
   console.log(basketsItem);
   useEffect(() => {
@@ -212,11 +220,13 @@ function GetItemCart(props) {
     setIsItem(false);
   };
   const handleDeleteCheckedItem = () => {
-    checkedIndex.forEach((index) => {
+    checkedList.forEach((index) => {
       basketsItem.splice(index, 1);
-
+      localStorage.setItem("baskets", JSON.stringify(basketsItem));
+      setCartItems(index);
       if (basketsItem.length === 0) {
         localStorage.removeItem("baskets");
+        setCartItems(index);
       }
     });
   };
@@ -240,25 +250,19 @@ function GetItemCart(props) {
     setCartItems(item.quantity);
     localStorage.setItem("baskets", JSON.stringify(basketsItem));
   };
+  // eslint-disable-next-line no-unused-vars
 
-  const handleItemCheck = (index) => {
-    setIsChecked(!isChecked);
-    const sameIndex = checkedIndex.findIndex((item) => item === index);
-    if (sameIndex === -1 && isChecked === true) {
-      setCeckedIndex((prev) => {
-        const newCheckedItem = [...prev];
-        newCheckedItem.push(index);
-        return newCheckedItem;
-      });
+  const onHandleChecked = (checked, item) => {
+    if (checked) {
+      setCheckedList([...checkedList, Number(item)]);
+    } else if (!checked) {
+      setCheckedList(checkedList.filter((el) => Number(el) !== Number(item)));
     }
-
-    // basketsItem.splice(index, 1);
-    // localStorage.setItem("baskets", JSON.stringify(basketsItem));
-    // if (basketsItem.length === 0) {
-    //   localStorage.removeItem("baskets");
-    // }
   };
-  console.log(checkedIndex);
+  /* eslint no-underscore-dangle: 0 */
+  // console.log(checkedIndex);
+
+  console.log(checkedList);
   return (
     <Slayout>
       <SCartTextDiv>
@@ -282,24 +286,20 @@ function GetItemCart(props) {
           <SPriceText>상품금액</SPriceText>
         </SCartTextInnerDiv>
       </SCartTextDiv>
+
       {basketsItem
         ? basketsItem.map((item, index) => {
             return (
               <SCartItemDiv>
-                {isAllChecked ? (
-                  <STotalChecBoxImg
-                    src="/asset/checkbox.svg"
-                    alt="장바구니체크박스"
-                  />
-                ) : (
-                  <STotalChecBoxImg
-                    onClick={() => {
-                      handleItemCheck(index);
-                    }}
-                    src="/asset/beforecheckbox.svg"
-                    alt="장바구니체크박스"
-                  />
-                )}
+                <SCheckInput
+                  value={index}
+                  type="checkbox"
+                  id="check1"
+                  onChange={(e) => {
+                    onHandleChecked(e.target.checked, e.target.value);
+                  }}
+                />
+
                 {/* 장바구니 부분체크박스 */}
                 <SItemImg src={item.productImage[0]} />
                 <SProductTextDiv>

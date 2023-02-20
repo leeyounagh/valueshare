@@ -122,7 +122,7 @@ function OrderPrice() {
   const basketsItem = JSON.parse(localStorage.getItem("baskets"));
   let sum = 0;
   useEffect(() => {
-    setTotalItem("가격계산");
+    setTotalItem(sum);
   }, [sum]);
 
   if (basketsItem) {
