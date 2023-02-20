@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import ProductCard from "../../ProductCard";
+import BestSellerCard from "../../BestSellerCard";
 
 const Slayout = styled.div`
   h2 {
@@ -40,7 +40,7 @@ const Slayout = styled.div`
 
 const BgImg1 = styled.img`
   position: absolute;
-  left: 35%;
+  left: 40%;
   top: 1090px;
   z-index: -1;
   opacity: 0.6;
@@ -91,7 +91,7 @@ export default class BestsellerList extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: 5,
       slidesToScroll: 3,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
@@ -102,40 +102,40 @@ export default class BestsellerList extends Component {
           <h2>Best Seller</h2>
           <Slider {...settings}>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
             <div>
-              <ProductCard />
+              <BestSellerCard />
             </div>
           </Slider>
         </div>

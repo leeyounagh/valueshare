@@ -11,7 +11,6 @@ module.exports = {
     "airbnb",
     "plugin:prettier/recommended",
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -21,7 +20,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "prettier"],
   rules: {
-    "react/jsx-props-no-spreading": "off",
+    "react/jsx-props-no-spreading": 0,
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": 0,
@@ -35,5 +34,8 @@ module.exports = {
     ],
     "import/no-unresolved": 0,
     "no-param-reassign": 0,
+    "react/prop-types": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
   },
 };

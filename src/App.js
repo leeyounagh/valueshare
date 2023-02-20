@@ -23,6 +23,7 @@ import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
 import Membership from "pages/membership/Membership";
 import Product from "pages/products/Product";
+import NoneMember from "pages/Nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
   if (pathname === "/lookbook") {
     dispatch(setPageInfo({ rootTitle: "LookBook", currentTitle: "LookBook" }));
   }
+  if (pathname === "/nonemember") {
+    dispatch(setPageInfo({ rootTitle: "Order", currentTitle: "Order" }));
+  }
+
   return (
     <div>
       <Header />
@@ -56,10 +61,11 @@ function App() {
         <Route exact path="/mypage/history" element={<History />} />
         <Route exact path="/mypage/resign" element={<Resign />} />
         <Route exact path="/mypage/userinfo" element={<UserInfo />} />
+        <Route exact path="/nonemember" element={<NoneMember />} />
 
         <Route exact path="/cart" element={<Cart />} />
 
-        <Route exact path="/:id" element={<Detail />} />
+        <Route exact path="/product/:productid" element={<Detail />} />
         <Route exact path="/product" element={<Product />} />
 
         <Route exact path="/bestseller" element={<BestSeller />} />

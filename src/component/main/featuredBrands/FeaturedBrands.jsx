@@ -11,7 +11,7 @@ const SlayOut = styled.div`
   width: 100%;
 
   h2 {
-    margin-top: 135px;
+    margin-top: 100px;
     margin-bottom: 40px;
     font-size: 50px;
     text-align: center;

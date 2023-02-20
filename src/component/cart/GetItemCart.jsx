@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -32,15 +34,15 @@ const SCartTextInnerDiv = styled.div`
   height: 30px;
   display: flex;
 `;
-const STotalChecBoxImg = styled.img`
-  width: 24px;
-  height: 24px;
-`;
 const STotalCheckBoxDiv = styled.div`
   margin-left: 50px;
+  margin-right: 15px;
 `;
 const SCartOptionTextDiv = styled.div`
-  margin: 0 344px 19px 274px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+
   flex-grow: 0;
   font-family: NotoSans;
   font-size: 18px;
@@ -55,7 +57,9 @@ const SCartOptionTextDiv = styled.div`
 `;
 const SQuantityText = styled.div`
   flex-grow: 0;
-  width: 200px;
+  display: flex;
+  justify-content: center;
+  width: 12%;
   font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
@@ -67,6 +71,7 @@ const SQuantityText = styled.div`
   color: ${gray3};
 `;
 const SPriceText = styled.div`
+  width: 20%;
   flex-grow: 0;
   display: flex;
   justify-content: center;
@@ -82,6 +87,7 @@ const SPriceText = styled.div`
   white-space: nowrap;
 `;
 const SItemImg = styled.img`
+  width: 13%;
   height: 80%;
   margin-left: 21px;
 `;
@@ -137,6 +143,9 @@ const SQuantityNextImg = styled.img`
   transform: rotate(-90deg);
 `;
 const SItemPriceDiv = styled.div`
+  width: 23%;
+  display: flex;
+  justify-content: center;
   font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
@@ -146,7 +155,6 @@ const SItemPriceDiv = styled.div`
   letter-spacing: normal;
   text-align: right;
   color: ${gray1};
-  margin-left: 120px;
 `;
 const SAllDeleteIconDiv = styled.div`
   height: 40px;
@@ -188,55 +196,170 @@ const SSelectedDeleteIconDiv = styled.div`
   justify-content: center;
   cursor: pointer;
 `;
-const SIconDiv = styled.div``;
-function GetItemCart() {
+const SIconDiv = styled.div`
+  cursor: pointer;
+  width: 3%;
+  height: 20%;
+`;
+const SCheckInput = styled.input`
+  pointer: cursor;
+  width: 24px;
+  height: 24px;
+  border-radius: 10px;
+  &::after {
+    background-color: black;
+  }
+`;
+
+function GetItemCart({ cartItems, setCartItems }) {
+  const [isAllChecked, setIsAllChecked] = useState(false);
+
+  // 전체 삭제
+  const handleAllDeleteCartItems = () => {
+    setCartItems([]);
+    localStorage.removeItem("baskets");
+  };
+
+  const handleAllChecked = (e) => {
+    const { checked } = e.target;
+
+    const newItems = cartItems.map((item) => ({ ...item, checked }));
+    setIsAllChecked(checked);
+    setCartItems(newItems);
+  };
+
+  const handleCheckedCartItem = (e) => {
+    const { value } = e.target;
+    const newItems = cartItems.map((item) =>
+      item._id === value
+        ? {
+            ...item,
+            checked: !item.checked,
+          }
+        : item
+    );
+
+    const isAllCheckedNewItems = newItems.every((item) => item.checked);
+    setCartItems(newItems);
+    setIsAllChecked(isAllCheckedNewItems);
+  };
+
+  // 선택 된 상품 삭제
+  const handleDeleteCartItem = () => {
+    const deleteItemIds = cartItems
+      .filter((item) => item.checked)
+      .map((item) => item._id);
+
+    const newCartItems = cartItems.filter(
+      (item) => !deleteItemIds.includes(item._id)
+    );
+    setCartItems(newCartItems);
+    localStorage.setItem("baskets", JSON.stringify(newCartItems));
+  };
+
+  const handlePlusQuantity = (itemId) => {
+    const newCartItems = cartItems.map((item) =>
+      item._id === itemId
+        ? {
+            ...item,
+            quantity:
+              item.quantity === item.productStock
+                ? item.productStock
+                : item.quantity + 1,
+          }
+        : item
+    );
+
+    setCartItems(newCartItems);
+    localStorage.setItem("baskets", JSON.stringify(newCartItems));
+  };
+
+  const handleMinusQuantity = (itemId) => {
+    const newCartItems = cartItems.map((item) =>
+      item._id === itemId
+        ? { ...item, quantity: item.quantity === 1 ? 1 : item.quantity - 1 }
+        : item
+    );
+
+    setCartItems(newCartItems);
+    localStorage.setItem("baskets", JSON.stringify(newCartItems));
+  };
+  console.log(cartItems);
+
   return (
     <Slayout>
       <SCartTextDiv>
         <SCartTextInnerDiv>
           <STotalCheckBoxDiv>
-            <STotalChecBoxImg
-              src="/asset/beforecheckbox.svg"
-              alt="장바구니체크박스"
+            <SCheckInput
+              type="checkbox"
+              id="check"
+              onChange={handleAllChecked}
+              checked={isAllChecked}
             />
           </STotalCheckBoxDiv>
+          {/* 장바구니 전체선택 체크박스 */}
           <SCartOptionTextDiv>상품/옵션 정보</SCartOptionTextDiv>
           <SQuantityText>수량</SQuantityText>
           <SPriceText>상품금액</SPriceText>
         </SCartTextInnerDiv>
       </SCartTextDiv>
-      {Array.from({ length: 10 })
-        .fill(0)
-        .map(() => {
-          return (
-            <SCartItemDiv>
-              <STotalChecBoxImg
-                src="asset/beforecheckbox.svg"
-                alt="장바구니체크박스"
-              />
-              <SItemImg src="asset/테스트가방.png" />
-              <SProductTextDiv>
-                <SItemOptionBrandTitle>Louis Vuitton</SItemOptionBrandTitle>
-                <SProductName> 트위스트 MM 핸드백</SProductName>
-              </SProductTextDiv>
-              <SIconDiv>
-                <SQuantityPreviusImg src="asset/Chevrons_chevron-right.svg" />
-              </SIconDiv>
-              <SIconDiv>
-                <SQuantityTextDiv>999</SQuantityTextDiv>
-              </SIconDiv>
-              <SIconDiv>
-                <SQuantityNextImg src="asset/Chevrons_chevron-right.svg" />
-              </SIconDiv>
 
-              <SItemPriceDiv> ₩60,000</SItemPriceDiv>
-            </SCartItemDiv>
-          );
-        })}
+      {cartItems
+        ? cartItems.map((item) => {
+            return (
+              <SCartItemDiv key={item._id}>
+                <SCheckInput
+                  value={item._id}
+                  type="checkbox"
+                  id="check1"
+                  checked={item.checked}
+                  onChange={handleCheckedCartItem}
+                />
+
+                {/* 장바구니 부분체크박스 */}
+                <SItemImg src={item.productImage[0]} />
+                <SProductTextDiv>
+                  <SItemOptionBrandTitle>
+                    {item.productBrand.brandName}
+                  </SItemOptionBrandTitle>
+                  <SProductName>{item.productTitle}</SProductName>
+                </SProductTextDiv>
+                <SIconDiv onClick={() => handleMinusQuantity(item._id)}>
+                  <SQuantityPreviusImg
+                    src="asset/Chevrons_chevron-right.svg"
+                    alt="minus수량"
+                  />
+                </SIconDiv>
+                <SIconDiv>
+                  <SQuantityTextDiv>{item.quantity}</SQuantityTextDiv>
+                </SIconDiv>
+                <SIconDiv
+                  onClick={() => {
+                    handlePlusQuantity(item._id);
+                  }}
+                >
+                  <SQuantityNextImg
+                    src="asset/Chevrons_chevron-right.svg"
+                    alt="plus수량"
+                  />
+                </SIconDiv>
+
+                <SItemPriceDiv> {item.productPrice}</SItemPriceDiv>
+              </SCartItemDiv>
+            );
+          })
+        : null}
 
       <SCartIconDiv>
-        <SAllDeleteIconDiv> 전체 상품 삭제</SAllDeleteIconDiv>
-        <SSelectedDeleteIconDiv> 선택 상품 삭제</SSelectedDeleteIconDiv>
+        <SAllDeleteIconDiv onClick={handleAllDeleteCartItems}>
+          {" "}
+          전체 상품 삭제
+        </SAllDeleteIconDiv>
+        <SSelectedDeleteIconDiv onClick={handleDeleteCartItem}>
+          {/* <SSelectedDeleteIconDiv onClick={() => handleDeleteCheckedItem()}> */}
+          선택 상품 삭제
+        </SSelectedDeleteIconDiv>
       </SCartIconDiv>
     </Slayout>
   );
