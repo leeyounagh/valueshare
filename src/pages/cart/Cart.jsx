@@ -54,7 +54,7 @@ function Cart() {
       <SLayout>
         {isItem ? (
           <SGetItemCartDiv>
-            <GetItemCart />
+            <GetItemCart setIsItem={setIsItem} />
           </SGetItemCartDiv>
         ) : (
           <SEmptyCartDiv>

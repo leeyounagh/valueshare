@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import color from "styles/color";
-// import handlePlusStock from "utils/handlePlusStock";
 
 const { gray1, gray3, gray4 } = color;
 
@@ -194,21 +193,23 @@ const SSelectedDeleteIconDiv = styled.div`
 const SIconDiv = styled.div`
   cursor: pointer;
 `;
-function GetItemCart() {
+function GetItemCart(props) {
+  const { setIsItem } = props;
+  // eslint-disable-next-line no-unused-vars
   const [cartItems, setCartItems] = useState();
   const [isAllChecked, setIsAllCecked] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [checkedIndex, setCeckedIndex] = useState([]);
   const basketsItem = JSON.parse(localStorage.getItem("baskets"));
-  const [quantity, setQuantity] = useState(1);
-
+  console.log(basketsItem);
   useEffect(() => {
-    console.log(cartItems, quantity);
     setCartItems(basketsItem);
   }, []);
-  console.log(basketsItem[0].quantity);
+
   const handleDeleteAllItem = () => {
     localStorage.removeItem("baskets");
+    setCartItems("전체삭제");
+    setIsItem(false);
   };
   const handleDeleteCheckedItem = () => {
     checkedIndex.forEach((index) => {
@@ -222,27 +223,27 @@ function GetItemCart() {
   const handleAllItemCheck = () => {
     setIsAllCecked(!isAllChecked);
   };
-  const handleMinusStock = (item) => {
+  const handleMinusQuantity = (item) => {
     if (item.quantity === 1) {
       return;
     }
     item.quantity -= 1;
-    setQuantity(item.quantity);
+    setCartItems(item.quantity);
     localStorage.setItem("baskets", JSON.stringify(basketsItem));
   };
-  const handlePlusStock = (item) => {
+
+  const handlePlusQuantity = (item) => {
     if (item.productStock === item.quantity) {
       return;
     }
     item.quantity += 1;
-    setQuantity(item.quantity);
+    setCartItems(item.quantity);
     localStorage.setItem("baskets", JSON.stringify(basketsItem));
   };
 
   const handleItemCheck = (index) => {
     setIsChecked(!isChecked);
     const sameIndex = checkedIndex.findIndex((item) => item === index);
-    console.log(sameIndex);
     if (sameIndex === -1 && isChecked === true) {
       setCeckedIndex((prev) => {
         const newCheckedItem = [...prev];
@@ -257,7 +258,7 @@ function GetItemCart() {
     //   localStorage.removeItem("baskets");
     // }
   };
-
+  console.log(checkedIndex);
   return (
     <Slayout>
       <SCartTextDiv>
@@ -275,6 +276,7 @@ function GetItemCart() {
               />
             )}
           </STotalCheckBoxDiv>
+          {/* 장바구니 전체선택 체크박스 */}
           <SCartOptionTextDiv>상품/옵션 정보</SCartOptionTextDiv>
           <SQuantityText>수량</SQuantityText>
           <SPriceText>상품금액</SPriceText>
@@ -298,6 +300,7 @@ function GetItemCart() {
                     alt="장바구니체크박스"
                   />
                 )}
+                {/* 장바구니 부분체크박스 */}
                 <SItemImg src={item.productImage[0]} />
                 <SProductTextDiv>
                   <SItemOptionBrandTitle>
@@ -307,7 +310,7 @@ function GetItemCart() {
                 </SProductTextDiv>
                 <SIconDiv
                   onClick={() => {
-                    handleMinusStock(item, index);
+                    handleMinusQuantity(item);
                   }}
                 >
                   <SQuantityPreviusImg
@@ -320,7 +323,7 @@ function GetItemCart() {
                 </SIconDiv>
                 <SIconDiv
                   onClick={() => {
-                    handlePlusStock(item, index);
+                    handlePlusQuantity(item);
                   }}
                 >
                   <SQuantityNextImg

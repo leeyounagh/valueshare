@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 // import Paypal from "component/cart/Paypal";
@@ -114,12 +114,20 @@ const SOrderIconText = styled.div`
   text-align: center;
   color: ${gray5};
 `;
+
 function OrderPrice() {
+  // eslint-disable-next-line no-unused-vars
+  const [totalItem, setTotalItem] = useState();
+
   const basketsItem = JSON.parse(localStorage.getItem("baskets"));
   let sum = 0;
+  useEffect(() => {
+    setTotalItem("가격계산");
+  }, [sum]);
+
   if (basketsItem) {
     sum = basketsItem.reduce((acc, cur) => {
-      return acc + Number(cur.productPrice);
+      return acc + Number(cur.productPrice) * cur.quantity;
     }, 0);
   }
 

@@ -88,7 +88,6 @@ function Card() {
     }
     getProducts();
   }, []);
-
   console.log(productData);
   return (
     <SLayout>
