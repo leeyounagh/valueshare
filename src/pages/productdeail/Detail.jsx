@@ -15,12 +15,11 @@ const Slayout = styled.div`
 function Detail() {
   const [productInformation, setProductInformation] = useState(null);
   const item = useSelector((state) => state.DetailReducer);
-  console.log(productInformation);
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/admin/products/:${item}`)
       .then((res) => {
-        console.log(res);
         setProductInformation(res.data);
       })
       .catch((err) => {

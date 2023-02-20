@@ -60,7 +60,7 @@ function Cart() {
 
         <SOrderPriceDiv>
           <Address />
-          <OrderPrice cartItems={cartItems} />
+          <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
         </SOrderPriceDiv>
       </SLayout>
     </div>
