@@ -1,7 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import handleBasket from "utils/handleBasket";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { passId } from "slice/DetailSlice";
 
 const SLayout = styled.div`
   width: 100%;
@@ -78,8 +82,14 @@ const SCardBrandNameDiv = styled.div`
 const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
+
 function Card() {
   const [productData, setData] = useState([]);
+  const dispatch = useDispatch();
+  const PassIdHandler = (_id) => {
+    // data.filter((item) => item._id === _id);
+    dispatch(passId(_id));
+  };
 
   useEffect(() => {
     async function getProducts() {
@@ -94,7 +104,12 @@ function Card() {
       {productData.map((item) => {
         return (
           <SCardDiv>
-            <SCardImg src={item.productImage[0]} alt="상품썸네일" />
+            <Link
+              to={`/product/${item._id}`}
+              onClick={() => PassIdHandler(item._id)}
+            >
+              <SCardImg src={item.productImage[0]} alt="상품썸네일" />
+            </Link>
             <SCardTitleDiv>
               <SCardBrand>{item.productBrand.brandName} </SCardBrand>
               <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>

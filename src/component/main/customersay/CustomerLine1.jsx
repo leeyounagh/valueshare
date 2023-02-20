@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CustomerComponent from "./CustomerComponent";
 
 const Slayout = styled.div`
-  margin-left: -10%;
+  margin-left: -50%;
   width: 100%;
   height: auto;
 
@@ -34,6 +34,12 @@ function CustomerLine1() {
   return (
     <Slayout>
       <CardList>
+        <div>
+          <CustomerComponent />
+        </div>
+        <div>
+          <CustomerComponent />
+        </div>
         <div>
           <CustomerComponent />
         </div>

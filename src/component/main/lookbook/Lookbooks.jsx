@@ -9,6 +9,7 @@ const Slayout = styled.div`
 
   h2 {
     padding-top: 100px;
+    padding-bottom: 50px;
     font-family: "Rufina", serif;
     font-size: 50px;
     text-align: center;
@@ -20,7 +21,7 @@ const CardList = styled.div`
   width: auto;
   height: auto;
   display: flex;
-  margin: 40px 3%;
+  margin: 40px 10%;
 `;
 
 const BgImg1 = styled.img`
@@ -34,8 +35,8 @@ const BgImg1 = styled.img`
 
 const BgImg2 = styled.img`
   position: absolute;
-  right: 30%;
-  top: 3320px;
+  right: 32%;
+  top: 3360px;
   z-index: -1;
   opacity: 0.6;
 `;

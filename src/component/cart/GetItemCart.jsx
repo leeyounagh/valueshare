@@ -214,6 +214,12 @@ const SCheckInput = styled.input`
 function GetItemCart({ cartItems, setCartItems }) {
   const [isAllChecked, setIsAllChecked] = useState(false);
 
+  // 전체 삭제
+  const handleAllDeleteCartItems = () => {
+    setCartItems([]);
+    localStorage.removeItem("baskets");
+  };
+
   const handleAllChecked = (e) => {
     const { checked } = e.target;
 
@@ -236,12 +242,6 @@ function GetItemCart({ cartItems, setCartItems }) {
     const isAllCheckedNewItems = newItems.every((item) => item.checked);
     setCartItems(newItems);
     setIsAllChecked(isAllCheckedNewItems);
-  };
-
-  // 전체 삭제
-  const handleAllDeleteCartItems = () => {
-    setCartItems([]);
-    localStorage.removeItem("baskets");
   };
 
   // 선택 된 상품 삭제
