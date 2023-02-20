@@ -84,8 +84,7 @@ function Card() {
   const [productData, setData] = useState([]);
 
   const PassIdHandler = (_id, data) => {
-    const product = data.filter((item) => item._id === _id);
-    localStorage.setItem("product", JSON.stringify(product));
+    data.filter((item) => item._id === _id);
   };
 
   useEffect(() => {
