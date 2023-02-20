@@ -31,17 +31,17 @@ function CarouselIcn() {
   return (
     <SlayOut>
       <div>
-        <SmainIcn src="../asset/icn-main1.svg" />
+        <SmainIcn src="/asset/icn-main1.svg" />
         <p>Monthly unique visit </p>
         <div>30,254,699</div>
       </div>
       <div>
-        <SmainIcn src="../asset/icn-main2.svg" />
+        <SmainIcn src="/asset/icn-main2.svg" />
         <p>Active customers </p>
         <div>33 Million</div>
       </div>
       <div>
-        <SmainIcn src="../asset/icn-main3.svg" />
+        <SmainIcn src="/asset/icn-main3.svg" />
         <p>Products for any need</p>
         <div>100k</div>
       </div>

@@ -101,12 +101,12 @@ function Carousel() {
       <Sbanner>
         <div>
           <div>
-            <Sbanner1 src="asset/img-banner1.png" />
-            <Sbanner2 src="asset/img-banner2.png" />
+            <Sbanner1 src="/asset/img-banner1.png" />
+            <Sbanner2 src="/asset/img-banner2.png" />
           </div>
-          <Sbanner3 src="asset/img-banner3.png" />
+          <Sbanner3 src="/asset/img-banner3.png" />
         </div>
-        <Sbanner4 src="asset/img-banner4.png" />
+        <Sbanner4 src="/asset/img-banner4.png" />
       </Sbanner>
     </SlayOut>
   );

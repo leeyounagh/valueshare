@@ -72,7 +72,7 @@ function UploadProduct() {
       }
     } catch (err) {
       if (err) {
-        alert("상품 등록에 실패했습니다");
+        alert("상품 등록에 실해했습니다");
       }
     }
   };
