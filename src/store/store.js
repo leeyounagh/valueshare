@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import pageTitleReducer from "slice/PageSlice";
 import CartItemReducer from "slice/CartSlice";
 import DetailReducer from "slice/DetailSlice";
+import UserAddressReducer from "slice/UserAddressSlice";
 
 export default configureStore({
   reducer: {
@@ -9,5 +10,6 @@ export default configureStore({
     pageTitleReducer,
     CartItemReducer,
     DetailReducer,
+    UserAddressReducer,
   },
 });

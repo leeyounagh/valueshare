@@ -12,6 +12,7 @@ const SLayout = styled.div`
   padding: 60px 30px;
   border-radius: 10px;
   background-color: ${white};
+  z-index: 10;
 `;
 
 const SOrderTitleDiv = styled.div`

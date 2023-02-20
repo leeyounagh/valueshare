@@ -23,7 +23,7 @@ import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
 import Membership from "pages/membership/Membership";
 import Product from "pages/products/Product";
-import NoneMember from "pages/nonmember/NoneMember";
+import NoneMember from "pages/Nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
 
 function App() {
