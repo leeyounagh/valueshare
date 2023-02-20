@@ -88,7 +88,7 @@ function Card() {
     }
     getProducts();
   }, []);
-  console.log(productData);
+
   return (
     <SLayout>
       {productData.map((item) => {
@@ -96,7 +96,7 @@ function Card() {
           <SCardDiv>
             <SCardImg src={item.productImage[0]} alt="상품썸네일" />
             <SCardTitleDiv>
-              <SCardBrand>{item.productBrand} </SCardBrand>
+              <SCardBrand>{item.productBrand.brandName} </SCardBrand>
               <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
             </SCardTitleDiv>
             <SCartDiv

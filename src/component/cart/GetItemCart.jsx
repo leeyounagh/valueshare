@@ -32,16 +32,15 @@ const SCartTextInnerDiv = styled.div`
   height: 30px;
   display: flex;
 `;
-const STotalChecBoxImg = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-`;
 const STotalCheckBoxDiv = styled.div`
   margin-left: 50px;
+  margin-right: 15px;
 `;
 const SCartOptionTextDiv = styled.div`
-  margin: 0 344px 19px 274px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+
   flex-grow: 0;
   font-family: NotoSans;
   font-size: 18px;
@@ -56,7 +55,9 @@ const SCartOptionTextDiv = styled.div`
 `;
 const SQuantityText = styled.div`
   flex-grow: 0;
-  width: 200px;
+  display: flex;
+  justify-content: center;
+  width: 12%;
   font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
@@ -68,6 +69,7 @@ const SQuantityText = styled.div`
   color: ${gray3};
 `;
 const SPriceText = styled.div`
+  width: 20%;
   flex-grow: 0;
   display: flex;
   justify-content: center;
@@ -139,6 +141,9 @@ const SQuantityNextImg = styled.img`
   transform: rotate(-90deg);
 `;
 const SItemPriceDiv = styled.div`
+  width: 23%;
+  display: flex;
+  justify-content: center;
   font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
@@ -148,7 +153,6 @@ const SItemPriceDiv = styled.div`
   letter-spacing: normal;
   text-align: right;
   color: ${gray1};
-  margin-left: 120px;
 `;
 const SAllDeleteIconDiv = styled.div`
   height: 40px;
@@ -192,6 +196,8 @@ const SSelectedDeleteIconDiv = styled.div`
 `;
 const SIconDiv = styled.div`
   cursor: pointer;
+  width: 3%;
+  height: 20%;
 `;
 const SCheckInput = styled.input`
   pointer: cursor;
@@ -206,6 +212,7 @@ function GetItemCart(props) {
   const { setIsItem } = props;
   // eslint-disable-next-line no-unused-vars
   const [cartItems, setCartItems] = useState();
+  const [isChecked, setIsChecked] = useState(false);
   const [isAllChecked, setIsAllCecked] = useState(false);
   const [checkedList, setCheckedList] = useState([]);
   const basketsItem = JSON.parse(localStorage.getItem("baskets"));
@@ -227,6 +234,7 @@ function GetItemCart(props) {
       if (basketsItem.length === 0) {
         localStorage.removeItem("baskets");
         setCartItems(index);
+        setIsItem(false);
       }
     });
   };
@@ -253,32 +261,45 @@ function GetItemCart(props) {
   // eslint-disable-next-line no-unused-vars
 
   const onHandleChecked = (checked, item) => {
+    console.log(checked, item);
+    setIsChecked(!isChecked);
     if (checked) {
       setCheckedList([...checkedList, Number(item)]);
     } else if (!checked) {
       setCheckedList(checkedList.filter((el) => Number(el) !== Number(item)));
     }
   };
-  /* eslint no-underscore-dangle: 0 */
-  // console.log(checkedIndex);
+  const handleAllCheck = (checked) => {
+    setIsChecked(!isChecked);
+    if (checked) {
+      // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
+      const idArray = [];
+      for (let i = 0; i < basketsItem.length; i++) {
+        console.log(i, "테스트");
+        idArray.push(i);
+      }
+      setCheckedList(idArray);
+    } else {
+      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
+      setCheckedList([]);
+    }
+  };
 
-  console.log(checkedList);
+  console.log("테스트", checkedList);
+  /* eslint no-underscore-dangle: 0 */
+  // console.log("확인", checkedList, basketsItem.length);
   return (
     <Slayout>
       <SCartTextDiv>
         <SCartTextInnerDiv>
           <STotalCheckBoxDiv onClick={handleAllItemCheck}>
-            {isAllChecked ? (
-              <STotalChecBoxImg
-                src="/asset/checkbox.svg"
-                alt="장바구니체크박스"
-              />
-            ) : (
-              <STotalChecBoxImg
-                src="/asset/beforecheckbox.svg"
-                alt="장바구니체크박스"
-              />
-            )}
+            <SCheckInput
+              type="checkbox"
+              id="check"
+              onChange={(e) => {
+                handleAllCheck(e.target.checked);
+              }}
+            />
           </STotalCheckBoxDiv>
           {/* 장바구니 전체선택 체크박스 */}
           <SCartOptionTextDiv>상품/옵션 정보</SCartOptionTextDiv>
@@ -304,7 +325,7 @@ function GetItemCart(props) {
                 <SItemImg src={item.productImage[0]} />
                 <SProductTextDiv>
                   <SItemOptionBrandTitle>
-                    {item.productBrand}
+                    {item.productBrand.brandName}
                   </SItemOptionBrandTitle>
                   <SProductName>{item.productTitle}</SProductName>
                 </SProductTextDiv>

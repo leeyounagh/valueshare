@@ -17,7 +17,7 @@ const SLayout = styled.div`
 `;
 const SEmptyCartDiv = styled.div`
   width: 60%;
-  height: 595px;
+  height: 50%;
   padding: 158px 413px 159px;
   background-color: ${white};
   border-radius: 10px;
