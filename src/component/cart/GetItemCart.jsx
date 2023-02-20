@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -208,97 +210,77 @@ const SCheckInput = styled.input`
     background-color: black;
   }
 `;
-function GetItemCart(props) {
-  const { setIsItem } = props;
-  // eslint-disable-next-line no-unused-vars
-  const [cartItems, setCartItems] = useState();
-  const [isChecked, setIsChecked] = useState(false);
-  const [isAllChecked, setIsAllCecked] = useState(false);
-  const [checkedList, setCheckedList] = useState([]);
-  const basketsItem = JSON.parse(localStorage.getItem("baskets"));
-  console.log(basketsItem);
-  useEffect(() => {
-    setCartItems(basketsItem);
-  }, []);
 
-  const handleDeleteAllItem = () => {
+function GetItemCart({ cartItems, setCartItems }) {
+  const [isAllChecked, setIsAllChecked] = useState(false);
+
+  const handleAllChecked = (e) => {
+    const { checked } = e.target;
+
+    const newItems = cartItems.map((item) => ({ ...item, checked }));
+    setIsAllChecked(checked);
+    setCartItems(newItems);
+  };
+
+  const handleCheckedCartItem = (e) => {
+    const { value } = e.target;
+    const newItems = cartItems.map((item) =>
+      item._id === value
+        ? {
+            ...item,
+            checked: !item.checked,
+          }
+        : item
+    );
+
+    const isAllCheckedNewItems = newItems.every((item) => item.checked);
+    setCartItems(newItems);
+    setIsAllChecked(isAllCheckedNewItems);
+  };
+
+  // 전체 삭제
+  const handleAllDeleteCartItems = () => {
+    setCartItems([]);
     localStorage.removeItem("baskets");
-    setCartItems("전체삭제");
-    setIsItem(false);
-  };
-  const handleDeleteCheckedItem = () => {
-    checkedList.forEach((index) => {
-      basketsItem.splice(index, 1);
-      localStorage.setItem("baskets", JSON.stringify(basketsItem));
-      setCartItems(index);
-      if (basketsItem.length === 0) {
-        localStorage.removeItem("baskets");
-        setCartItems(index);
-        setIsItem(false);
-      }
-    });
-  };
-  const handleAllItemCheck = () => {
-    setIsAllCecked(!isAllChecked);
-  };
-  const handleMinusQuantity = (item) => {
-    if (item.quantity === 1) {
-      return;
-    }
-    item.quantity -= 1;
-    setCartItems(item.quantity);
-    localStorage.setItem("baskets", JSON.stringify(basketsItem));
   };
 
-  const handlePlusQuantity = (item) => {
-    if (item.productStock === item.quantity) {
-      return;
-    }
-    item.quantity += 1;
-    setCartItems(item.quantity);
-    localStorage.setItem("baskets", JSON.stringify(basketsItem));
-  };
-  // eslint-disable-next-line no-unused-vars
+  // 선택 된 상품 삭제
+  const handleDeleteCartItem = () => {
+    const deleteItemIds = cartItems
+      .filter((item) => item.checked)
+      .map((item) => item._id);
 
-  const onHandleChecked = (checked, item) => {
-    console.log(checked, item);
-    setIsChecked(!isChecked);
-    if (checked) {
-      setCheckedList([...checkedList, Number(item)]);
-    } else if (!checked) {
-      setCheckedList(checkedList.filter((el) => Number(el) !== Number(item)));
-    }
-  };
-  const handleAllCheck = (checked) => {
-    setIsChecked(!isChecked);
-    if (checked) {
-      // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
-      const idArray = [];
-      for (let i = 0; i < basketsItem.length; i++) {
-        console.log(i, "테스트");
-        idArray.push(i);
-      }
-      setCheckedList(idArray);
-    } else {
-      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
-      setCheckedList([]);
-    }
+    const newCartItems = cartItems.filter(
+      (item) => !deleteItemIds.includes(item._id)
+    );
+    setCartItems(newCartItems);
+    localStorage.setItem("baskets", JSON.stringify(newCartItems));
   };
 
-  console.log("테스트", checkedList);
-  /* eslint no-underscore-dangle: 0 */
-  // console.log("확인", checkedList, basketsItem.length);
+  const handlePlusQuantity = (itemId) => {
+    const newCartItems = cartItems.map((item) =>
+      item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+    );
+
+    setCartItems(newCartItems);
+    localStorage.setItem("baskets", JSON.stringify(newCartItems));
+  };
+
+  const handleMinusQuantity = (itemId) => {
+    // 위의 handlePlusQuantity를 참고해서 만들어보세요!
+  };
+
   return (
     <Slayout>
       <SCartTextDiv>
         <SCartTextInnerDiv>
-          <STotalCheckBoxDiv onClick={handleAllItemCheck}>
+          <STotalCheckBoxDiv>
+            {/* <STotalCheckBoxDiv onClick={handleAllItemCheck}> */}
             <SCheckInput
               type="checkbox"
               id="check"
-              onChange={(e) => {
-                handleAllCheck(e.target.checked);
-              }}
+              onChange={handleAllChecked}
+              checked={isAllChecked}
             />
           </STotalCheckBoxDiv>
           {/* 장바구니 전체선택 체크박스 */}
@@ -308,17 +290,16 @@ function GetItemCart(props) {
         </SCartTextInnerDiv>
       </SCartTextDiv>
 
-      {basketsItem
-        ? basketsItem.map((item, index) => {
+      {cartItems
+        ? cartItems.map((item) => {
             return (
-              <SCartItemDiv>
+              <SCartItemDiv key={item._id}>
                 <SCheckInput
-                  value={index}
+                  value={item._id}
                   type="checkbox"
                   id="check1"
-                  onChange={(e) => {
-                    onHandleChecked(e.target.checked, e.target.value);
-                  }}
+                  checked={item.checked}
+                  onChange={handleCheckedCartItem}
                 />
 
                 {/* 장바구니 부분체크박스 */}
@@ -329,11 +310,7 @@ function GetItemCart(props) {
                   </SItemOptionBrandTitle>
                   <SProductName>{item.productTitle}</SProductName>
                 </SProductTextDiv>
-                <SIconDiv
-                  onClick={() => {
-                    handleMinusQuantity(item);
-                  }}
-                >
+                <SIconDiv onClick={() => handleMinusQuantity(item._id)}>
                   <SQuantityPreviusImg
                     src="asset/Chevrons_chevron-right.svg"
                     alt="minus수량"
@@ -344,7 +321,7 @@ function GetItemCart(props) {
                 </SIconDiv>
                 <SIconDiv
                   onClick={() => {
-                    handlePlusQuantity(item);
+                    handlePlusQuantity(item._id);
                   }}
                 >
                   <SQuantityNextImg
@@ -360,15 +337,12 @@ function GetItemCart(props) {
         : null}
 
       <SCartIconDiv>
-        <SAllDeleteIconDiv
-          onClick={() => {
-            handleDeleteAllItem();
-          }}
-        >
+        <SAllDeleteIconDiv onClick={handleAllDeleteCartItems}>
           {" "}
           전체 상품 삭제
         </SAllDeleteIconDiv>
-        <SSelectedDeleteIconDiv onClick={() => handleDeleteCheckedItem()}>
+        <SSelectedDeleteIconDiv onClick={handleDeleteCartItem}>
+          {/* <SSelectedDeleteIconDiv onClick={() => handleDeleteCheckedItem()}> */}
           선택 상품 삭제
         </SSelectedDeleteIconDiv>
       </SCartIconDiv>
