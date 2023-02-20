@@ -275,7 +275,6 @@ function GetItemCart({ cartItems, setCartItems }) {
   };
 
   const handleMinusQuantity = (itemId) => {
-    // 위의 handlePlusQuantity를 참고해서 만들어보세요!
     const newCartItems = cartItems.map((item) =>
       item._id === itemId
         ? { ...item, quantity: item.quantity === 1 ? 1 : item.quantity - 1 }
