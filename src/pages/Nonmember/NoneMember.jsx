@@ -23,10 +23,12 @@ const SItemDiv = styled.div`
 
 function NoneMember() {
   return (
-    <SLayout>
+    <div>
       <Navbar />
-      <SItemDiv>afsdadsf</SItemDiv>
-    </SLayout>
+      <SLayout>
+        <SItemDiv>afsdadsf</SItemDiv>
+      </SLayout>
+    </div>
   );
 }
 
