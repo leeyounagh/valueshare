@@ -159,12 +159,13 @@ const BtnDiv = styled.div`
 
 function Detail() {
   const [productInformation, setProductInformation] = useState(null);
+
   const { productid } = useParams();
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/admin/products/${productid}`)
       .then((res) => {
-        console.log(res);
         setProductInformation(res.data);
       })
       .catch((err) => {

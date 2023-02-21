@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import color from "styles/color";
-// import Paypal from "component/cart/Paypal";
+import Paypal from "component/cart/Paypal";
 
 const { white, gray3, gray1, gray4, gray5 } = color;
 
@@ -12,6 +12,7 @@ const SLayout = styled.div`
   padding: 60px 30px;
   border-radius: 10px;
   background-color: ${white};
+  z-index: 10;
 `;
 
 const SOrderTitleDiv = styled.div`
@@ -115,12 +116,15 @@ const SOrderIconText = styled.div`
   color: ${gray5};
 `;
 
-function OrderPrice({ cartItems }) {
+function OrderPrice({ cartItems, setCartItems }) {
   const sum = useMemo(() => {
     return cartItems.reduce((acc, cur) => {
       return acc + Number(cur.productPrice) * cur.quantity;
     }, 0);
   }, [cartItems]);
+
+  const changeDoller = Number(sum.toString().slice(0, -3));
+  // 한화 달러화
 
   return (
     <SLayout>
@@ -137,11 +141,17 @@ function OrderPrice({ cartItems }) {
         <STotalTextDiv>합계</STotalTextDiv>
         <SLastTotalPriceDiv> ₩{sum}</SLastTotalPriceDiv>
       </SLastTotalDiv>
-
-      <SOrderIcon>
-        {/* <Paypal /> */}
-        <SOrderIconText>주문하기</SOrderIconText>
-      </SOrderIcon>
+      {cartItems.length > 0 ? (
+        <Paypal
+          total={changeDoller}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+        />
+      ) : (
+        <SOrderIcon>
+          <SOrderIconText>주문하기</SOrderIconText>
+        </SOrderIcon>
+      )}
     </SLayout>
   );
 }

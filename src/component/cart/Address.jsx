@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import color from "styles/color";
 import EditAdress from "./EditAdress";
@@ -88,43 +89,67 @@ const SEditAdress = styled.div`
 `;
 function Address() {
   const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(!modalIsOpen);
-  }
+  const adress = useSelector((state) => {
+    return state.UserAddressReducer;
+  });
 
   return (
-    <SLayout>
-      <SAddressTitle>Address</SAddressTitle>
-      <SItemDiv>
-        <SAdressTiltleDiv>받는사람</SAdressTiltleDiv>
-        <SAddressText>이수연</SAddressText>
-      </SItemDiv>
-      <SItemDiv>
-        <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
-        <SAddressText>010-0000-0000</SAddressText>
-      </SItemDiv>
-      <SItemDiv>
-        <SAdressTiltleDiv>배송지</SAdressTiltleDiv>
-        <SAddressText>서울시 엘리스랩 엘리스동...</SAddressText>
-      </SItemDiv>
-      <SItemDiv>
-        <SAdressTiltleDiv>배송메모</SAdressTiltleDiv>
-        <SAddressText>배송 후 연락 주세요</SAddressText>
-      </SItemDiv>
-      <SItemDiv>
-        <SAdressTiltleDiv>이메일</SAdressTiltleDiv>
-        <SAddressText> elice@test.com</SAddressText>
-      </SItemDiv>
-      <SEditAdress
-        onClick={() => {
-          openModal();
-        }}
-      >
-        배송지 수정
-      </SEditAdress>
-      {modalIsOpen ? <EditAdress /> : null}
-    </SLayout>
+    <div>
+      <SLayout>
+        <SAddressTitle>Address</SAddressTitle>
+        <SItemDiv>
+          <SAdressTiltleDiv>받는사람</SAdressTiltleDiv>
+          <SAddressText>
+            {adress.customerName.length > 0
+              ? `${adress.customerName}`
+              : "성함을 입력해주세요"}
+          </SAddressText>
+        </SItemDiv>
+        <SItemDiv>
+          <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
+          <SAddressText>
+            {adress.phonenumber.length > 0
+              ? `${adress.phonenumber}`
+              : "핸드폰번호를 입력해주세요"}
+          </SAddressText>
+        </SItemDiv>
+        <SItemDiv>
+          <SAdressTiltleDiv>배송지</SAdressTiltleDiv>
+          <SAddressText>
+            {adress.address.length >= 14
+              ? `${adress.address.substr(0, 14)}...`
+              : adress.address.length > 0
+              ? `${adress.address}`
+              : "배송지를 입력해주세요"}
+          </SAddressText>
+        </SItemDiv>
+        <SItemDiv>
+          <SAdressTiltleDiv>배송메모</SAdressTiltleDiv>
+          <SAddressText>
+            {adress.memo.length > 0
+              ? `${adress.memo}`
+              : "배송메모를 등록해주세요"}
+          </SAddressText>
+        </SItemDiv>
+        <SItemDiv>
+          <SAdressTiltleDiv>이메일</SAdressTiltleDiv>
+          <SAddressText>
+            {" "}
+            {adress.email.length > 0
+              ? `${adress.email}`
+              : "email을 등록해주세요"}
+          </SAddressText>
+        </SItemDiv>
+        <SEditAdress
+          onClick={() => {
+            setIsOpen(!modalIsOpen);
+          }}
+        >
+          배송지 수정
+        </SEditAdress>
+      </SLayout>
+      {modalIsOpen ? <EditAdress setIsOpen={setIsOpen} /> : null}
+    </div>
   );
 }
 

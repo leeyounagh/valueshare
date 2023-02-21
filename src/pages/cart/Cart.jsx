@@ -45,7 +45,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState(getInitialCartItems());
 
   return (
-    <div>
+    <div style={{ zIndex: "10", position: "relative" }}>
       <Navbar />
       <SLayout>
         {cartItems.length === 0 ? (
@@ -60,7 +60,7 @@ function Cart() {
 
         <SOrderPriceDiv>
           <Address />
-          <OrderPrice cartItems={cartItems} />
+          <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
         </SOrderPriceDiv>
       </SLayout>
     </div>
