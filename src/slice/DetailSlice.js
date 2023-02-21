@@ -4,7 +4,7 @@ const initialState = {
   id: "",
 };
 
-export const passIdSlice = createSlice({
+export const DetailSlice = createSlice({
   name: "passId",
   initialState,
   reducers: {
@@ -14,8 +14,8 @@ export const passIdSlice = createSlice({
   },
 });
 
-export const { passId } = passIdSlice.actions;
+export const { passId } = DetailSlice.actions;
 
 // export const selectPassId = (state) => state.passId.value;
 
-export default passIdSlice.reducer;
+export default DetailSlice.reducer;
