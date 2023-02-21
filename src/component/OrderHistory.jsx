@@ -1,6 +1,9 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-expressions */
 import React from "react";
 import color from "styles/color";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const { white, gray1, gray3, gray4 } = color;
 
@@ -9,6 +12,7 @@ const SLayout = styled.div`
   border-radius: 10px;
   background-color: ${white};
   margin-left: 80px;
+  padding-bottom: 50px;
 `;
 const SHistoryTitle = styled.div`
   font-family: Montserrat;
@@ -121,26 +125,39 @@ const SStatusIcon = styled.img`
   margin-top: 5px;
 `;
 function OrderHistory() {
+  const orderItem = useSelector((state) => {
+    return state.OrderListReducer.orderList;
+  });
+  console.log(orderItem);
   return (
     <SLayout>
       <SHistoryTitle>Order History</SHistoryTitle>
       <SItemDiv>
-        <OrderNumberDiv>#481293</OrderNumberDiv>
-        <OrderPriceDiv>₩63,000</OrderPriceDiv>
-        <ItemQuantityDiv> 2 Items</ItemQuantityDiv>
-        <LineDiv />
-        <SProductStatusDiv>
-          <SStatusTopDiv>
-            <SStatusImgDiv>
-              <SStatusImg src="/asset/상품준비중아이콘.png" />
-            </SStatusImgDiv>
+        {orderItem.map((item) => {
+          return (
+            <div>
+              <OrderNumberDiv>{item.result._id}</OrderNumberDiv>
+              <OrderPriceDiv>₩63,000</OrderPriceDiv>
+              <ItemQuantityDiv>
+                {" "}
+                {item.result.products.length} Items
+              </ItemQuantityDiv>
+              <LineDiv />
+              <SProductStatusDiv>
+                <SStatusTopDiv>
+                  <SStatusImgDiv>
+                    <SStatusImg src="/asset/상품준비중아이콘.png" />
+                  </SStatusImgDiv>
 
-            <SStatusText>상품 이동중</SStatusText>
-          </SStatusTopDiv>
-          <SStatusIconDiv>
-            <SStatusIcon src="/asset/상품준비중바.png" />
-          </SStatusIconDiv>
-        </SProductStatusDiv>
+                  <SStatusText>상품 이동중</SStatusText>
+                </SStatusTopDiv>
+                <SStatusIconDiv>
+                  <SStatusIcon src="/asset/상품준비중바.png" />
+                </SStatusIconDiv>
+              </SProductStatusDiv>
+            </div>
+          );
+        })}
       </SItemDiv>
     </SLayout>
   );

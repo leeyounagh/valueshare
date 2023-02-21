@@ -23,7 +23,7 @@ import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
 import Membership from "pages/membership/Membership";
 import Product from "pages/products/Product";
-import OrderSuccess from "pages/nonmember/OrderSuccess";
+import OrderSuccess from "pages/ordersucces/OrderSuccess";
 import CancelOrder from "pages/cancleorder/CancelOrder";
 import { setPageInfo } from "slice/PageSlice";
 
