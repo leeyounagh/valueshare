@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
-import OrderedList from "pages/orderedlist/OrderedList";
+import OrderList from "pages/orderlist/OrderList";
 import Header from "component/layout/header/Header";
 import History from "pages/history/History";
 import Login from "pages/login/Login";
@@ -23,7 +23,7 @@ import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
 import Membership from "pages/membership/Membership";
 import Product from "pages/products/Product";
-import OrderSuccess from "pages/ordersucces/OrderSuccess";
+import OrderSuccess from "pages/nonmember/OrderSuccess";
 import CancelOrder from "pages/cancleorder/CancelOrder";
 import { setPageInfo } from "slice/PageSlice";
 
@@ -52,7 +52,7 @@ function App() {
   if (pathname === "/myorder") {
     dispatch(setPageInfo({ rootTitle: "Myorder", currentTitle: "Myorder" }));
   }
-  if (pathname === "/cancelorder") {
+  if (pathname === "/cancleorder") {
     dispatch(
       setPageInfo({ rootTitle: "Cancle Order", currentTitle: "Cancle Order" })
     );
@@ -81,11 +81,11 @@ function App() {
         <Route exact path="/lookbook" element={<LookBook />} />
 
         <Route exact path="/membership" element={<Membership />} />
-        <Route exact path="/cancelorder" element={<CancelOrder />} />
+        <Route exact path="/cancleorder" element={<CancelOrder />} />
 
         {/* 어드민 페이지  */}
         <Route exact path="/admin" element={<Admin />} />
-        <Route exact path="/admin/oredered" element={<OrderedList />} />
+        <Route exact path="/admin/orederlist" element={<OrderList />} />
         <Route exact path="/admin/deliverylist" element={<DeliveryList />} />
         <Route exact path="/admin/canceledlist" element={<CanceledList />} />
         <Route
