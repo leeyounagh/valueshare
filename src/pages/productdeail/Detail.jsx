@@ -149,8 +149,8 @@ const DivideLine = styled.div`
 const BtnDiv = styled.div`
   width: 100%;
   height: 100px;
-  position: relative;
-  bottom: -282px;
+  position: absolute;
+  top: 1050px;
 
   div {
     margin: 20px 0;
