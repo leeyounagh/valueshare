@@ -128,9 +128,9 @@ const SCancelButton = styled.button`
 `;
 function OrderSuccess() {
   const orderItem = useSelector((state) => {
-    return state.OrderListReducer;
+    return state.OrderListReducer.orderList;
   });
-  console.log(orderItem);
+  console.log(orderItem[0].result._id);
   return (
     <div>
       <Navbar />
@@ -145,7 +145,7 @@ function OrderSuccess() {
             <SOrderNumberTextDiv>
               고객님이 주문하신 주문번호는
             </SOrderNumberTextDiv>
-            <SOrderNumberDiv>{orderItem[0]?._id}입니다.</SOrderNumberDiv>
+            <SOrderNumberDiv>{orderItem[0].result._id}입니다.</SOrderNumberDiv>
             <SOrderGuideDiv>
               <SOrderGuideItemDiv>
                 비회원의 주문내역 확인은 상단의
