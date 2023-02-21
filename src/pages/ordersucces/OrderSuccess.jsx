@@ -1,7 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Navbar from "component/Navbar";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const { gray6, white, gray2, gray3, gray1 } = color;
 
@@ -100,7 +103,11 @@ const SCheckbutton = styled.button`
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: ${white};
+
+  a {
+    text-decoration: none;
+    color: ${white};
+  }
 `;
 const SCancelButton = styled.button`
   font-family: NotoSans;
@@ -119,7 +126,11 @@ const SCancelButton = styled.button`
   height: 100%;
   margin-left: 10px;
 `;
-function NoneMember() {
+function OrderSuccess() {
+  const orderItem = useSelector((state) => {
+    return state.OrderListReducer;
+  });
+  console.log(orderItem);
   return (
     <div>
       <Navbar />
@@ -134,7 +145,7 @@ function NoneMember() {
             <SOrderNumberTextDiv>
               고객님이 주문하신 주문번호는
             </SOrderNumberTextDiv>
-            <SOrderNumberDiv>191005330입니다.</SOrderNumberDiv>
+            <SOrderNumberDiv>{orderItem[0]?._id}입니다.</SOrderNumberDiv>
             <SOrderGuideDiv>
               <SOrderGuideItemDiv>
                 비회원의 주문내역 확인은 상단의
@@ -144,7 +155,10 @@ function NoneMember() {
               </SOrderGuideItemDiv>
             </SOrderGuideDiv>
             <SbuttonDiv>
-              <SCheckbutton> 주문 내역 조회</SCheckbutton>
+              <SCheckbutton>
+                <Link to="/myorder"> 주문 내역 조회 </Link>
+              </SCheckbutton>
+
               <SCancelButton> 주문 취소 요청</SCancelButton>
             </SbuttonDiv>
           </SItemInnerDiv>
@@ -154,4 +168,4 @@ function NoneMember() {
   );
 }
 
-export default NoneMember;
+export default OrderSuccess;

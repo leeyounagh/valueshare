@@ -284,7 +284,6 @@ function GetItemCart({ cartItems, setCartItems }) {
     setCartItems(newCartItems);
     localStorage.setItem("baskets", JSON.stringify(newCartItems));
   };
-  console.log(cartItems);
 
   return (
     <Slayout>

@@ -227,6 +227,7 @@ function EditAdress({ setIsOpen }) {
           <SCheckButton
             onClick={() => {
               handleAddress();
+              setIsOpen(false);
             }}
           >
             확인
