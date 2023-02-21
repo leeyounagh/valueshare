@@ -39,8 +39,9 @@ function Paypal({ total, cartItems, setCartItems }) {
     <PayPalScriptProvider options={initialOptions}>
       <PayPalButtons
         createOrder={(data, actions) => onCreateOrder(data, actions)}
-        onApprove={async (data, actions) => {
+        onApprove={(data, actions) => {
           actions.order.capture().then(async () => {
+            console.log(ShipInfo, data, "들어오기전");
             const newData = {
               // eslint-disable-next-line prettier/prettier
               phone: ShipInfo.phonenumber,
@@ -51,12 +52,13 @@ function Paypal({ total, cartItems, setCartItems }) {
               shipAdr: ShipInfo.address,
               shipNote: ShipInfo.memo,
             };
-            console.log(ShipInfo, data, "들어오기전");
+
             try {
               const response = await axios.post(
                 "http://localhost:5000/checkout",
                 newData
               );
+
               const orderData = await response.data;
               dispatch(setOrderInfo(orderData));
               localStorage.removeItem("baskets");
