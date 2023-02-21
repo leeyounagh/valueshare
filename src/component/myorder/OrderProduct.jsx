@@ -6,7 +6,7 @@ const { white, gray1, gray3 } = color;
 
 const SLayout = styled.div`
   width: 60%;
-  margin-left: 40px;
+  margin-left: 140px;
   border-radius: 10px;
   background-color: ${white};
   padding-left: 60px;

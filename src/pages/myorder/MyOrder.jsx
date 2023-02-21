@@ -13,14 +13,20 @@ const SLayout = styled.div`
   display: flex;
 `;
 
+const SOrderHistoryDiv = styled.div`
+  width: 30%;
+  margin-right: 20px;
+`;
 function MyOrder() {
   return (
     <div>
       <Navbar />
       <SLayout>
-        <OrderHistory>adfadf</OrderHistory>
+        <SOrderHistoryDiv>
+          <OrderHistory />
+        </SOrderHistoryDiv>
 
-        <OrderProduct>adsfasd</OrderProduct>
+        <OrderProduct />
       </SLayout>
     </div>
   );

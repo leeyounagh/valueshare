@@ -130,7 +130,6 @@ function OrderSuccess() {
   const orderItem = useSelector((state) => {
     return state.OrderListReducer.orderList;
   });
-  console.log(orderItem[0].result._id);
   return (
     <div>
       <Navbar />
