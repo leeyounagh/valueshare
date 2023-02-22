@@ -18,9 +18,10 @@ const SLayout = styled.div`
   z-index: 10;
 `;
 const SAddressTitle = styled.div`
-  width: 100%;
+  width: 90%;
   height: 20%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-left: 15px;
   display: flex;
   align-items: flex-end;
   flex-grow: 0;
@@ -38,11 +39,11 @@ const SAdressTiltleDiv = styled.div`
   width: 30%;
   flex-grow: 0;
   font-family: NotoSans;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
+  line-height: 1.8;
   letter-spacing: normal;
   text-align: left;
   color: ${gray3};
@@ -50,24 +51,26 @@ const SAdressTiltleDiv = styled.div`
 const SAddressText = styled.div`
   flex-grow: 0;
   font-family: NotoSans;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
+  line-height: 1.5;
   letter-spacing: normal;
   text-align: left;
   color: ${gray1};
 `;
 const SItemDiv = styled.div`
+  width: 90%;
   display: flex;
-  height: 10%;
+  height: auto;
   margin-top: 5px;
+  margin-left: 15px;
 `;
 
 const SEditAdress = styled.div`
   width: 90%;
-  margin-top: 10px;
+  margin-top: 50px;
   margin-left: 13px;
   height: 50px;
   border-radius: 10px;
