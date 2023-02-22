@@ -34,24 +34,13 @@ function CustomerLine1() {
   return (
     <Slayout>
       <CardList>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
+        {Array.from({ length: 6 }).map(() => {
+          return (
+            <div>
+              <CustomerComponent />
+            </div>
+          );
+        })}
       </CardList>
     </Slayout>
   );
