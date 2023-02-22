@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { setOrderInfo } from "slice/OrderSlice";
 
-function Paypal({ total, cartItems, setCartItems }) {
+function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const ShipInfo = useSelector((state) => {
-    return state.UserAddressReducer;
-  });
-  console.log(ShipInfo);
+  // const ShipInfo = useSelector((state) => {
+  //   return state.UserAddressReducer;
+  // });
+  // console.log(ShipInfo);
   const initialOptions = {
     "client-id":
       "AT3NE7EKYDtLHJ2q0nRqQqpTOPcycfmadei97OuSt2CKBtvY6y_oEiK7M5uFL9LQ2D9o3lp87AGth6fS",
