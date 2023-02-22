@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Continent from "data/Continent";
+import { useSearchParams } from "react-router-dom";
 
 const { gray3, gray4 } = color;
 
@@ -20,9 +21,8 @@ const SFilterTitle = styled.div`
   width: 97px;
   height: 37px;
   position: absolute;
-  top: 70px;
+  top: 100px;
   left: 30px;
-  font-family: Montserrat;
   font-size: 30px;
   font-weight: 600;
   font-stretch: normal;
@@ -36,13 +36,12 @@ const SLineDiv = styled.div`
   width: 90%;
   height: 1px;
   position: absolute;
-  top: 150px;
+  top: 160px;
   left: 30px;
   background-color: ${gray4};
 `;
 const SFilterDiv = styled.div`
   width: 100%;
-  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,17 +49,15 @@ const SFilterDiv = styled.div`
 `;
 const SCategoryDiv = styled.div`
   width: 90%;
-  height: 75%;
+  height: auto;
   position: absolute;
-  top: 50px;
+  top: 30px;
   left: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
-  font-family: Montserrat;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
-  font-style: normal;
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
@@ -69,20 +66,21 @@ const SCategoryDiv = styled.div`
 `;
 const SCategoryItemDiv = styled.div`
   width: 95%;
-  height: 60px;
+  height: 50px;
   border-radius: 10px;
   border: solid 1px ${gray3};
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
 `;
 const SCategoryOuterDiv = styled.div`
   position: absolute;
   width: 98%;
-  height: 60px;
+  height: 50px;
   border-radius: 10px;
   border: solid 1px ${gray3};
-  top: 280px;
+  top: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,6 +95,9 @@ const SBottomLineDiv = styled.div`
 `;
 function Filters() {
   const filterItem = Continent.filter((item) => item.key !== 7);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("category");
+  console.log("category :", category);
 
   return (
     <SLayout>
@@ -105,9 +106,15 @@ function Filters() {
         <SLineDiv />
       </SFilterTitleDiv>
       <SFilterDiv>
-        <SCategoryDiv>
+        <SCategoryDiv key={filterItem.key}>
           {filterItem.map((item) => {
-            return <SCategoryItemDiv>{item.value}</SCategoryItemDiv>;
+            return (
+              <SCategoryItemDiv
+                onClick={() => setSearchParams({ category: `${item.value}` })}
+              >
+                {item.value}
+              </SCategoryItemDiv>
+            );
           })}
           <SCategoryOuterDiv>Outer</SCategoryOuterDiv>
         </SCategoryDiv>

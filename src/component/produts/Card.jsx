@@ -85,9 +85,9 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
+
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
-    // data.filter((item) => item._id === _id);
     dispatch(passId(_id));
   };
 
@@ -98,13 +98,13 @@ function Card() {
     }
     getProducts();
   }, []);
-
   return (
     <SLayout>
       {productData.map((item) => {
         return (
           <SCardDiv>
             <Link
+              key={item._id}
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >
