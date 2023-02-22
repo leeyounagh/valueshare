@@ -127,7 +127,6 @@ const SQuantityPreviusImg = styled.img`
 `;
 const SQuantityTextDiv = styled.div`
   font-family: Montserrat;
-  padding: 4px 4px 4px 5px;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
@@ -136,6 +135,9 @@ const SQuantityTextDiv = styled.div`
   letter-spacing: normal;
   text-align: center;
   color: ${gray1};
+  width: 40px;
+  height: 40px;
+  padding-top: 5px;
 `;
 const SQuantityNextImg = styled.img`
   width: 36px;
