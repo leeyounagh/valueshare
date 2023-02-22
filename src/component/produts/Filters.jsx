@@ -96,7 +96,9 @@ const SBottomLineDiv = styled.div`
 function Filters() {
   const filterItem = Continent.filter((item) => item.key !== 7);
   const filterItem2 = Continent.filter((item) => item.key === 7);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({
+    categories: "all",
+  });
   const categories = searchParams.get("categories");
   console.log("categories :", categories);
 
