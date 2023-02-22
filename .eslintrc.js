@@ -7,7 +7,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "plugin:prettier/recommended",
   ],
@@ -37,5 +36,11 @@ module.exports = {
     "react/prop-types": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        labelAttributes: ["htmlFor"],
+      },
+    ],
   },
 };

@@ -1,10 +1,9 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(undefined);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [data, setData] = useState(undefined);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -22,21 +21,15 @@ export default function Login() {
 
     setIsLoading(true);
     setData(undefined);
-    setError(undefined);
 
     const body = {
       email,
       password,
     };
 
-    axios
-      .post('/endPoint', body)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        setError('에러');
-      });
+    axios.post("/endPoint", body).then((res) => {
+      console.log(res.data);
+    });
   };
 
   return (
@@ -57,16 +50,17 @@ export default function Login() {
             value={password}
             onChange={handlePasswordChange}
           />
-          {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ''}
+          {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ""}
         </div>
         <div className="loginSubmit">
-          <button onClick={handleClick}>Login</button>
+          <button type="submit" onClick={handleClick}>
+            Login
+          </button>
         </div>
       </form>
       <div className="loginResult">
-        {isLoading ? '로그인중입니다.' : null}
+        {isLoading ? "로그인중입니다." : null}
         {data ? `안녕하세요. ${data.id}님.` : null}
-        {error ? error : null}
       </div>
     </div>
   );
