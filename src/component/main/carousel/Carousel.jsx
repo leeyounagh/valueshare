@@ -12,7 +12,7 @@ const SlayOut = styled.div`
 `;
 
 const SbannerText = styled.div`
-  margin-top: 130px;
+  margin-top: 120px;
   vertical-align: middle;
   h2 {
     font-family: "Rufina", serif;
@@ -28,8 +28,10 @@ const SbannerText = styled.div`
   }
   div {
     p {
-      font-size: 12px;
+      font-size: 16px;
       line-height: 1;
+      color: ${color.gray3};
+      margin-bottom: 10px;
     }
   }
 `;
@@ -38,7 +40,7 @@ const SbannerIcon = styled.div`
   display: flex;
   width: auto;
   height: auto;
-  margin-top: 40px;
+  margin-top: 60px;
 `;
 
 const Sbanner = styled.div`
@@ -47,6 +49,7 @@ const Sbanner = styled.div`
   flex-direction: space-between;
   justify-content: flex-end;
   margin: 0 10px;
+  z-index: 1;
 
   div > div {
     display: flex;
@@ -58,6 +61,7 @@ const Sbanner1 = styled.img`
   height: 180px;
   border-radius: 0px 44px 44px 44px;
   margin-right: 10px;
+  z-index: 1;
 `;
 
 const Sbanner2 = styled.img`
@@ -65,6 +69,7 @@ const Sbanner2 = styled.img`
   height: 180px;
   background-color: ${color.gray3};
   border-radius: 0px 44px 44px 44px;
+  z-index: 1;
 `;
 
 const Sbanner3 = styled.img`
@@ -73,6 +78,7 @@ const Sbanner3 = styled.img`
   background-color: ${color.gray3};
   border-radius: 44px;
   margin-top: 20px;
+  z-index: 1;
 `;
 
 const Sbanner4 = styled.img`
@@ -81,6 +87,33 @@ const Sbanner4 = styled.img`
   background-color: ${color.gray3};
   border-radius: 44px 0 44px 0;
   margin-left: 18px;
+  z-index: 1;
+`;
+
+const BgImg1 = styled.img`
+  top: 156px;
+  position: absolute;
+  right: 30px;
+`;
+
+const BgImg2 = styled.img`
+  position: absolute;
+  top: 720px;
+  right: 778px;
+  opacity: 0.8;
+`;
+
+const BgImg3 = styled.img`
+  position: absolute;
+  top: 232px;
+  right: 424px;
+`;
+
+const BgImg4 = styled.img`
+  position: absolute;
+  top: 542px;
+  right: 20px;
+  z-index: 2;
 `;
 
 function Carousel() {
@@ -108,6 +141,10 @@ function Carousel() {
         </div>
         <Sbanner4 src="/asset/img-banner4.png" />
       </Sbanner>
+      <BgImg3 src="/asset/bg-Ellipse2.svg" />
+      <BgImg4 src="/asset/bg-Ellipse3.svg" />
+      <BgImg1 src="/asset/bg-ellipse.svg" />
+      <BgImg2 src="/asset/bg-Ellipse1.svg" />
     </SlayOut>
   );
 }
