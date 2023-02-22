@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -95,21 +97,31 @@ const SPriceDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-function OrderProduct() {
+function OrderProduct({ orderData }) {
+  console.log(orderData);
+
   return (
     <SLayout>
-      <SOrderTitleDiv>Order #125466</SOrderTitleDiv>
-      <SOrderItemDiv>
-        <SItemImgDiv>
-          <SImg src="/asset/테스트가방.png" />
-        </SItemImgDiv>
-        <STitleDiv>
-          <SBrandNameDiv>Louis Vuitton</SBrandNameDiv>
-          <SProductNameDiv>트위스트 MM 핸드백</SProductNameDiv>
-        </STitleDiv>
-        <SQuantityDiv>1개</SQuantityDiv>
-        <SPriceDiv> ₩60,000</SPriceDiv>
-      </SOrderItemDiv>
+      {orderData.map((item) => {
+        return (
+          <>
+            <SOrderTitleDiv>Order {item.orderNumber}</SOrderTitleDiv>
+            <SOrderItemDiv>
+              <SItemImgDiv>
+                <SImg src={item.products[0].productImage[0]} />
+              </SItemImgDiv>
+              <STitleDiv>
+                {/* <SBrandNameDiv>{item.result}</SBrandNameDiv> */}
+                <SProductNameDiv>
+                  트위스트 MM 핸드백 외 {item.products.length - 1}개
+                </SProductNameDiv>
+              </STitleDiv>
+              <SQuantityDiv>{item.products.length}개</SQuantityDiv>
+              <SPriceDiv> ₩{item.totalPrice * 1000}</SPriceDiv>
+            </SOrderItemDiv>
+          </>
+        );
+      })}
     </SLayout>
   );
 }

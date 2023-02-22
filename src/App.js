@@ -68,7 +68,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/myorder" element={<MyOrder />} />
+        <Route path="/myorder/:userid" element={<MyOrder />} />
         <Route path="/mypage/resign" element={<Resign />} />
         <Route path="/mypage/userinfo" element={<UserInfo />} />
         <Route path="/ordersuccess" element={<OrderSuccess />} />

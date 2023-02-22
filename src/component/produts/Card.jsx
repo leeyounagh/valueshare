@@ -96,6 +96,7 @@ function Card() {
     }
     getProducts();
   }, [categories]);
+
   return (
     <SLayout>
       {productData.map((item) => {

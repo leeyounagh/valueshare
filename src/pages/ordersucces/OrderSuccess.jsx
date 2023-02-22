@@ -144,7 +144,9 @@ function OrderSuccess() {
             <SOrderNumberTextDiv>
               고객님이 주문하신 주문번호는
             </SOrderNumberTextDiv>
-            <SOrderNumberDiv>{orderItem[0].result._id}입니다.</SOrderNumberDiv>
+            <SOrderNumberDiv>
+              {orderItem[0]?.result.userId.orderNumber}입니다.
+            </SOrderNumberDiv>
             <SOrderGuideDiv>
               <SOrderGuideItemDiv>
                 비회원의 주문내역 확인은 상단의
@@ -155,7 +157,10 @@ function OrderSuccess() {
             </SOrderGuideDiv>
             <SbuttonDiv>
               <SCheckbutton>
-                <Link to="/myorder"> 주문 내역 조회 </Link>
+                <Link to={`/myorder/${orderItem[0]?.result._id}`}>
+                  {" "}
+                  주문 내역 조회{" "}
+                </Link>
               </SCheckbutton>
 
               <SCancelButton> 주문 취소 요청</SCancelButton>
