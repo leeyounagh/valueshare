@@ -51,6 +51,7 @@ function Paypal({ total, cartItems, setCartItems }) {
               shipStatus: "주문접수",
               shipAdr: ShipInfo.address,
               shipNote: ShipInfo.memo,
+              totalPrice: total,
             };
 
             try {

@@ -18,7 +18,6 @@ import Resign from "pages/resign/Resign";
 import DeliveryList from "pages/deliverylist/DeliveryList";
 import CanceledList from "pages/canceledlist/CanceledList";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
-import DeleteProduct from "pages/deleteproduct/DeleteProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
 import Membership from "pages/membership/Membership";
@@ -26,6 +25,7 @@ import Product from "pages/products/Product";
 import OrderSuccess from "pages/ordersucces/OrderSuccess";
 import CancelOrder from "pages/cancleorder/CancelOrder";
 import OrderListDetail from "pages/orderlistdetail/OrderListDetail";
+import NoneMember from "pages/nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
 
 function App() {
@@ -84,6 +84,8 @@ function App() {
         <Route path="/membership" element={<Membership />} />
         <Route path="/cancleorder" element={<CancelOrder />} />
 
+        <Route path="/nonmemberorder" element={<NoneMember />} />
+
         {/* 어드민 페이지  */}
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/orederlist" element={<OrderList />} />
@@ -94,10 +96,7 @@ function App() {
         <Route path="/admin/deliverylist" element={<DeliveryList />} />
         <Route path="/admin/canceledlist" element={<CanceledList />} />
         <Route path="/admin/category/addproduct" element={<UploadProduct />} />
-        <Route
-          path="/admin/category/deleteproduct"
-          element={<DeleteProduct />}
-        />
+
         <Route
           exact
           path="/admin/category/editproduct"

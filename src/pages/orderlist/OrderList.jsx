@@ -24,6 +24,7 @@ const STableDiv = styled.div`
   justify-content: center;
   a {
     text-decoration: none;
+    color: black;
   }
 `;
 
@@ -37,7 +38,7 @@ function OrderList() {
     }
     getOrderList();
   }, []);
-
+  console.log(orderData);
   return (
     <div>
       <STitle>
@@ -60,7 +61,7 @@ function OrderList() {
                   <tr>
                     <td>{index + 1}</td>
                     <Link to={`/admin/orderlist/${item._id}`}>
-                      <td>{item.orderNumber}</td>
+                      <td>{item._id}</td>
                     </Link>
                     <td>{item.name}</td>
                     <td>{item.email}</td>
