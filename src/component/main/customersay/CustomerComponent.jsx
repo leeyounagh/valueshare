@@ -9,6 +9,11 @@ const SlayOut = styled.div`
   border-radius: 50px;
   border: 1px solid ${color.gray4};
   display: flex;
+  h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: ${color.gray2};
+  }
   p {
     color: ${color.gray3};
   }

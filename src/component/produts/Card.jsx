@@ -9,7 +9,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 // eslint-disable-next-line no-unused-vars
-import qs from "qs";
 
 const SLayout = styled.div`
   width: 100%;
@@ -91,11 +90,6 @@ function Card() {
   const categories = searchParams.get("categories");
 
   console.log(categories);
-
-  const dispatch = useDispatch();
-  const PassIdHandler = (_id) => {
-    dispatch(passId(_id));
-  };
 
   useEffect(() => {
     async function getProducts() {
