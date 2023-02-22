@@ -89,8 +89,12 @@ const SCartImgDiv = styled.div`
 function Card() {
   const [productData, setData] = useState([]);
   // eslint-disable-next-line no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+
   const categories = searchParams.get("categories");
+
+  console.log(categories);
+
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
     dispatch(passId(_id));
@@ -101,6 +105,7 @@ function Card() {
       const response = await axios.get("http://localhost:5000/products", {
         params: { categories: `${categories}` },
       });
+      console.log(response);
       setData(response.data.result);
     }
     getProducts();
