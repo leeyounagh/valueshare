@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import color from "styles/color";
 import Carousel from "./carousel/Carousel";
 import LogoSlide from "./logoslide/LogoSlide";
 import BestsellerList from "./bestseller/BestsellerList";
@@ -10,6 +11,7 @@ import Membership from "./membership/Membership";
 
 const SlayOut = styled.div`
   width: 100%;
+  background-color: ${color.white};
 `;
 
 const BgImg1 = styled.img`

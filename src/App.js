@@ -26,6 +26,8 @@ import Product from "pages/products/Product";
 import OrderSuccess from "pages/nonmember/OrderSuccess";
 import CancelOrder from "pages/cancleorder/CancelOrder";
 import { setPageInfo } from "slice/PageSlice";
+import Productest from "pages/products/Productest";
+import NotFound from "pages/NotFound";
 
 function App() {
   const { pathname } = useLocation();
@@ -75,6 +77,7 @@ function App() {
 
         <Route exact path="/product/:productid" element={<Detail />} />
         <Route exact path="/product" element={<Product />} />
+        <Route exact path="/product/:categories" element={<Productest />} />
 
         <Route exact path="/bestseller" element={<BestSeller />} />
 
@@ -103,8 +106,9 @@ function App() {
           path="/admin/category/editproduct"
           element={<EditProduct />}
         />
+        {/* 404  */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
       <Footer />
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import handleBasket from "utils/handleBasket";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 
@@ -85,26 +85,34 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
+
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
-    // data.filter((item) => item._id === _id);
     dispatch(passId(_id));
   };
 
+  const [searchParams] = useSearchParams();
+
+  const categories = searchParams.get("categories");
+
+  console.log(categories);
+
   useEffect(() => {
     async function getProducts() {
-      const response = await axios.get("http://localhost:5000/admin/products");
+      const response = await axios.get("http://localhost:5000/products", {
+        params: { categories: `${categories}` },
+      });
       setData(response.data.result);
     }
     getProducts();
-  }, []);
-
+  }, [categories]);
   return (
     <SLayout>
       {productData.map((item) => {
         return (
           <SCardDiv>
             <Link
+              key={item._id}
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >

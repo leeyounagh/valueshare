@@ -11,6 +11,7 @@ import Btn2 from "component/button/Btn2";
 const Slayout = styled.div`
   width: 100%;
   height: 1500px;
+  background-color: ${color.white};
 `;
 
 const DetailLayout = styled.div`
@@ -19,14 +20,14 @@ const DetailLayout = styled.div`
     font-size: 40px;
   }
   .slick-next {
-    right: -145px;
+    right: -15%;
   }
   .slick-next:before {
     background: url("/asset/icn-arrow-next.svg") no-repeat center center;
     color: transparent;
   }
   .slick-prev {
-    left: 270px;
+    left: 35%;
     z-index: 1;
   }
   .slick-list {
@@ -52,7 +53,8 @@ const DetailLayout = styled.div`
     top: 110px;
   }
   .slick-dots {
-    width: 25%;
+    margin-left: 2%;
+    width: 20%;
     display: flex !important;
     flex-direction: column;
     height: 1090px;
@@ -103,6 +105,7 @@ const ProductPrice = styled.div`
   bottom: 80px;
   text-align: right;
   right: 10px;
+  font-weight: 600;
 `;
 const ProductImgLiDiv = styled.div`
   width: 100%;
@@ -116,6 +119,7 @@ const ProductImgLi = styled.img`
   width: 100%;
   height: 200px;
   border-radius: 15px;
+  object-fit: cover;
 `;
 
 const ProductImgDiv = styled.div`
@@ -179,7 +183,10 @@ function Detail() {
       return (
         <a>
           <ProductImgLiDiv />
-          <ProductImgLi src={productInformation?.result.productImage[i]} />
+          <ProductImgLi
+            key={i}
+            src={productInformation?.result.productImage[i]}
+          />
         </a>
       );
     },
