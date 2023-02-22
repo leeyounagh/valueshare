@@ -119,6 +119,7 @@ const ProductImgLi = styled.img`
   width: 100%;
   height: 200px;
   border-radius: 15px;
+  object-fit: cover;
 `;
 
 const ProductImgDiv = styled.div`
@@ -182,7 +183,10 @@ function Detail() {
       return (
         <a>
           <ProductImgLiDiv />
-          <ProductImgLi src={productInformation?.result.productImage[i]} />
+          <ProductImgLi
+            key={i}
+            src={productInformation?.result.productImage[i]}
+          />
         </a>
       );
     },

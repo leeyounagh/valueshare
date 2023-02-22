@@ -95,6 +95,7 @@ const SBottomLineDiv = styled.div`
 `;
 function Filters() {
   const filterItem = Continent.filter((item) => item.key !== 7);
+  const filterItem2 = Continent.filter((item) => item.key === 7);
   const [searchParams, setSearchParams] = useSearchParams();
   const categories = searchParams.get("categories");
   console.log("categories :", categories);
@@ -116,7 +117,19 @@ function Filters() {
               </SCategoryItemDiv>
             );
           })}
-          <SCategoryOuterDiv>Outer</SCategoryOuterDiv>
+          <div key={filterItem2.key}>
+            {filterItem2.map((item) => {
+              return (
+                <SCategoryOuterDiv
+                  onClick={() =>
+                    setSearchParams({ categories: `${item.value}` })
+                  }
+                >
+                  {item.value}
+                </SCategoryOuterDiv>
+              );
+            })}
+          </div>
         </SCategoryDiv>
       </SFilterDiv>
       <SBottomLineDiv />
