@@ -16,11 +16,13 @@ const SlayOut = styled.div`
     font-size: 50px;
     text-align: center;
     font-family: "Rufina", serif;
+    z-index: 1;
   }
 
   div {
     display: flex;
     position: relative;
+    z-index: 1;
     h2 {
       font-family: "Montserrat", sans-serif;
       font-size: 2.3rem;
@@ -39,7 +41,6 @@ const BgImg1 = styled.img`
   position: absolute;
   right: 35%;
   top: 1950px;
-  z-index: -1;
   opacity: 0.6;
   scale: 0.8;
 `;
@@ -48,7 +49,6 @@ const BgImg2 = styled.img`
   position: absolute;
   right: 45%;
   top: 1950px;
-  z-index: -1;
   opacity: 0.6;
 `;
 

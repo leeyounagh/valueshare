@@ -30,7 +30,11 @@ const Button = styled.button`
   width: 136px;
   height: 46px;
   border-radius: 10px 10px 10px 0;
-  border: 1px solid ${color.gray1};
+  border: 1px solid ${color.gray2};
+  top: 230px;
+  right: 25%;
+  background-color: ${color.gray5};
+  cursor: pointer;
 `;
 
 const RollexImg = styled.img`
@@ -44,7 +48,7 @@ function Rollex() {
     <SlayOut>
       <h2>Rollex</h2>
       <p>1%를 위한 기술, 성공의 상징 되다</p>
-      <Button>view detial</Button>
+      <Button>view detail</Button>
       <RollexImg src="/asset/img-rollex.png" />
     </SlayOut>
   );
