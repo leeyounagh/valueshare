@@ -88,8 +88,15 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
-  // eslint-disable-next-line no-unused-vars
-  const [searchParams] = useSearchParams();
+
+  const dispatch = useDispatch();
+  const PassIdHandler = (_id) => {
+    dispatch(passId(_id));
+  };
+
+  const [searchParams] = useSearchParams({
+    categories: "all",
+  });
 
   const categories = searchParams.get("categories");
 
