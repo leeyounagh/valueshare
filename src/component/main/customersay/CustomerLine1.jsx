@@ -10,7 +10,7 @@ const Slayout = styled.div`
   h2 {
     padding-top: 100px;
     font-family: "Rufina", serif;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
   }
 `;

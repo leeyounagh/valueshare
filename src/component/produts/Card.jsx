@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -7,16 +8,19 @@ import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+// eslint-disable-next-line no-unused-vars
 
 const SLayout = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
 `;
 const SCardDiv = styled.div`
-  width: 360px;
+  width: 340px;
   height: 550px;
-  margin: 46px 74px 50px 91px;
+  margin: 20px 10px;
   padding: 28px 25px 19px 19px;
   border: solid 1px ${color.gray5};
 `;
@@ -92,6 +96,7 @@ function Card() {
       const response = await axios.get("http://localhost:5000/products", {
         params: { categories: `${categories}` },
       });
+      console.log(response);
       setData(response.data.result);
     }
     getProducts();
