@@ -13,6 +13,14 @@ const SLayout = styled.div`
   border-radius: 10px;
   background-color: ${white};
   z-index: 10;
+
+  .paypal-button:not(.paypal-button-card),
+  .paypal-button.paypal-button-shape-rect {
+    width: 90%;
+    height: 50px !important;
+    margin-left: 15px !important;
+    border-radius: 10px !important;
+  }
 `;
 
 const SOrderTitleDiv = styled.div`
@@ -20,7 +28,6 @@ const SOrderTitleDiv = styled.div`
   height: 53.5px;
   flex-grow: 0;
   margin: 0 337px 30.5px 0;
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
   font-stretch: normal;
@@ -28,13 +35,15 @@ const SOrderTitleDiv = styled.div`
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000;
+  color: ${color.black};
+  margin-left: 15px;
+  margin-bottom: 50px;
 `;
 const STotalPricTexteDiv = styled.div`
   width: 90%;
-  height: 36px;
-  font-family: NotoSans;
-  font-size: 24px;
+  margin-left: 15px;
+  height: auto;
+  font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -47,24 +56,24 @@ const STotalPricTexteDiv = styled.div`
 `;
 const STotalPriceDiv = styled.div`
   flex-grow: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
-  font-style: normal;
+  font-style: 1.5;
   line-height: normal;
   letter-spacing: normal;
   text-align: right;
   color: ${gray1};
   display: flex;
   align-items: center;
-  height: 100px;
+  height: auto;
 `;
 const SDeliveryDiv = styled.div`
   display: flex;
   align-items: center;
 `;
 const SLastTotalDiv = styled.div`
+  margin-left: 15px;
   height: 30%;
   display: flex;
   align-items: center;
