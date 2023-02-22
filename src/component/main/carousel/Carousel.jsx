@@ -98,7 +98,7 @@ const BgImg1 = styled.img`
 
 const BgImg2 = styled.img`
   position: absolute;
-  top: 720px;
+  top: 687px;
   right: 778px;
   opacity: 0.8;
 `;
