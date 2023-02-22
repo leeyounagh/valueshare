@@ -52,7 +52,7 @@ function EditCategory() {
 
   const handleChangeCategory = async () => {
     const body = {
-      changedCategory: data.changecategory,
+      categoryName: data.changecategory,
     };
     const response = await axios.patch(
       `http://localhost:5000/admin/categories/${data.beforecategory}`,

@@ -82,7 +82,7 @@ const SLastTotalDiv = styled.div`
   height: 30%;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 const STotalTextDiv = styled.div`
   width: 90%;
@@ -156,7 +156,7 @@ function OrderPrice({ cartItems, setCartItems }) {
       email: ShipInfo.email,
       name: ShipInfo.customerName,
       products: cartItems,
-      // shipStatus: "주문접수",
+      shipStatus: "주문접수",
       shipAdr: ShipInfo.address,
       shipNote: ShipInfo.memo,
       totalPrice: changeDoller,
