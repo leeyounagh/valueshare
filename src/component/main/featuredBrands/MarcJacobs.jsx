@@ -31,6 +31,10 @@ const Button = styled.button`
   border-radius: 10px 10px 10px 0;
   border: 1px solid ${color.main};
   background-color: ${color.white};
+  top: 258px;
+  left: 12%;
+  color: ${color.main};
+  cursor: pointer;
 `;
 
 const MarcJacobsImg = styled.img`

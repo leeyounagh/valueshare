@@ -6,6 +6,8 @@
   box-sizing: border-box;
   font-family: "Montserrat", "Noto Sans KR", "sans-serif";
 }
+
 body {
   overflow-x: hidden;
+  background-color: #f2f2f2;
 }

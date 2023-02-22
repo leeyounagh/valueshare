@@ -10,11 +10,12 @@ const Slayout = styled.div`
   width: 100%;
 `;
 const SCartTextDiv = styled.div`
-  width: 100%;
+  width: 95%;
   height: 104px;
   padding-top: 60px;
 `;
 const SCartItemDiv = styled.div`
+  width: 90%;
   height: 170px;
   display: flex;
   align-items: center;
@@ -103,8 +104,8 @@ const SItemOptionBrandTitle = styled.div`
   color: ${gray1};
 `;
 const SProductName = styled.div`
-  font-family: NotoSans;
-  font-size: 18px;
+  margin-top: 2px;
+  font-size: 20px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -200,11 +201,15 @@ const SSelectedDeleteIconDiv = styled.div`
 `;
 const SIconDiv = styled.div`
   cursor: pointer;
+<<<<<<< HEAD
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+=======
+  height: 20%;
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 const SCheckInput = styled.input`
   pointer: cursor;

@@ -5,7 +5,6 @@ import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
 import OrderList from "pages/orderlist/OrderList";
 import Header from "component/layout/header/Header";
-import History from "pages/history/History";
 import Login from "pages/login/Login";
 import Main from "pages/main/Main";
 import MyOrder from "pages/myorder/MyOrder";
@@ -16,7 +15,6 @@ import Detail from "pages/productdeail/Detail";
 import Admin from "pages/admin/Admin";
 import Resign from "pages/resign/Resign";
 import DeliveryList from "pages/deliverylist/DeliveryList";
-import CanceledList from "pages/canceledlist/CanceledList";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
@@ -28,6 +26,9 @@ import OrderListDetail from "pages/orderlistdetail/OrderListDetail";
 import NoneMember from "pages/nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
 // eslint-disable-next-line no-unused-vars
+import Productest from "pages/products/Productest";
+import NotFound from "pages/NotFound";
+import EditCategory from "pages/editcategory/EditCategory";
 
 function App() {
   const { pathname } = useLocation();
@@ -68,7 +69,6 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/myorder" element={<MyOrder />} />
-        <Route path="/mypage/history" element={<History />} />
         <Route path="/mypage/resign" element={<Resign />} />
         <Route path="/mypage/userinfo" element={<UserInfo />} />
         <Route path="/ordersuccess" element={<OrderSuccess />} />
@@ -95,8 +95,12 @@ function App() {
           element={<OrderListDetail />}
         />
         <Route path="/admin/deliverylist" element={<DeliveryList />} />
-        <Route path="/admin/canceledlist" element={<CanceledList />} />
         <Route path="/admin/category/addproduct" element={<UploadProduct />} />
+        <Route
+          exact
+          path="/admin/category/editcategory"
+          element={<EditCategory />}
+        />
 
         <Route
           exact
@@ -104,7 +108,7 @@ function App() {
           element={<EditProduct />}
         />
         {/* 404  */}
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

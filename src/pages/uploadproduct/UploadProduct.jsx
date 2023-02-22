@@ -2,6 +2,12 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import Continent from "data/Continent";
 import Brand from "data/Brand";
+import styled from "styled-components";
+
+const SLayout = styled.form`
+  width: 100%;
+  height: 80vh;
+`;
 
 function UploadProduct() {
   // 미리보기 이미지 배열
@@ -91,16 +97,16 @@ function UploadProduct() {
   };
 
   return (
-    <form
+    <SLayout
       style={{
-        width: "100vw",
-        height: "80vh",
-        marginTop: "100px",
         display: "grid",
         placeItems: "center",
       }}
       onSubmit={handleSubmit}
     >
+      <div>
+        <h2>상품등록</h2>
+      </div>
       <div>
         <input
           name="title"
@@ -177,6 +183,7 @@ function UploadProduct() {
       </div>
       <div>
         <textarea
+          style={{ width: "30vw", height: "30vh" }}
           placeholder="상품설명"
           name="desc"
           value={data.desc}
@@ -184,9 +191,11 @@ function UploadProduct() {
         />
       </div>
       <div>
-        <button type="submit">등록</button>
+        <button type="submit" style={{ width: "100px" }}>
+          등록
+        </button>
       </div>
-    </form>
+    </SLayout>
   );
 }
 

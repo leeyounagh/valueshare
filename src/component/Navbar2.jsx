@@ -11,6 +11,7 @@ const SLayout = styled.nav`
   padding: 33px 0 0;
   background-color: var(--white);
   border-bottom: 1px solid ${color.gray4};
+  background-color: ${color.white};
 `;
 
 const SRootHomeDiv = styled.div`

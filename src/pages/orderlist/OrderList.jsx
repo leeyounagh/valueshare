@@ -38,6 +38,16 @@ function OrderList() {
     }
     getOrderList();
   }, []);
+<<<<<<< HEAD
+=======
+
+  const handleDelete = async (item) => {
+    const response = await axios.post(
+      `http://localhost:5000/admin/orders/${item._id}`
+    );
+    console.log(response);
+  };
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
   console.log(orderData);
   return (
     <div>
@@ -53,6 +63,11 @@ function OrderList() {
                 <th>주문번호</th>
                 <th>이름</th>
                 <th>이메일</th>
+<<<<<<< HEAD
+=======
+                <th>배송상태</th>
+                <th>주문삭제</th>
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
               </tr>
             </thead>
             <tbody>
@@ -65,6 +80,20 @@ function OrderList() {
                     </Link>
                     <td>{item.name}</td>
                     <td>{item.email}</td>
+<<<<<<< HEAD
+=======
+                    <td>{item.shipStatus}</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          handleDelete(item);
+                        }}
+                        type="submit"
+                      >
+                        주문삭제
+                      </button>
+                    </td>
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
                   </tr>
                 );
               })}

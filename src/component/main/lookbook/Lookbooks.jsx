@@ -13,6 +13,7 @@ const Slayout = styled.div`
     font-family: "Rufina", serif;
     font-size: 50px;
     text-align: center;
+    z-index: 1;
   }
 `;
 
@@ -28,7 +29,6 @@ const BgImg1 = styled.img`
   position: absolute;
   left: 30%;
   top: 3320px;
-  z-index: -1;
   opacity: 0.6;
   scale: 0.8;
 `;
@@ -37,7 +37,6 @@ const BgImg2 = styled.img`
   position: absolute;
   right: 32%;
   top: 3360px;
-  z-index: -1;
   opacity: 0.6;
 `;
 

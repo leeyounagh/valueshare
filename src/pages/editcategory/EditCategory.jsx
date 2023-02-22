@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -44,18 +44,18 @@ const SButton = styled.button`
   height: 60px;
 `;
 
-function EditProduct() {
+function EditCategory() {
   const [data, setData] = useState({
-    changeproduct: "",
-    beforeproduct: "",
+    changecategory: "",
+    beforecategory: "",
   });
 
-  const handleChangeProduct = async () => {
+  const handleChangeCategory = async () => {
     const body = {
-      brandName: data.changeproduct,
+      changedCategory: data.changecategory,
     };
     const response = await axios.patch(
-      `http://localhost:5000/admin/brands/${data.beforeproduct}`,
+      `http://localhost:5000/admin/categories/${data.beforecategory}`,
       body
     );
     console.log(response);
@@ -74,26 +74,26 @@ function EditProduct() {
     <SLayout>
       <SItemDiv>
         <STitleDiv>
-          <h2>상품 수정</h2>
+          <h2>카테고리 수정</h2>
         </STitleDiv>
         <SInputDiv>
           <SInput
             onChange={handleChange}
-            name="beforeproduct"
-            placeholder="수정할 상품명를 입력해주세요"
+            name="beforecategory"
+            placeholder="수정할 카테고리를 입력해주세요"
           />
         </SInputDiv>
         <SInputDiv>
           <SInput
             onChange={handleChange}
-            name="changeproduct"
-            placeholder="변경시킬 상품명를 입력해주세요"
+            name="changecategory"
+            placeholder="변경시킬 카테고리를 입력해주세요"
           />
         </SInputDiv>
         <SbuttonDiv>
           <SButton
             onClick={() => {
-              handleChangeProduct();
+              handleChangeCategory();
             }}
           >
             수정
@@ -104,4 +104,4 @@ function EditProduct() {
   );
 }
 
-export default EditProduct;
+export default EditCategory;

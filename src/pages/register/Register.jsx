@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-undef */
+/* eslint-disable no-shadow */
+/* eslint-disable consistent-return */
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
@@ -21,27 +25,23 @@ function Register() {
   console.log(email, name, password, confirmPassword);
 
   const onEmailHandler = (e) => {
-    const inputEmail = e.target.value;
+    const email = e.target.value;
     const isEmailValid = email.includes("@");
 
     if (!isEmailValid) {
-      alert("이메일에는 '@'를 입력해야합니다.");
+      return errorMessage;
     }
-    return setEmail(inputEmail);
+    setEmail(email);
   };
-
   const onNameHandler = (e) => {
     setName(e.target.value);
   };
-
   const onPasswordHandler = (e) => {
     setPassword(e.target.value);
   };
-
   const onConfirmPasswordHandler = (e) => {
-    setConfirmPassword(e.target.value);
+    if (password !== confirmPassword) setConfirmPassword(e.target.value);
   };
-
   const onPhoneHandler = (e) => {
     const phoneNumber = e.target.value.replace(/[^0-9]/g, "").split("");
 
@@ -66,6 +66,10 @@ function Register() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
+    if (password !== confirmPassword) {
+      return alert("비밀번호를 확인해주세요");
+    }
+
     const body = {
       email,
       name,
@@ -73,18 +77,22 @@ function Register() {
       phone,
     };
 
-    axios.post("", body).then((res) => {
-      console.log(res.data);
-    });
+    axios
+      .post("", body)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    // form태그에 label태그 쓰려다가 에러, 왜?
     <SLayout>
       <h1>회원가입</h1>
       <form onSubmit={onSubmitHandler}>
         <div style={{ marginBottom: "50px" }}>
-          <div>이메일</div>
+          <label>이메일</label>
           <input
             name="email"
             value={email}
@@ -94,7 +102,7 @@ function Register() {
           {}
         </div>
         <div style={{ marginBottom: "50px" }}>
-          <div>이름</div>
+          <label>이름</label>
           <input
             name="name"
             value={name}
@@ -103,7 +111,7 @@ function Register() {
           />
         </div>
         <div style={{ marginBottom: "50px" }}>
-          <div>비밀번호</div>
+          <label>비밀번호</label>
           <input
             name="password"
             value={password}
@@ -112,18 +120,18 @@ function Register() {
           />
         </div>
         <div style={{ marginBottom: "50px" }}>
-          <div>비밀번호 확인</div>
+          <label>비밀번호 확인</label>
           <input
-            name="confirmPassword"
-            value={confirmPassword}
+            name="passwordConfirm"
+            value={passwordConfirm}
             onChange={onConfirmPasswordHandler}
             placeholder="비밀번호 한번더 입력해주세요."
           />
-          {password !== confirmPassword ? <p>비밀번호가 맞지 않습니다.</p> : ""}
         </div>
         <div>
-          <div>전화번호</div>
-          <div
+          <label>전화번호</label>
+
+          <input
             name="phone"
             value={phone}
             onChange={onPhoneHandler}
