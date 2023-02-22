@@ -79,11 +79,12 @@ function Register() {
   };
 
   return (
+    // form태그에 label태그 쓰려다가 에러, 왜?
     <SLayout>
       <h1>회원가입</h1>
       <form onSubmit={onSubmitHandler}>
         <div style={{ marginBottom: "50px" }}>
-          <label>이메일</label>
+          <div>이메일</div>
           <input
             name="email"
             value={email}
@@ -93,7 +94,7 @@ function Register() {
           {}
         </div>
         <div style={{ marginBottom: "50px" }}>
-          <label>이름</label>
+          <div>이름</div>
           <input
             name="name"
             value={name}
@@ -102,7 +103,7 @@ function Register() {
           />
         </div>
         <div style={{ marginBottom: "50px" }}>
-          <label>비밀번호</label>
+          <div>비밀번호</div>
           <input
             name="password"
             value={password}
@@ -111,7 +112,7 @@ function Register() {
           />
         </div>
         <div style={{ marginBottom: "50px" }}>
-          <label>비밀번호 확인</label>
+          <div>비밀번호 확인</div>
           <input
             name="confirmPassword"
             value={confirmPassword}
@@ -121,7 +122,7 @@ function Register() {
           {password !== confirmPassword ? <p>비밀번호가 맞지 않습니다.</p> : ""}
         </div>
         <div>
-          <label>전화번호</label>
+          <div>전화번호</div>
           <div
             name="phone"
             value={phone}
