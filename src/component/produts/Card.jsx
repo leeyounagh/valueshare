@@ -1,11 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import handleBasket from "utils/handleBasket";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+// eslint-disable-next-line no-unused-vars
+import qs from "qs";
 
 const SLayout = styled.div`
   width: 100%;
@@ -85,19 +88,23 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categories = searchParams.get("categories");
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
-    // data.filter((item) => item._id === _id);
     dispatch(passId(_id));
   };
 
   useEffect(() => {
     async function getProducts() {
-      const response = await axios.get("http://localhost:5000/admin/products");
+      const response = await axios.get("http://localhost:5000/products", {
+        params: { categories: `${categories}` },
+      });
       setData(response.data.result);
     }
     getProducts();
-  }, []);
+  }, [categories]);
 
   return (
     <SLayout>
@@ -105,6 +112,7 @@ function Card() {
         return (
           <SCardDiv>
             <Link
+              key={item._id}
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >

@@ -15,6 +15,7 @@ const SBtn1 = styled.button`
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
 `;
 
 function Btn1({ title }) {

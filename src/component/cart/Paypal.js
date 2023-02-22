@@ -15,7 +15,7 @@ function Paypal({ total, cartItems, setCartItems }) {
   const ShipInfo = useSelector((state) => {
     return state.UserAddressReducer;
   });
-
+  console.log(ShipInfo);
   const initialOptions = {
     "client-id":
       "AT3NE7EKYDtLHJ2q0nRqQqpTOPcycfmadei97OuSt2CKBtvY6y_oEiK7M5uFL9LQ2D9o3lp87AGth6fS",
@@ -41,7 +41,7 @@ function Paypal({ total, cartItems, setCartItems }) {
         createOrder={(data, actions) => onCreateOrder(data, actions)}
         onApprove={(data, actions) => {
           actions.order.capture().then(async () => {
-            console.log(ShipInfo, data, "들어오기전");
+            console.log(ShipInfo, cartItems, "들어오기전");
             const newData = {
               // eslint-disable-next-line prettier/prettier
               phone: ShipInfo.phonenumber,

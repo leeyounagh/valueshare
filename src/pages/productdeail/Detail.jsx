@@ -11,6 +11,7 @@ import Btn2 from "component/button/Btn2";
 const Slayout = styled.div`
   width: 100%;
   height: 1500px;
+  background-color: ${color.white};
 `;
 
 const DetailLayout = styled.div`

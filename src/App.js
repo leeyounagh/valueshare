@@ -27,6 +27,9 @@ import CancelOrder from "pages/cancleorder/CancelOrder";
 import OrderListDetail from "pages/orderlistdetail/OrderListDetail";
 import NoneMember from "pages/nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
+// eslint-disable-next-line no-unused-vars
+import Productest from "pages/products/Productest";
+import NotFound from "pages/NotFound";
 
 function App() {
   const { pathname } = useLocation();
@@ -74,8 +77,8 @@ function App() {
 
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="/product/:productid" element={<Detail />} />
-        <Route path="/product" element={<Product />} />
+        <Route exact path="/product/:productid" element={<Detail />} />
+        <Route exact path="/product" element={<Product />} />
 
         <Route path="/bestseller" element={<BestSeller />} />
 
@@ -102,8 +105,9 @@ function App() {
           path="/admin/category/editproduct"
           element={<EditProduct />}
         />
+        {/* 404  */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
       <Footer />
     </div>
   );
