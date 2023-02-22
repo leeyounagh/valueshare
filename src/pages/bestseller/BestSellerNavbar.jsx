@@ -11,6 +11,7 @@ const SlayOut = styled.nav`
   display: flex;
   align-items: center;
   border-bottom: 1px solid ${gray4};
+  background-color: ${color.white};
 `;
 const SHomeImg = styled.img`
   width: 28px;
@@ -58,23 +59,6 @@ const SItemDiv = styled.div`
   align-items: center;
 `;
 
-const SProductTitle = styled.div`
-  white-space: nowrap;
-  width: 257px;
-  height: 100%;
-  font-family: Montserrat;
-  font-size: 22px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 const SLayoutInnerDiv = styled.div`
   width: 50%;
   height: 50px;
@@ -92,11 +76,7 @@ function BestSellerNavbar() {
         <SItemDiv>
           <SIconImg src="asset/Chevrons_chevron-right.svg" />
         </SItemDiv>
-        <STitle>Category</STitle>
-        <SItemDiv>
-          <SIconImg src="asset/Chevrons_chevron-right.svg" />
-        </SItemDiv>
-        <SProductTitle>Mylockme Chain Bag</SProductTitle>
+        <STitle>Best seller</STitle>
       </SLayoutInnerDiv>
     </SlayOut>
   );
