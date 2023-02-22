@@ -91,7 +91,9 @@ function Card() {
     dispatch(passId(_id));
   };
 
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams({
+    categories: "all",
+  });
 
   const categories = searchParams.get("categories");
 
