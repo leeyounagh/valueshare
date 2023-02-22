@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import handleBasket from "utils/handleBasket";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+import qs from "qs";
 
 const SLayout = styled.div`
   width: 100%;
@@ -91,13 +92,19 @@ function Card() {
     dispatch(passId(_id));
   };
 
+  const { categories } = useParams();
+
   useEffect(() => {
     async function getProducts() {
-      const response = await axios.get("http://localhost:5000/admin/products");
+      const response = await axios.get("http://localhost:5000/admin/products", {
+        params: { categories: "categories" },
+      });
       setData(response.data.result);
     }
     getProducts();
   }, []);
+  console.log(categories);
+  console.log(productData);
   return (
     <SLayout>
       {productData.map((item) => {
