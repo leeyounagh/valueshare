@@ -2,39 +2,38 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import color from "styles/color";
 import axios from "axios";
 import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 // eslint-disable-next-line no-unused-vars
-import qs from "qs";
 
 const SLayout = styled.div`
   width: 100%;
-  display: grid;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
 `;
 const SCardDiv = styled.div`
-  width: 360px;
+  width: 340px;
   height: 550px;
-  margin: 46px 74px 50px 91px;
+  margin: 20px 10px;
   padding: 28px 25px 19px 19px;
-  border: solid 1px #d9d9d9;
+  border: solid 1px ${color.gray5};
 `;
 const SCardBrand = styled.div`
   padding-left: 10px;
-  width: 100%;
-  font-family: Montserrat;
+  width: 9%;
   font-size: 20px;
-  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
-  letter-spacing: normal;
+  letter-spacing: 1.5;
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 const SCartImg = styled.img`
   width: 30px;
@@ -43,16 +42,11 @@ const SCartImg = styled.img`
 const SPriceText = styled.div`
   width: 103px;
   height: 24px;
-
-  font-family: Montserrat;
   font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-weight: 600;
   text-align: left;
-  color: #000;
+  color: ${color.black};
+  text-align: right;
 `;
 const SCardImg = styled.img`
   width: 310px;
@@ -62,24 +56,19 @@ const SCardImg = styled.img`
 `;
 const SCardTitleDiv = styled.div`
   width: 100%;
+  font-weight: 500;
 `;
 const SCartDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-left: 10px;
+  padding-left: 6px;
   margin-top: 20px;
 `;
 const SCardBrandNameDiv = styled.div`
-  font-family: Montserrat;
   font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
   padding-left: 10px;
 `;
 const SCartImgDiv = styled.div`
@@ -101,11 +90,6 @@ function Card() {
   const categories = searchParams.get("categories");
 
   console.log(categories);
-
-  const dispatch = useDispatch();
-  const PassIdHandler = (_id) => {
-    dispatch(passId(_id));
-  };
 
   useEffect(() => {
     async function getProducts() {

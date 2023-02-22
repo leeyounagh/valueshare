@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import BrandName from "data/BrandName";
 
 const { white, gray4, gray1 } = color;
 const SLayout = styled.div`
@@ -62,26 +63,22 @@ function Brands() {
   return (
     <SLayout>
       <SBrandTitleDiv>Brands</SBrandTitleDiv>
-      <SBrandListDiv>
-        <div>
-          {Array.from({ length: 30 })
-            .fill(0)
-            .map(() => {
-              return (
-                <SBrandNameDiv>
-                  <SCheckboxDiv>
-                    <img
-                      src="/asset/checkbox.svg"
-                      width="24px"
-                      height="24px"
-                      alt="체크박스"
-                    />
-                  </SCheckboxDiv>
-                  <SCheckboxDiv>Gucci (12)</SCheckboxDiv>
-                </SBrandNameDiv>
-              );
-            })}
-        </div>
+      <SBrandListDiv key={BrandName.key}>
+        {BrandName.map((item) => {
+          return (
+            <SBrandNameDiv>
+              <SCheckboxDiv>
+                <img
+                  src="/asset/checkbox.svg"
+                  width="24px"
+                  height="24px"
+                  alt="체크박스"
+                />
+              </SCheckboxDiv>
+              <SCheckboxDiv>{item.value}</SCheckboxDiv>
+            </SBrandNameDiv>
+          );
+        })}
         <SBrandLineDiv />
       </SBrandListDiv>
     </SLayout>

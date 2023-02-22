@@ -1,9 +1,10 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+/* eslint-disable */
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(undefined);
   const [data, setData] = useState(undefined);
 
@@ -30,12 +31,12 @@ export default function Login() {
     };
 
     axios
-      .post('/endPoint', body)
+      .post("/endPoint", body)
       .then((res) => {
         console.log(res.data);
       })
       .catch((err) => {
-        setError('에러');
+        setError("에러");
       });
   };
 
@@ -57,14 +58,14 @@ export default function Login() {
             value={password}
             onChange={handlePasswordChange}
           />
-          {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ''}
+          {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ""}
         </div>
         <div className="loginSubmit">
           <button onClick={handleClick}>Login</button>
         </div>
       </form>
       <div className="loginResult">
-        {isLoading ? '로그인중입니다.' : null}
+        {isLoading ? "로그인중입니다." : null}
         {data ? `안녕하세요. ${data.id}님.` : null}
         {error ? error : null}
       </div>
