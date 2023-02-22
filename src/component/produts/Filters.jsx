@@ -30,7 +30,7 @@ const SFilterTitle = styled.div`
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000;
+  color: ${color.gray2};
 `;
 const SLineDiv = styled.div`
   width: 90%;
@@ -61,9 +61,18 @@ const SCategoryDiv = styled.div`
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #000;
+  color: ${color.gray2};
   cursor: pointer;
+  overflow: hidden;
 `;
+
+const SCategory2Div = styled.div`
+  width: 90%;
+  height: 80px;
+  cursor: pointer;
+  color: ${color.gray2};
+`;
+
 const SCategoryItemDiv = styled.div`
   width: 95%;
   height: 50px;
@@ -89,13 +98,13 @@ const SBottomLineDiv = styled.div`
   width: 90%;
   height: 1px;
   position: absolute;
-  top: 580px;
+  top: 490px;
   left: 30px;
   background-color: ${gray4};
 `;
 function Filters() {
-  const filterItem = Continent.filter((item) => item.key !== 7);
-  const filterItem2 = Continent.filter((item) => item.key === 7);
+  const filterItem = Continent.filter((item) => item.key < 7);
+  const filterItem2 = Continent.filter((item) => item.key >= 7);
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
   });
@@ -119,7 +128,7 @@ function Filters() {
               </SCategoryItemDiv>
             );
           })}
-          <div key={filterItem2.key}>
+          <SCategory2Div key={filterItem2.key}>
             {filterItem2.map((item) => {
               return (
                 <SCategoryOuterDiv
@@ -131,7 +140,7 @@ function Filters() {
                 </SCategoryOuterDiv>
               );
             })}
-          </div>
+          </SCategory2Div>
         </SCategoryDiv>
       </SFilterDiv>
       <SBottomLineDiv />
