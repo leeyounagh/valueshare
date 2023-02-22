@@ -5,7 +5,6 @@ import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
 import OrderList from "pages/orderlist/OrderList";
 import Header from "component/layout/header/Header";
-import History from "pages/history/History";
 import Login from "pages/login/Login";
 import Main from "pages/main/Main";
 import MyOrder from "pages/myorder/MyOrder";
@@ -16,18 +15,20 @@ import Detail from "pages/productdeail/Detail";
 import Admin from "pages/admin/Admin";
 import Resign from "pages/resign/Resign";
 import DeliveryList from "pages/deliverylist/DeliveryList";
-import CanceledList from "pages/canceledlist/CanceledList";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
-import DeleteProduct from "pages/deleteproduct/DeleteProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
 import Membership from "pages/membership/Membership";
 import Product from "pages/products/Product";
-import OrderSuccess from "pages/nonmember/OrderSuccess";
+import OrderSuccess from "pages/ordersucces/OrderSuccess";
 import CancelOrder from "pages/cancleorder/CancelOrder";
+import OrderListDetail from "pages/orderlistdetail/OrderListDetail";
+import NoneMember from "pages/nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
+// eslint-disable-next-line no-unused-vars
 import Productest from "pages/products/Productest";
 import NotFound from "pages/NotFound";
+import EditCategory from "pages/editcategory/EditCategory";
 
 function App() {
   const { pathname } = useLocation();
@@ -63,44 +64,44 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/register" element={<Register />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        <Route exact path="/myorder" element={<MyOrder />} />
-        <Route exact path="/mypage/history" element={<History />} />
-        <Route exact path="/mypage/resign" element={<Resign />} />
-        <Route exact path="/mypage/userinfo" element={<UserInfo />} />
-        <Route exact path="/ordersuccess" element={<OrderSuccess />} />
+        <Route path="/myorder" element={<MyOrder />} />
+        <Route path="/mypage/resign" element={<Resign />} />
+        <Route path="/mypage/userinfo" element={<UserInfo />} />
+        <Route path="/ordersuccess" element={<OrderSuccess />} />
 
-        <Route exact path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route exact path="/product/:productid" element={<Detail />} />
         <Route exact path="/product" element={<Product />} />
-        <Route exact path="/product/:categories" element={<Productest />} />
 
-        <Route exact path="/bestseller" element={<BestSeller />} />
+        <Route path="/bestseller" element={<BestSeller />} />
 
-        <Route exact path="/lookbook" element={<LookBook />} />
+        <Route path="/lookbook" element={<LookBook />} />
 
-        <Route exact path="/membership" element={<Membership />} />
-        <Route exact path="/cancleorder" element={<CancelOrder />} />
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/cancleorder" element={<CancelOrder />} />
+
+        <Route path="/nonmemberorder" element={<NoneMember />} />
 
         {/* 어드민 페이지  */}
-        <Route exact path="/admin" element={<Admin />} />
-        <Route exact path="/admin/orederlist" element={<OrderList />} />
-        <Route exact path="/admin/deliverylist" element={<DeliveryList />} />
-        <Route exact path="/admin/canceledlist" element={<CanceledList />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/orederlist" element={<OrderList />} />
+        <Route
+          path="/admin/orderlist/:orderlistdetail"
+          element={<OrderListDetail />}
+        />
+        <Route path="/admin/deliverylist" element={<DeliveryList />} />
+        <Route path="/admin/category/addproduct" element={<UploadProduct />} />
         <Route
           exact
-          path="/admin/category/addproduct"
-          element={<UploadProduct />}
+          path="/admin/category/editcategory"
+          element={<EditCategory />}
         />
-        <Route
-          exact
-          path="/admin/category/deleteproduct"
-          element={<DeleteProduct />}
-        />
+
         <Route
           exact
           path="/admin/category/editproduct"

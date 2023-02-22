@@ -7,7 +7,7 @@ const { white, gray3, gray1, gray4, gray5 } = color;
 
 const SLayout = styled.div`
   width: 100%;
-  height: 597px;
+
   flex-grow: 0;
   padding: 60px 30px;
   border-radius: 10px;
@@ -77,6 +77,7 @@ const SLastTotalDiv = styled.div`
   height: 30%;
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 `;
 const STotalTextDiv = styled.div`
   width: 90%;

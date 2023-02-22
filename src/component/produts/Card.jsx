@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -7,6 +8,8 @@ import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+// eslint-disable-next-line no-unused-vars
+import qs from "qs";
 
 const SLayout = styled.div`
   width: 100%;
@@ -89,15 +92,22 @@ function Card() {
 
   console.log(categories);
 
+  const dispatch = useDispatch();
+  const PassIdHandler = (_id) => {
+    dispatch(passId(_id));
+  };
+
   useEffect(() => {
     async function getProducts() {
       const response = await axios.get("http://localhost:5000/products", {
         params: { categories: `${categories}` },
       });
+      console.log(response);
       setData(response.data.result);
     }
     getProducts();
   }, [categories]);
+
   return (
     <SLayout>
       {productData.map((item) => {

@@ -35,11 +35,13 @@ const SLogoDiv = styled.div`
     color: black;
     font-family: "Playfair Display", serif;
     font-weight: 900;
-    font-size: 38px;
+
     align-items: center;
   }
   h2 {
     font-family: "Playfair Display", serif;
+    font-size: 60px;
+    font-weight: 900;
   }
 `;
 const SBestSellerDiv = styled.div`
