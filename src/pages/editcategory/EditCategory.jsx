@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 
 const SLayout = styled.div`
@@ -43,6 +45,31 @@ const SButton = styled.button`
 `;
 
 function EditCategory() {
+  const [data, setData] = useState({
+    changecategory: "",
+    beforecategory: "",
+  });
+
+  const handleChangeCategory = async () => {
+    const body = {
+      changedCategory: data.changecategory,
+    };
+    const response = await axios.patch(
+      `http://localhost:5000/admin/categories/${data.beforecategory}`,
+      body
+    );
+    console.log(response);
+  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    const newData = {
+      ...data,
+      [name]: value,
+    };
+    setData(newData);
+  };
+
   return (
     <SLayout>
       <SItemDiv>
@@ -50,13 +77,27 @@ function EditCategory() {
           <h2>카테고리 수정</h2>
         </STitleDiv>
         <SInputDiv>
-          <SInput placeholder="수정할 카테고리를 입력해주세요" />
+          <SInput
+            onChange={handleChange}
+            name="beforecategory"
+            placeholder="수정할 카테고리를 입력해주세요"
+          />
         </SInputDiv>
         <SInputDiv>
-          <SInput placeholder="변경시킬 카테고리를 입력해주세요" />
+          <SInput
+            onChange={handleChange}
+            name="changecategory"
+            placeholder="변경시킬 카테고리를 입력해주세요"
+          />
         </SInputDiv>
         <SbuttonDiv>
-          <SButton>수정</SButton>
+          <SButton
+            onClick={() => {
+              handleChangeCategory();
+            }}
+          >
+            수정
+          </SButton>
         </SbuttonDiv>
       </SItemDiv>
     </SLayout>
