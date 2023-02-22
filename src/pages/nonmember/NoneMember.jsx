@@ -75,10 +75,11 @@ const SInput = styled.input`
   background-color: ${white};
   width: 414px;
   height: 57px;
-
+  padding-left: 10px;
   border-radius: 16px;
   border: solid 1px ${gray4};
   background-color: ${white};
+  outline-color: #ff985f;
 `;
 
 const SItemDiv = styled.div``;

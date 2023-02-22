@@ -53,6 +53,7 @@ function OrderList() {
                 <th>주문번호</th>
                 <th>이름</th>
                 <th>이메일</th>
+                <th>주문삭제</th>
               </tr>
             </thead>
             <tbody>
@@ -65,6 +66,9 @@ function OrderList() {
                     </Link>
                     <td>{item.name}</td>
                     <td>{item.email}</td>
+                    <td>
+                      <button type="submit">주문삭제</button>
+                    </td>
                   </tr>
                 );
               })}
