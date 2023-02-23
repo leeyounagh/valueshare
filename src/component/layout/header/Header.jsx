@@ -113,8 +113,8 @@ const SLayoutIconDiv = styled.div`
   align-items: center;
   height: 40px;
   width: 25%;
-  padding-top: 10px;
-  margin-left: 60px;
+  padding-top: 18px;
+  margin-left: 24px;
 `;
 const SAlarmImg = styled.img`
   width: 46px;

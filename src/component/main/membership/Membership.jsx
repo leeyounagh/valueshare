@@ -39,6 +39,7 @@ const Slayout = styled.div`
     width: 60%;
     div {
       margin: auto;
+      z-index: 1;
     }
   }
 `;

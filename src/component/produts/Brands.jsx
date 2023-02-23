@@ -9,7 +9,6 @@ const SLayout = styled.div`
   width: 100%;
   height: 420px;
   margin-left: 30px;
-  border-bottom: 1px solid ${gray4};
   position: relative;
 `;
 const SBrandTitleDiv = styled.div`
@@ -74,14 +73,18 @@ function Brands() {
 
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
-    brandId: "all",
+    brand: "all",
   });
 
   const categories = searchParams.get("categories");
-  const brandId = searchParams.getAll("brandId");
+  const brand = searchParams.getAll("brand");
 
-  console.log(categories, brandId);
-  console.log(params);
+  const queryStr = params.reduce((a, b) => {
+    return `${a}&${b}`;
+  }, "");
+
+  console.log(categories, brand);
+  console.log(queryStr.substring(1));
 
   return (
     <SLayout>
@@ -98,7 +101,7 @@ function Brands() {
                   checked={item.checked}
                   onClick={onChange}
                   onChange={() => {
-                    setSearchParams({ categories, brandId: `${item.value}` });
+                    setSearchParams({ categories, brandId: `${queryStr}` });
                   }}
                 />
               </SCheckboxDiv>
