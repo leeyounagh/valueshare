@@ -34,7 +34,6 @@ const SWalletImg = styled.img`
   height: 124px;
 `;
 const SCompleteLetter = styled.div`
-  font-family: NotoSansKR;
   font-size: 30px;
   font-weight: bold;
   font-stretch: normal;
@@ -46,7 +45,6 @@ const SCompleteLetter = styled.div`
   margin-top: 5%;
 `;
 const SOrderNumberTextDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: normal;
   font-stretch: normal;
@@ -64,7 +62,6 @@ const SOrderNumberDiv = styled.div`
   justify-content: center;
 `;
 const SOrderGuideItemDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: normal;
   font-stretch: normal;
@@ -95,7 +92,7 @@ const SCheckbutton = styled.button`
   background-color: ${gray1};
   width: 30%;
   height: 100%;
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -110,7 +107,6 @@ const SCheckbutton = styled.button`
   }
 `;
 const SCancelButton = styled.button`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;

@@ -29,7 +29,7 @@ const STitle = styled.div`
   text-align: center;
   width: 120px;
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 22px;
   font-weight: normal;
   font-stretch: normal;

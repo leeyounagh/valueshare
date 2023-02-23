@@ -37,7 +37,7 @@ const SRootDiv = styled.div`
   width: 50%;
   height: 30%;
   margin-left: 54px;
-  font-family: Montserrat;
+
   font-size: 24px;
   font-weight: normal;
   font-stretch: normal;

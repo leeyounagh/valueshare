@@ -42,7 +42,7 @@ const SCloseDiv = styled.div`
 `;
 const STitleDiv = styled.div`
   flex-grow: 0;
-  font-family: NotoSansKR;
+
   font-size: 25px;
   font-weight: 500;
   font-stretch: normal;
@@ -64,7 +64,7 @@ const SItemDiv = styled.div`
 `;
 const SInfoTitle = styled.div`
   width: 20%;
-  font-family: NotoSans;
+
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -114,7 +114,7 @@ const SCheckButton = styled.button`
   height: 100%;
   background-color: ${gray1};
   color: ${white};
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -131,7 +131,7 @@ const SCancelButton = styled.button`
   border-radius: 10px;
   width: 100%;
   height: 100%;
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;

@@ -13,7 +13,7 @@ const SLayout = styled.div`
 `;
 const SCancelTitle = styled.div`
   width: 30%;
-  font-family: Montserrat;
+
   font-size: 40px;
   font-weight: 600;
   font-stretch: normal;
@@ -26,7 +26,6 @@ const SCancelTitle = styled.div`
   height: 10vh;
 `;
 const SCancelReasonTitle = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -48,7 +47,6 @@ const SCancelTextArea = styled.textarea`
 
 const SOrderDetailDiv = styled.div``;
 const SOrderDetailTitle = styled.div`
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
   font-stretch: normal;
@@ -61,7 +59,7 @@ const SOrderDetailTitle = styled.div`
 `;
 const SReceiveTitle = styled.div`
   width: 15%;
-  font-family: NotoSans;
+
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -76,7 +74,6 @@ const SReceiveItemDiv = styled.div`
   margin-bottom: 20px;
 `;
 const SReceiveTextDiv = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -98,7 +95,6 @@ const SOrderTitalDiv = styled.div`
   display: flex;
 `;
 const STotalTextDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: bold;
   font-stretch: normal;
@@ -111,7 +107,7 @@ const STotalTextDiv = styled.div`
 `;
 const STotalPriceDiv = styled.div`
   width: 90%;
-  font-family: Montserrat;
+
   font-size: 24px;
   font-weight: bold;
   font-stretch: normal;
@@ -130,7 +126,6 @@ const SButtonDiv = styled.div`
   justify-content: flex-end;
 `;
 const SReturnButton = styled.button`
-  font-family: NotoSansKR;
   font-size: 16px;
   font-weight: normal;
   font-stretch: normal;
@@ -150,7 +145,7 @@ const SCancelButton = styled.button`
   border: solid 1px ${gray3};
   width: 15%;
   height: 30%;
-  font-family: NotoSansKR;
+
   font-size: 16px;
   font-weight: normal;
   font-stretch: normal;

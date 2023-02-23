@@ -19,7 +19,6 @@ const SOrderItemDiv = styled.div`
   border-radius: 10px;
 `;
 const STitleDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 30px;
   font-weight: bold;
   font-stretch: normal;
@@ -36,7 +35,6 @@ const STitleDiv = styled.div`
   padding-top: 50px;
 `;
 const SNoticeDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: normal;
   font-stretch: normal;
@@ -56,7 +54,6 @@ const SUserInfoDiv = styled.div`
   justify-content: center;
 `;
 const SNameDiv = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -100,7 +97,7 @@ const Sbutton = styled.button`
   height: 49px;
   border-radius: 10px;
   background-color: ${gray1};
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
