@@ -14,13 +14,11 @@ const SLayout = styled.div`
 `;
 
 const SOrderTitleDiv = styled.div`
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   height: 10vh;
@@ -47,13 +45,11 @@ const STitleDiv = styled.div`
   padding-left: 20px;
 `;
 const SBrandNameDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   height: 50%;
@@ -61,24 +57,20 @@ const SBrandNameDiv = styled.div`
   align-items: center;
 `;
 const SProductNameDiv = styled.div`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
 `;
 const SQuantityDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray1};
   width: 25%;
@@ -87,13 +79,11 @@ const SQuantityDiv = styled.div`
   justify-content: center;
 `;
 const SPriceDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   color: ${gray1};
   display: flex;
   justify-content: center;

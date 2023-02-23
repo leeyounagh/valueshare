@@ -19,13 +19,12 @@ const SEmptyTitleDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-grow: 0;
-  font-family: NotoSansKR;
+
   font-size: 22px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   margin-bottom: 10px;

@@ -34,25 +34,21 @@ const SWalletImg = styled.img`
   height: 124px;
 `;
 const SCompleteLetter = styled.div`
-  font-family: NotoSansKR;
   font-size: 30px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.67;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray2};
   margin-top: 5%;
 `;
 const SOrderNumberTextDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   margin-top: 50px;
@@ -64,13 +60,11 @@ const SOrderNumberDiv = styled.div`
   justify-content: center;
 `;
 const SOrderGuideItemDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   margin-bottom: 2%;
@@ -95,13 +89,12 @@ const SCheckbutton = styled.button`
   background-color: ${gray1};
   width: 30%;
   height: 100%;
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
 
   a {
@@ -110,13 +103,11 @@ const SCheckbutton = styled.button`
   }
 `;
 const SCancelButton = styled.button`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray1};
   border-radius: 10px;

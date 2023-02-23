@@ -19,8 +19,7 @@ const SCartItemDiv = styled.div`
   height: 170px;
   display: flex;
   align-items: center;
-  margin-left: 50px;
-  border-bottom: 1px solid ${gray4};
+  margin: auto;
 `;
 const SCartIconDiv = styled.div`
   width: 100%;
@@ -45,13 +44,12 @@ const SCartOptionTextDiv = styled.div`
   justify-content: center;
 
   flex-grow: 0;
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   white-space: nowrap;
@@ -62,13 +60,15 @@ const SQuantityText = styled.div`
   justify-content: center;
   width: 12%;
 
+<<<<<<< HEAD
   font-family: NotoSans;
+=======
+>>>>>>> 3c6120139e6747dbb556b6461f94348f9b6f4a6f
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
 `;
@@ -77,30 +77,30 @@ const SPriceText = styled.div`
   flex-grow: 0;
   display: flex;
   justify-content: center;
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   white-space: nowrap;
 `;
 const SItemImg = styled.img`
-  width: 13%;
-  height: 80%;
+  width: 130px;
+  height: 148px;
   margin-left: 21px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: solid 1px ${color.gray5};
 `;
 const SItemOptionBrandTitle = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+  font-weight: 600;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
 `;
@@ -108,12 +108,21 @@ const SProductName = styled.div`
   margin-top: 2px;
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
+`;
+
+const SItemDiv = styled.div`
+  width: 100%;
+  height: 148px;
+  display: flex;
+  border-bottom: 1px solid ${gray4};
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
 `;
 const SProductTextDiv = styled.div`
   margin-left: 21px;
@@ -127,13 +136,11 @@ const SQuantityPreviusImg = styled.img`
   transform: rotate(90deg);
 `;
 const SQuantityTextDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray1};
   width: 40px;
@@ -150,28 +157,26 @@ const SItemPriceDiv = styled.div`
   width: 23%;
   display: flex;
   justify-content: center;
-  font-family: Montserrat;
+
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: ${gray1};
 `;
 const SAllDeleteIconDiv = styled.div`
   height: 40px;
-  width: 15%;
-  font-family: NotoSansKR;
+  width: 160px;
+
   font-size: 16px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
-  color: #000;
+  color: ${color.gray1};
   height: 40px;
   border-radius: 10px;
   border: solid 1px ${gray3};
@@ -183,16 +188,15 @@ const SAllDeleteIconDiv = styled.div`
 `;
 const SSelectedDeleteIconDiv = styled.div`
   height: 40px;
-  width: 15%;
-  font-family: NotoSansKR;
+  width: 160px;
+
   font-size: 16px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
-  color: #000;
+  color: ${color.gray1};
   border-radius: 10px;
   border: solid 1px ${gray3};
   display: flex;
@@ -327,33 +331,34 @@ function GetItemCart({ cartItems, setCartItems }) {
 
                 {/* 장바구니 부분체크박스 */}
                 <SItemImg src={item.productImage[0]} />
-                <SProductTextDiv>
-                  <SItemOptionBrandTitle>
-                    {item.productBrand.brandName}
-                  </SItemOptionBrandTitle>
-                  <SProductName>{item.productTitle}</SProductName>
-                </SProductTextDiv>
-                <SIconDiv onClick={() => handleMinusQuantity(item._id)}>
-                  <SQuantityPreviusImg
-                    src="asset/Chevrons_chevron-right.svg"
-                    alt="minus수량"
-                  />
-                </SIconDiv>
-                <SIconDiv>
-                  <SQuantityTextDiv>{item.quantity}</SQuantityTextDiv>
-                </SIconDiv>
-                <SIconDiv
-                  onClick={() => {
-                    handlePlusQuantity(item._id);
-                  }}
-                >
-                  <SQuantityNextImg
-                    src="asset/Chevrons_chevron-right.svg"
-                    alt="plus수량"
-                  />
-                </SIconDiv>
-
-                <SItemPriceDiv> {item.productPrice}</SItemPriceDiv>
+                <SItemDiv>
+                  <SProductTextDiv>
+                    <SItemOptionBrandTitle>
+                      {item.productBrand.brandName}
+                    </SItemOptionBrandTitle>
+                    <SProductName>{item.productTitle}</SProductName>
+                  </SProductTextDiv>
+                  <SIconDiv onClick={() => handleMinusQuantity(item._id)}>
+                    <SQuantityPreviusImg
+                      src="asset/Chevrons_chevron-right.svg"
+                      alt="minus수량"
+                    />
+                  </SIconDiv>
+                  <SIconDiv>
+                    <SQuantityTextDiv>{item.quantity}</SQuantityTextDiv>
+                  </SIconDiv>
+                  <SIconDiv
+                    onClick={() => {
+                      handlePlusQuantity(item._id);
+                    }}
+                  >
+                    <SQuantityNextImg
+                      src="asset/Chevrons_chevron-right.svg"
+                      alt="plus수량"
+                    />
+                  </SIconDiv>
+                  <SItemPriceDiv> {item.productPrice}</SItemPriceDiv>
+                </SItemDiv>
               </SCartItemDiv>
             );
           })

@@ -42,13 +42,12 @@ const SCloseDiv = styled.div`
 `;
 const STitleDiv = styled.div`
   flex-grow: 0;
-  font-family: NotoSansKR;
+
   font-size: 25px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   margin-left: 90px;
@@ -64,13 +63,12 @@ const SItemDiv = styled.div`
 `;
 const SInfoTitle = styled.div`
   width: 20%;
-  font-family: NotoSans;
+
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   display: flex;
@@ -80,11 +78,9 @@ const SInfoTitle = styled.div`
 const SInfoInput = styled.input`
   width: 90%;
   height: 100%;
-  font-family: Poppins;
   font-size: 16px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 1.75;
   letter-spacing: 0.75px;
   text-align: left;
@@ -114,13 +110,12 @@ const SCheckButton = styled.button`
   height: 100%;
   background-color: ${gray1};
   color: ${white};
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   z-index: 50;
   cursor: pointer;
@@ -131,13 +126,12 @@ const SCancelButton = styled.button`
   border-radius: 10px;
   width: 100%;
   height: 100%;
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray1};
   cursor: pointer;

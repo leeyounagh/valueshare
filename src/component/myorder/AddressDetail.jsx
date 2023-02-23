@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
 import OrderedEditAddress from "./OrderedEditAddress";
@@ -124,6 +125,10 @@ const ScanCleButton = styled.button`
   color: #000;
   background-color: white;
   margin-left: 20px;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
 `;
 const SReturnButton = styled.button`
   font-size: 16px;
@@ -161,9 +166,8 @@ const SEditButton = styled.button`
   background-color: ${gray1};
 `;
 function AddressDetail({ orderData }) {
-  const navigate = useNavigate();
   const [modalIsOpen, setIsOpen] = useState(false);
-  console.log(orderData);
+  console.log(orderData, orderData[0]._id);
 
   return (
     <Slayout>
@@ -191,13 +195,9 @@ function AddressDetail({ orderData }) {
       </STotalDiv>
       <SButtonDiv>
         <SReturnButton>반품 신청</SReturnButton>
-        <ScanCleButton
-          onClick={() => {
-            navigate("/cancleorder");
-          }}
-        >
-          취소 신청
-        </ScanCleButton>
+        <Link to={`/myorder/${orderData[0]._id}`}>
+          <ScanCleButton>취소 신청</ScanCleButton>
+        </Link>
         <SEditAddressDiv>
           <SEditButton
             onClick={() => {

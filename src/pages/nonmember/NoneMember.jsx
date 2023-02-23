@@ -19,13 +19,11 @@ const SOrderItemDiv = styled.div`
   border-radius: 10px;
 `;
 const STitleDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 30px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.67;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray2};
   width: 100%;
@@ -36,13 +34,11 @@ const STitleDiv = styled.div`
   padding-top: 50px;
 `;
 const SNoticeDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   height: 10vh;
@@ -56,13 +52,11 @@ const SUserInfoDiv = styled.div`
   justify-content: center;
 `;
 const SNameDiv = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   display: flex;
@@ -107,13 +101,12 @@ const Sbutton = styled.button`
   height: 49px;
   border-radius: 10px;
   background-color: ${gray1};
-  font-family: NotoSans;
+
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${white};
   white-space: nowrap;

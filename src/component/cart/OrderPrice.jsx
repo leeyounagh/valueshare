@@ -38,10 +38,9 @@ const SOrderTitleDiv = styled.div`
   margin: 0 337px 30.5px 0;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${color.black};
   margin-left: 15px;
@@ -52,11 +51,10 @@ const STotalPricTexteDiv = styled.div`
   margin-left: 15px;
   height: auto;
   font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-weight: 400;
+
+  line-height: 2;
+
   text-align: left;
   color: ${gray3};
   white-space: nowrap;
@@ -66,10 +64,10 @@ const STotalPriceDiv = styled.div`
   flex-grow: 0;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
+
   font-style: 1.5;
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: ${gray1};
   display: flex;
@@ -85,30 +83,35 @@ const SLastTotalDiv = styled.div`
   height: 30%;
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   margin-bottom: 50px;
+=======
+  margin-top: 50px;
+  padding: 40px 0;
+  margin-bottom: 20px;
+  border-top: 1px solid ${color.gray4};
+>>>>>>> 3c6120139e6747dbb556b6461f94348f9b6f4a6f
 `;
 const STotalTextDiv = styled.div`
   width: 90%;
   flex-grow: 0;
-  font-family: NotoSansKR;
+
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
 const SLastTotalPriceDiv = styled.div`
   flex-grow: 0;
-  font-family: Montserrat;
+
   font-size: 40px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: #ff985f;
 `;
@@ -123,13 +126,11 @@ const SOrderIcon = styled.div`
   cursor: pointer;
 `;
 const SOrderIconText = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray5};
 `;

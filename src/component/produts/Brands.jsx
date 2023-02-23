@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import BrandName from "data/BrandName";
+import { useSearchParams } from "react-router-dom";
 
 const { white, gray4, gray1 } = color;
 const SLayout = styled.div`
@@ -15,13 +16,12 @@ const SBrandTitleDiv = styled.div`
   width: 109px;
   height: 37px;
   margin: 50px 91px 34px 44px;
-  font-family: Montserrat;
+
   font-size: 30px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -49,6 +49,13 @@ const SBrandNameDiv = styled.div`
 `;
 const SCheckboxDiv = styled.div`
   margin-right: 5px;
+
+  & > input {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
 `;
 const SBrandLineDiv = styled.div`
   width: 88%;
@@ -60,6 +67,14 @@ const SBrandLineDiv = styled.div`
 `;
 
 function Brands() {
+  const [searchParams, setSearchParams] = useSearchParams({
+    categories: "all",
+    brandId: "all",
+  });
+  const categories = searchParams.get("categories");
+  const brandId = searchParams.get("brandId");
+  console.log(categories, brandId);
+
   return (
     <SLayout>
       <SBrandTitleDiv>Brands</SBrandTitleDiv>
@@ -68,11 +83,13 @@ function Brands() {
           return (
             <SBrandNameDiv>
               <SCheckboxDiv>
-                <img
-                  src="/asset/checkbox.svg"
-                  width="24px"
-                  height="24px"
-                  alt="체크박스"
+                <input
+                  type="checkbox"
+                  disabled={item.disabled}
+                  checked={item.checked}
+                  onChange={() => {
+                    setSearchParams({ categories, brandId: `${item.value}` });
+                  }}
                 />
               </SCheckboxDiv>
               <SCheckboxDiv>{item.value}</SCheckboxDiv>

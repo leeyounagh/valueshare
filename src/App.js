@@ -83,7 +83,7 @@ function App() {
         <Route path="/lookbook" element={<LookBook />} />
 
         <Route path="/membership" element={<Membership />} />
-        <Route path="/cancleorder" element={<CancelOrder />} />
+        <Route path="/myorder/:userId" element={<CancelOrder />} />
 
         <Route path="/nonmemberorder" element={<NoneMember />} />
 

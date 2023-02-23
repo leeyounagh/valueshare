@@ -27,6 +27,7 @@ const SEmptyCartDiv = styled.div`
 const SOrderPriceDiv = styled.div`
   margin-top: 80px;
   margin-left: 50px;
+  width: 305;
 `;
 const SGetItemCartDiv = styled.div`
   width: 60%;
