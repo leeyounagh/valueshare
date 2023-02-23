@@ -49,6 +49,13 @@ const SBrandNameDiv = styled.div`
 `;
 const SCheckboxDiv = styled.div`
   margin-right: 5px;
+
+  & > input {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
 `;
 const SBrandLineDiv = styled.div`
   width: 88%;
@@ -68,11 +75,11 @@ function Brands() {
           return (
             <SBrandNameDiv>
               <SCheckboxDiv>
-                <img
-                  src="/asset/checkbox.svg"
-                  width="24px"
-                  height="24px"
-                  alt="체크박스"
+                <input
+                  type="checkbox"
+                  disabled={item.disabled}
+                  checked={item.checked}
+                  onChange={() => {}}
                 />
               </SCheckboxDiv>
               <SCheckboxDiv>{item.value}</SCheckboxDiv>

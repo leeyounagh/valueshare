@@ -25,7 +25,7 @@ const SCardDiv = styled.div`
   border: solid 1px ${color.gray5};
 `;
 const SCardBrand = styled.div`
-  width: 9%;
+  width: 100%;
   font-size: 20px;
   font-stretch: normal;
   font-style: normal;
