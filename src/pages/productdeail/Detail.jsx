@@ -60,6 +60,7 @@ const DetailLayout = styled.div`
     height: 1090px;
     line-height: 3.4;
     padding-top: 90px;
+    gap:21px;
   }
   .slick-dots li {
     width: 100%;
@@ -86,7 +87,6 @@ const ProductBrand = styled.div`
   color: ${color.gray3};
 `;
 const ProductTitle = styled.div`
-  margin-top: 12px;
   font-size: 40px;
   font-weight: bold;
 `;
@@ -154,7 +154,7 @@ const BtnDiv = styled.div`
   width: 100%;
   height: 100px;
   position: absolute;
-  top: 1050px;
+  top: 1056px;
 
   div {
     margin: 20px 0;
