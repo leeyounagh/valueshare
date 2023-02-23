@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import BrandName from "data/BrandName";
@@ -67,13 +67,21 @@ const SBrandLineDiv = styled.div`
 `;
 
 function Brands() {
+  const [params, setParams] = useState([]);
+  const onChange = (e) => {
+    setParams([...params, e.target.value]);
+  };
+
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
     brandId: "all",
   });
+
   const categories = searchParams.get("categories");
-  const brandId = searchParams.get("brandId");
+  const brandId = searchParams.getAll("brandId");
+
   console.log(categories, brandId);
+  console.log(params);
 
   return (
     <SLayout>
@@ -84,9 +92,11 @@ function Brands() {
             <SBrandNameDiv>
               <SCheckboxDiv>
                 <input
+                  value={item.value}
                   type="checkbox"
                   disabled={item.disabled}
                   checked={item.checked}
+                  onClick={onChange}
                   onChange={() => {
                     setSearchParams({ categories, brandId: `${item.value}` });
                   }}
