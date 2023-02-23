@@ -15,7 +15,6 @@ const SLayout = styled.div`
   padding-bottom: 50px;
 `;
 const SHistoryTitle = styled.div`
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
   font-stretch: normal;
@@ -40,7 +39,6 @@ const SItemDiv = styled.div`
   position: relative;
 `;
 const OrderNumberDiv = styled.div`
-  font-family: Montserrat;
   font-size: 24px;
   font-weight: bold;
   font-stretch: normal;
@@ -52,7 +50,6 @@ const OrderNumberDiv = styled.div`
   height: 30%;
 `;
 const OrderPriceDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
@@ -63,7 +60,6 @@ const OrderPriceDiv = styled.div`
   color: ${gray1};
 `;
 const ItemQuantityDiv = styled.div`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -100,7 +96,6 @@ const SStatusImg = styled.img`
   height: 28px;
 `;
 const SStatusText = styled.div`
-  font-family: NotoSans;
   font-size: 16px;
   font-weight: 500;
   font-stretch: normal;

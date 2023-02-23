@@ -27,7 +27,7 @@ const STitle = styled.div`
   text-align: center;
   width: 120px;
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 22px;
   font-weight: normal;
   font-stretch: normal;
@@ -61,7 +61,7 @@ const SProductTitle = styled.div`
   white-space: nowrap;
   width: 257px;
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 22px;
   font-weight: normal;
   font-stretch: normal;

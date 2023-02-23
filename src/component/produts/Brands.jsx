@@ -16,7 +16,7 @@ const SBrandTitleDiv = styled.div`
   width: 109px;
   height: 37px;
   margin: 50px 91px 34px 44px;
-  font-family: Montserrat;
+
   font-size: 30px;
   font-weight: 600;
   font-stretch: normal;

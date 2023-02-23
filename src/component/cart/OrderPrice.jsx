@@ -44,10 +44,10 @@ const STotalPricTexteDiv = styled.div`
   margin-left: 15px;
   height: auto;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
+  line-height: 2;
   letter-spacing: normal;
   text-align: left;
   color: ${gray3};
@@ -77,12 +77,15 @@ const SLastTotalDiv = styled.div`
   height: 30%;
   display: flex;
   align-items: center;
+  margin-top: 50px;
+  padding: 40px 0;
   margin-bottom: 20px;
+  border-top: 1px solid ${color.gray4};
 `;
 const STotalTextDiv = styled.div`
   width: 90%;
   flex-grow: 0;
-  font-family: NotoSansKR;
+
   font-size: 24px;
   font-weight: bold;
   font-stretch: normal;
@@ -94,7 +97,7 @@ const STotalTextDiv = styled.div`
 `;
 const SLastTotalPriceDiv = styled.div`
   flex-grow: 0;
-  font-family: Montserrat;
+
   font-size: 40px;
   font-weight: bold;
   font-stretch: normal;
@@ -115,7 +118,6 @@ const SOrderIcon = styled.div`
   cursor: pointer;
 `;
 const SOrderIconText = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: bold;
   font-stretch: normal;

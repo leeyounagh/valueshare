@@ -16,7 +16,6 @@ const SlayOut = styled.header`
   a {
     text-decoration: none;
     border: black;
-    font-family: "Montserrat", "Noto Sans KR", "Rufina", "sans-serif";
   }
 `;
 const SLogoDiv = styled.div`
@@ -33,20 +32,20 @@ const SLogoDiv = styled.div`
     letter-spacing: normal;
     text-align: left;
     color: black;
-    font-family: "Playfair Display", serif;
+    font-family: "Rufina", serif;
     font-weight: 900;
 
     align-items: center;
   }
   h2 {
-    font-family: "Playfair Display", serif;
+    font-family: "Rufina", serif;
     font-size: 60px;
     font-weight: 900;
   }
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
   font-stretch: normal;
@@ -59,7 +58,7 @@ const SBestSellerDiv = styled.div`
 
 const SProductDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
   font-stretch: normal;
@@ -72,7 +71,7 @@ const SProductDiv = styled.div`
 
 const SLookBookDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
   font-stretch: normal;
@@ -86,7 +85,7 @@ const SLookBookDiv = styled.div`
 const SMembershipDiv = styled.div`
   height: 100%;
   width: 130px;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
   font-stretch: normal;

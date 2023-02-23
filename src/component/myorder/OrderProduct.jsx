@@ -13,7 +13,6 @@ const SLayout = styled.div`
 `;
 
 const SOrderTitleDiv = styled.div`
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
   font-stretch: normal;
@@ -43,7 +42,6 @@ const STitleDiv = styled.div`
   padding-left: 20px;
 `;
 const SBrandNameDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
@@ -57,7 +55,6 @@ const SBrandNameDiv = styled.div`
   align-items: center;
 `;
 const SProductNameDiv = styled.div`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -68,7 +65,6 @@ const SProductNameDiv = styled.div`
   color: ${gray3};
 `;
 const SQuantityDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
@@ -83,7 +79,6 @@ const SQuantityDiv = styled.div`
   justify-content: center;
 `;
 const SPriceDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
