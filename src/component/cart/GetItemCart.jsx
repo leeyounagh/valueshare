@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -203,9 +203,11 @@ const SSelectedDeleteIconDiv = styled.div`
 const SIconDiv = styled.div`
   cursor: pointer;
   width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 20%;
 `;
 const SCheckInput = styled.input`

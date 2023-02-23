@@ -45,6 +45,7 @@ function OrderList() {
     );
     console.log(response);
   };
+
   console.log(orderData);
   return (
     <div>
@@ -73,7 +74,7 @@ function OrderList() {
                       <td>{item._id}</td>
                     </Link>
                     <td>{item.name}</td>
-                    <td>{item.email}</td>
+
                     <td>{item.shipStatus}</td>
                     <td>
                       <button

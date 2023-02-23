@@ -18,6 +18,8 @@ const SLayout = styled.div`
   border-radius: 10px;
   background-color: ${white};
   z-index: 10;
+<<<<<<< HEAD
+=======
 
   .paypal-button:not(.paypal-button-card),
   .paypal-button.paypal-button-shape-rect {
@@ -26,6 +28,7 @@ const SLayout = styled.div`
     margin-left: 15px !important;
     border-radius: 10px !important;
   }
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 
 const SOrderTitleDiv = styled.div`
@@ -152,7 +155,7 @@ function OrderPrice({ cartItems, setCartItems }) {
   const handleOrder = async () => {
     const newData = {
       // eslint-disable-next-line prettier/prettier
-      phone: ShipInfo.phonenumber,
+      phone: ShipInfo.phoneNumber,
       email: ShipInfo.email,
       name: ShipInfo.customerName,
       products: cartItems,

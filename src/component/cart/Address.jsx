@@ -111,8 +111,8 @@ function Address() {
         <SItemDiv>
           <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
           <SAddressText>
-            {adress.phonenumber.length > 0
-              ? `${adress.phonenumber}`
+            {adress.phoneNumber.length > 0
+              ? `${adress.phoneNumber}`
               : "핸드폰번호를 입력해주세요"}
           </SAddressText>
         </SItemDiv>

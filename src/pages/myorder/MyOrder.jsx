@@ -15,6 +15,7 @@ const SLayout = styled.div`
   background-color: ${gray6};
   padding-top: 100px;
   display: flex;
+  position: relative;
 `;
 
 const SOrderHistoryDiv = styled.div`
@@ -25,8 +26,7 @@ const SOrderHistoryDiv = styled.div`
 const SCustomerInfoDiv = styled.div`
   width: 60%;
   display: grid;
-  border: 1px solid black;
-  padding-left: 100px;
+  padding-left: 200px;
   padding-bottom: 100px;
 `;
 function MyOrder() {

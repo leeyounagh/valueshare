@@ -1,8 +1,8 @@
+/* eslint-disable no-underscore-dangle */
+import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
-import { useDispatch } from "react-redux";
-import { setNoneMemberInfo } from "slice/UserAddressSlice";
 
 const { white, gray3, gray4, gray1 } = color;
 
@@ -148,7 +148,7 @@ const SInnerButtonDiv = styled.div`
   margin-right: 20px;
   z-index: 10;
 `;
-function EditAdress({ setIsOpen }) {
+function OrderedEditAddress({ setIsOpen, orderData }) {
   const [data, setData] = useState({
     customerName: "",
     phoneNumber: "",
@@ -156,7 +156,7 @@ function EditAdress({ setIsOpen }) {
     memo: "",
     email: "",
   });
-  const dispatch = useDispatch();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -166,8 +166,20 @@ function EditAdress({ setIsOpen }) {
     };
     setData(newData);
   };
-  const handleAddress = () => {
-    dispatch(setNoneMemberInfo(data));
+  console.log(data);
+  const handleAddress = async () => {
+    const body = {
+      phone: data.phoneNumber,
+      email: data.phoneNumber,
+      name: data.customerName,
+      shipAdr: data.address,
+      shipNote: data.memo,
+    };
+    const response = await axios.patch(
+      `http://localhost:5000/users/orders/${orderData[0]._id}`,
+      body
+    );
+    console.log(response);
   };
   return (
     <Slayout>
@@ -259,4 +271,4 @@ function EditAdress({ setIsOpen }) {
   );
 }
 
-export default EditAdress;
+export default OrderedEditAddress;

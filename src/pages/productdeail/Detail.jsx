@@ -11,7 +11,10 @@ import Btn2 from "component/button/Btn2";
 const Slayout = styled.div`
   width: 100%;
   height: 1500px;
+<<<<<<< HEAD
+=======
   background-color: ${color.white};
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 
 const DetailLayout = styled.div`
@@ -20,14 +23,22 @@ const DetailLayout = styled.div`
     font-size: 40px;
   }
   .slick-next {
+<<<<<<< HEAD
+    right: -145px;
+=======
     right: -15%;
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
   }
   .slick-next:before {
     background: url("/asset/icn-arrow-next.svg") no-repeat center center;
     color: transparent;
   }
   .slick-prev {
+<<<<<<< HEAD
+    left: 270px;
+=======
     left: 35%;
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
     z-index: 1;
   }
   .slick-list {
@@ -53,8 +64,12 @@ const DetailLayout = styled.div`
     top: 110px;
   }
   .slick-dots {
+<<<<<<< HEAD
+    width: 25%;
+=======
     margin-left: 2%;
     width: 20%;
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
     display: flex !important;
     flex-direction: column;
     height: 1090px;
@@ -105,7 +120,10 @@ const ProductPrice = styled.div`
   bottom: 80px;
   text-align: right;
   right: 10px;
+<<<<<<< HEAD
+=======
   font-weight: 600;
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 const ProductImgLiDiv = styled.div`
   width: 100%;
@@ -119,7 +137,10 @@ const ProductImgLi = styled.img`
   width: 100%;
   height: 200px;
   border-radius: 15px;
+<<<<<<< HEAD
+=======
   object-fit: cover;
+>>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 
 const ProductImgDiv = styled.div`
@@ -183,6 +204,7 @@ function Detail() {
       return (
         <a>
           <ProductImgLiDiv />
+
           <ProductImgLi
             key={i}
             src={productInformation?.result.productImage[i]}

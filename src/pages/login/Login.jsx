@@ -7,7 +7,9 @@ import React, { useState } from "react";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState(undefined);
+
   const [data, setData] = useState(undefined);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +27,6 @@ export default function Login() {
 
     setIsLoading(true);
     setData(undefined);
-    setError(undefined);
 
     const body = {
       email,
@@ -63,12 +64,15 @@ export default function Login() {
           {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ""}
         </div>
         <div className="loginSubmit">
-          <button onClick={handleClick}>Login</button>
+          <button type="submit" onClick={handleClick}>
+            Login
+          </button>
         </div>
       </form>
       <div className="loginResult">
         {isLoading ? "로그인중입니다." : null}
         {data ? `안녕하세요. ${data.id}님.` : null}
+
         {error || null}
       </div>
     </div>

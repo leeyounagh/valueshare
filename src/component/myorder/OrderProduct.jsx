@@ -7,7 +7,7 @@ import color from "styles/color";
 const { white, gray1, gray3, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 90%;
+  width: 100%;
   border-radius: 10px;
   background-color: ${white};
   padding-bottom: 30px;

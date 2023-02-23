@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +12,7 @@ import { setOrderInfo } from "slice/OrderSlice";
 function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const ShipInfo = useSelector((state) => {
-  //   return state.UserAddressReducer;
-  // });
-  // console.log(ShipInfo);
+
   const initialOptions = {
     "client-id":
       "AT3NE7EKYDtLHJ2q0nRqQqpTOPcycfmadei97OuSt2CKBtvY6y_oEiK7M5uFL9LQ2D9o3lp87AGth6fS",
@@ -41,10 +38,9 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
         createOrder={(data, actions) => onCreateOrder(data, actions)}
         onApprove={(data, actions) => {
           actions.order.capture().then(async () => {
-            console.log(ShipInfo, cartItems, "들어오기전");
             const newData = {
               // eslint-disable-next-line prettier/prettier
-              phone: ShipInfo.phonenumber,
+              phone: ShipInfo.phoneNumber,
               email: ShipInfo.email,
               name: ShipInfo.customerName,
               products: cartItems,
