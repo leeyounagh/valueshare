@@ -15,10 +15,9 @@ const SCardBrand = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -32,10 +31,9 @@ const SPriceText = styled.div`
 
   font-size: 20px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -58,10 +56,9 @@ const SCartDiv = styled.div`
 const SCardBrandNameDiv = styled.div`
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   padding-left: 10px;

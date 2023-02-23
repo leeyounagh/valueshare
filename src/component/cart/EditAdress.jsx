@@ -45,10 +45,9 @@ const STitleDiv = styled.div`
 
   font-size: 25px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   margin-left: 90px;
@@ -67,10 +66,9 @@ const SInfoTitle = styled.div`
 
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   display: flex;
@@ -80,11 +78,9 @@ const SInfoTitle = styled.div`
 const SInfoInput = styled.input`
   width: 90%;
   height: 100%;
-  font-family: Poppins;
   font-size: 16px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 1.75;
   letter-spacing: 0.75px;
   text-align: left;
@@ -117,10 +113,9 @@ const SCheckButton = styled.button`
 
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   z-index: 50;
   cursor: pointer;
@@ -134,10 +129,9 @@ const SCancelButton = styled.button`
 
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray1};
   cursor: pointer;

@@ -17,10 +17,9 @@ const SLayout = styled.div`
 const SHistoryTitle = styled.div`
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   width: 100%;
@@ -41,10 +40,9 @@ const SItemDiv = styled.div`
 const OrderNumberDiv = styled.div`
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   height: 30%;
@@ -52,20 +50,18 @@ const OrderNumberDiv = styled.div`
 const OrderPriceDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
 `;
 const ItemQuantityDiv = styled.div`
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   margin-top: 6px;
@@ -98,10 +94,9 @@ const SStatusImg = styled.img`
 const SStatusText = styled.div`
   font-size: 16px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: #ff985f;
   width: 90%;

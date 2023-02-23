@@ -16,10 +16,9 @@ const SCancelTitle = styled.div`
 
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   margin-top: 50px;
@@ -28,10 +27,9 @@ const SCancelTitle = styled.div`
 const SCancelReasonTitle = styled.div`
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
 `;
@@ -49,10 +47,9 @@ const SOrderDetailDiv = styled.div``;
 const SOrderDetailTitle = styled.div`
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   height: 10vh;
@@ -62,10 +59,9 @@ const SReceiveTitle = styled.div`
 
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
 `;
@@ -76,10 +72,9 @@ const SReceiveItemDiv = styled.div`
 const SReceiveTextDiv = styled.div`
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
 `;
@@ -97,10 +92,9 @@ const SOrderTitalDiv = styled.div`
 const STotalTextDiv = styled.div`
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   width: 20%;
@@ -110,10 +104,9 @@ const STotalPriceDiv = styled.div`
 
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   color: ${gray1};
   display: flex;
   justify-content: flex-end;
@@ -128,10 +121,9 @@ const SButtonDiv = styled.div`
 const SReturnButton = styled.button`
   font-size: 16px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray4};
   width: 15%;
@@ -148,10 +140,9 @@ const SCancelButton = styled.button`
 
   font-size: 16px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: #000;
   background-color: ${white};

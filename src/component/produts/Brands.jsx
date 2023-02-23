@@ -19,10 +19,9 @@ const SBrandTitleDiv = styled.div`
 
   font-size: 30px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;

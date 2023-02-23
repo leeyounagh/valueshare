@@ -21,10 +21,9 @@ const SOrderItemDiv = styled.div`
 const STitleDiv = styled.div`
   font-size: 30px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.67;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray2};
   width: 100%;
@@ -37,10 +36,9 @@ const STitleDiv = styled.div`
 const SNoticeDiv = styled.div`
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   height: 10vh;
@@ -56,10 +54,9 @@ const SUserInfoDiv = styled.div`
 const SNameDiv = styled.div`
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   display: flex;
@@ -100,10 +97,9 @@ const Sbutton = styled.button`
 
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${white};
   white-space: nowrap;

@@ -22,10 +22,9 @@ const SEmptyTitleDiv = styled.div`
 
   font-size: 22px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   margin-bottom: 10px;

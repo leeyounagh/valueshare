@@ -12,7 +12,6 @@ const SlayOut = styled.header`
   background-color: ${white};
   border-bottom: 1px solid ${gray4};
   display: flex;
-  justify-content: center;
   a {
     text-decoration: none;
     border: black;
@@ -26,10 +25,9 @@ const SLogoDiv = styled.div`
 
   a {
     font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
+
     line-height: normal;
-    letter-spacing: normal;
+
     text-align: left;
     color: black;
     font-family: "Rufina", serif;
@@ -48,10 +46,9 @@ const SBestSellerDiv = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -61,10 +58,9 @@ const SProductDiv = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -74,10 +70,9 @@ const SLookBookDiv = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -88,10 +83,9 @@ const SMembershipDiv = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -111,7 +105,7 @@ const SLayoutMenuDiv = styled.div`
   width: 60%;
   height: 67px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 25px;
 `;
 const SLayoutIconDiv = styled.div`
@@ -161,9 +155,7 @@ const SLayoutProfileDiv = styled.div`
   height: 100%;
   margin-bottom: 20px;
 `;
-const SLayoutProfileInnerDiv = styled.div`
-  width: 25%;
-`;
+const SLayoutProfileInnerDiv = styled.div``;
 function Header() {
   return (
     <SlayOut>

@@ -30,10 +30,9 @@ const SOrderTitleDiv = styled.div`
   margin: 0 337px 30.5px 0;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${color.black};
   margin-left: 15px;
@@ -45,10 +44,9 @@ const STotalPricTexteDiv = styled.div`
   height: auto;
   font-size: 18px;
   font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 2;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   white-space: nowrap;
@@ -58,10 +56,10 @@ const STotalPriceDiv = styled.div`
   flex-grow: 0;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
+
   font-style: 1.5;
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: ${gray1};
   display: flex;
@@ -88,10 +86,9 @@ const STotalTextDiv = styled.div`
 
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -100,10 +97,9 @@ const SLastTotalPriceDiv = styled.div`
 
   font-size: 40px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: #ff985f;
 `;
@@ -120,10 +116,9 @@ const SOrderIcon = styled.div`
 const SOrderIconText = styled.div`
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray5};
 `;

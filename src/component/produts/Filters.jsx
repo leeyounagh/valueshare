@@ -25,10 +25,9 @@ const SFilterTitle = styled.div`
   left: 30px;
   font-size: 30px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${color.gray2};
 `;
@@ -57,9 +56,9 @@ const SCategoryDiv = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
   font-size: 18px;
   font-weight: normal;
-  font-stretch: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${color.gray2};
   cursor: pointer;
