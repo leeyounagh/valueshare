@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import BrandName from "data/BrandName";
+import { useSearchParams } from "react-router-dom";
 
 const { white, gray4, gray1 } = color;
 const SLayout = styled.div`
@@ -67,6 +68,14 @@ const SBrandLineDiv = styled.div`
 `;
 
 function Brands() {
+  const [searchParams, setSearchParams] = useSearchParams({
+    categories: "all",
+    brandId: "all",
+  });
+  const categories = searchParams.get("categories");
+  const brandId = searchParams.get("brandId");
+  console.log(categories, brandId);
+
   return (
     <SLayout>
       <SBrandTitleDiv>Brands</SBrandTitleDiv>
@@ -79,7 +88,9 @@ function Brands() {
                   type="checkbox"
                   disabled={item.disabled}
                   checked={item.checked}
-                  onChange={() => {}}
+                  onChange={() => {
+                    setSearchParams({ categories, brandId: `${item.value}` });
+                  }}
                 />
               </SCheckboxDiv>
               <SCheckboxDiv>{item.value}</SCheckboxDiv>

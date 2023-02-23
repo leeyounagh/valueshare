@@ -8,7 +8,7 @@ const { gray3, gray4 } = color;
 
 const SLayout = styled.div`
   width: 100%;
-  height: 600px;
+  height: 500px;
   position: relative;
   margin-left: 30px;
 `;
@@ -51,7 +51,7 @@ const SCategoryDiv = styled.div`
   width: 90%;
   height: auto;
   position: absolute;
-  top: 30px;
+  top: 60px;
   left: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
@@ -107,9 +107,11 @@ function Filters() {
   const filterItem2 = Continent.filter((item) => item.key >= 7);
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
+    brandId: "all",
   });
   const categories = searchParams.get("categories");
-  console.log("categories :", categories);
+  const brandId = searchParams.get("brandId");
+  console.log(categories, brandId);
 
   return (
     <SLayout>
@@ -122,7 +124,9 @@ function Filters() {
           {filterItem.map((item) => {
             return (
               <SCategoryItemDiv
-                onClick={() => setSearchParams({ categories: `${item.value}` })}
+                onClick={() =>
+                  setSearchParams({ categories: `${item.value}`, brandId })
+                }
               >
                 {item.value}
               </SCategoryItemDiv>

@@ -3,7 +3,7 @@ const BrandName = [
   { id: "brandname", key: 2, value: "Chanel" },
   { id: "brandname", key: 3, value: "Gucci" },
   { id: "brandname", key: 4, value: "Coach" },
-  { id: "brandname", key: 5, value: "MiuMiu" },
+  { id: "brandname", key: 5, value: "Miu Miu" },
   { id: "brandname", key: 7, value: "Prada" },
   { id: "brandname", key: 8, value: "Balenciaga" },
   { id: "brandname", key: 9, value: "Louis Vuitton" },
