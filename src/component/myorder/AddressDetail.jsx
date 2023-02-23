@@ -167,7 +167,7 @@ const SEditButton = styled.button`
 `;
 function AddressDetail({ orderData }) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  console.log(orderData, orderData[0]._id);
+  console.log(orderData, orderData[0]?._id);
 
   return (
     <Slayout>
@@ -195,7 +195,7 @@ function AddressDetail({ orderData }) {
       </STotalDiv>
       <SButtonDiv>
         <SReturnButton>반품 신청</SReturnButton>
-        <Link to={`/myorder/${orderData[0]._id}`}>
+        <Link to={`/myorder/cancel/${orderData[0]?._id}`}>
           <ScanCleButton>취소 신청</ScanCleButton>
         </Link>
         <SEditAddressDiv>

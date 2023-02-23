@@ -1,4 +1,7 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import axios from "axios";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -13,7 +16,7 @@ const SLayout = styled.div`
 `;
 const SCancelTitle = styled.div`
   width: 30%;
-
+  white-space: nowrap;
   font-size: 40px;
   font-weight: 600;
 
@@ -149,12 +152,38 @@ const SCancelButton = styled.button`
   border-radius: 10px;
   margin-right: 50px;
 `;
-function CancelOrderReciept() {
+function CancelOrderReciept({ orderData }) {
+  const [cancelReason, setCancelReason] = useState("");
+  const { pathname } = useLocation();
+  const objectId = pathname.substr(16);
+  const navigate = useNavigate();
+  const handleCancel = async () => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/${objectId}`, {
+        cancelNote: cancelReason,
+      });
+      if (response.status === 200) {
+        alert("취소에 성공했습니다.");
+        navigate("/");
+      }
+    } catch (err) {
+      alert("취소에 실패했습니다.");
+      console.log(err);
+    }
+  };
+
+  console.log(objectId);
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>
       <SCancelReasonTitle> 취소 사유</SCancelReasonTitle>
-      <SCancelTextArea placeholder="취소 사유를 적어주세요." />
+      <SCancelTextArea
+        value={cancelReason}
+        onChange={(e) => {
+          setCancelReason(e.target.value);
+        }}
+        placeholder="취소 사유를 적어주세요."
+      />
       <SOrderDetailDiv>
         <SOrderDetailTitle>Order Details</SOrderDetailTitle>
         <SReceiveItemDiv>
@@ -183,7 +212,13 @@ function CancelOrderReciept() {
       </SOrderTitalDiv>
       <SButtonDiv>
         <SReturnButton>반품신청</SReturnButton>
-        <SCancelButton>주문취소</SCancelButton>
+        <SCancelButton
+          onClick={() => {
+            handleCancel();
+          }}
+        >
+          주문취소
+        </SCancelButton>
       </SButtonDiv>
     </SLayout>
   );
