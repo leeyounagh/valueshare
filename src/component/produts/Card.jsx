@@ -25,7 +25,6 @@ const SCardDiv = styled.div`
   border: solid 1px ${color.gray5};
 `;
 const SCardBrand = styled.div`
-  padding-left: 10px;
   width: 9%;
   font-size: 20px;
   font-stretch: normal;
@@ -47,12 +46,13 @@ const SPriceText = styled.div`
   text-align: left;
   color: ${color.black};
   text-align: right;
+  margin-right: -4px;
 `;
 const SCardImg = styled.img`
-  width: 310px;
+  width: 300px;
   height: 350px;
-  margin: 0 0 22px 6px;
-  object-fit: contain;
+  object-fit: cover;
+  margin-bottom: 27px;
 `;
 const SCardTitleDiv = styled.div`
   width: 100%;
@@ -62,14 +62,12 @@ const SCartDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-left: 6px;
   margin-top: 20px;
 `;
 const SCardBrandNameDiv = styled.div`
   font-size: 20px;
   text-align: left;
   color: ${color.gray1};
-  padding-left: 10px;
 `;
 const SCartImgDiv = styled.div`
   cursor: pointer;
