@@ -6,13 +6,23 @@ import { setNoneMemberInfo } from "slice/UserAddressSlice";
 
 const { white, gray3, gray4, gray1 } = color;
 
-const SLayout = styled.div`
+const Slayout = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: -143px;
+  left: 0;
+  z-index: 998;
+`;
+
+const SModal = styled.div`
   width: 60vw;
   height: 90vh;
   flex-grow: 0;
   border-radius: 10px;
   background-color: ${white};
-  z-index: 50;
+  z-index: 9999;
   position: absolute;
   top: 150px;
   left: 20%;
@@ -160,90 +170,92 @@ function EditAdress({ setIsOpen }) {
     dispatch(setNoneMemberInfo(data));
   };
   return (
-    <SLayout>
-      <SCloseDiv>
-        <SCloseImg
-          onClick={() => {
-            setIsOpen(false);
-          }}
-          src="/asset/모달삭제.svg"
-        />
-      </SCloseDiv>
-      <STitleDiv>
-        <h2>배송지 수정</h2>
-      </STitleDiv>
-      <SItemDiv>
-        <SInfoTitle>받는사람</SInfoTitle>
-        <SInputDiv>
-          <SInfoInput
-            onChange={handleChange}
-            name="customerName"
-            placeholder="이름"
-          />
-        </SInputDiv>
-      </SItemDiv>
-      <SItemDiv>
-        <SInfoTitle>연락처</SInfoTitle>
-        <SInputDiv>
-          <SInfoInput
-            onChange={handleChange}
-            name="phonenumber"
-            placeholder="010-0000-0000"
-          />
-        </SInputDiv>
-      </SItemDiv>
-      <SItemDiv>
-        <SInfoTitle>배송지</SInfoTitle>
-        <SInputDiv>
-          <SInfoInput
-            onChange={handleChange}
-            name="address"
-            placeholder="주소"
-          />
-        </SInputDiv>
-      </SItemDiv>
-      <SItemDiv>
-        <SInfoTitle>배송메모</SInfoTitle>
-        <SInputDiv>
-          <SInfoInput
-            onChange={handleChange}
-            name="memo"
-            placeholder="배송 후 연락 부탁드립니다."
-          />
-        </SInputDiv>
-      </SItemDiv>
-      <SItemDiv>
-        <SInfoTitle>이메일</SInfoTitle>
-        <SInputDiv>
-          <SInfoInput
-            onChange={handleChange}
-            name="email"
-            placeholder=" elice@elice.com"
-          />
-        </SInputDiv>
-      </SItemDiv>
-      <SButtonDiv>
-        <SInnerButtonDiv>
-          <SCheckButton
-            onClick={() => {
-              handleAddress();
-              setIsOpen(false);
-            }}
-          >
-            확인
-          </SCheckButton>
-        </SInnerButtonDiv>
-        <SInnerButtonDiv>
-          <SCancelButton
+    <Slayout>
+      <SModal>
+        <SCloseDiv>
+          <SCloseImg
             onClick={() => {
               setIsOpen(false);
             }}
-          >
-            취소
-          </SCancelButton>
-        </SInnerButtonDiv>
-      </SButtonDiv>
-    </SLayout>
+            src="/asset/모달삭제.svg"
+          />
+        </SCloseDiv>
+        <STitleDiv>
+          <h2>배송지 수정</h2>
+        </STitleDiv>
+        <SItemDiv>
+          <SInfoTitle>받는사람</SInfoTitle>
+          <SInputDiv>
+            <SInfoInput
+              onChange={handleChange}
+              name="customerName"
+              placeholder="이름"
+            />
+          </SInputDiv>
+        </SItemDiv>
+        <SItemDiv>
+          <SInfoTitle>연락처</SInfoTitle>
+          <SInputDiv>
+            <SInfoInput
+              onChange={handleChange}
+              name="phonenumber"
+              placeholder="010-0000-0000"
+            />
+          </SInputDiv>
+        </SItemDiv>
+        <SItemDiv>
+          <SInfoTitle>배송지</SInfoTitle>
+          <SInputDiv>
+            <SInfoInput
+              onChange={handleChange}
+              name="address"
+              placeholder="주소"
+            />
+          </SInputDiv>
+        </SItemDiv>
+        <SItemDiv>
+          <SInfoTitle>배송메모</SInfoTitle>
+          <SInputDiv>
+            <SInfoInput
+              onChange={handleChange}
+              name="memo"
+              placeholder="배송 후 연락 부탁드립니다."
+            />
+          </SInputDiv>
+        </SItemDiv>
+        <SItemDiv>
+          <SInfoTitle>이메일</SInfoTitle>
+          <SInputDiv>
+            <SInfoInput
+              onChange={handleChange}
+              name="email"
+              placeholder=" elice@elice.com"
+            />
+          </SInputDiv>
+        </SItemDiv>
+        <SButtonDiv>
+          <SInnerButtonDiv>
+            <SCheckButton
+              onClick={() => {
+                handleAddress();
+                setIsOpen(false);
+              }}
+            >
+              확인
+            </SCheckButton>
+          </SInnerButtonDiv>
+          <SInnerButtonDiv>
+            <SCancelButton
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              취소
+            </SCancelButton>
+          </SInnerButtonDiv>
+        </SButtonDiv>
+      </SModal>
+    </Slayout>
   );
 }
 
