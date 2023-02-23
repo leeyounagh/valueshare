@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "component/Navbar";
 import OrderHistory from "component/OrderHistory";
 import OrderProduct from "component/myorder/OrderProduct";
-
+import AddressDetail from "component/myorder/AddressDetail";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -19,7 +19,15 @@ const SLayout = styled.div`
 
 const SOrderHistoryDiv = styled.div`
   width: 30%;
+
   margin-right: 20px;
+`;
+const SCustomerInfoDiv = styled.div`
+  width: 60%;
+  display: grid;
+  border: 1px solid black;
+  padding-left: 100px;
+  padding-bottom: 100px;
 `;
 function MyOrder() {
   const { pathname } = useLocation();
@@ -45,8 +53,10 @@ function MyOrder() {
         <SOrderHistoryDiv>
           <OrderHistory orderData={orderData} />
         </SOrderHistoryDiv>
-
-        <OrderProduct orderData={orderData} />
+        <SCustomerInfoDiv>
+          <OrderProduct orderData={orderData} />
+          <AddressDetail orderData={orderData} />
+        </SCustomerInfoDiv>
       </SLayout>
     </div>
   );

@@ -4,14 +4,13 @@
 import styled from "styled-components";
 import color from "styles/color";
 
-const { white, gray1, gray3 } = color;
+const { white, gray1, gray3, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 60%;
-  margin-left: 140px;
+  width: 90%;
   border-radius: 10px;
   background-color: ${white};
-  padding-left: 60px;
+  padding-bottom: 30px;
 `;
 
 const SOrderTitleDiv = styled.div`
@@ -28,11 +27,14 @@ const SOrderTitleDiv = styled.div`
   display: flex;
   align-items: flex-end;
   margin-bottom: 50px;
+  margin-right: 10px;
+  padding-left: 20px;
 `;
 const SOrderItemDiv = styled.div`
   width: 90%;
   height: 13vh;
   display: flex;
+  padding-left: 20px;
 `;
 const SItemImgDiv = styled.div`
   height: 100%;
@@ -97,6 +99,14 @@ const SPriceDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const SLinDiv = styled.div`
+  width: 90%;
+  height: 1px;
+  margin-top: 30px;
+  background-color: ${gray4};
+  margin-bottom: 20px;
+  margin-left: 20px;
+`;
 function OrderProduct({ orderData }) {
   console.log(orderData);
 
@@ -119,6 +129,7 @@ function OrderProduct({ orderData }) {
               <SQuantityDiv>{item.products.length}개</SQuantityDiv>
               <SPriceDiv> ₩{item.totalPrice * 1000}</SPriceDiv>
             </SOrderItemDiv>
+            <SLinDiv />
           </>
         );
       })}
