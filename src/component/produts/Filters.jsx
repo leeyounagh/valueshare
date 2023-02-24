@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Continent from "data/Continent";
@@ -81,6 +81,11 @@ const SCategoryItemDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+
+  &:active {
+    background-color: ${color.main};
+    color: ${color.white};
+  }
 `;
 const SCategoryOuterDiv = styled.div`
   position: absolute;
@@ -102,6 +107,8 @@ const SBottomLineDiv = styled.div`
   background-color: ${gray4};
 `;
 function Filters() {
+  const [btnActive, setBtnActive] = useState(false);
+
   const filterItem = Continent.filter((item) => item.key < 7);
   const filterItem2 = Continent.filter((item) => item.key >= 7);
   const [searchParams, setSearchParams] = useSearchParams({
@@ -123,9 +130,11 @@ function Filters() {
           {filterItem.map((item) => {
             return (
               <SCategoryItemDiv
-                onClick={() =>
-                  setSearchParams({ categories: `${item.value}`, brand })
-                }
+                className={btnActive ? "active" : ""}
+                onClick={() => {
+                  setSearchParams({ categories: `${item.value}`, brand });
+                  setBtnActive(!btnActive);
+                }}
               >
                 {item.value}
               </SCategoryItemDiv>
