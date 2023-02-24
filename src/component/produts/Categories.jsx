@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Continent from "data/Continent";
-import { useSearchParams } from "react-router-dom";
 
 const { gray3, gray4 } = color;
 
@@ -65,13 +64,6 @@ const SCategoryDiv = styled.div`
   overflow: hidden;
 `;
 
-const SCategory2Div = styled.div`
-  width: 90%;
-  height: 80px;
-  cursor: pointer;
-  color: ${color.gray2};
-`;
-
 const SCategoryItemDiv = styled.div`
   width: 95%;
   height: 50px;
@@ -82,22 +74,16 @@ const SCategoryItemDiv = styled.div`
   align-items: center;
   margin: 10px 0;
 
-  &:active {
+  &.active {
     background-color: ${color.main};
     color: ${color.white};
   }
+
+  &.odd-item {
+    grid-column: 1 / span 2;
+  }
 `;
-const SCategoryOuterDiv = styled.div`
-  position: absolute;
-  width: 98%;
-  height: 50px;
-  border-radius: 10px;
-  border: solid 1px ${gray3};
-  top: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 const SBottomLineDiv = styled.div`
   width: 90%;
   height: 1px;
@@ -106,18 +92,15 @@ const SBottomLineDiv = styled.div`
   left: 30px;
   background-color: ${gray4};
 `;
-function Filters() {
-  const [btnActive, setBtnActive] = useState(false);
 
-  const filterItem = Continent.filter((item) => item.key < 7);
-  const filterItem2 = Continent.filter((item) => item.key >= 7);
-  const [searchParams, setSearchParams] = useSearchParams({
-    categories: "all",
-    brand: "all",
-  });
-  const categories = searchParams.get("categories");
-  const brand = searchParams.get("brand");
-  console.log(categories, brand);
+function Categories({ searchParams, setSearchParams }) {
+  const selectedCategory = searchParams.get("categories");
+  const continentSize = Continent.length;
+
+  const handleClickCategory = (category) => {
+    searchParams.set("categories", category);
+    setSearchParams(searchParams);
+  };
 
   return (
     <SLayout>
@@ -126,33 +109,25 @@ function Filters() {
         <SLineDiv />
       </SFilterTitleDiv>
       <SFilterDiv>
-        <SCategoryDiv key={filterItem.key}>
-          {filterItem.map((item) => {
+        <SCategoryDiv>
+          {Continent.map((categoryData, index) => {
             return (
               <SCategoryItemDiv
-                className={btnActive ? "active" : ""}
-                onClick={() => {
-                  setSearchParams({ categories: `${item.value}`, brand });
-                  setBtnActive(!btnActive);
-                }}
+                key={categoryData}
+                value={categoryData.value}
+                className={`${
+                  selectedCategory === categoryData.value ? "active" : ""
+                }${
+                  continentSize % 2 === 1 && index === continentSize - 1
+                    ? " odd-item"
+                    : ""
+                }`}
+                onClick={() => handleClickCategory(categoryData.value)}
               >
-                {item.value}
+                {categoryData.value}
               </SCategoryItemDiv>
             );
           })}
-          <SCategory2Div key={filterItem2.key}>
-            {filterItem2.map((item) => {
-              return (
-                <SCategoryOuterDiv
-                  onClick={() =>
-                    setSearchParams({ categories: `${item.value}` })
-                  }
-                >
-                  {item.value}
-                </SCategoryOuterDiv>
-              );
-            })}
-          </SCategory2Div>
         </SCategoryDiv>
       </SFilterDiv>
       <SBottomLineDiv />
@@ -160,4 +135,4 @@ function Filters() {
   );
 }
 
-export default Filters;
+export default Categories;
