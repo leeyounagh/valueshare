@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable prefer-const */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import BrandName from "data/BrandName";
@@ -67,8 +69,18 @@ const SBrandLineDiv = styled.div`
 
 function Brands() {
   const [params, setParams] = useState([]);
-  const onChange = (e) => {
-    setParams([...params, e.target.value]);
+  let brandQuery = "";
+  const handleChange = (e) => {
+    // console.log(e.target.value);
+    params.push(e.target.value);
+    // setParams([...params, e.target.value]);
+    console.log(params);
+    const queryStr = params.reduce((a, b) => {
+      return `${a},${b}`;
+    }, "brand=");
+
+    brandQuery = queryStr.substring(7);
+    console.log("브랜드", queryStr);
   };
 
   const [searchParams, setSearchParams] = useSearchParams({
@@ -78,15 +90,16 @@ function Brands() {
 
   const categories = searchParams.get("categories");
   const brand = searchParams.getAll("brand");
+  // useEffect(() => {
+  //   const queryStr = params.reduce((a, b) => {
+  //     return `${a}&brand=${b}`;
+  //   }, "");
 
-  const queryStr = params.reduce((a, b) => {
-    return `${a}&brand=${b}`;
-  }, "");
+  //   brandQuery = queryStr.substring(7);
+  // }, [params]);
 
-  const brandQuery = queryStr.substring(7);
-
-  console.log(categories, brand);
-  console.log(brandQuery);
+  // console.log(categories, brand);
+  // console.log(brandQuery);
 
   return (
     <SLayout>
@@ -101,7 +114,9 @@ function Brands() {
                   type="checkbox"
                   disabled={item.disabled}
                   checked={item.checked}
-                  onClick={onChange}
+                  onClick={(e) => {
+                    handleChange(e);
+                  }}
                   onChange={() => {
                     setSearchParams({ categories, brand: `${brandQuery}` });
                   }}
