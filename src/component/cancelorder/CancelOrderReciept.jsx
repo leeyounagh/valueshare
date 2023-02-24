@@ -171,7 +171,6 @@ function CancelOrderReciept({ orderData }) {
         `http://localhost:5000/myorder/${objectId}`,
         {
           cancelNote: cancelReason,
-          shipStatus: "주문 취소",
         }
       );
       if (response.status === 200) {
@@ -184,7 +183,7 @@ function CancelOrderReciept({ orderData }) {
     }
   };
 
-  console.log(objectId);
+  console.log(orderData);
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>
@@ -200,21 +199,19 @@ function CancelOrderReciept({ orderData }) {
         <SOrderDetailTitle>Order Details</SOrderDetailTitle>
         <SReceiveItemDiv>
           <SReceiveTitle> 받는 사람</SReceiveTitle>
-          <SReceiveTextDiv> 이수연</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.name}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 연락처</SReceiveTitle>
-          <SReceiveTextDiv> 010-0000-0000</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.phone}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송지</SReceiveTitle>
-          <SReceiveTextDiv>
-            서울시 엘리스랩 엘리스동 엘리스로 122-12
-          </SReceiveTextDiv>
+          <SReceiveTextDiv>{orderData[0]?.shipAdr}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송메모</SReceiveTitle>
-          <SReceiveTextDiv>배송 후 연락 주세요</SReceiveTextDiv>
+          <SReceiveTextDiv>{orderData[0]?.shipNote}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SLineDiv />
       </SOrderDetailDiv>

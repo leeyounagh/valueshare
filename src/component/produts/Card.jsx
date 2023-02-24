@@ -8,7 +8,7 @@ import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
-import { setCartItem } from "slice/CartSlice";
+
 // eslint-disable-next-line no-unused-vars
 
 const SLayout = styled.div`
@@ -89,14 +89,12 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
-  console.log(categories, brand);
-
   useEffect(() => {
     async function getProducts() {
       const response = await axios.get("http://localhost:5000/products", {
         params: { categories: `${categories}`, brand: `${brand}` },
       });
-      console.log(response);
+
       setData(response.data.result);
     }
     getProducts();
@@ -120,7 +118,6 @@ function Card() {
             </SCardTitleDiv>
             <SCartDiv
               onClick={() => {
-                dispatch(setCartItem(1));
                 handleBasket(item);
               }}
             >

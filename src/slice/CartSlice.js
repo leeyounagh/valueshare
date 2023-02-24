@@ -11,7 +11,7 @@ export const CartSlice = createSlice({
     setCartItem: (state, action) => {
       // eslint-disable-next-line no-param-reassign
       // eslint-disable-next-line no-param-reassign
-      state.cartItem += action.payload;
+      state.cartItem += action.payload.length;
     },
   },
 });

@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCartItem } from "slice/CartSlice";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
@@ -162,7 +164,7 @@ function Header() {
   const cartQuantity = useSelector((state) => {
     return state.CartItemReducer;
   });
-  console.log(cartQuantity, "확인");
+
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -194,7 +196,7 @@ function Header() {
             </Link>
             <SBadageDiv>
               <Badge style={{ borderRadius: "10px" }} bg="warning">
-                {cartQuantity.cartItem}
+                {cartQuantity?.cartItem}
               </Badge>
             </SBadageDiv>
           </SLayoutIconItem>

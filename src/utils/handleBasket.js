@@ -1,4 +1,6 @@
+/* eslint-disable import/newline-after-import */
 /* eslint-disable no-underscore-dangle */
+
 const handleBasket = (item) => {
   const baskets = localStorage.getItem("baskets");
   const basketsData = baskets ? JSON.parse(baskets) : [];
