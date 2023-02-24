@@ -1,4 +1,7 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 import Navbar from "component/Navbar";
 import color from "styles/color";
@@ -17,15 +20,30 @@ const SOrderHistoryDiv = styled.div`
   margin-right: 100px;
 `;
 function CancelOrder() {
+  const { pathname } = useLocation();
+  const objectId = pathname.substr(16);
+  const [orderData, setOrderData] = useState([]);
+  useEffect(() => {
+    async function handleMyOlder() {
+      const response = await axios.get(
+        `http://localhost:5000/myorder/${objectId}`
+      );
+      const data = await response.data;
+      setOrderData(data);
+      console.log(response);
+    }
+    handleMyOlder();
+  }, []);
+  console.log(orderData, objectId);
   return (
     <div>
       <Navbar />
       <SLayout>
         <SOrderHistoryDiv>
-          <OrderHistory />
+          <OrderHistory orderData={orderData} />
         </SOrderHistoryDiv>
 
-        <CancelOrderReciept />
+        <CancelOrderReciept orderData={orderData} />
       </SLayout>
     </div>
   );

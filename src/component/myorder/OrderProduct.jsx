@@ -1,15 +1,17 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+
+import { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
-const { white, gray1, gray3 } = color;
+const { white, gray1, gray3, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 60%;
-  margin-left: 140px;
+  width: 100%;
   border-radius: 10px;
   background-color: ${white};
-  padding-left: 60px;
+  padding-bottom: 30px;
 `;
 
 const SOrderTitleDiv = styled.div`
@@ -24,11 +26,14 @@ const SOrderTitleDiv = styled.div`
   display: flex;
   align-items: flex-end;
   margin-bottom: 50px;
+  margin-right: 10px;
+  padding-left: 20px;
 `;
 const SOrderItemDiv = styled.div`
   width: 90%;
   height: 13vh;
   display: flex;
+  padding-left: 20px;
 `;
 const SItemImgDiv = styled.div`
   height: 100%;
@@ -43,7 +48,6 @@ const STitleDiv = styled.div`
 const SBrandNameDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-
   line-height: normal;
 
   text-align: left;
@@ -85,21 +89,45 @@ const SPriceDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-function OrderProduct() {
+const SLinDiv = styled.div`
+  width: 90%;
+  height: 1px;
+  margin-top: 30px;
+  background-color: ${gray4};
+  margin-bottom: 20px;
+  margin-left: 20px;
+`;
+const SBrandTitleDiv = styled.div`
+  display: flex;
+`;
+function OrderProduct({ orderData }) {
   return (
     <SLayout>
-      <SOrderTitleDiv>Order #125466</SOrderTitleDiv>
-      <SOrderItemDiv>
-        <SItemImgDiv>
-          <SImg src="/asset/테스트가방.png" />
-        </SItemImgDiv>
-        <STitleDiv>
-          <SBrandNameDiv>Louis Vuitton</SBrandNameDiv>
-          <SProductNameDiv>트위스트 MM 핸드백</SProductNameDiv>
-        </STitleDiv>
-        <SQuantityDiv>1개</SQuantityDiv>
-        <SPriceDiv> ₩60,000</SPriceDiv>
-      </SOrderItemDiv>
+      {orderData?.map((item) => {
+        return (
+          <>
+            <SOrderTitleDiv>Order {item.orderNumber}</SOrderTitleDiv>
+            <SOrderItemDiv>
+              <SItemImgDiv>
+                <SImg src={item.products[0]?.productImage[0]} />
+              </SItemImgDiv>
+              <STitleDiv>
+                <SBrandNameDiv>
+                  {item.products[0]?.productBrand} 외 {item.products.length - 1}
+                  건
+                </SBrandNameDiv>
+                <SProductNameDiv>
+                  {item.products[0]?.productTitle} 외{item.products.length - 1}
+                  건
+                </SProductNameDiv>
+              </STitleDiv>
+              <SQuantityDiv>{item.products?.length}개</SQuantityDiv>
+              <SPriceDiv> ₩{item.totalPrice * 1000}</SPriceDiv>
+            </SOrderItemDiv>
+            <SLinDiv />
+          </>
+        );
+      })}
     </SLayout>
   );
 }

@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
-import { Link } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -29,26 +28,26 @@ const STableDiv = styled.div`
   }
 `;
 
-function OrderList() {
+function AdminProduct() {
   // eslint-disable-next-line no-unused-vars
-  const [orderData, setOrderData] = useState();
+  const [productData, setProductData] = useState();
   const [id, setId] = useState();
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get("http://localhost:5000/admin/orders");
-      setOrderData(response.data.result);
+      const response = await axios.get("http://localhost:5000/admin/products");
+      setProductData(response.data.result);
     }
     getOrderList();
   }, []);
 
   const handleDelete = async (item) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5000/admin/orders/${item._id}`
+      const response = await axios.delete(
+        `http://localhost:5000/admin/products/${item._id}`
       );
       if (response.status === 200) {
-        alert("주문이 취소되었습니다.");
+        alert("상품이 삭제되었습니다..");
         //  페이지 리렌더링이되어야됨
       }
       console.log(response);
@@ -57,7 +56,6 @@ function OrderList() {
     }
   };
 
-  console.log(orderData);
   return (
     <div>
       <STitle>
@@ -69,24 +67,25 @@ function OrderList() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>주문번호</th>
-                <th>이름</th>
-                <th>이메일</th>
-                <th>배송상태</th>
-                <th>주문삭제</th>
+                <th>브랜드이름</th>
+                <th>상품이름</th>
+                <th>가격</th>
+                <th>재고</th>
+                <th>상품삭제</th>
               </tr>
             </thead>
             <tbody>
-              {orderData?.map((item, index) => {
+              {productData?.map((item, index) => {
                 return (
                   <tr>
                     <td>{index + 1}</td>
-                    <Link to={`/admin/orderlist/${item._id}`}>
-                      <td>{item._id}</td>
-                    </Link>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.shipStatus}</td>
+
+                    <td>{item.productBrand.brandName}</td>
+
+                    <td>{item.productTitle}</td>
+                    <td>{item.productPrice}</td>
+                    <td>{item.productStock}</td>
+
                     <td>
                       <button
                         onClick={() => {
@@ -94,7 +93,7 @@ function OrderList() {
                         }}
                         type="submit"
                       >
-                        주문삭제
+                        상품삭제
                       </button>
                     </td>
                   </tr>
@@ -108,4 +107,4 @@ function OrderList() {
   );
 }
 
-export default OrderList;
+export default AdminProduct;

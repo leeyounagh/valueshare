@@ -33,11 +33,13 @@ const SItemDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const SButton = styled.button``;
 function OrderListDetail() {
   const { pathname } = useLocation();
   const objectId = pathname.substr(17);
   // eslint-disable-next-line no-unused-vars
   const [orderData, setOrderData] = useState([]);
+  const [shipSatatus, setShipStatus] = useState("");
 
   useEffect(() => {
     async function getOrderList() {
@@ -48,7 +50,29 @@ function OrderListDetail() {
     }
     getOrderList();
   }, []);
-  console.log(orderData[0]);
+
+  const handleEditOrder = async () => {
+    const body = {
+      shipStatus: shipSatatus,
+    };
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/admin/orders/${objectId}`,
+        body
+      );
+
+      console.log(response);
+      if (response.status === 200) {
+        alert("카테고리 수정에 성공했습니다");
+      }
+    } catch (err) {
+      if (err) {
+        alert("카테고리 수정에 실패했습니다.");
+      }
+    }
+  };
+  console.log(shipSatatus);
+  console.log(orderData);
   return (
     <div>
       <STitle>
@@ -60,6 +84,22 @@ function OrderListDetail() {
           <SItemDiv>핸드폰번호: {orderData[0]?.phone}</SItemDiv>
           <SItemDiv>배송지: {orderData[0]?.shipAdr}</SItemDiv>
           <SItemDiv>배송상태: {orderData[0]?.shipStatus}</SItemDiv>
+          <SItemDiv>
+            배송수정:
+            <input
+              value={shipSatatus}
+              onChange={(e) => {
+                setShipStatus(e.target.value);
+              }}
+            />
+            <SButton
+              onClick={() => {
+                handleEditOrder();
+              }}
+            >
+              수정하기
+            </SButton>
+          </SItemDiv>
           <SItemDiv>주문일: {orderData[0]?.updatedAt}</SItemDiv>
           <SItemDiv>id: {orderData[0]?.userId}</SItemDiv>
           <SItemDiv>

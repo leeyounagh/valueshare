@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+/* eslint-disable no-underscore-dangle */
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
-import { useDispatch } from "react-redux";
-import { setNoneMemberInfo } from "slice/UserAddressSlice";
 
 const { white, gray3, gray4 } = color;
 
@@ -44,12 +45,13 @@ const SCloseDiv = styled.div`
 `;
 const STitleDiv = styled.div`
   flex-grow: 0;
-
+  font-family: NotoSansKR;
   font-size: 25px;
   font-weight: 500;
-
+  font-stretch: normal;
+  font-style: normal;
   line-height: normal;
-
+  letter-spacing: normal;
   text-align: left;
   color: #000;
   margin-left: 90px;
@@ -65,12 +67,13 @@ const SItemDiv = styled.div`
 `;
 const SInfoTitle = styled.div`
   width: 20%;
-
+  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
-
+  font-stretch: normal;
+  font-style: normal;
   line-height: normal;
-
+  letter-spacing: normal;
   text-align: center;
   color: ${gray3};
   display: flex;
@@ -80,9 +83,11 @@ const SInfoTitle = styled.div`
 const SInfoInput = styled.input`
   width: 90%;
   height: 100%;
+  font-family: Poppins;
   font-size: 16px;
   font-weight: normal;
-
+  font-stretch: normal;
+  font-style: normal;
   line-height: 1.75;
   letter-spacing: 0.75px;
   text-align: left;
@@ -113,7 +118,11 @@ const SInnerButtonDiv = styled.div`
   margin-right: 20px;
   z-index: 10;
 `;
-function EditAdress({ setIsOpen }) {
+function OrderedEditAddress({ setIsOpen }) {
+  const { pathname } = useLocation();
+  const objectId = pathname.substr(9);
+  const [orderData, setOrderData] = useState([]);
+
   const [data, setData] = useState({
     customerName: "",
     phoneNumber: "",
@@ -121,7 +130,18 @@ function EditAdress({ setIsOpen }) {
     memo: "",
     email: "",
   });
-  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function handleMyOlder() {
+      const response = await axios.get(
+        `http://localhost:5000/myorder/${objectId}`
+      );
+      const addressData = await response.data;
+      setOrderData(addressData);
+      console.log(response);
+    }
+    handleMyOlder();
+  }, []);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -131,9 +151,37 @@ function EditAdress({ setIsOpen }) {
     };
     setData(newData);
   };
-  const handleAddress = () => {
-    dispatch(setNoneMemberInfo(data));
+  console.log(data);
+  const handleAddress = async () => {
+    const body = {
+      phone: data.phoneNumber,
+      email: data.email,
+      name: data.customerName,
+      shipAdr: data.address,
+      shipNote: data.memo,
+    };
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/myorder/${orderData[0]._id}`,
+        body
+      );
+      console.log(response);
+
+      if (response.status === 200) {
+        alert("주소지 수정에 성공하였습니다!");
+        const getResponse = await axios.get(
+          `http://localhost:5000/myorder/${objectId}`
+        );
+        const addressData = await getResponse.data;
+        setOrderData(addressData);
+      }
+    } catch (err) {
+      if (err) {
+        alert("수정에 실패했습니다.");
+      }
+    }
   };
+
   return (
     <Slayout>
       <SModal>
@@ -220,4 +268,4 @@ function EditAdress({ setIsOpen }) {
   );
 }
 
-export default EditAdress;
+export default OrderedEditAddress;

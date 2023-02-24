@@ -10,16 +10,17 @@ const Slayout = styled.div`
 const SBtn2 = styled.button`
   width: 100%;
   height: 100%;
-  background-color: ${color.white};
-  color: ${color.gray1};
-  border-color: ${color.gray1};
+  border: solid 1px ${color.gray4};
+  background-color: ${color.gray6};
+  color: ${color.gray4};
+
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
 `;
 
-function Btn2({ title }) {
+function DisableBtn({ title }) {
   return (
     <Slayout>
       <SBtn2>{title}</SBtn2>
@@ -27,4 +28,4 @@ function Btn2({ title }) {
   );
 }
 
-export default Btn2;
+export default DisableBtn;

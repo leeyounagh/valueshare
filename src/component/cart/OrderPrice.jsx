@@ -1,9 +1,18 @@
+/* eslint-disable no-unreachable-loop */
+/* eslint-disable no-plusplus */
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Paypal from "component/cart/Paypal";
+import Btn1 from "component/button/Btn1";
+import { setCartItem } from "slice/CartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import DisableBtn from "component/button/DisableBtn";
+import { setOrderInfo } from "slice/OrderSlice";
 
-const { white, gray3, gray1, gray4, gray5 } = color;
+const { white, gray3, gray1 } = color;
 
 const SLayout = styled.div`
   width: 100%;
@@ -106,33 +115,64 @@ const SLastTotalPriceDiv = styled.div`
 const SOrderIcon = styled.div`
   width: 100%;
   height: 80px;
-  border-radius: 10px;
-  background-color: ${gray4};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `;
-const SOrderIconText = styled.div`
-  font-size: 24px;
-  font-weight: bold;
 
-  line-height: normal;
-
-  text-align: center;
-  color: ${gray5};
+const BtnDiv = styled.div`
+  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 function OrderPrice({ cartItems, setCartItems }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const set = new Set();
+
+  const ShipInfo = useSelector((state) => {
+    return state.UserAddressReducer;
+  });
   const sum = useMemo(() => {
     return cartItems.reduce((acc, cur) => {
       return acc + Number(cur.productPrice) * cur.quantity;
     }, 0);
   }, [cartItems]);
-
+  console.log(cartItems);
   const changeDoller = Number(sum.toString().slice(0, -3));
   // 한화 달러화
+  const handleOrder = async () => {
+    const newData = {
+      // eslint-disable-next-line prettier/prettier
+      phone: ShipInfo.phoneNumber,
+      email: ShipInfo.email,
+      name: ShipInfo.customerName,
+      products: cartItems,
+      shipStatus: "주문접수",
+      shipAdr: ShipInfo.address,
+      shipNote: ShipInfo.memo,
+      totalPrice: changeDoller,
+    };
 
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/checkout",
+        newData
+      );
+
+      const orderData = await response.data;
+      console.log(orderData, newData);
+      dispatch(setOrderInfo(orderData));
+      dispatch(setCartItem(0));
+      localStorage.removeItem("baskets");
+      navigate("/ordersuccess");
+      alert("현금결제 접수가 완료되었습니다.");
+      setCartItems([]);
+    } catch (err) {
+      if (err) {
+        console.log(err);
+        console.log(ShipInfo, "확인");
+        alert("주문접수에 실패했습니다.");
+      }
+    }
+  };
   return (
     <SLayout>
       <SOrderTitleDiv> Order</SOrderTitleDiv>
@@ -149,14 +189,25 @@ function OrderPrice({ cartItems, setCartItems }) {
         <SLastTotalPriceDiv> ₩{sum}</SLastTotalPriceDiv>
       </SLastTotalDiv>
       {cartItems.length > 0 ? (
+        <BtnDiv
+          onClick={() => {
+            handleOrder();
+          }}
+        >
+          <Btn1 title="현금결제 하기" />
+        </BtnDiv>
+      ) : null}
+
+      {cartItems.length > 0 ? (
         <Paypal
           total={changeDoller}
           cartItems={cartItems}
           setCartItems={setCartItems}
+          ShipInfo={ShipInfo}
         />
       ) : (
         <SOrderIcon>
-          <SOrderIconText>주문하기</SOrderIconText>
+          <DisableBtn title="주문하기" />
         </SOrderIcon>
       )}
     </SLayout>

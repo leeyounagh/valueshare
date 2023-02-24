@@ -1,6 +1,11 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import axios from "axios";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+import DisableBtn from "component/button/DisableBtn";
 
 const { white, gray3, gray4, gray1, gray6 } = color;
 
@@ -13,7 +18,7 @@ const SLayout = styled.div`
 `;
 const SCancelTitle = styled.div`
   width: 30%;
-
+  white-space: nowrap;
   font-size: 40px;
   font-weight: 600;
 
@@ -81,7 +86,7 @@ const SReceiveTextDiv = styled.div`
 
 const SLineDiv = styled.div`
   background-color: ${gray4};
-  width: 100%;
+  width: 95%;
   height: 1px;
   margin: 59px 0 19px 1px;
 `;
@@ -149,31 +154,64 @@ const SCancelButton = styled.button`
   border-radius: 10px;
   margin-right: 50px;
 `;
-function CancelOrderReciept() {
+const SBtnDiv = styled.div`
+  width: 18%;
+  height: 30%;
+
+  margin-right: 50px;
+`;
+function CancelOrderReciept({ orderData }) {
+  const [cancelReason, setCancelReason] = useState("");
+  const { pathname } = useLocation();
+  const objectId = pathname.substr(16);
+  const navigate = useNavigate();
+  const handleCancel = async () => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/myorder/${objectId}`,
+        {
+          cancelNote: cancelReason,
+        }
+      );
+      if (response.status === 200) {
+        alert("취소에 성공했습니다.");
+        navigate("/");
+      }
+    } catch (err) {
+      alert("취소에 실패했습니다.");
+      console.log(err);
+    }
+  };
+
+  console.log(orderData);
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>
       <SCancelReasonTitle> 취소 사유</SCancelReasonTitle>
-      <SCancelTextArea placeholder="취소 사유를 적어주세요." />
+      <SCancelTextArea
+        value={cancelReason}
+        onChange={(e) => {
+          setCancelReason(e.target.value);
+        }}
+        placeholder="취소 사유를 적어주세요."
+      />
       <SOrderDetailDiv>
         <SOrderDetailTitle>Order Details</SOrderDetailTitle>
         <SReceiveItemDiv>
           <SReceiveTitle> 받는 사람</SReceiveTitle>
-          <SReceiveTextDiv> 이수연</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.name}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 연락처</SReceiveTitle>
-          <SReceiveTextDiv> 010-0000-0000</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.phone}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송지</SReceiveTitle>
-          <SReceiveTextDiv>
-            서울시 엘리스랩 엘리스동 엘리스로 122-12
-          </SReceiveTextDiv>
+          <SReceiveTextDiv>{orderData[0]?.shipAdr}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송메모</SReceiveTitle>
-          <SReceiveTextDiv>배송 후 연락 주세요</SReceiveTextDiv>
+          <SReceiveTextDiv>{orderData[0]?.shipNote}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SLineDiv />
       </SOrderDetailDiv>
@@ -182,8 +220,17 @@ function CancelOrderReciept() {
         <STotalPriceDiv> ₩240,000</STotalPriceDiv>
       </SOrderTitalDiv>
       <SButtonDiv>
-        <SReturnButton>반품신청</SReturnButton>
-        <SCancelButton>주문취소</SCancelButton>
+        <SBtnDiv>
+          <DisableBtn title="반품신청" />
+        </SBtnDiv>
+
+        <SBtnDiv
+          onClick={() => {
+            handleCancel();
+          }}
+        >
+          <Btn1 title="주문취소" />
+        </SBtnDiv>
       </SButtonDiv>
     </SLayout>
   );

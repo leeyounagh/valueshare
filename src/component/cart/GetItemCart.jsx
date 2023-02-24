@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -59,6 +59,8 @@ const SQuantityText = styled.div`
   display: flex;
   justify-content: center;
   width: 12%;
+
+  font-family: NotoSans;
 
   font-size: 18px;
   font-weight: 500;
@@ -141,7 +143,7 @@ const SQuantityTextDiv = styled.div`
   color: ${gray1};
   width: 40px;
   height: 40px;
-  padding-top: 5px;
+  padding-top: 10px;
 `;
 const SQuantityNextImg = styled.img`
   width: 36px;
@@ -202,6 +204,12 @@ const SSelectedDeleteIconDiv = styled.div`
 `;
 const SIconDiv = styled.div`
   cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   height: 20%;
 `;
 const SCheckInput = styled.input`

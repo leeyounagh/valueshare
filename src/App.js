@@ -1,3 +1,4 @@
+/* eslint-disable import/newline-after-import */
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -16,7 +17,6 @@ import Cart from "pages/cart/Cart";
 import Detail from "pages/productdeail/Detail";
 import Admin from "pages/admin/Admin";
 import Resign from "pages/resign/Resign";
-import DeliveryList from "pages/deliverylist/DeliveryList";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
@@ -31,7 +31,11 @@ import { setPageInfo } from "slice/PageSlice";
 import Productest from "pages/products/Productest";
 import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
+import AddCategory from "pages/addcategory/AddCategory";
 
+import Category from "pages/category/Category";
+import AdminProduct from "pages/adminproduct/AdminProduct";
+import MemberOrder from "pages/membermyorder/MemberOrder";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -62,6 +66,9 @@ function App() {
       setPageInfo({ rootTitle: "Cancle Order", currentTitle: "Cancle Order" })
     );
   }
+  if (pathname === "/memberordercheck") {
+    dispatch(setPageInfo({ rootTitle: "My Order", currentTitle: "My Order" }));
+  }
   return (
     <div>
       <NonememberHeader />
@@ -70,7 +77,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/myorder" element={<MyOrder />} />
+        <Route path="/myorder/:userid" element={<MyOrder />} />
         <Route path="/mypage/resign" element={<Resign />} />
         <Route path="/mypage/userinfo" element={<UserInfo />} />
         <Route path="/ordersuccess" element={<OrderSuccess />} />
@@ -85,9 +92,10 @@ function App() {
         <Route path="/lookbook" element={<LookBook />} />
 
         <Route path="/membership" element={<Membership />} />
-        <Route path="/cancleorder" element={<CancelOrder />} />
+        <Route path="/myorder/cancel/:userId" element={<CancelOrder />} />
 
-        <Route path="/nonmemberorder" element={<NoneMember />} />
+        <Route path="/nonememberorder" element={<NoneMember />} />
+        <Route path="/memberordercheck" element={<MemberOrder />} />
 
         {/* 어드민 페이지  */}
         <Route path="/admin" element={<Admin />} />
@@ -96,13 +104,16 @@ function App() {
           path="/admin/orderlist/:orderlistdetail"
           element={<OrderListDetail />}
         />
-        <Route path="/admin/deliverylist" element={<DeliveryList />} />
+
         <Route path="/admin/category/addproduct" element={<UploadProduct />} />
+        <Route path="/admin/addcategory" element={<AddCategory />} />
         <Route
           exact
           path="/admin/category/editcategory"
           element={<EditCategory />}
         />
+        <Route exact path="/admin/category" element={<Category />} />
+        <Route exact path="/admin/product" element={<AdminProduct />} />
 
         <Route
           exact

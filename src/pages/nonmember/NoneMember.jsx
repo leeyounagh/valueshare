@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
 
-const { gray6, white, gray2, gray3, gray4, gray1 } = color;
+const { gray6, white, gray2, gray3, gray4 } = color;
 
 const SLayout = styled.div`
   width: 100%;
@@ -54,7 +55,6 @@ const SUserInfoDiv = styled.div`
 const SNameDiv = styled.div`
   font-size: 24px;
   font-weight: 500;
-
   line-height: normal;
 
   text-align: left;
@@ -69,6 +69,7 @@ const SInput = styled.input`
   background-color: ${white};
   width: 414px;
   height: 57px;
+
   padding-left: 10px;
   border-radius: 16px;
   border: solid 1px ${gray4};
@@ -89,20 +90,8 @@ const SButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Sbutton = styled.button`
-  width: 274px;
-  height: 49px;
-  border-radius: 10px;
-  background-color: ${gray1};
-
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-  color: ${white};
-  white-space: nowrap;
+const SBtnDiv = styled.div`
+  width: 20%;
 `;
 function NoneMember() {
   return (
@@ -133,7 +122,9 @@ function NoneMember() {
               </SInputDiv>
             </SUserInfoDiv>
             <SButtonDiv>
-              <Sbutton> 주문 내역 조회</Sbutton>
+              <SBtnDiv>
+                <Btn1 title="주문 내역 조회" />
+              </SBtnDiv>
             </SButtonDiv>
           </SOrderItemDiv>
         </SItemDiv>

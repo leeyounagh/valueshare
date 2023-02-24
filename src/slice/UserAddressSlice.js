@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   customerName: "",
-  phonenumber: "",
+  phoneNumber: "",
   address: "",
   memo: "",
   email: "",
@@ -15,7 +15,7 @@ export const UserAddressSlice = createSlice({
     setNoneMemberInfo: (state, action) => {
       // eslint-disable-next-line no-param-reassign
       state.customerName = action.payload.customerName;
-      state.phonenumber = action.payload.phonenumber;
+      state.phoneNumber = action.payload.phoneNumber;
       state.address = action.payload.address;
       state.memo = action.payload.memo;
       state.email = action.payload.email;
