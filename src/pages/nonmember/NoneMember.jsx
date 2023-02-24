@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
-import Btn1 from "component/button/Btn1";
+import Input from "component/input/Input";
 
-const { gray6, white, gray2, gray3, gray4, gray1 } = color;
+const { gray6, white, gray2, gray3, gray1 } = color;
 
 const SLayout = styled.div`
   height: auto;

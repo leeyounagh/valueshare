@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
 import "../register/styles.css";
 
 function Login() {
@@ -12,49 +11,41 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
-
   // console.log(watch("email"));
   const password = useRef();
   password.current = watch("password");
 
   const onSubmit = (data) => {
     console.log("data", data);
-
     // eslint-disable-next-line no-unused-vars
     axios.post("/", data).then((res) => console.log("data", data));
   };
 
   return (
-    <div className="login">
-      <div className="loginTitle">로그인</div>
-      <form className="login-form">
-        <div className="login-form-input">
-          <input
-            name="email"
-            type="text"
-            value={email}
-            placeholder="abc@valueshare.com"
-            onChange={handleEmailChange}
-          />
-          <input
-            name="pwd"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ""}
-        </div>
-        <div className="loginSubmit">
-          <button type="submit" onClick={handleClick}>
-            Login
-          </button>
-        </div>
-      </form>
-      <div className="loginResult">
-        {isLoading ? "로그인중입니다." : null}
-        {data ? `안녕하세요. ${data.id}님.` : null}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <h1>Login</h1>
+      <div>
+        <span>Email</span>
+        <input
+          name="email"
+          type="email"
+          defaultValue="elice@valueshare.com"
+          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+        />
+        {errors.email && <p>이메일을 입력하세요.</p>}
 
-        {error || null}
+        <span>Password</span>
+        <input
+          name="password"
+          type="password"
+          {...register("password", { required: true, minLength: 6 })}
+        />
+        {errors.password && errors.password.type === "required" && (
+          <p>비밀번호를 입력하세요.</p>
+        )}
+        {errors.password && errors.password.type === "minLength" && (
+          <p>비밀번호는 최소 6자 이상으로 입력해야합니다.</p>
+        )}
       </div>
       <button type="submit">LOGIN</button>
     </form>
