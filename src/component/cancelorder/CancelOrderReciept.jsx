@@ -159,7 +159,7 @@ function CancelOrderReciept({ orderData }) {
   const navigate = useNavigate();
   const handleCancel = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/${objectId}`, {
+      const response = await axios.delete(`http://localhost:4200/${objectId}`, {
         cancelNote: cancelReason,
       });
       if (response.status === 200) {

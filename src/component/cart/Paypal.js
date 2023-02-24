@@ -52,7 +52,7 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
 
             try {
               const response = await axios.post(
-                "http://localhost:5000/checkout",
+                "http://localhost:4200/checkout",
                 newData
               );
 

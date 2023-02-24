@@ -122,8 +122,9 @@ function OrderHistory({ orderData }) {
       <SHistoryTitle>Order History</SHistoryTitle>
       <SItemDiv>
         {orderData?.map((item) => {
+          console.log(item);
           return (
-            <div>
+            <div key={item.orderNumber}>
               <OrderNumberDiv>{item.orderNumber}</OrderNumberDiv>
               <OrderPriceDiv>₩63,000</OrderPriceDiv>
               <ItemQuantityDiv> {item.products.length} Items</ItemQuantityDiv>

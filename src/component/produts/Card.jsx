@@ -92,7 +92,7 @@ function Card() {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await axios.get("http://localhost:5000/products", {
+      const response = await axios.get("http://localhost:4200/products", {
         params: { categories: `${categories}`, brand: `${brand}` },
       });
       console.log(response);

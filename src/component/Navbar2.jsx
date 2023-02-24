@@ -78,7 +78,7 @@ function Navbar2() {
   const { productid } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/products/${productid}`)
+      .get(`http://localhost:4200/admin/products/${productid}`)
       .then((res) => {
         setProductInformation(res.data);
       })

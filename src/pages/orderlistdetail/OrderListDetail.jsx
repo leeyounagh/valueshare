@@ -44,7 +44,7 @@ function OrderListDetail() {
   useEffect(() => {
     async function getOrderList() {
       const response = await axios.get(
-        `http://localhost:5000/admin/orders/${objectId}`
+        `http://localhost:4200/admin/orders/${objectId}`
       );
       setOrderData([response.data.result]);
     }
@@ -57,7 +57,7 @@ function OrderListDetail() {
     };
     try {
       const response = await axios.patch(
-        `http://localhost:5000/admin/orders/${objectId}`,
+        `http://localhost:4200/admin/orders/${objectId}`,
         body
       );
 

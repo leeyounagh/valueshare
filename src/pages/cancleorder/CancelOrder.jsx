@@ -26,7 +26,7 @@ function CancelOrder() {
   useEffect(() => {
     async function handleMyOlder() {
       const response = await axios.get(
-        `http://localhost:5000/myorder/${objectId}`
+        `http://localhost:4200/myorder/${objectId}`
       );
       const data = await response.data;
       setOrderData(data);
