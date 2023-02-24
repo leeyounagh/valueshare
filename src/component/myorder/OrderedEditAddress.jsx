@@ -176,7 +176,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
       shipNote: data.memo,
     };
     const response = await axios.patch(
-      `http://localhost:4200/users/orders/${orderData[0]._id}`,
+      `http://localhost:5000/users/orders/${orderData[0]._id}`,
       body
     );
     console.log(response);

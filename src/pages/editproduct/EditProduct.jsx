@@ -55,7 +55,7 @@ function EditProduct() {
       brandName: data.changeproduct,
     };
     const response = await axios.patch(
-      `http://localhost:4200/admin/brands/${data.beforeproduct}`,
+      `http://localhost:5000/admin/brands/${data.beforeproduct}`,
       body
     );
     console.log(response);

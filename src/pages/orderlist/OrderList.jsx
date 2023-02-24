@@ -36,7 +36,7 @@ function OrderList() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get("http://localhost:4200/admin/orders");
+      const response = await axios.get("http://localhost:5000/admin/orders");
       setOrderData(response.data.result);
     }
     getOrderList();
@@ -45,7 +45,7 @@ function OrderList() {
   const handleDelete = async (item) => {
     try {
       const response = await axios.post(
-        `http://localhost:4200/admin/orders/${item._id}`
+        `http://localhost:5000/admin/orders/${item._id}`
       );
       if (response.status === 200) {
         alert("주문이 취소되었습니다.");

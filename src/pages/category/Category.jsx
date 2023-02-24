@@ -34,7 +34,7 @@ const Category = () => {
   useEffect(() => {
     async function handleCategory() {
       const response = await axios.get(
-        "http://localhost:4200/admin/categories"
+        "http://localhost:5000/admin/categories"
       );
 
       const data = await response.data.result;
@@ -47,7 +47,7 @@ const Category = () => {
   const handleDeleteCategory = async (item) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4200/admin/categories/${item._id}`
+        `http://localhost:5000/admin/categories/${item._id}`
       );
       if (response.status === 200) {
         alert("카테고리가 삭제되었습니다.");

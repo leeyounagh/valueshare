@@ -165,7 +165,7 @@ function OrderPrice({ cartItems, setCartItems }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:4200/checkout",
+        "http://localhost:5000/checkout",
         newData
       );
 

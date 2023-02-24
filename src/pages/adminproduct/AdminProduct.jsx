@@ -35,7 +35,7 @@ function AdminProduct() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get("http://localhost:4200/admin/products");
+      const response = await axios.get("http://localhost:5000/admin/products");
       setProductData(response.data.result);
     }
     getOrderList();
@@ -44,7 +44,7 @@ function AdminProduct() {
   const handleDelete = async (item) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4200/admin/products/${item._id}`
+        `http://localhost:5000/admin/products/${item._id}`
       );
       if (response.status === 200) {
         alert("상품이 삭제되었습니다..");

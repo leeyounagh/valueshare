@@ -39,7 +39,7 @@ const AddCategory = () => {
   const handleCategory = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4200/admin/categories",
+        "http://localhost:5000/admin/categories",
         {
           categoryName: category,
         }

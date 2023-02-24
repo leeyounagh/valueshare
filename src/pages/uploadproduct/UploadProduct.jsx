@@ -73,7 +73,7 @@ function UploadProduct() {
         },
       };
       const response = await axios.post(
-        "http://localhost:4200/admin/products",
+        "http://localhost:5000/admin/products",
         formData,
         config
       );

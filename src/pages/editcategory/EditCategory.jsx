@@ -56,7 +56,7 @@ function EditCategory() {
     };
     try {
       const response = await axios.patch(
-        `http://localhost:4200/admin/categories/${data.beforecategory}`,
+        `http://localhost:5000/admin/categories/${data.beforecategory}`,
         body
       );
       setData({
