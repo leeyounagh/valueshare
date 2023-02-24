@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 
 const { white, gray4 } = color;
@@ -188,6 +189,7 @@ function Header() {
           </SLayoutIconItem>
           <SLayoutIconItem>
             <Link to="/cart">
+              <Badge bg="secondary">9</Badge>
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>

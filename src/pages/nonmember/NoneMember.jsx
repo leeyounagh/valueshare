@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
-import Input from "component/input/Input";
 import Btn1 from "component/button/Btn1";
 
-const { gray6, white, gray2, gray3 } = color;
+const { gray6, white, gray2, gray3, gray4 } = color;
 
 const SLayout = styled.div`
   height: auto;
@@ -71,7 +70,9 @@ const SButtonDiv = styled.div`
   margin: auto;
   padding: 70px 0;
 `;
-
+const SBtnDiv = styled.div`
+  width: 20%;
+`;
 function NoneMember() {
   return (
     <div>
@@ -95,7 +96,9 @@ function NoneMember() {
               <Input placeholder="주문번호" onChange="_onChange" />
             </SUserInfoDiv>
             <SButtonDiv>
-              <Btn1 title="주문 내역 조회" />
+              <SBtnDiv>
+                <Btn1 title="주문 내역 조회" />
+              </SBtnDiv>
             </SButtonDiv>
           </SOrderItemDiv>
         </SItemDiv>

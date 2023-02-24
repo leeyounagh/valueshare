@@ -1,16 +1,24 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-underscore-dangle */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
+// eslint-disable-next-line no-unused-vars
+import Btn1 from "component/button/Btn1";
+import Btn2 from "component/button/Btn2";
+import DisableBtn from "component/button/DisableBtn";
 import OrderedEditAddress from "./OrderedEditAddress";
 
-const { white, gray3, gray1, gray4, gray6 } = color;
+const { white, gray3, gray1, gray4 } = color;
 
 const Slayout = styled.div`
   width: 100%;
-  height: 700px;
+  height: 850px;
   margin-top: 50px;
+  a {
+    text-decoration: none;
+  }
   flex-grow: 0;
   padding: 60px 30px;
   border-radius: 10px;
@@ -29,7 +37,7 @@ const STitleDiv = styled.div`
   color: #000;
 `;
 const SinfoItmeDiv = styled.div`
-  height: 10%;
+  height: 8%;
   margin-top: 20px;
   display: flex;
 `;
@@ -102,69 +110,19 @@ const STotalNumberDiv = styled.div`
   justify-content: flex-end;
 `;
 const SButtonDiv = styled.div`
-  height: 10%;
   width: 100%;
+  height: 8%;
   display: flex;
   justify-content: flex-end;
 `;
 
-const ScanCleButton = styled.button`
-  width: 160px;
-  height: 40px;
-  padding: 8px 12.2px 9px 14.5px;
-  border-radius: 10px;
-  border: solid 1px ${gray3};
-  font-family: NotoSansKR;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000;
-  background-color: white;
-  margin-left: 20px;
-  a {
-    text-decoration: none;
-    color: #000;
-  }
-`;
-const SReturnButton = styled.button`
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: ${gray4};
-  width: 160px;
-  height: 40px;
-  padding: 8px 12.2px 9px 14.5px;
-  border-radius: 10px;
-  border: solid 1px ${gray4};
-  background-color: ${gray6};
-`;
 const SEditAddressDiv = styled.div``;
-const SEditButton = styled.button`
+const SBtnDiv = styled.div`
   width: 160px;
-  height: 40px;
-  padding: 8px 12.2px 9px 14.5px;
-  border-radius: 10px;
-  border: solid 1px ${gray3};
-  font-family: NotoSansKR;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: white;
-  margin-left: 20px;
-  background-color: ${gray1};
+  height: 90%;
+  margin-right: 10px;
 `;
+
 function AddressDetail({ orderData }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   console.log(orderData, orderData[0]?._id);
@@ -181,36 +139,44 @@ function AddressDetail({ orderData }) {
         <SInfoDiv>{orderData[0]?.phone}</SInfoDiv>
       </SinfoItmeDiv>
       <SinfoItmeDiv>
+        <SInfoTitleDiv>이메일</SInfoTitleDiv>
+        <SInfoDiv>{orderData[0]?.email}</SInfoDiv>
+      </SinfoItmeDiv>
+      <SinfoItmeDiv>
         <SInfoTitleDiv>배송지</SInfoTitleDiv>
-        <SInfoDiv> 서울시 엘리스랩 엘리스동 엘리스로 122-12</SInfoDiv>
+        <SInfoDiv> {orderData[0]?.shipAdr}</SInfoDiv>
       </SinfoItmeDiv>
       <SinfoItmeDiv>
         <SInfoTitleDiv>배송메모</SInfoTitleDiv>
-        <SInfoDiv> 배송 후 연락 주세요</SInfoDiv>
+        <SInfoDiv> {orderData[0]?.shipNote}</SInfoDiv>
       </SinfoItmeDiv>
       <SLine />
       <STotalDiv>
         <STotalTitle>합계</STotalTitle>
-        <STotalNumberDiv> ₩240,000</STotalNumberDiv>
+        <STotalNumberDiv> ₩{orderData[0]?.totalPrice * 1000}</STotalNumberDiv>
       </STotalDiv>
       <SButtonDiv>
-        <SReturnButton>반품 신청</SReturnButton>
+        <SBtnDiv>
+          {" "}
+          <DisableBtn title="반품 신청" />
+        </SBtnDiv>
+
         <Link to={`/myorder/cancel/${orderData[0]?._id}`}>
-          <ScanCleButton>취소 신청</ScanCleButton>
+          <SBtnDiv>
+            <Btn2 title="취소 신청" />
+          </SBtnDiv>
         </Link>
-        <SEditAddressDiv>
-          <SEditButton
-            onClick={() => {
-              setIsOpen(!modalIsOpen);
-            }}
-          >
-            주소지 수정
-          </SEditButton>
+        <SEditAddressDiv
+          onClick={() => {
+            setIsOpen(!modalIsOpen);
+          }}
+        >
+          <SBtnDiv>
+            <Btn1 title="주소지 수정" />
+          </SBtnDiv>
         </SEditAddressDiv>
       </SButtonDiv>
-      {modalIsOpen ? (
-        <OrderedEditAddress orderData={orderData} setIsOpen={setIsOpen} />
-      ) : null}
+      {modalIsOpen ? <OrderedEditAddress setIsOpen={setIsOpen} /> : null}
     </Slayout>
   );
 }

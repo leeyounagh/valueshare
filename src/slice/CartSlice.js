@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cartItem: [],
+  cartItem: 0,
 };
 
 export const CartSlice = createSlice({
-  name: "pageInfo",
+  name: "cartInfo",
   initialState,
   reducers: {
     setCartItem: (state, action) => {
       // eslint-disable-next-line no-param-reassign
       // eslint-disable-next-line no-param-reassign
-      state.concat(action.payload);
+      state.cartItem += action.payload.length;
     },
   },
 });

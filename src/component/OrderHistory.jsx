@@ -139,6 +139,8 @@ function OrderHistory({ orderData }) {
                           ? "/asset/배송중.png"
                           : item.shipStatus === "배송완료"
                           ? "/asset/배달완료아이콘.png"
+                          : item.shipStatus === "주문 취소"
+                          ? "/asset/취소아이콘.svg"
                           : null
                       }
                     />
@@ -151,6 +153,8 @@ function OrderHistory({ orderData }) {
                       ? "배송중"
                       : item.shipStatus === "배송완료"
                       ? "배송완료"
+                      : item.shipStatus === "주문 취소"
+                      ? "취소됨"
                       : null}
                   </SStatusText>
                 </SStatusTopDiv>
