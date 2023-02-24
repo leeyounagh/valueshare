@@ -64,29 +64,45 @@ const SBrandLineDiv = styled.div`
   left: 30px;
 `;
 function Brands({ searchParams, setSearchParams }) {
-  const selectedBrandNames = searchParams.get("brand")?.split(",");
+  const selectedBrandNames = searchParams.get("brand");
+
+  const isCheckedBrand = (brandName) => {
+    return (
+      selectedBrandNames === "all" ||
+      selectedBrandNames.split(",").includes(brandName)
+    );
+  };
 
   const handleChangeBrand = (e) => {
     const { value: brandName } = e.target;
 
-    const isSelectedBrand = selectedBrandNames.includes(brandName);
-    if (isSelectedBrand) {
-      const newSelectedBrandNames = selectedBrandNames.filter(
+    const isSelectedBrand = isCheckedBrand(brandName);
+    const selectedBrandNamesArray =
+      selectedBrandNames === "all"
+        ? [brandName]
+        : selectedBrandNames.split(",");
+
+    if (selectedBrandNames === "all") {
+      searchParams.set("brand", brandName);
+    } else if (isSelectedBrand) {
+      const newSelectedBrandNames = selectedBrandNamesArray.filter(
         (brand) => brand !== brandName
       );
-      setSearchParams((prev) => ({
-        ...prev,
-        brand:
-          newSelectedBrandNames.length === 0
-            ? "all"
-            : newSelectedBrandNames.join(","),
-      }));
+
+      searchParams.set(
+        "brand",
+        newSelectedBrandNames.length === 0
+          ? "all"
+          : newSelectedBrandNames.join(",")
+      );
     } else {
-      setSearchParams({
-        ...searchParams,
-        brand: [...selectedBrandNames, brandName].join(","),
-      });
+      searchParams.set(
+        "brand",
+        [...selectedBrandNamesArray, brandName].join(",")
+      );
     }
+
+    setSearchParams(searchParams);
   };
 
   return (
@@ -101,7 +117,7 @@ function Brands({ searchParams, setSearchParams }) {
                   type="checkbox"
                   value={item.value}
                   disabled={item.disabled}
-                  checked={selectedBrandNames.includes(item.value)}
+                  checked={isCheckedBrand(item.value)}
                   onChange={handleChangeBrand}
                 />
               </SCheckboxDiv>

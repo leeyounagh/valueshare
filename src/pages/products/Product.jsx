@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Navbar from "component/Navbar";
-// import Brands from "component/produts/Brands";
+import Brands from "component/produts/Brands";
 import Card from "component/produts/Card";
 import Categories from "component/produts/Categories";
 import { useSearchParams } from "react-router-dom";
@@ -40,10 +40,10 @@ function Product() {
             searchParams={searchParams}
             setSearchParams={setSearchParams}
           />
-          {/* <Brands
+          <Brands
             searchParams={searchParams}
             setSearchParams={setSearchParams}
-          /> */}
+          />
         </SCategoryDiv>
         <SCardDiv>
           <Card />
