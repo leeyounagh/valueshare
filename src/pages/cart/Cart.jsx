@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Navbar from "component/Navbar";
 import styled from "styled-components";
 import color from "styles/color";
+import { setCartItem } from "slice/CartSlice";
 import EmptyCart from "../../component/cart/EmptyCart";
 import OrderPrice from "../../component/cart/OrderPrice";
 import GetItemCart from "../../component/cart/GetItemCart";
@@ -44,7 +46,9 @@ const getInitialCartItems = () => {
 
 function Cart() {
   const [cartItems, setCartItems] = useState(getInitialCartItems());
-
+  const dispatch = useDispatch();
+  console.log(cartItems);
+  dispatch(setCartItem(cartItems.length));
   return (
     <div style={{ zIndex: "10", position: "relative" }}>
       <Navbar />

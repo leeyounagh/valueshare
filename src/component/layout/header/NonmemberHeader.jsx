@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 
 const { white, gray4 } = color;
@@ -127,6 +129,7 @@ const SLayoutIconItem = styled.div`
   margin: 5px;
   height: 100%;
   width: 20%;
+  position: relative;
 `;
 const SInnerItemDiv = styled.div`
   justify-content: space-between;
@@ -150,7 +153,16 @@ const SLayoutProfileInnerDiv = styled.div`
     padding: 0 10px;
   }
 `;
+const SBadageDiv = styled.div`
+  position: absolute;
+  top: -10px;
+  left: 33px;
+`;
 function Header() {
+  const cartQuantity = useSelector((state) => {
+    return state.CartItemReducer;
+  });
+  console.log(cartQuantity, "확인");
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -180,6 +192,11 @@ function Header() {
             <Link to="/cart">
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
+            <SBadageDiv>
+              <Badge style={{ borderRadius: "10px" }} bg="warning">
+                {cartQuantity.cartItem}
+              </Badge>
+            </SBadageDiv>
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>

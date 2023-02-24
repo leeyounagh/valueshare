@@ -5,6 +5,7 @@ import styled from "styled-components";
 import color from "styles/color";
 import Paypal from "component/cart/Paypal";
 import Btn1 from "component/button/Btn1";
+import { setCartItem } from "slice/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -159,6 +160,7 @@ function OrderPrice({ cartItems, setCartItems }) {
       const orderData = await response.data;
       console.log(orderData, newData);
       dispatch(setOrderInfo(orderData));
+      dispatch(setCartItem(0));
       localStorage.removeItem("baskets");
       navigate("/ordersuccess");
       alert("현금결제 접수가 완료되었습니다.");

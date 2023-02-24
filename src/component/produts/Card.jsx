@@ -8,6 +8,7 @@ import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+import { setCartItem } from "slice/CartSlice";
 // eslint-disable-next-line no-unused-vars
 
 const SLayout = styled.div`
@@ -119,6 +120,7 @@ function Card() {
             </SCardTitleDiv>
             <SCartDiv
               onClick={() => {
+                dispatch(setCartItem(1));
                 handleBasket(item);
               }}
             >
