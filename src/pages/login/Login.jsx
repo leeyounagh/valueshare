@@ -3,6 +3,7 @@
 
 import axios from "axios";
 import React, { useState } from "react";
+import Input from "component/input/Input";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -48,17 +49,18 @@ export default function Login() {
       <div className="loginTitle">로그인</div>
       <form className="login-form">
         <div className="login-form-input">
-          <input
+          <Input
             name="email"
             type="text"
             value={email}
             placeholder="abc@valueshare.com"
             onChange={handleEmailChange}
           />
-          <input
+          <Input
             name="pwd"
             type="password"
             value={password}
+            placeholder="password"
             onChange={handlePasswordChange}
           />
           {!password.length > 7 ? <p>비밀번호는 7자 이상입니다.</p> : ""}
