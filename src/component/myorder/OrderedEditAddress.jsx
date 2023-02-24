@@ -1,10 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+import Btn2 from "component/button/Btn2";
 
-const { white, gray3, gray4, gray1 } = color;
+const { white, gray3, gray4 } = color;
 
 const Slayout = styled.div`
   width: 100%;
@@ -108,47 +111,18 @@ const SButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const SCheckButton = styled.button`
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  background-color: ${gray1};
-  color: ${white};
-  font-family: NotoSans;
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  z-index: 50;
-  cursor: pointer;
-`;
-const SCancelButton = styled.button`
-  border: solid 1px ${gray1};
-  background-color: ${white};
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  font-family: NotoSans;
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: ${gray1};
-  cursor: pointer;
-`;
+
 const SInnerButtonDiv = styled.div`
   width: 20%;
   height: 50px;
   margin-right: 20px;
   z-index: 10;
 `;
-function OrderedEditAddress({ setIsOpen, orderData }) {
+function OrderedEditAddress({ setIsOpen }) {
+  const { pathname } = useLocation();
+  const objectId = pathname.substr(9);
+  const [orderData, setOrderData] = useState([]);
+
   const [data, setData] = useState({
     customerName: "",
     phoneNumber: "",
@@ -157,6 +131,17 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
     email: "",
   });
 
+  useEffect(() => {
+    async function handleMyOlder() {
+      const response = await axios.get(
+        `http://localhost:5000/myorder/${objectId}`
+      );
+      const addressData = await response.data;
+      setOrderData(addressData);
+      console.log(response);
+    }
+    handleMyOlder();
+  }, []);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -170,17 +155,33 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
   const handleAddress = async () => {
     const body = {
       phone: data.phoneNumber,
-      email: data.phoneNumber,
+      email: data.email,
       name: data.customerName,
       shipAdr: data.address,
       shipNote: data.memo,
     };
-    const response = await axios.patch(
-      `http://localhost:5000/users/orders/${orderData[0]._id}`,
-      body
-    );
-    console.log(response);
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/myorder/${orderData[0]._id}`,
+        body
+      );
+      console.log(response);
+
+      if (response.status === 200) {
+        alert("주소지 수정에 성공하였습니다!");
+        const getResponse = await axios.get(
+          `http://localhost:5000/myorder/${objectId}`
+        );
+        const addressData = await getResponse.data;
+        setOrderData(addressData);
+      }
+    } catch (err) {
+      if (err) {
+        alert("수정에 실패했습니다.");
+      }
+    }
   };
+
   return (
     <Slayout>
       <SModal>
@@ -246,24 +247,20 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           </SInputDiv>
         </SItemDiv>
         <SButtonDiv>
-          <SInnerButtonDiv>
-            <SCheckButton
-              onClick={() => {
-                handleAddress();
-                setIsOpen(false);
-              }}
-            >
-              확인
-            </SCheckButton>
+          <SInnerButtonDiv
+            onClick={() => {
+              handleAddress();
+              setIsOpen(false);
+            }}
+          >
+            <Btn1 title="확인" />
           </SInnerButtonDiv>
-          <SInnerButtonDiv>
-            <SCancelButton
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              취소
-            </SCancelButton>
+          <SInnerButtonDiv
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            <Btn2 title="취소" />
           </SInnerButtonDiv>
         </SButtonDiv>
       </SModal>

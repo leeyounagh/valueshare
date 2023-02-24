@@ -84,13 +84,13 @@ function Navbar() {
     <SLayout>
       <SRootDiv>
         <SRootHomeDiv>
-          <SHomeImg src="asset/icon-home.svg" />
+          <SHomeImg src="/asset/icon-home.svg" />
         </SRootHomeDiv>
         <SRootTitleDiv>
           <SRootTitle>Home</SRootTitle>
         </SRootTitleDiv>
         <SRootIconDiv>
-          <SRootIcontImg src="asset/Chevrons_chevron-right.svg" />
+          <SRootIcontImg src="/asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
           <SCategoryTitle>{text.rootTitle}</SCategoryTitle>

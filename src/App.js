@@ -94,7 +94,7 @@ function App() {
         <Route path="/membership" element={<Membership />} />
         <Route path="/myorder/cancel/:userId" element={<CancelOrder />} />
 
-        <Route path="/nonmemberorder" element={<NoneMember />} />
+        <Route path="/nonememberorder" element={<NoneMember />} />
         <Route path="/memberordercheck" element={<MemberOrder />} />
 
         {/* 어드민 페이지  */}

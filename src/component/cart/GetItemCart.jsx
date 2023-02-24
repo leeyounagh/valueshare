@@ -60,10 +60,8 @@ const SQuantityText = styled.div`
   justify-content: center;
   width: 12%;
 
-<<<<<<< HEAD
   font-family: NotoSans;
-=======
->>>>>>> 3c6120139e6747dbb556b6461f94348f9b6f4a6f
+
   font-size: 18px;
   font-weight: 500;
 

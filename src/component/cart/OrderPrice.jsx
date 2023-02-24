@@ -5,12 +5,14 @@ import styled from "styled-components";
 import color from "styles/color";
 import Paypal from "component/cart/Paypal";
 import Btn1 from "component/button/Btn1";
+import { setCartItem } from "slice/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import DisableBtn from "component/button/DisableBtn";
 import { setOrderInfo } from "slice/OrderSlice";
 
-const { white, gray3, gray1, gray4, gray5 } = color;
+const { white, gray3, gray1 } = color;
 
 const SLayout = styled.div`
   width: 100%;
@@ -113,22 +115,8 @@ const SLastTotalPriceDiv = styled.div`
 const SOrderIcon = styled.div`
   width: 100%;
   height: 80px;
-  border-radius: 10px;
-  background-color: ${gray4};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `;
-const SOrderIconText = styled.div`
-  font-size: 24px;
-  font-weight: bold;
 
-  line-height: normal;
-
-  text-align: center;
-  color: ${gray5};
-`;
 const BtnDiv = styled.div`
   margin-bottom: 20px;
   margin-top: 20px;
@@ -147,7 +135,7 @@ function OrderPrice({ cartItems, setCartItems }) {
       return acc + Number(cur.productPrice) * cur.quantity;
     }, 0);
   }, [cartItems]);
-
+  console.log(cartItems);
   const changeDoller = Number(sum.toString().slice(0, -3));
   // 한화 달러화
   const handleOrder = async () => {
@@ -172,9 +160,10 @@ function OrderPrice({ cartItems, setCartItems }) {
       const orderData = await response.data;
       console.log(orderData, newData);
       dispatch(setOrderInfo(orderData));
+      dispatch(setCartItem(0));
       localStorage.removeItem("baskets");
       navigate("/ordersuccess");
-      alert("결제에 성공했습니다!!");
+      alert("현금결제 접수가 완료되었습니다.");
       setCartItems([]);
     } catch (err) {
       if (err) {
@@ -199,13 +188,15 @@ function OrderPrice({ cartItems, setCartItems }) {
         <STotalTextDiv>합계</STotalTextDiv>
         <SLastTotalPriceDiv> ₩{sum}</SLastTotalPriceDiv>
       </SLastTotalDiv>
-      <BtnDiv
-        onClick={() => {
-          handleOrder();
-        }}
-      >
-        <Btn1 title="현금결제 하기" />
-      </BtnDiv>
+      {cartItems.length > 0 ? (
+        <BtnDiv
+          onClick={() => {
+            handleOrder();
+          }}
+        >
+          <Btn1 title="현금결제 하기" />
+        </BtnDiv>
+      ) : null}
 
       {cartItems.length > 0 ? (
         <Paypal
@@ -216,7 +207,7 @@ function OrderPrice({ cartItems, setCartItems }) {
         />
       ) : (
         <SOrderIcon>
-          <SOrderIconText>주문하기</SOrderIconText>
+          <DisableBtn title="주문하기" />
         </SOrderIcon>
       )}
     </SLayout>

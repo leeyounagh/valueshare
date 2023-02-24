@@ -52,10 +52,7 @@ function SideNavbar() {
             {" "}
             <SText>상품등록</SText>
           </Link>
-          <Link to="/admin/deleteproduct">
-            {" "}
-            <SText>상품삭제</SText>
-          </Link>
+
           <Link to="/admin/category/editproduct">
             {" "}
             <SText>브랜드명 수정</SText>
