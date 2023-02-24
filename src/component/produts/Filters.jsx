@@ -106,11 +106,11 @@ function Filters() {
   const filterItem2 = Continent.filter((item) => item.key >= 7);
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
-    brandId: "all",
+    brand: "all",
   });
   const categories = searchParams.get("categories");
-  const brandId = searchParams.get("brandId");
-  console.log(categories, brandId);
+  const brand = searchParams.get("brand");
+  console.log(categories, brand);
 
   return (
     <SLayout>
@@ -124,7 +124,7 @@ function Filters() {
             return (
               <SCategoryItemDiv
                 onClick={() =>
-                  setSearchParams({ categories: `${item.value}`, brandId })
+                  setSearchParams({ categories: `${item.value}`, brand })
                 }
               >
                 {item.value}

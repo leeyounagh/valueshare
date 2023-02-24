@@ -8,10 +8,12 @@ const SlayOut = styled.div`
   height: 390px;
   object-fit: cover;
 
-  h2 {
+  p {
     margin-top: 100px;
     text-align: center;
     position: absolute;
+    font-size: 30px;
+    font-weight: 300;
     top: 30%;
     left: 50%;
     width: 100%;
@@ -36,7 +38,7 @@ const AddImg = styled.img`
 function Add() {
   return (
     <SlayOut>
-      <h2>특별한 날의 명품이 아니라 일상의 명품을 누리세요</h2>
+      <p>특별한 날의 명품이 아니라 일상의 명품을 누리세요</p>
       <AddDiv>
         <AddImg src="/asset/video-add.gif" />
       </AddDiv>

@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import color from "../styles/color";
 
 const SCardDiv = styled.div`
   width: 360px;
   height: 550px;
   margin: 46px 74px 50px 91px;
   padding: 28px 25px 19px 19px;
-  border: solid 1px #d9d9d9;
+  border: solid 1px ${color.gray4};
+  background-color: ${color.white};
 `;
 const SCardBrand = styled.div`
   padding-left: 10px;

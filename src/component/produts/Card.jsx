@@ -82,22 +82,30 @@ function Card() {
 
   const [searchParams] = useSearchParams({
     categories: "all",
+    brand: "all",
   });
 
   const categories = searchParams.get("categories");
+  const brandQueryStr = searchParams.getAll("brand");
 
-  console.log(categories);
+  const brandStr = brandQueryStr.reduce((a, b) => {
+    return `${a}&${b}`;
+  }, "");
+
+  const brand = brandStr.substring(1);
+
+  console.log(categories, brandQueryStr);
 
   useEffect(() => {
     async function getProducts() {
       const response = await axios.get("http://localhost:5000/products", {
-        params: { categories: `${categories}` },
+        params: { categories: `${categories}`, brand: `${brandQueryStr}` },
       });
       console.log(response);
       setData(response.data.result);
     }
     getProducts();
-  }, [categories]);
+  }, [categories, brand]);
 
   return (
     <SLayout>
