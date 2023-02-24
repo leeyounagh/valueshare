@@ -3,8 +3,41 @@
 import axios from "axios";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+import styled from "styled-components";
 
 import "./styles.css";
+
+const SLayout = styled.form`
+  max-width: 500px;
+  margin: 100px auto;
+  & > div {
+    margin: 50px auto;
+  }
+`;
+const SSpan = styled.span`
+  width: 56px;
+  height: 22px;
+  margin: 76px 280px 7px 2px;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #333333;
+`;
+const SButton = styled.button`
+  display: block;
+  appearance: none;
+  margin-top: 40px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+`;
 
 function Register() {
   const {
@@ -14,7 +47,6 @@ function Register() {
     formState: { errors },
   } = useForm();
 
-  // console.log(watch("email"));
   const password = useRef();
   password.current = watch("password");
 
@@ -25,19 +57,20 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <SLayout onSubmit={handleSubmit(onSubmit)}>
       <h1>Sign Up</h1>
       <div>
-        <span>Email</span>
+        <SSpan>Email</SSpan>
         <input
           name="email"
           type="email"
-          defaultValue="elice@valueshare.com"
+          placeholder="elice@valueshare.com"
+          defaultValue=""
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         />
         {errors.email && <p>이메일을 입력하세요.</p>}
 
-        <span>Password</span>
+        <SSpan>Password</SSpan>
         <input
           name="password"
           type="password"
@@ -50,7 +83,7 @@ function Register() {
           <p>비밀번호는 최소 6자 이상으로 입력해야합니다.</p>
         )}
 
-        <span>Confirm Password</span>
+        <SSpan>Confirm Password</SSpan>
         <input
           name="confirmPassword"
           type="password"
@@ -68,7 +101,7 @@ function Register() {
             <p>비밀번호가 일치하지 않습니다.</p>
           )}
 
-        <span>Name</span>
+        <SSpan>Name</SSpan>
         <input
           name="name"
           type="name"
@@ -81,7 +114,7 @@ function Register() {
           <p>최대길이를 초과하였습니다.</p>
         )}
 
-        <span>Phone Number</span>
+        <SSpan>Phone Number</SSpan>
         <input
           name="phoneNumber"
           type="phoneNumber"
@@ -91,8 +124,8 @@ function Register() {
         />
         {}
       </div>
-      <button type="submit">CREATE ACCOUNT</button>
-    </form>
+      <SButton type="submit">CREATE ACCOUNT</SButton>
+    </SLayout>
   );
 }
 

@@ -171,6 +171,7 @@ function CancelOrderReciept({ orderData }) {
         `http://localhost:5000/myorder/${objectId}`,
         {
           cancelNote: cancelReason,
+          shipStatus: "주문 취소",
         }
       );
       if (response.status === 200) {
