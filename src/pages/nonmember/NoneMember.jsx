@@ -6,25 +6,28 @@ import Btn1 from "component/button/Btn1";
 const { gray6, white, gray2, gray3, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 100%;
-  height: 90vh;
+  height: auto;
   background-color: ${gray6};
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 60px 0;
 `;
+
+const SItemDiv = styled.div`
+  width: 90%;
+  height: 700px;
+`;
+
 const SOrderItemDiv = styled.div`
-  width: 80vw;
-  height: 80vh;
   background-color: ${white};
   border-radius: 10px;
+  height: 750px;
 `;
 const STitleDiv = styled.div`
   font-size: 30px;
-  font-weight: bold;
-
+  font-weight: 600;
   line-height: 0.67;
-
   text-align: center;
   color: ${gray2};
   width: 100%;
@@ -32,20 +35,18 @@ const STitleDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 140px;
 `;
 const SNoticeDiv = styled.div`
   font-size: 24px;
-  font-weight: normal;
-
+  font-weight: 400;
   line-height: 0.83;
-
   text-align: center;
   color: ${gray3};
   height: 10vh;
-  display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 `;
 const SUserInfoDiv = styled.div`
   height: 10vh;
@@ -53,42 +54,21 @@ const SUserInfoDiv = styled.div`
   justify-content: center;
 `;
 const SNameDiv = styled.div`
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   line-height: normal;
-
-  text-align: left;
   color: ${gray3};
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  width: 15%;
-`;
-const SInput = styled.input`
-  border-radius: 10px;
-  background-color: ${white};
-  width: 414px;
-  height: 57px;
-
-  padding-left: 10px;
-  border-radius: 16px;
-  border: solid 1px ${gray4};
-  background-color: ${white};
-  outline-color: #ff985f;
+  width: 10%;
 `;
 
-const SItemDiv = styled.div``;
-const SInputDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 30px;
-`;
 const SButtonDiv = styled.div`
+  width: 280px;
   height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
+  padding: 70px 0;
 `;
 const SBtnDiv = styled.div`
   width: 20%;
@@ -105,21 +85,15 @@ function NoneMember() {
             </SNoticeDiv>
             <SUserInfoDiv>
               <SNameDiv>주문자 이름</SNameDiv>
-              <SInputDiv>
-                <SInput placeholder="이름" />
-              </SInputDiv>
+              <Input placeholder="이름" onChange="_onChange" />
             </SUserInfoDiv>
             <SUserInfoDiv>
               <SNameDiv> 주문자 이메일</SNameDiv>
-              <SInputDiv>
-                <SInput placeholder="test@test.com" />
-              </SInputDiv>
+              <Input placeholder="test@test.com" onChange="_onChange" />
             </SUserInfoDiv>
             <SUserInfoDiv>
               <SNameDiv>주문번호</SNameDiv>
-              <SInputDiv>
-                <SInput placeholder="주문번호" />
-              </SInputDiv>
+              <Input placeholder="주문번호" onChange="_onChange" />
             </SUserInfoDiv>
             <SButtonDiv>
               <SBtnDiv>
