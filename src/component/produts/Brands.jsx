@@ -103,7 +103,7 @@ function Brands() {
                   checked={item.checked}
                   onClick={onChange}
                   onChange={() => {
-                    setSearchParams({ categories, brandId: `${brandQuery}` });
+                    setSearchParams({ categories, brand: `${brandQuery}` });
                   }}
                 />
               </SCheckboxDiv>
