@@ -50,10 +50,9 @@ export const SPageTitleDiv = styled.div`
   margin-left: 54px;
   font-size: 80px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;

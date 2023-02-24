@@ -27,13 +27,12 @@ const STitle = styled.div`
   text-align: center;
   width: 120px;
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 22px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   display: flex;
@@ -46,10 +45,9 @@ const SItemDiv = styled.div`
   height: 100%;
   font-size: 40px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   display: flex;
@@ -61,13 +59,12 @@ const SProductTitle = styled.div`
   white-space: nowrap;
   width: 257px;
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 22px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   display: flex;

@@ -11,17 +11,20 @@ const SEmptyCartImg = styled.img`
   margin: 0 80px 90px;
   object-fit: contain;
 `;
-const SLayout = styled.div``;
+const SLayout = styled.div`
+  width: 100%;
+`;
 const SEmptyTitleDiv = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
   flex-grow: 0;
-  font-family: NotoSansKR;
+
   font-size: 22px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   margin-bottom: 10px;
@@ -31,11 +34,17 @@ const SItemDiv = styled.div`
   width: 100%;
   height: 20%;
 `;
+const SImgDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 function EmptyCart() {
   return (
     <SLayout>
       <SItemDiv>
-        <SEmptyCartImg src="/asset/emptycart.png" alt="빈장바구니 아이콘" />
+        <SImgDiv>
+          <SEmptyCartImg src="/asset/emptycart.png" alt="빈장바구니 아이콘" />
+        </SImgDiv>
       </SItemDiv>
       <SItemDiv>
         <SEmptyTitleDiv>장바구니에 상품이 없습니다.</SEmptyTitleDiv>

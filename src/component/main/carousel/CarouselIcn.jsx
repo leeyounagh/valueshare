@@ -12,9 +12,10 @@ const SlayOut = styled.div`
     border-right: 1px solid ${color.gray4};
 
     div {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
       border:none;
+      color: ${color.main};
     }
   }
   div:nth-child(3) {

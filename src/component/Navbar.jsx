@@ -11,6 +11,7 @@ const SLayout = styled.nav`
   padding: 33px 0 0;
   background-color: var(--white);
   border-bottom: 1px solid ${gray4};
+  background-color: ${color.white};
 `;
 
 const SRootHomeDiv = styled.div`
@@ -36,13 +37,12 @@ const SRootDiv = styled.div`
   width: 50%;
   height: 30%;
   margin-left: 54px;
-  font-family: Montserrat;
+
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -69,10 +69,9 @@ const SPageTitleDiv = styled.div`
   margin-left: 54px;
   font-size: 80px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;

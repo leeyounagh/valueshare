@@ -3,14 +3,14 @@ import styled from "styled-components";
 import CustomerComponent from "./CustomerComponent";
 
 const Slayout = styled.div`
-  margin-left: -10%;
+  margin-left: -50%;
   width: 100%;
   height: auto;
 
   h2 {
     padding-top: 100px;
     font-family: "Rufina", serif;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
   }
 `;
@@ -34,18 +34,13 @@ function CustomerLine1() {
   return (
     <Slayout>
       <CardList>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
-        <div>
-          <CustomerComponent />
-        </div>
+        {Array.from({ length: 6 }).map(() => {
+          return (
+            <div>
+              <CustomerComponent />
+            </div>
+          );
+        })}
       </CardList>
     </Slayout>
   );

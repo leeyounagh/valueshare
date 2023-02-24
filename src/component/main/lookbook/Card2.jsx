@@ -6,9 +6,13 @@ const SlayOut = styled.div`
   padding: 0 1%;
   h3 {
     text-align: center;
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 20px;
+    color: ${color.gray1};
   }
   p {
-    font-size: 20px;
+    font-size: 16px;
     color: ${color.gray3};
     text-align: center;
   }

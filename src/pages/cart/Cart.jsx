@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Navbar from "component/Navbar";
 import styled from "styled-components";
 import color from "styles/color";
@@ -18,7 +17,7 @@ const SLayout = styled.div`
 `;
 const SEmptyCartDiv = styled.div`
   width: 60%;
-  height: 595px;
+  height: 50%;
   padding: 158px 413px 159px;
   background-color: ${white};
   border-radius: 10px;
@@ -28,6 +27,7 @@ const SEmptyCartDiv = styled.div`
 const SOrderPriceDiv = styled.div`
   margin-top: 80px;
   margin-left: 50px;
+  width: 305;
 `;
 const SGetItemCartDiv = styled.div`
   width: 60%;
@@ -36,43 +36,32 @@ const SGetItemCartDiv = styled.div`
   margin-top: 80px;
   margin-left: 70px;
 `;
-function Cart() {
-  const [isItem, setIsItem] = useState(false);
-  const [cartData, setCartData] = useState([]);
 
-  const handleGetItem = async () => {
-    const response = axios.get("/test.json");
-    const { data } = await response;
-    setCartData((prev) => {
-      const newData = [...prev];
-      newData.push(data);
-      return newData;
-    });
-  };
-  useEffect(() => {
-    if (cartData.length > 0) {
-      setIsItem(true);
-    }
-    handleGetItem();
-  }, [cartData]);
+const getInitialCartItems = () => {
+  const items = localStorage.getItem("baskets");
+  return items ? JSON.parse(localStorage.getItem("baskets")) : [];
+};
+
+function Cart() {
+  const [cartItems, setCartItems] = useState(getInitialCartItems());
 
   return (
-    <div>
+    <div style={{ zIndex: "10", position: "relative" }}>
       <Navbar />
       <SLayout>
-        {isItem ? (
-          <SGetItemCartDiv>
-            <GetItemCart />
-          </SGetItemCartDiv>
-        ) : (
+        {cartItems.length === 0 ? (
           <SEmptyCartDiv>
             <EmptyCart />
           </SEmptyCartDiv>
+        ) : (
+          <SGetItemCartDiv>
+            <GetItemCart cartItems={cartItems} setCartItems={setCartItems} />
+          </SGetItemCartDiv>
         )}
 
         <SOrderPriceDiv>
           <Address />
-          <OrderPrice />
+          <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
         </SOrderPriceDiv>
       </SLayout>
     </div>

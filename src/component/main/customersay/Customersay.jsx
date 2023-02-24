@@ -13,6 +13,7 @@ const Slayout = styled.div`
     font-family: "Rufina", serif;
     font-size: 50px;
     text-align: center;
+    z-index: 1;
   }
 `;
 
@@ -22,13 +23,14 @@ const CardList = styled.div`
   height: auto;
   background-color: #f5e5c7;
   padding: 25px 0;
+  z-index: 2;
+  position: relative;
 `;
 
 const BgImg1 = styled.img`
   position: absolute;
   right: 35%;
-  top: 4200px;
-  z-index: -1;
+  top: 4300px;
   opacity: 0.6;
   scale: 0.8;
 `;
@@ -36,8 +38,7 @@ const BgImg1 = styled.img`
 const BgImg2 = styled.img`
   position: absolute;
   right: 45%;
-  top: 4220px;
-  z-index: -1;
+  top: 4300px;
   opacity: 0.6;
 `;
 
