@@ -70,20 +70,9 @@ const SButtonDiv = styled.div`
   margin: auto;
   padding: 70px 0;
 `;
-const Sbutton = styled.button`
-  width: 274px;
-  height: 49px;
-  border-radius: 10px;
-  background-color: ${gray1};
-
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-  color: ${white};
-  white-space: nowrap;
+<<<<<<<<< Temporary merge branch 1
+const SBtnDiv = styled.div`
+  width: 20%;
 `;
 function NoneMember() {
   return (
@@ -108,7 +97,13 @@ function NoneMember() {
               <Input placeholder="주문번호" onChange="_onChange" />
             </SUserInfoDiv>
             <SButtonDiv>
-              <Sbutton> 주문 내역 조회</Sbutton>
+<<<<<<<<< Temporary merge branch 1
+              <SBtnDiv>
+                <Btn1 title="주문 내역 조회" />
+              </SBtnDiv>
+=========
+              <Btn1 title="주문 내역 조회" />
+>>>>>>>>> Temporary merge branch 2
             </SButtonDiv>
           </SOrderItemDiv>
         </SItemDiv>
