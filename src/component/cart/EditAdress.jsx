@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+import Btn2 from "component/button/Btn2";
 import { useDispatch } from "react-redux";
 import { setNoneMemberInfo } from "slice/UserAddressSlice";
 
-const { white, gray3, gray4, gray1 } = color;
+const { white, gray3, gray4 } = color;
 
 const Slayout = styled.div`
   width: 100%;
@@ -103,40 +105,8 @@ const SButtonDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
 `;
-const SCheckButton = styled.button`
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  background-color: ${gray1};
-  color: ${white};
 
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-  z-index: 50;
-  cursor: pointer;
-`;
-const SCancelButton = styled.button`
-  border: solid 1px ${gray1};
-  background-color: ${white};
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-  color: ${gray1};
-  cursor: pointer;
-`;
 const SInnerButtonDiv = styled.div`
   width: 20%;
   height: 50px;
@@ -229,24 +199,20 @@ function EditAdress({ setIsOpen }) {
           </SInputDiv>
         </SItemDiv>
         <SButtonDiv>
-          <SInnerButtonDiv>
-            <SCheckButton
-              onClick={() => {
-                handleAddress();
-                setIsOpen(false);
-              }}
-            >
-              확인
-            </SCheckButton>
+          <SInnerButtonDiv
+            onClick={() => {
+              handleAddress();
+              setIsOpen(false);
+            }}
+          >
+            <Btn1 title="확인" />
           </SInnerButtonDiv>
-          <SInnerButtonDiv>
-            <SCancelButton
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              취소
-            </SCancelButton>
+          <SInnerButtonDiv
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            <Btn2 title="취소" />
           </SInnerButtonDiv>
         </SButtonDiv>
       </SModal>

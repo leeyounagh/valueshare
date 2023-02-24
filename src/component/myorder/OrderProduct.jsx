@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 
+import { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -47,7 +48,6 @@ const STitleDiv = styled.div`
 const SBrandNameDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-
   line-height: normal;
 
   text-align: left;
@@ -97,26 +97,31 @@ const SLinDiv = styled.div`
   margin-bottom: 20px;
   margin-left: 20px;
 `;
+const SBrandTitleDiv = styled.div`
+  display: flex;
+`;
 function OrderProduct({ orderData }) {
-  console.log(orderData);
-
   return (
     <SLayout>
-      {orderData.map((item) => {
+      {orderData?.map((item) => {
         return (
           <>
             <SOrderTitleDiv>Order {item.orderNumber}</SOrderTitleDiv>
             <SOrderItemDiv>
               <SItemImgDiv>
-                <SImg src={item.products[0].productImage[0]} />
+                <SImg src={item.products[0]?.productImage[0]} />
               </SItemImgDiv>
               <STitleDiv>
-                {/* <SBrandNameDiv>{item.result}</SBrandNameDiv> */}
+                <SBrandNameDiv>
+                  {item.products[0]?.productBrand} 외 {item.products.length - 1}
+                  건
+                </SBrandNameDiv>
                 <SProductNameDiv>
-                  트위스트 MM 핸드백 외 {item.products.length - 1}개
+                  {item.products[0]?.productTitle} 외{item.products.length - 1}
+                  건
                 </SProductNameDiv>
               </STitleDiv>
-              <SQuantityDiv>{item.products.length}개</SQuantityDiv>
+              <SQuantityDiv>{item.products?.length}개</SQuantityDiv>
               <SPriceDiv> ₩{item.totalPrice * 1000}</SPriceDiv>
             </SOrderItemDiv>
             <SLinDiv />

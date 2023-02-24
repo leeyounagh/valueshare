@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+import DisableBtn from "component/button/DisableBtn";
 
 const { white, gray3, gray4, gray1, gray6 } = color;
 
@@ -84,7 +86,7 @@ const SReceiveTextDiv = styled.div`
 
 const SLineDiv = styled.div`
   background-color: ${gray4};
-  width: 100%;
+  width: 95%;
   height: 1px;
   margin: 59px 0 19px 1px;
 `;
@@ -152,6 +154,12 @@ const SCancelButton = styled.button`
   border-radius: 10px;
   margin-right: 50px;
 `;
+const SBtnDiv = styled.div`
+  width: 18%;
+  height: 30%;
+
+  margin-right: 50px;
+`;
 function CancelOrderReciept({ orderData }) {
   const [cancelReason, setCancelReason] = useState("");
   const { pathname } = useLocation();
@@ -159,9 +167,12 @@ function CancelOrderReciept({ orderData }) {
   const navigate = useNavigate();
   const handleCancel = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/${objectId}`, {
-        cancelNote: cancelReason,
-      });
+      const response = await axios.patch(
+        `http://localhost:5000/myorder/${objectId}`,
+        {
+          cancelNote: cancelReason,
+        }
+      );
       if (response.status === 200) {
         alert("취소에 성공했습니다.");
         navigate("/");
@@ -211,14 +222,17 @@ function CancelOrderReciept({ orderData }) {
         <STotalPriceDiv> ₩240,000</STotalPriceDiv>
       </SOrderTitalDiv>
       <SButtonDiv>
-        <SReturnButton>반품신청</SReturnButton>
-        <SCancelButton
+        <SBtnDiv>
+          <DisableBtn title="반품신청" />
+        </SBtnDiv>
+
+        <SBtnDiv
           onClick={() => {
             handleCancel();
           }}
         >
-          주문취소
-        </SCancelButton>
+          <Btn1 title="주문취소" />
+        </SBtnDiv>
       </SButtonDiv>
     </SLayout>
   );
