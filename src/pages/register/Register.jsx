@@ -1,142 +1,96 @@
-import React, { useState } from "react";
 import axios from "axios";
-import styled from "styled-components";
+import React, { useRef } from "react";
+import { useForm } from "react-hook-form";
 
-const SLayout = styled.div`
-  border: 1px solid black;
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import "./styles.css";
 
 function Register() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  console.log(email, name, password, confirmPassword);
+  // console.log(watch("email"));
+  const password = useRef();
+  password.current = watch("password");
 
-  const onEmailHandler = (e) => {
-    const inputEmail = e.target.value;
-    const isEmailValid = email.includes("@");
+  const onSubmit = (data) => {
+    console.log("data", data);
 
-    if (!isEmailValid) {
-      alert("이메일에는 '@'를 입력해야합니다.");
-    }
-    return setEmail(inputEmail);
-  };
-
-  const onNameHandler = (e) => {
-    setName(e.target.value);
-  };
-
-  const onPasswordHandler = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onConfirmPasswordHandler = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const onPhoneHandler = (e) => {
-    const phoneNumber = e.target.value.replace(/[^0-9]/g, "").split("");
-
-    const arr = [
-      [0, phoneNumber > 9 ? 3 : 2],
-      [0, phoneNumber > 10 ? 4 : 3],
-      [0, 4],
-    ];
-
-    e.target.value = arr
-      .map(function (v) {
-        return phoneNumber.splice(v[0], v[1]).join("");
-      })
-      .filter(function (t) {
-        return t;
-      })
-      .join("-");
-
-    setPhone(e.target.value);
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-
-    const body = {
-      email,
-      name,
-      password,
-      phone,
-    };
-
-    axios.post("", body).then((res) => {
-      console.log(res.data);
-    });
+    axios.post("/", data).then((res) => console.log("data", data));
   };
 
   return (
-    // form태그에 label태그 쓰려다가 에러, 왜?
-    <SLayout>
-      <h1>회원가입</h1>
-      <form onSubmit={onSubmitHandler}>
-        <div style={{ marginBottom: "50px" }}>
-          <div>이메일</div>
-          <input
-            name="email"
-            value={email}
-            onChange={onEmailHandler}
-            placeholder="이메일을 입력해주세요"
-          />
-          {}
-        </div>
-        <div style={{ marginBottom: "50px" }}>
-          <div>이름</div>
-          <input
-            name="name"
-            value={name}
-            onChange={onNameHandler}
-            placeholder="이름을 입력해주세요"
-          />
-        </div>
-        <div style={{ marginBottom: "50px" }}>
-          <div>비밀번호</div>
-          <input
-            name="password"
-            value={password}
-            onChange={onPasswordHandler}
-            placeholder="비밀번호를 입력해주세요."
-          />
-        </div>
-        <div style={{ marginBottom: "50px" }}>
-          <div>비밀번호 확인</div>
-          <input
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={onConfirmPasswordHandler}
-            placeholder="비밀번호 한번더 입력해주세요."
-          />
-          {password !== confirmPassword ? <p>비밀번호가 맞지 않습니다.</p> : ""}
-        </div>
-        <div>
-          <div>전화번호</div>
-          <div
-            name="phone"
-            value={phone}
-            onChange={onPhoneHandler}
-            placeholder="전화번호를 입력해주세요."
-          />
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <h1>Sign Up</h1>
+      <div>
+        <span>Email</span>
+        <input
+          name="email"
+          type="email"
+          defaultValue="elice@valueshare.com"
+          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+        />
+        {errors.email && <p>이메일을 입력하세요.</p>}
 
-        <br />
-        <div style={{ marginBottom: "50px" }}>
-          <button type="submit">회원가입</button>
-        </div>
-      </form>
-    </SLayout>
+        <span>Password</span>
+        <input
+          name="password"
+          type="password"
+          {...register("password", { required: true, minLength: 6 })}
+        />
+        {errors.password && errors.password.type === "required" && (
+          <p>비밀번호를 입력하세요.</p>
+        )}
+        {errors.password && errors.password.type === "minLength" && (
+          <p>비밀번호는 최소 6자 이상으로 입력해야합니다.</p>
+        )}
+
+        <span>Confirm Password</span>
+        <input
+          name="confirmPassword"
+          type="password"
+          {...register("confirmPassword", {
+            required: true,
+            validate: (value) => value === password.current,
+          })}
+        />
+        {errors.confirmPassword &&
+          errors.confirmPassword.type === "required" && (
+            <p>비밀번호를 입력하세요.</p>
+          )}
+        {errors.confirmPassword &&
+          errors.confirmPassword.type === "validate" && (
+            <p>비밀번호가 일치하지 않습니다.</p>
+          )}
+
+        <span>Name</span>
+        <input
+          name="name"
+          type="name"
+          {...register("name", { required: true, maxLength: 10 })}
+        />
+        {errors.name && errors.name.type === "required" && (
+          <p>이름을 입력하세요.</p>
+        )}
+        {errors.name && errors.name.type === "maxLength" && (
+          <p>최대길이를 초과하였습니다.</p>
+        )}
+
+        <span>Phone Number</span>
+        <input
+          name="phoneNumber"
+          type="phoneNumber"
+          {...register("phoneNumber", {
+            required: true,
+          })}
+        />
+        {}
+      </div>
+      <button type="submit">CREATE ACCOUNT</button>
+    </form>
   );
 }
 
