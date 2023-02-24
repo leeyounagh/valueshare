@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
 import "../register/styles.css";
 
 function Login() {
@@ -12,14 +11,12 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
-
   // console.log(watch("email"));
   const password = useRef();
   password.current = watch("password");
 
   const onSubmit = (data) => {
     console.log("data", data);
-
     // eslint-disable-next-line no-unused-vars
     axios.post("/", data).then((res) => console.log("data", data));
   };
