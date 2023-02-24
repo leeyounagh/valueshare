@@ -1,3 +1,4 @@
+/* eslint-disable import/newline-after-import */
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -14,7 +15,6 @@ import Cart from "pages/cart/Cart";
 import Detail from "pages/productdeail/Detail";
 import Admin from "pages/admin/Admin";
 import Resign from "pages/resign/Resign";
-import DeliveryList from "pages/deliverylist/DeliveryList";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
@@ -29,7 +29,10 @@ import { setPageInfo } from "slice/PageSlice";
 import Productest from "pages/products/Productest";
 import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
+import AddCategory from "pages/addcategory/AddCategory";
 
+import Category from "pages/category/Category";
+import AdminProduct from "pages/adminproduct/AdminProduct";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -94,13 +97,16 @@ function App() {
           path="/admin/orderlist/:orderlistdetail"
           element={<OrderListDetail />}
         />
-        <Route path="/admin/deliverylist" element={<DeliveryList />} />
+
         <Route path="/admin/category/addproduct" element={<UploadProduct />} />
+        <Route path="/admin/addcategory" element={<AddCategory />} />
         <Route
           exact
           path="/admin/category/editcategory"
           element={<EditCategory />}
         />
+        <Route exact path="/admin/category" element={<Category />} />
+        <Route exact path="/admin/product" element={<AdminProduct />} />
 
         <Route
           exact

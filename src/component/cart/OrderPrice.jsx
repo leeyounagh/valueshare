@@ -151,6 +151,10 @@ function OrderPrice({ cartItems, setCartItems }) {
     }, 0);
   }, [cartItems]);
 
+  // const test = cartItems.reduce((acc) => {
+  //   return `${acc.productBrand.brandName}`;
+  // }, "");
+  // console.log(test);
   const changeDoller = Number(sum.toString().slice(0, -3));
   // 한화 달러화
   const handleOrder = async () => {
@@ -173,6 +177,7 @@ function OrderPrice({ cartItems, setCartItems }) {
       );
 
       const orderData = await response.data;
+      console.log(orderData, newData);
       dispatch(setOrderInfo(orderData));
       localStorage.removeItem("baskets");
       navigate("/ordersuccess");

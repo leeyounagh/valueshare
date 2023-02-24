@@ -44,25 +44,39 @@ function SideNavbar() {
             {" "}
             <SText>회원 주문내역 조회</SText>
           </Link>
+          <Link to="/admin/product">
+            {" "}
+            <SText>상품조회</SText>
+          </Link>
           <Link to="/admin/category/addproduct">
             {" "}
             <SText>상품등록</SText>
           </Link>
+          <Link to="/admin/deleteproduct">
+            {" "}
+            <SText>상품삭제</SText>
+          </Link>
           <Link to="/admin/category/editproduct">
             {" "}
-            <SText>상품 수정</SText>
+            <SText>브랜드명 수정</SText>
           </Link>
           <Link to="/admin/category/editcategory">
             {" "}
             <SText>카테고리수정</SText>
           </Link>
-          <Link to="/admin/deliverylist">
+
+          <Link to="/admin/addcategory">
             {" "}
-            <SText>배송리스트</SText>
+            <SText>카테고리추가</SText>
           </Link>
-          <Link to="/admin/canceledlist">
+          <Link to="/admin/category/editcategory">
             {" "}
-            <SText>취소리스트</SText>
+            <SText>카테고리수정</SText>
+          </Link>
+
+          <Link to="/admin/category">
+            {" "}
+            <SText>카테고리조회</SText>
           </Link>
         </SItemDiv>
       </SLayout>
