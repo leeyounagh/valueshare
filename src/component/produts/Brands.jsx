@@ -80,11 +80,13 @@ function Brands() {
   const brand = searchParams.getAll("brand");
 
   const queryStr = params.reduce((a, b) => {
-    return `${a}&${b}`;
+    return `${a}&brand=${b}`;
   }, "");
 
+  const brandQuery = queryStr.substring(7);
+
   console.log(categories, brand);
-  console.log(queryStr.substring(1));
+  console.log(brandQuery);
 
   return (
     <SLayout>
@@ -101,7 +103,7 @@ function Brands() {
                   checked={item.checked}
                   onClick={onChange}
                   onChange={() => {
-                    setSearchParams({ categories, brandId: `${queryStr}` });
+                    setSearchParams({ categories, brandId: `${brandQuery}` });
                   }}
                 />
               </SCheckboxDiv>

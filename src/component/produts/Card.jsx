@@ -94,12 +94,12 @@ function Card() {
 
   const brand = brandStr.substring(1);
 
-  console.log(categories, brand);
+  console.log(categories, brandQueryStr);
 
   useEffect(() => {
     async function getProducts() {
       const response = await axios.get("http://localhost:5000/products", {
-        params: { categories: `${categories}`, brand: `${brand}` },
+        params: { categories: `${categories}`, brand: `${brandQueryStr}` },
       });
       console.log(response);
       setData(response.data.result);
