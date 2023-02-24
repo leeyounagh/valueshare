@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable-loop */
+/* eslint-disable no-plusplus */
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import color from "styles/color";
@@ -18,8 +20,6 @@ const SLayout = styled.div`
   border-radius: 10px;
   background-color: ${white};
   z-index: 10;
-<<<<<<< HEAD
-=======
 
   .paypal-button:not(.paypal-button-card),
   .paypal-button.paypal-button-shape-rect {
@@ -28,7 +28,6 @@ const SLayout = styled.div`
     margin-left: 15px !important;
     border-radius: 10px !important;
   }
->>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 
 const SOrderTitleDiv = styled.div`
@@ -83,14 +82,10 @@ const SLastTotalDiv = styled.div`
   height: 30%;
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  margin-bottom: 50px;
-=======
   margin-top: 50px;
   padding: 40px 0;
   margin-bottom: 20px;
   border-top: 1px solid ${color.gray4};
->>>>>>> 3c6120139e6747dbb556b6461f94348f9b6f4a6f
 `;
 const STotalTextDiv = styled.div`
   width: 90%;
@@ -142,6 +137,8 @@ const BtnDiv = styled.div`
 function OrderPrice({ cartItems, setCartItems }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const set = new Set();
+
   const ShipInfo = useSelector((state) => {
     return state.UserAddressReducer;
   });
@@ -151,10 +148,6 @@ function OrderPrice({ cartItems, setCartItems }) {
     }, 0);
   }, [cartItems]);
 
-  // const test = cartItems.reduce((acc) => {
-  //   return `${acc.productBrand.brandName}`;
-  // }, "");
-  // console.log(test);
   const changeDoller = Number(sum.toString().slice(0, -3));
   // 한화 달러화
   const handleOrder = async () => {

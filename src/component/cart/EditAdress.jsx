@@ -103,6 +103,7 @@ const SButtonDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid black;
 `;
 const SCheckButton = styled.button`
   border-radius: 10px;

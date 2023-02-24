@@ -33,6 +33,7 @@ import AddCategory from "pages/addcategory/AddCategory";
 
 import Category from "pages/category/Category";
 import AdminProduct from "pages/adminproduct/AdminProduct";
+import MemberOrder from "pages/membermyorder/MemberOrder";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -63,6 +64,9 @@ function App() {
       setPageInfo({ rootTitle: "Cancle Order", currentTitle: "Cancle Order" })
     );
   }
+  if (pathname === "/memberordercheck") {
+    dispatch(setPageInfo({ rootTitle: "My Order", currentTitle: "My Order" }));
+  }
   return (
     <div>
       <Header />
@@ -89,6 +93,7 @@ function App() {
         <Route path="/myorder/cancel/:userId" element={<CancelOrder />} />
 
         <Route path="/nonmemberorder" element={<NoneMember />} />
+        <Route path="/memberordercheck" element={<MemberOrder />} />
 
         {/* 어드민 페이지  */}
         <Route path="/admin" element={<Admin />} />

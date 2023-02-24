@@ -54,7 +54,6 @@ const SUserInfoDiv = styled.div`
 const SNameDiv = styled.div`
   font-size: 24px;
   font-weight: 500;
-
   line-height: normal;
 
   text-align: left;
@@ -69,18 +68,12 @@ const SInput = styled.input`
   background-color: ${white};
   width: 414px;
   height: 57px;
-<<<<<<< HEAD
 
-  border-radius: 16px;
-  border: solid 1px ${gray4};
-  background-color: ${white};
-=======
   padding-left: 10px;
   border-radius: 16px;
   border: solid 1px ${gray4};
   background-color: ${white};
   outline-color: #ff985f;
->>>>>>> ccf00d4abd1ce891c0a5fe33cce47d739057333a
 `;
 
 const SItemDiv = styled.div``;

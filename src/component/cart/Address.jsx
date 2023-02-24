@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Btn1 from "component/button/Btn1";
 import styled from "styled-components";
 import color from "styles/color";
 import EditAdress from "./EditAdress";
@@ -81,6 +82,11 @@ const SEditAdress = styled.div`
   color: ${white};
   cursor: pointer;
 `;
+const SBtnDiv = styled.div`
+  width: 90%;
+  height: 50px;
+  margin-top: 50px;
+`;
 function Address() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const adress = useSelector((state) => {
@@ -134,13 +140,13 @@ function Address() {
               : "email을 등록해주세요"}
           </SAddressText>
         </SItemDiv>
-        <SEditAdress
+        <SBtnDiv
           onClick={() => {
             setIsOpen(!modalIsOpen);
           }}
         >
-          배송지 수정
-        </SEditAdress>
+          <Btn1 title="배송지 수정" />
+        </SBtnDiv>
       </SLayout>
       {modalIsOpen ? <EditAdress setIsOpen={setIsOpen} /> : null}
     </div>
