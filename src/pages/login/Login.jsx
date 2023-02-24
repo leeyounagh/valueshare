@@ -1,7 +1,73 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import styled from "styled-components";
 
-import "../register/styles.css";
+const SSection = styled.form`
+  max-width: 500px;
+  margin: 100px auto;
+`;
+
+const STitle = styled.h1`
+  font-weight: 100;
+  color: #333333;
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: solid 1px #bdbdbd;
+`;
+
+const SDiv = styled.div`
+  margin: 50px auto;
+`;
+
+const SLabel = styled.span`
+  width: 56px;
+  height: 22px;
+  margin: 76px 280px 7px 2px;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #333333;
+`;
+
+const SInput = styled.input`
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgb(220, 217, 217);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+`;
+
+const SLogInBtn = styled.button`
+  width: 100%;
+  background: #ffaf54;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+  border-radius: 10px;
+`;
+
+const SP = styled.p`
+  color: #bf1616;
+
+  &::before {
+    display: inline;
+    content: "⚠";
+  }
+`;
 
 function Login() {
   const {
@@ -15,40 +81,45 @@ function Login() {
   const password = useRef();
   password.current = watch("password");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("data", data);
 
-    axios.post("/", data).then((res) => console.log("data", data));
+    try {
+      const res = await axios.post("/login", data);
+      console.log("data", res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Login</h1>
-      <div>
-        <span>Email</span>
-        <input
+    <SSection onSubmit={handleSubmit(onSubmit)}>
+      <STitle>Login</STitle>
+      <SDiv>
+        <SLabel>Email</SLabel>
+        <SInput
           name="email"
           type="email"
-          defaultValue="elice@valueshare.com"
+          placeholder="elice@valueshare.com"
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.email && <p>이메일을 입력하세요.</p>}
+        {errors.email && <SP>이메일을 입력하세요.</SP>}
 
-        <span>Password</span>
-        <input
+        <SLabel>Password</SLabel>
+        <SInput
           name="password"
           type="password"
-          {...register("password", { required: true, minLength: 6 })}
+          {...register("password", { required: true, minLength: 12 })}
         />
         {errors.password && errors.password.type === "required" && (
-          <p>비밀번호를 입력하세요.</p>
+          <SP>비밀번호를 입력하세요.</SP>
         )}
         {errors.password && errors.password.type === "minLength" && (
-          <p>비밀번호는 최소 6자 이상으로 입력해야합니다.</p>
+          <SP>비밀번호는 최소 12자 이상으로 입력해야합니다.</SP>
         )}
-      </div>
-      <button type="submit">LOGIN</button>
-    </form>
+      </SDiv>
+      <SLogInBtn type="submit">LOGIN</SLogInBtn>
+    </SSection>
   );
 }
 
