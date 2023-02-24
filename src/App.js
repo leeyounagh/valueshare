@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
 import OrderList from "pages/orderlist/OrderList";
+// eslint-disable-next-line no-unused-vars
 import Header from "component/layout/header/Header";
+import NonememberHeader from "component/layout/header/NonmemberHeader";
 import Login from "pages/login/Login";
 import Main from "pages/main/Main";
 import MyOrder from "pages/myorder/MyOrder";
@@ -69,7 +71,7 @@ function App() {
   }
   return (
     <div>
-      <Header />
+      <NonememberHeader />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

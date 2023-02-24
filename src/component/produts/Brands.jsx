@@ -73,13 +73,11 @@ function Brands() {
   const handleChange = (e) => {
     params.push(e.target.value);
 
-    console.log(params);
     const queryStr = params.reduce((a, b) => {
       return `${a},${b}`;
     }, "brand=");
 
     brandQuery = queryStr.substring(7);
-    console.log("브랜드", queryStr);
   };
 
   const [searchParams, setSearchParams] = useSearchParams({
@@ -88,17 +86,6 @@ function Brands() {
   });
 
   const categories = searchParams.get("categories");
-  const brand = searchParams.getAll("brand");
-  // useEffect(() => {
-  //   const queryStr = params.reduce((a, b) => {
-  //     return `${a}&brand=${b}`;
-  //   }, "");
-
-  //   brandQuery = queryStr.substring(7);
-  // }, [params]);
-
-  // console.log(categories, brand);
-  // console.log(brandQuery);
 
   return (
     <SLayout>
