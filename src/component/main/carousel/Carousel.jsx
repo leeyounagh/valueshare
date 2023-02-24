@@ -20,9 +20,8 @@ const SbannerText = styled.div`
     font-weight: 700;
     padding: 10px 0;
   }
-
-  p {
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  p { 
+    sans-serif;
     font-size: 18px;
     line-height: 1.5;
   }

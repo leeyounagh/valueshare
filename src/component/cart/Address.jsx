@@ -27,10 +27,9 @@ const SAddressTitle = styled.div`
   flex-grow: 0;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -38,10 +37,9 @@ const SAdressTiltleDiv = styled.div`
   width: 30%;
   font-size: 18px;
   font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 1.8;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
 `;
@@ -49,10 +47,9 @@ const SAddressText = styled.div`
   flex-grow: 0;
   font-size: 18px;
   font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 1.5;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
 `;
@@ -77,9 +74,9 @@ const SEditAdress = styled.div`
   align-items: center;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${white};
   cursor: pointer;

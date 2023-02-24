@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable prefer-const */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import BrandName from "data/BrandName";
@@ -9,7 +11,6 @@ const SLayout = styled.div`
   width: 100%;
   height: 420px;
   margin-left: 30px;
-  border-bottom: 1px solid ${gray4};
   position: relative;
 `;
 const SBrandTitleDiv = styled.div`
@@ -19,10 +20,9 @@ const SBrandTitleDiv = styled.div`
 
   font-size: 30px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -68,13 +68,38 @@ const SBrandLineDiv = styled.div`
 `;
 
 function Brands() {
+  const [params, setParams] = useState([]);
+  let brandQuery = "";
+  const handleChange = (e) => {
+    // console.log(e.target.value);
+    params.push(e.target.value);
+    // setParams([...params, e.target.value]);
+    console.log(params);
+    const queryStr = params.reduce((a, b) => {
+      return `${a},${b}`;
+    }, "brand=");
+
+    brandQuery = queryStr.substring(7);
+    console.log("브랜드", queryStr);
+  };
+
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
-    brandId: "all",
+    brand: "all",
   });
+
   const categories = searchParams.get("categories");
-  const brandId = searchParams.get("brandId");
-  console.log(categories, brandId);
+  const brand = searchParams.getAll("brand");
+  // useEffect(() => {
+  //   const queryStr = params.reduce((a, b) => {
+  //     return `${a}&brand=${b}`;
+  //   }, "");
+
+  //   brandQuery = queryStr.substring(7);
+  // }, [params]);
+
+  // console.log(categories, brand);
+  // console.log(brandQuery);
 
   return (
     <SLayout>
@@ -85,11 +110,15 @@ function Brands() {
             <SBrandNameDiv>
               <SCheckboxDiv>
                 <input
+                  value={item.value}
                   type="checkbox"
                   disabled={item.disabled}
                   checked={item.checked}
+                  onClick={(e) => {
+                    handleChange(e);
+                  }}
                   onChange={() => {
-                    setSearchParams({ categories, brandId: `${item.value}` });
+                    setSearchParams({ categories, brand: `${brandQuery}` });
                   }}
                 />
               </SCheckboxDiv>

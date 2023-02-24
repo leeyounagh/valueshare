@@ -25,10 +25,9 @@ const SFilterTitle = styled.div`
   left: 30px;
   font-size: 30px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${color.gray2};
 `;
@@ -57,9 +56,9 @@ const SCategoryDiv = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
   font-size: 18px;
   font-weight: normal;
-  font-stretch: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${color.gray2};
   cursor: pointer;
@@ -107,11 +106,11 @@ function Filters() {
   const filterItem2 = Continent.filter((item) => item.key >= 7);
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",
-    brandId: "all",
+    brand: "all",
   });
   const categories = searchParams.get("categories");
-  const brandId = searchParams.get("brandId");
-  console.log(categories, brandId);
+  const brand = searchParams.get("brand");
+  console.log(categories, brand);
 
   return (
     <SLayout>
@@ -125,7 +124,7 @@ function Filters() {
             return (
               <SCategoryItemDiv
                 onClick={() =>
-                  setSearchParams({ categories: `${item.value}`, brandId })
+                  setSearchParams({ categories: `${item.value}`, brand })
                 }
               >
                 {item.value}

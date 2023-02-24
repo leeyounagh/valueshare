@@ -50,7 +50,7 @@ const SBestSellerDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 
 const SProductDiv = styled.div`
@@ -62,7 +62,7 @@ const SProductDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 
 const SLookBookDiv = styled.div`
@@ -74,7 +74,7 @@ const SLookBookDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 
 const SMembershipDiv = styled.div`
@@ -87,13 +87,13 @@ const SMembershipDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 const SLineDiv = styled.div`
   width: 1px;
   height: 60px;
   transform: rotate(-180deg);
-  background-color: #ccd1d8;
+  background-color: ${color.gray4};
 `;
 const SLayoutInnerDiv = styled.div`
   display: flex;
@@ -116,27 +116,13 @@ const SLayoutIconDiv = styled.div`
   padding-top: 18px;
   margin-left: 24px;
 `;
-const SAlarmImg = styled.img`
-  width: 46px;
-  height: 40px;
-  object-fit: contain;
-`;
+
 const SBasketImg = styled.img`
   width: 46px;
   height: 40px;
   object-fit: contain;
 `;
-const SProfileImg = styled.img`
-  width: 70px;
-  height: 60px;
-`;
-const SProfileMenuImg = styled.img`
-  width: 26px;
-  height: 30px;
-  margin-left: 10px;
-  margin-top: 15px;
-  object-fit: contain;
-`;
+
 const SLayoutIconItem = styled.div`
   margin: 5px;
   height: 100%;
@@ -151,11 +137,19 @@ const SInnerItemDiv = styled.div`
 const SLayoutProfileDiv = styled.div`
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 60%;
   height: 100%;
   margin-bottom: 20px;
 `;
-const SLayoutProfileInnerDiv = styled.div``;
+const SLayoutProfileInnerDiv = styled.div`
+  font-size: 18px;
+  padding-top: 16px;
+
+  a {
+    color: ${color.gray3} !important;
+    padding: 0 10px;
+  }
+`;
 function Header() {
   return (
     <SlayOut>
@@ -165,7 +159,6 @@ function Header() {
             <h2>value shop</h2>
           </Link>
         </SLogoDiv>
-
         <SLayoutMenuDiv>
           <SInnerItemDiv>
             <Link to="/bestseller">
@@ -184,9 +177,6 @@ function Header() {
         </SLayoutMenuDiv>
         <SLayoutIconDiv>
           <SLayoutIconItem>
-            <SAlarmImg src="/asset/headerAlarm.svg" />
-          </SLayoutIconItem>
-          <SLayoutIconItem>
             <Link to="/cart">
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
@@ -194,10 +184,8 @@ function Header() {
           <SLineDiv />
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
-              <SProfileImg src="/asset/icn-profile.svg" />
-            </SLayoutProfileInnerDiv>
-            <SLayoutProfileInnerDiv>
-              <SProfileMenuImg src="/asset/Chevrons_chevron-right.svg" />
+              <Link to="/login">Login</Link>
+              <Link to="/myorder">My Order</Link>
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

@@ -27,8 +27,7 @@ const SCardDiv = styled.div`
 const SCardBrand = styled.div`
   width: 100%;
   font-size: 20px;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
   letter-spacing: 1.5;
   text-align: left;
@@ -83,22 +82,24 @@ function Card() {
 
   const [searchParams] = useSearchParams({
     categories: "all",
+    brand: "all",
   });
 
   const categories = searchParams.get("categories");
+  const brand = searchParams.get("brand");
 
-  console.log(categories);
+  console.log(categories, brand);
 
   useEffect(() => {
     async function getProducts() {
       const response = await axios.get("http://localhost:5000/products", {
-        params: { categories: `${categories}` },
+        params: { categories: `${categories}`, brand: `${brand}` },
       });
       console.log(response);
       setData(response.data.result);
     }
     getProducts();
-  }, [categories]);
+  }, [categories, brand]);
 
   return (
     <SLayout>

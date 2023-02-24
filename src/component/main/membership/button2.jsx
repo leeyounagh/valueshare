@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
-  width: 30%;
+  width: 100%;
   height: auto;
+  cursor: pointer;
+
+  a {
+    width: 100%;
+  }
 `;
+
 const Btn1 = styled.button`
   width: 100%;
   height: 60px;
@@ -18,7 +25,9 @@ const Btn1 = styled.button`
 function Button2() {
   return (
     <SlayOut>
-      <Btn1>구독 신청하기 (₩ 400,000 / 1년)</Btn1>
+      <Link to="/membership">
+        <Btn1>구독 신청하기 (₩ 400,000 / 1년)</Btn1>
+      </Link>
     </SlayOut>
   );
 }
