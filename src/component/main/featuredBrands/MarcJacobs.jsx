@@ -19,7 +19,7 @@ const SlayOut = styled.div`
   p {
     position: absolute;
     top: 50%;
-    left: 12%;
+    left: 10%;
     width: 100%;
     color: ${color.gray3};
   }
@@ -32,7 +32,7 @@ const Button = styled.button`
   border: 1px solid ${color.main};
   background-color: ${color.white};
   top: 258px;
-  left: 12%;
+  left: 10%;
   color: ${color.main};
   cursor: pointer;
 `;

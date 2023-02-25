@@ -73,6 +73,7 @@ const SCategoryItemDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+  overflow: hidden;
 
   &.active {
     background-color: ${color.main};

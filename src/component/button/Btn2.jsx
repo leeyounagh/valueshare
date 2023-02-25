@@ -12,11 +12,15 @@ const SBtn2 = styled.button`
   height: 100%;
   background-color: ${color.white};
   color: ${color.gray1};
-  border-color: ${color.gray1};
+  border: 1px solid ${color.gray2};
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+
+  &:active {
+    background: ${color.gray5};
+  }
 `;
 
 function Btn2({ title }) {

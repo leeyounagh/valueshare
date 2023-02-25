@@ -16,6 +16,11 @@ const SBtn1 = styled.button`
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  border: none;
+
+  &:active {
+    background: ${color.gray3};
+  }
 `;
 
 function Btn1({ title }) {
