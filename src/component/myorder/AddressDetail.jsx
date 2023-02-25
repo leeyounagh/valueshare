@@ -125,7 +125,6 @@ const SBtnDiv = styled.div`
 
 function AddressDetail({ orderData }) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  console.log(orderData, orderData[0]?._id);
 
   return (
     <Slayout>

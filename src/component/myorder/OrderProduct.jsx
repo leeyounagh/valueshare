@@ -100,29 +100,27 @@ const SLinDiv = styled.div`
 const SBrandTitleDiv = styled.div`
   display: flex;
 `;
-function OrderProduct({ orderData }) {
+function OrderProduct({ orderData, products }) {
+  // console.log("상품", orderData, imgArr);
   return (
     <SLayout>
-      {orderData?.map((item) => {
+      <SOrderTitleDiv>Order {orderData[0]?.orderNumber}</SOrderTitleDiv>
+      {products?.map((item) => {
         return (
           <>
-            <SOrderTitleDiv>Order {item.orderNumber}</SOrderTitleDiv>
             <SOrderItemDiv>
               <SItemImgDiv>
-                <SImg src={item.products[0]?.productImage[0]} />
+                <SImg src={item.productImage[0]} />
               </SItemImgDiv>
               <STitleDiv>
-                <SBrandNameDiv>
-                  {item.products[0]?.productBrand} 외 {item.products.length - 1}
-                  건
-                </SBrandNameDiv>
-                <SProductNameDiv>
-                  {item.products[0]?.productTitle} 외{item.products.length - 1}
-                  건
-                </SProductNameDiv>
+                <SBrandNameDiv>{item.productBrand}</SBrandNameDiv>
+                <SProductNameDiv>{item.productTitle}</SProductNameDiv>
               </STitleDiv>
-              <SQuantityDiv>{item.products?.length}개</SQuantityDiv>
-              <SPriceDiv> ₩{item.totalPrice * 1000}</SPriceDiv>
+              <SQuantityDiv>{item.productQuantity}개</SQuantityDiv>
+              <SPriceDiv>
+                {" "}
+                ₩{item.productPrice * item.productQuantity}
+              </SPriceDiv>
             </SOrderItemDiv>
             <SLinDiv />
           </>

@@ -29,7 +29,7 @@ function CancelOrder() {
         `http://localhost:5000/myorder/${objectId}`
       );
       const data = await response.data;
-      setOrderData(data);
+      setOrderData([data[0]]);
       console.log(response);
     }
     handleMyOlder();

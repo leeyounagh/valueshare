@@ -116,7 +116,7 @@ const SStatusIcon = styled.img`
   margin-top: 5px;
 `;
 function OrderHistory({ orderData }) {
-  console.log("들어갔니", orderData);
+  // console.log("들어갔니", orderData[0]);
   return (
     <SLayout>
       <SHistoryTitle>Order History</SHistoryTitle>
@@ -125,8 +125,8 @@ function OrderHistory({ orderData }) {
           return (
             <div>
               <OrderNumberDiv>{item.orderNumber}</OrderNumberDiv>
-              <OrderPriceDiv>₩63,000</OrderPriceDiv>
-              <ItemQuantityDiv> {item.products.length} Items</ItemQuantityDiv>
+              <OrderPriceDiv>₩{item.totalPrice * 1000}</OrderPriceDiv>
+              <ItemQuantityDiv> {item.products?.length} Items</ItemQuantityDiv>
               <LineDiv />
               <SProductStatusDiv>
                 <SStatusTopDiv>

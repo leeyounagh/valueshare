@@ -56,7 +56,7 @@ function UploadProduct() {
     const formData = new FormData();
     // back-end에서 imageFile로 넘겨받고 있으므로 for문을 돌며 image를 formData에 셋팅해주세요.
     images.forEach((image) => {
-      formData.append("imageFile", image);
+      formData.append("productimage", image);
     });
     formData.append("productTitle", title);
     formData.append("productStock", stock);

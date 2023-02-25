@@ -33,6 +33,7 @@ function MyOrder() {
   const { pathname } = useLocation();
   const objectId = pathname.substr(9);
   const [orderData, setOrderData] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function handleMyOlder() {
@@ -40,12 +41,12 @@ function MyOrder() {
         `http://localhost:5000/myorder/${objectId}`
       );
       const data = await response.data;
-      setOrderData(data);
-      console.log(response);
+      setOrderData([data[0]]);
+      setProducts([data[1]]);
     }
     handleMyOlder();
   }, []);
-  console.log(orderData);
+
   return (
     <div>
       <Navbar />
@@ -54,7 +55,7 @@ function MyOrder() {
           <OrderHistory orderData={orderData} />
         </SOrderHistoryDiv>
         <SCustomerInfoDiv>
-          <OrderProduct orderData={orderData} />
+          <OrderProduct orderData={orderData} products={products[0]} />
           <AddressDetail orderData={orderData} />
         </SCustomerInfoDiv>
       </SLayout>

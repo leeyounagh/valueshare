@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -32,6 +33,7 @@ function AdminProduct() {
   // eslint-disable-next-line no-unused-vars
   const [productData, setProductData] = useState();
   const [id, setId] = useState();
+  console.log(productData);
 
   useEffect(() => {
     async function getOrderList() {
@@ -72,6 +74,7 @@ function AdminProduct() {
                 <th>가격</th>
                 <th>재고</th>
                 <th>상품삭제</th>
+                <th>상품수정</th>
               </tr>
             </thead>
             <tbody>
@@ -96,6 +99,9 @@ function AdminProduct() {
                         상품삭제
                       </button>
                     </td>
+                    <Link to={`${item._id}`}>
+                      <td>상품수정</td>
+                    </Link>
                   </tr>
                 );
               })}

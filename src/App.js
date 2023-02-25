@@ -69,6 +69,11 @@ function App() {
   if (pathname === "/memberordercheck") {
     dispatch(setPageInfo({ rootTitle: "My Order", currentTitle: "My Order" }));
   }
+  if (pathname === "/myorder/cancel") {
+    dispatch(
+      setPageInfo({ rootTitle: "My Order", currentTitle: "Cancle Order" })
+    );
+  }
   return (
     <div>
       <NonememberHeader />
@@ -117,7 +122,7 @@ function App() {
 
         <Route
           exact
-          path="/admin/category/editproduct"
+          path="/admin/product/:productid"
           element={<EditProduct />}
         />
         {/* 404  */}

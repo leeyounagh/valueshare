@@ -57,6 +57,10 @@ function SideNavbar() {
             {" "}
             <SText>브랜드명 수정</SText>
           </Link>
+          <Link to="/admin/category">
+            {" "}
+            <SText>카테고리조회</SText>
+          </Link>
           <Link to="/admin/category/editcategory">
             {" "}
             <SText>카테고리수정</SText>
@@ -65,15 +69,6 @@ function SideNavbar() {
           <Link to="/admin/addcategory">
             {" "}
             <SText>카테고리추가</SText>
-          </Link>
-          <Link to="/admin/category/editcategory">
-            {" "}
-            <SText>카테고리수정</SText>
-          </Link>
-
-          <Link to="/admin/category">
-            {" "}
-            <SText>카테고리조회</SText>
           </Link>
         </SItemDiv>
       </SLayout>
