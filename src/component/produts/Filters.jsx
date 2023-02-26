@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
@@ -111,26 +112,24 @@ function Categories({ searchParams, setSearchParams }) {
       </SFilterTitleDiv>
       <SFilterDiv>
         <SCategoryDiv>
-          {Continent.filter((item) => item.key > 0).map(
-            (categoryData, index) => {
-              return (
-                <SCategoryItemDiv
-                  key={categoryData}
-                  value={categoryData.value}
-                  className={`${
-                    selectedCategory === categoryData.value ? "active" : ""
-                  }${
-                    continentSize % 2 === 1 && index === continentSize - 1
-                      ? " odd-item"
-                      : ""
-                  }`}
-                  onClick={() => handleClickCategory(categoryData.value)}
-                >
-                  {categoryData.value}
-                </SCategoryItemDiv>
-              );
-            }
-          )}
+          {Continent.map((categoryData, index) => {
+            return (
+              <SCategoryItemDiv
+                key={categoryData}
+                value={categoryData.value}
+                className={`${
+                  selectedCategory === categoryData.value ? "active" : ""
+                }${
+                  continentSize % 2 === 1 && index === continentSize - 1
+                    ? " odd-item"
+                    : ""
+                }`}
+                onClick={() => handleClickCategory(categoryData.value)}
+              >
+                {categoryData.value}
+              </SCategoryItemDiv>
+            );
+          })}
         </SCategoryDiv>
       </SFilterDiv>
       <SBottomLineDiv />
