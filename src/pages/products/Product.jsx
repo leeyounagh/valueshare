@@ -4,7 +4,8 @@ import color from "styles/color";
 import Navbar from "component/Navbar";
 import Brands from "component/produts/Brands";
 import Card from "component/produts/Card";
-import Filters from "component/produts/Filters";
+import Categories from "component/produts/Categories";
+import { useSearchParams } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -25,13 +26,24 @@ const SItemInnerDiv = styled.div`
 `;
 
 function Product() {
+  const [searchParams, setSearchParams] = useSearchParams({
+    categories: "all",
+    brand: "all",
+  });
+
   return (
     <SLayout>
       <Navbar />
       <SItemInnerDiv>
         <SCategoryDiv>
-          <Filters />
-          <Brands />
+          <Categories
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+          />
+          <Brands
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+          />
         </SCategoryDiv>
         <SCardDiv>
           <Card />

@@ -3,7 +3,11 @@ import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
+<<<<<<< HEAD
 const SSection = styled.form`
+=======
+const SLayout = styled.form`
+>>>>>>> ab461bcb25cd53860aed9f6dbff26743e4e16436
   max-width: 500px;
   margin: 100px auto;
 `;

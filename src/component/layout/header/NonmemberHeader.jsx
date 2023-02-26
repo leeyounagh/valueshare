@@ -159,6 +159,10 @@ const SBadageDiv = styled.div`
   position: absolute;
   top: -10px;
   left: 33px;
+  .bg-warning {
+    color: ${color.white};
+    background-color: ${color.main} !important;
+  }
 `;
 function Header() {
   const cartQuantity = useSelector((state) => {
