@@ -37,13 +37,9 @@ const SRootDiv = styled.div`
   width: 50%;
   height: 30%;
   margin-left: 54px;
-  font-family: Montserrat;
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
   line-height: normal;
-  letter-spacing: normal;
   text-align: left;
   margin: 0 10px;
 `;
@@ -68,10 +64,9 @@ const SPageTitleDiv = styled.div`
   height: 100%;
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
 `;
 function Navbar2() {
@@ -85,7 +80,6 @@ function Navbar2() {
     axios
       .get(`http://localhost:5000/admin/products/${productid}`)
       .then((res) => {
-        console.log(res);
         setProductInformation(res.data);
       })
       .catch((err) => {

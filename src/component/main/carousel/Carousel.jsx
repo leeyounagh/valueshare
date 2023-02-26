@@ -20,9 +20,8 @@ const SbannerText = styled.div`
     font-weight: 700;
     padding: 10px 0;
   }
-
-  p {
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  p { 
+    sans-serif;
     font-size: 18px;
     line-height: 1.5;
   }
@@ -98,8 +97,8 @@ const BgImg1 = styled.img`
 
 const BgImg2 = styled.img`
   position: absolute;
-  top: 720px;
-  right: 778px;
+  top: 685px;
+  right: 745px;
   opacity: 0.8;
 `;
 

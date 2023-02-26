@@ -16,10 +16,12 @@ const SSideBarDiv = styled.div`
 
 const SMainDiv = styled.div`
   width: 80%;
-  display: flex;
+  display: grid;
   justify-content: center;
   padding-top: 100px;
 `;
+const SItemDiv = styled.div``;
+const SImg = styled.img``;
 function Admin() {
   return (
     <SLayout>
@@ -27,7 +29,17 @@ function Admin() {
         <SideNavbar />
       </SSideBarDiv>
       <SMainDiv>
-        <h2>value shop 어드민페이지에 오신걸 환영합니다.</h2>
+        <SItemDiv>
+          <h2>value shop 어드민페이지에 오신걸 환영합니다.</h2>
+        </SItemDiv>
+        <SItemDiv>
+          <SImg
+            src="/asset/Rectangle 40.png"
+            width="60%"
+            height="80%"
+            style={{ marginLeft: "100px" }}
+          />
+        </SItemDiv>
       </SMainDiv>
     </SLayout>
   );

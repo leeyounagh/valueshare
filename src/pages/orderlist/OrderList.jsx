@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -31,6 +32,8 @@ const STableDiv = styled.div`
 function OrderList() {
   // eslint-disable-next-line no-unused-vars
   const [orderData, setOrderData] = useState();
+  const [id, setId] = useState();
+
   useEffect(() => {
     async function getOrderList() {
       const response = await axios.get("http://localhost:5000/admin/orders");
@@ -40,11 +43,20 @@ function OrderList() {
   }, []);
 
   const handleDelete = async (item) => {
-    const response = await axios.post(
-      `http://localhost:5000/admin/orders/${item._id}`
-    );
-    console.log(response);
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/admin/orders/${item._id}`
+      );
+      if (response.status === 200) {
+        alert("주문이 취소되었습니다.");
+        //  페이지 리렌더링이되어야됨
+      }
+      console.log(response);
+    } catch (err) {
+      alert("취소에 실패했습니다.");
+    }
   };
+
   console.log(orderData);
   return (
     <div>

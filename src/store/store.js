@@ -3,6 +3,8 @@ import pageTitleReducer from "slice/PageSlice";
 import DetailReducer from "slice/DetailSlice";
 import UserAddressReducer from "slice/UserAddressSlice";
 import OrderListReducer from "slice/OrderSlice";
+import CartItemReducer from "slice/CartSlice";
+import UserInfoReducer from "slice/UserSlice";
 
 export default configureStore({
   reducer: {
@@ -11,5 +13,7 @@ export default configureStore({
     DetailReducer,
     UserAddressReducer,
     OrderListReducer,
+    CartItemReducer,
+    UserInfoReducer,
   },
 });

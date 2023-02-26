@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Btn1 from "component/button/Btn1";
 import styled from "styled-components";
 import color from "styles/color";
 import EditAdress from "./EditAdress";
@@ -18,56 +19,52 @@ const SLayout = styled.div`
   z-index: 10;
 `;
 const SAddressTitle = styled.div`
-  width: 100%;
+  width: 90%;
   height: 20%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-left: 15px;
   display: flex;
   align-items: flex-end;
   flex-grow: 0;
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
 const SAdressTiltleDiv = styled.div`
   width: 30%;
-  flex-grow: 0;
-  font-family: NotoSans;
-  font-size: 24px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-size: 18px;
+  font-weight: 400;
+
+  line-height: 1.8;
+
   text-align: left;
   color: ${gray3};
 `;
 const SAddressText = styled.div`
   flex-grow: 0;
-  font-family: NotoSans;
-  font-size: 24px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-size: 18px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
   text-align: left;
   color: ${gray1};
 `;
 const SItemDiv = styled.div`
+  width: 90%;
   display: flex;
-  height: 10%;
+  height: auto;
   margin-top: 5px;
+  margin-left: 15px;
 `;
 
 const SEditAdress = styled.div`
   width: 90%;
-  margin-top: 10px;
+  margin-top: 50px;
   margin-left: 13px;
   height: 50px;
   border-radius: 10px;
@@ -76,16 +73,19 @@ const SEditAdress = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${white};
   cursor: pointer;
+`;
+const SBtnDiv = styled.div`
+  width: 90%;
+  height: 50px;
+  margin-top: 50px;
 `;
 function Address() {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -108,8 +108,8 @@ function Address() {
         <SItemDiv>
           <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
           <SAddressText>
-            {adress.phonenumber.length > 0
-              ? `${adress.phonenumber}`
+            {adress.phoneNumber.length > 0
+              ? `${adress.phoneNumber}`
               : "핸드폰번호를 입력해주세요"}
           </SAddressText>
         </SItemDiv>
@@ -140,13 +140,13 @@ function Address() {
               : "email을 등록해주세요"}
           </SAddressText>
         </SItemDiv>
-        <SEditAdress
+        <SBtnDiv
           onClick={() => {
             setIsOpen(!modalIsOpen);
           }}
         >
-          배송지 수정
-        </SEditAdress>
+          <Btn1 title="배송지 수정" />
+        </SBtnDiv>
       </SLayout>
       {modalIsOpen ? <EditAdress setIsOpen={setIsOpen} /> : null}
     </div>

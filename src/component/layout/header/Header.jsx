@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 
 const { white, gray4 } = color;
@@ -12,11 +13,9 @@ const SlayOut = styled.header`
   background-color: ${white};
   border-bottom: 1px solid ${gray4};
   display: flex;
-  justify-content: center;
   a {
     text-decoration: none;
     border: black;
-    font-family: "Montserrat", "Noto Sans KR", "Rufina", "sans-serif";
   }
 `;
 const SLogoDiv = styled.div`
@@ -27,58 +26,54 @@ const SLogoDiv = styled.div`
 
   a {
     font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
+
     line-height: normal;
-    letter-spacing: normal;
+
     text-align: left;
     color: black;
-    font-family: "Playfair Display", serif;
+    font-family: "Rufina", serif;
     font-weight: 900;
 
     align-items: center;
   }
   h2 {
-    font-family: "Playfair Display", serif;
+    font-family: "Rufina", serif;
     font-size: 60px;
     font-weight: 900;
   }
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
 
 const SProductDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
 
 const SLookBookDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -86,13 +81,12 @@ const SLookBookDiv = styled.div`
 const SMembershipDiv = styled.div`
   height: 100%;
   width: 130px;
-  font-family: Montserrat;
+
   font-size: 20px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -112,7 +106,7 @@ const SLayoutMenuDiv = styled.div`
   width: 60%;
   height: 67px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 25px;
 `;
 const SLayoutIconDiv = styled.div`
@@ -120,8 +114,8 @@ const SLayoutIconDiv = styled.div`
   align-items: center;
   height: 40px;
   width: 25%;
-  padding-top: 10px;
-  margin-left: 60px;
+  padding-top: 18px;
+  margin-left: 24px;
 `;
 const SAlarmImg = styled.img`
   width: 46px;
@@ -162,9 +156,7 @@ const SLayoutProfileDiv = styled.div`
   height: 100%;
   margin-bottom: 20px;
 `;
-const SLayoutProfileInnerDiv = styled.div`
-  width: 25%;
-`;
+const SLayoutProfileInnerDiv = styled.div``;
 function Header() {
   return (
     <SlayOut>
@@ -197,6 +189,7 @@ function Header() {
           </SLayoutIconItem>
           <SLayoutIconItem>
             <Link to="/cart">
+              <Badge bg="secondary">9</Badge>
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>

@@ -1,36 +1,39 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+
+import { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
-const { white, gray1, gray3 } = color;
+const { white, gray1, gray3, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 60%;
-  margin-left: 140px;
+  width: 100%;
   border-radius: 10px;
   background-color: ${white};
-  padding-left: 60px;
+  padding-bottom: 30px;
 `;
 
 const SOrderTitleDiv = styled.div`
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   height: 10vh;
   display: flex;
   align-items: flex-end;
   margin-bottom: 50px;
+  margin-right: 10px;
+  padding-left: 20px;
 `;
 const SOrderItemDiv = styled.div`
   width: 90%;
   height: 13vh;
   display: flex;
+  padding-left: 20px;
 `;
 const SItemImgDiv = styled.div`
   height: 100%;
@@ -43,13 +46,10 @@ const STitleDiv = styled.div`
   padding-left: 20px;
 `;
 const SBrandNameDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   height: 50%;
@@ -57,24 +57,20 @@ const SBrandNameDiv = styled.div`
   align-items: center;
 `;
 const SProductNameDiv = styled.div`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
 `;
 const SQuantityDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray1};
   width: 25%;
@@ -83,33 +79,53 @@ const SQuantityDiv = styled.div`
   justify-content: center;
 `;
 const SPriceDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   color: ${gray1};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-function OrderProduct() {
+const SLinDiv = styled.div`
+  width: 90%;
+  height: 1px;
+  margin-top: 30px;
+  background-color: ${gray4};
+  margin-bottom: 20px;
+  margin-left: 20px;
+`;
+const SBrandTitleDiv = styled.div`
+  display: flex;
+`;
+function OrderProduct({ orderData, products }) {
+  // console.log("상품", orderData, imgArr);
   return (
     <SLayout>
-      <SOrderTitleDiv>Order #125466</SOrderTitleDiv>
-      <SOrderItemDiv>
-        <SItemImgDiv>
-          <SImg src="/asset/테스트가방.png" />
-        </SItemImgDiv>
-        <STitleDiv>
-          <SBrandNameDiv>Louis Vuitton</SBrandNameDiv>
-          <SProductNameDiv>트위스트 MM 핸드백</SProductNameDiv>
-        </STitleDiv>
-        <SQuantityDiv>1개</SQuantityDiv>
-        <SPriceDiv> ₩60,000</SPriceDiv>
-      </SOrderItemDiv>
+      <SOrderTitleDiv>Order {orderData[0]?.orderNumber}</SOrderTitleDiv>
+      {products?.map((item) => {
+        return (
+          <>
+            <SOrderItemDiv>
+              <SItemImgDiv>
+                <SImg src={item.productImage[0]} />
+              </SItemImgDiv>
+              <STitleDiv>
+                <SBrandNameDiv>{item.productBrand}</SBrandNameDiv>
+                <SProductNameDiv>{item.productTitle}</SProductNameDiv>
+              </STitleDiv>
+              <SQuantityDiv>{item.productQuantity}개</SQuantityDiv>
+              <SPriceDiv>
+                {" "}
+                ₩{item.productPrice * item.productQuantity}
+              </SPriceDiv>
+            </SOrderItemDiv>
+            <SLinDiv />
+          </>
+        );
+      })}
     </SLayout>
   );
 }

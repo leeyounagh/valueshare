@@ -28,13 +28,18 @@ const Slayout = styled.div`
     padding-top: 22px;
     color: ${color.gray1};
     text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+    font-weight: 500;
   }
   div {
     display: flex;
-    margin-top: 40px;
-    margin-left: 20%;
+    margin: auto;
+    padding: 10px;
+    width: 60%;
     div {
-      margin-left: 20px;
+      margin: auto;
+      z-index: 1;
     }
   }
 `;
@@ -44,7 +49,7 @@ const BgPattern = styled.img`
   height: auto;
   object-fit: cover;
   position: absolute;
-  margin-top: -350px;
+  margin-top: -414px;
   opacity: 0.6;
 `;
 

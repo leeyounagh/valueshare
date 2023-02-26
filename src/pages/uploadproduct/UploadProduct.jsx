@@ -6,7 +6,8 @@ import styled from "styled-components";
 
 const SLayout = styled.form`
   width: 100%;
-  height: 80vh;
+
+  padding-bottom: 100px;
 `;
 
 function UploadProduct() {
@@ -22,9 +23,9 @@ function UploadProduct() {
     price: "가격",
     category: "카테고리",
     brand: "브랜드",
-    desc: "설명",
+    desc: "",
   });
-
+  console.log(data);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -56,7 +57,7 @@ function UploadProduct() {
     const formData = new FormData();
     // back-end에서 imageFile로 넘겨받고 있으므로 for문을 돌며 image를 formData에 셋팅해주세요.
     images.forEach((image) => {
-      formData.append("imageFile", image);
+      formData.append("productImage", image);
     });
     formData.append("productTitle", title);
     formData.append("productStock", stock);
@@ -92,6 +93,7 @@ function UploadProduct() {
     } catch (err) {
       if (err) {
         alert("상품 등록에 실패했습니다");
+        console.log(err);
       }
     }
   };
@@ -145,7 +147,7 @@ function UploadProduct() {
       <div>
         <select
           onChange={handleChange}
-          defaultValue={Continent[0].value}
+          defaultValue="카테고리"
           name={Continent[0].id}
         >
           {Continent.map((item) => {

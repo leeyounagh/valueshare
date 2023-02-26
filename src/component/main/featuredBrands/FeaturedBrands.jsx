@@ -24,7 +24,6 @@ const SlayOut = styled.div`
     position: relative;
     z-index: 1;
     h2 {
-      font-family: "Montserrat", sans-serif;
       font-size: 2.3rem;
       font-weight: 500;
     }

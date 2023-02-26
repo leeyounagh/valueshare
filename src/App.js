@@ -1,10 +1,13 @@
+/* eslint-disable import/newline-after-import */
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
 import OrderList from "pages/orderlist/OrderList";
+// eslint-disable-next-line no-unused-vars
 import Header from "component/layout/header/Header";
+import NonememberHeader from "component/layout/header/NonmemberHeader";
 import Login from "pages/login/Login";
 import Main from "pages/main/Main";
 import MyOrder from "pages/myorder/MyOrder";
@@ -14,7 +17,6 @@ import Cart from "pages/cart/Cart";
 import Detail from "pages/productdeail/Detail";
 import Admin from "pages/admin/Admin";
 import Resign from "pages/resign/Resign";
-import DeliveryList from "pages/deliverylist/DeliveryList";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
@@ -29,6 +31,12 @@ import { setPageInfo } from "slice/PageSlice";
 import Productest from "pages/products/Productest";
 import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
+import AddCategory from "pages/addcategory/AddCategory";
+
+import Category from "pages/category/Category";
+import AdminProduct from "pages/adminproduct/AdminProduct";
+import LoginCheck from "pages/logincheck/LoginCheck";
+import MyPage from "pages/membermypage/MyPage";
 
 function App() {
   const { pathname } = useLocation();
@@ -60,20 +68,33 @@ function App() {
       setPageInfo({ rootTitle: "Cancle Order", currentTitle: "Cancle Order" })
     );
   }
+  if (pathname === "/memberordercheck") {
+    dispatch(setPageInfo({ rootTitle: "My Order", currentTitle: "My Order" }));
+  }
+  if (pathname === "/myorder/cancel") {
+    dispatch(
+      setPageInfo({ rootTitle: "My Order", currentTitle: "Cancle Order" })
+    );
+  }
+  if (pathname === "/membermypage") {
+    dispatch(setPageInfo({ rootTitle: "Profile", currentTitle: "Profile" }));
+  }
   return (
     <div>
-      <Header />
+      <NonememberHeader />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/myorder" element={<MyOrder />} />
+        <Route path="/myorder/:userid" element={<MyOrder />} />
         <Route path="/mypage/resign" element={<Resign />} />
         <Route path="/mypage/userinfo" element={<UserInfo />} />
         <Route path="/ordersuccess" element={<OrderSuccess />} />
 
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="/membermypage" element={<MyPage />} />
 
         <Route exact path="/product/:productid" element={<Detail />} />
         <Route exact path="/product" element={<Product />} />
@@ -83,9 +104,10 @@ function App() {
         <Route path="/lookbook" element={<LookBook />} />
 
         <Route path="/membership" element={<Membership />} />
-        <Route path="/cancleorder" element={<CancelOrder />} />
+        <Route path="/myorder/cancel/:userId" element={<CancelOrder />} />
 
-        <Route path="/nonmemberorder" element={<NoneMember />} />
+        <Route path="/nonememberorder" element={<NoneMember />} />
+        <Route path="/memberorderchecks" element={<LoginCheck />} />
 
         {/* 어드민 페이지  */}
         <Route path="/admin" element={<Admin />} />
@@ -94,17 +116,20 @@ function App() {
           path="/admin/orderlist/:orderlistdetail"
           element={<OrderListDetail />}
         />
-        <Route path="/admin/deliverylist" element={<DeliveryList />} />
+
         <Route path="/admin/category/addproduct" element={<UploadProduct />} />
+        <Route path="/admin/addcategory" element={<AddCategory />} />
         <Route
           exact
           path="/admin/category/editcategory"
           element={<EditCategory />}
         />
+        <Route exact path="/admin/category" element={<Category />} />
+        <Route exact path="/admin/product" element={<AdminProduct />} />
 
         <Route
           exact
-          path="/admin/category/editproduct"
+          path="/admin/product/:productid"
           element={<EditProduct />}
         />
         {/* 404  */}

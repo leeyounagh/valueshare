@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -52,13 +52,26 @@ function EditCategory() {
 
   const handleChangeCategory = async () => {
     const body = {
-      changedCategory: data.changecategory,
+      categoryName: data.changecategory,
     };
-    const response = await axios.patch(
-      `http://localhost:5000/admin/categories/${data.beforecategory}`,
-      body
-    );
-    console.log(response);
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/admin/categories/${data.beforecategory}`,
+        body
+      );
+      setData({
+        changecategory: "",
+        beforecategory: "",
+      });
+      console.log(response);
+      if (response.status === 200) {
+        alert("카테고리 수정에 성공했습니다");
+      }
+    } catch (err) {
+      if (err) {
+        alert("카테고리 수정에 실패했습니다.");
+      }
+    }
   };
   const handleChange = (event) => {
     const { name, value } = event.target;

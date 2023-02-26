@@ -37,13 +37,12 @@ const SRootDiv = styled.div`
   width: 50%;
   height: 30%;
   margin-left: 54px;
-  font-family: Montserrat;
+
   font-size: 24px;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -70,10 +69,9 @@ const SPageTitleDiv = styled.div`
   margin-left: 54px;
   font-size: 80px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -86,13 +84,13 @@ function Navbar() {
     <SLayout>
       <SRootDiv>
         <SRootHomeDiv>
-          <SHomeImg src="asset/icon-home.svg" />
+          <SHomeImg src="/asset/icon-home.svg" />
         </SRootHomeDiv>
         <SRootTitleDiv>
           <SRootTitle>Home</SRootTitle>
         </SRootTitleDiv>
         <SRootIconDiv>
-          <SRootIcontImg src="asset/Chevrons_chevron-right.svg" />
+          <SRootIcontImg src="/asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
           <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
