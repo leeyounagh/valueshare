@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
@@ -102,7 +103,7 @@ const SBottomLineDiv = styled.div`
   background-color: ${gray4};
 `;
 function Filters() {
-  const filterItem = Continent.filter((item) => item.key < 7);
+  const filterItem = Continent.filter((item) => item.key !== 0 && item.key < 7);
   const filterItem2 = Continent.filter((item) => item.key >= 7);
   const [searchParams, setSearchParams] = useSearchParams({
     categories: "all",

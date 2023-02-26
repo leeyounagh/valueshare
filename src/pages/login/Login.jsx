@@ -105,8 +105,7 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post("http://localhost:5000/auth/login", data);
-      const userData = await axios.data;
-      const token = userData.accessToken;
+      const token = await res.data.accessToken;
       localStorage.setItem("jwtToken", token);
       SetAuthorizationToken(token);
       dispatch(setUserInfo(decodeToken(token)));
