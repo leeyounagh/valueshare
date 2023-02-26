@@ -10,6 +10,7 @@ const SLayout = styled.div`
   background-color: ${white};
   padding-top: 50px;
   position: relative;
+  padding-bottom: 20px;
 `;
 const STitleDiv = styled.div`
   font-family: Montserrat;
@@ -74,6 +75,8 @@ const SLinDiv = styled.div`
   background-color: ${gray5};
   height: 1px;
   margin-bottom: 20px;
+  width: 90%;
+  margin-left: 20px;
 `;
 const SStatusDiv = styled.div`
   width: 40%;

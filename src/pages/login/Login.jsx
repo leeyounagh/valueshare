@@ -3,7 +3,86 @@ import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-import "../register/styles.css";
+import styled from "styled-components";
+
+const SSection = styled.form`
+  max-width: 500px;
+  margin: 100px auto;
+`;
+
+const STitle = styled.h1`
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+
+  color: #333333;
+  padding-bottom: 25px;
+  border-bottom: solid 1px #bdbdbd;
+`;
+const SDiv = styled.div`
+  margin: 50px auto;
+`;
+
+const SLabel = styled.span`
+  width: 56px;
+  height: 22px;
+  margin: 76px 280px 7px 2px;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #333333;
+`;
+
+const SInput = styled.input`
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgb(220, 217, 217);
+  padding: 10px 15px;
+  margin-bottom: 17px;
+  font-size: 14px;
+`;
+
+const SLogInBtn = styled.button`
+  width: 100%;
+  background: #ffaf54;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 15px;
+  padding: 20px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+  border-radius: 10px;
+
+  background: ${(props) => props["aria-invalid"]};
+`;
+
+const SP = styled.p`
+  color: #bf1616;
+
+  &::before {
+    display: inline;
+    content: "⚠";
+  }
+`;
 
 function Login() {
   const {
@@ -17,41 +96,64 @@ function Login() {
   const password = useRef();
   password.current = watch("password");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("data", data);
 
     // eslint-disable-next-line no-unused-vars
     axios.post("/", data).then((res) => console.log("data", data));
+
+    try {
+      const res = await axios.post("/login", data);
+      console.log("data", res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Login</h1>
-      <div>
-        <span>Email</span>
-        <input
+    <SSection onSubmit={handleSubmit(onSubmit)}>
+      <STitle>Login</STitle>
+      <SDiv>
+        <SLabel>Email</SLabel>
+        <SInput
           name="email"
           type="email"
-          defaultValue="elice@valueshare.com"
-          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+          placeholder="elice@valueshare.com"
+          {...register("email", {
+            required: true,
+            pattern: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+          })}
         />
-        {errors.email && <p>이메일을 입력하세요.</p>}
+        {errors.email && errors.email.type === "required" && (
+          <SP>이메일을 입력하세요.</SP>
+        )}
+        {errors.email && errors.email.type === "pattern" && (
+          <SP>올바른 이메일 형식이 아닙니다.</SP>
+        )}
 
-        <span>Password</span>
-        <input
+        <SLabel>Password</SLabel>
+        <SInput
           name="password"
           type="password"
-          {...register("password", { required: true, minLength: 6 })}
+          placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
+          {...register("password", {
+            required: true,
+            pattern:
+              /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+          })}
         />
         {errors.password && errors.password.type === "required" && (
-          <p>비밀번호를 입력하세요.</p>
+          <SP>비밀번호를 입력하세요.</SP>
         )}
-        {errors.password && errors.password.type === "minLength" && (
-          <p>비밀번호는 최소 6자 이상으로 입력해야합니다.</p>
+        {errors.password && errors.password.type === "pattern" && (
+          <SP>
+            비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
+            포함해야 합니다.
+          </SP>
         )}
-      </div>
-      <button type="submit">LOGIN</button>
-    </form>
+      </SDiv>
+      <SLogInBtn type="submit">LOGIN</SLogInBtn>
+    </SSection>
   );
 }
 

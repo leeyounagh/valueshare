@@ -9,6 +9,7 @@ const SLayout = styled.div`
   margin-top: 50px;
   border-radius: 10px;
   background-color: ${white};
+  padding-bottom: 20px;
 `;
 const STitleDiv = styled.div`
   padding-top: 40px;
@@ -61,6 +62,8 @@ const SLine = styled.div`
   background-color: ${gray5};
   height: 1px;
   margin-bottom: 20px;
+  width: 90%;
+  margin-left: 20px;
 `;
 function AddressList() {
   return (

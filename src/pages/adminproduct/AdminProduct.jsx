@@ -61,7 +61,7 @@ function AdminProduct() {
   return (
     <div>
       <STitle>
-        <h1>주문 리스트</h1>
+        <h1>상품 리스트</h1>
       </STitle>
       <SLayout>
         <STableDiv>
