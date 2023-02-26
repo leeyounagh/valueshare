@@ -4,6 +4,7 @@ import DetailReducer from "slice/DetailSlice";
 import UserAddressReducer from "slice/UserAddressSlice";
 import OrderListReducer from "slice/OrderSlice";
 import CartItemReducer from "slice/CartSlice";
+import UserInfoReducer from "slice/UserSlice";
 
 export default configureStore({
   reducer: {
@@ -13,5 +14,6 @@ export default configureStore({
     UserAddressReducer,
     OrderListReducer,
     CartItemReducer,
+    UserInfoReducer,
   },
 });

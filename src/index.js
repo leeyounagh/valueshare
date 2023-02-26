@@ -1,13 +1,23 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { setUserInfo } from "slice/UserSlice";
+import SetAuthorizationToken from "utils/SetAuthorizationToken";
+import { decodeToken } from "react-jwt";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+if (localStorage.jwtToken) {
+  SetAuthorizationToken(localStorage.jwtToken);
+  store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
+}
+// eslint-disable-next-line dot-notation
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>

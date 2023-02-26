@@ -1,9 +1,14 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { decodeToken } from "react-jwt";
+import { setUserInfo } from "slice/UserSlice";
+import SetAuthorizationToken from "utils/SetAuthorizationToken";
 import axios from "axios";
-
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const SSection = styled.form`
   max-width: 500px;
@@ -91,21 +96,24 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
-
-  // console.log(watch("email"));
-  const password = useRef();
-  password.current = watch("password");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  console.log(watch("email"), watch("password"));
+  // const password = useRef();
+  // password.current = watch("password");
 
   const onSubmit = async (data) => {
-    console.log("data", data);
-
-    // eslint-disable-next-line no-unused-vars
-    axios.post("/", data).then((res) => console.log("data", data));
-
     try {
-      const res = await axios.post("/login", data);
+      const res = await axios.post("http://localhost:5000/auth/login", data);
+      const userData = await axios.data;
+      const token = userData.accessToken;
+      localStorage.setItem("jwtToken", token);
+      SetAuthorizationToken(token);
+      dispatch(setUserInfo(decodeToken(token)));
+      navigate("/");
       console.log("data", res);
     } catch (err) {
+      alert("아이디 혹은 비밀번호가 잘못되었습니다.");
       console.log(err);
     }
   };
@@ -138,11 +146,11 @@ function Login() {
           placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
           {...register("password", {
             required: true,
-            pattern:
-              /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+            // pattern:
+            //   /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
           })}
         />
-        {errors.password && errors.password.type === "required" && (
+        {/* {errors.password && errors.password.type === "required" && (
           <SP>비밀번호를 입력하세요.</SP>
         )}
         {errors.password && errors.password.type === "pattern" && (
@@ -150,7 +158,7 @@ function Login() {
             비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
             포함해야 합니다.
           </SP>
-        )}
+        )} */}
       </SDiv>
       <SLogInBtn type="submit">LOGIN</SLogInBtn>
     </SSection>
