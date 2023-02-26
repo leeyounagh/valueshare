@@ -42,7 +42,7 @@ const SInput = styled.input`
   border-radius: 10px;
   border: 1px solid rgb(220, 217, 217);
   padding: 10px 15px;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
   font-size: 14px;
 `;
 
@@ -52,7 +52,7 @@ const SLogInBtn = styled.button`
   color: white;
   text-transform: uppercase;
   border: none;
-  margin-top: 40px;
+  margin-top: 15px;
   padding: 20px;
   font-size: 16px;
   font-weight: 100;
@@ -101,21 +101,37 @@ function Login() {
           name="email"
           type="email"
           placeholder="elice@valueshare.com"
-          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+          {...register("email", {
+            required: true,
+            pattern: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+          })}
         />
-        {errors.email && <SP>이메일을 입력하세요.</SP>}
+        {errors.email && errors.email.type === "required" && (
+          <SP>이메일을 입력하세요.</SP>
+        )}
+        {errors.email && errors.email.type === "pattern" && (
+          <SP>올바른 이메일 형식이 아닙니다.</SP>
+        )}
 
         <SLabel>Password</SLabel>
         <SInput
           name="password"
           type="password"
-          {...register("password", { required: true, minLength: 12 })}
+          placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
+          {...register("password", {
+            required: true,
+            pattern:
+              /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+          })}
         />
         {errors.password && errors.password.type === "required" && (
           <SP>비밀번호를 입력하세요.</SP>
         )}
-        {errors.password && errors.password.type === "minLength" && (
-          <SP>비밀번호는 최소 12자 이상으로 입력해야합니다.</SP>
+        {errors.password && errors.password.type === "pattern" && (
+          <SP>
+            비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
+            포함해야 합니다.
+          </SP>
         )}
       </SDiv>
       <SLogInBtn type="submit">LOGIN</SLogInBtn>

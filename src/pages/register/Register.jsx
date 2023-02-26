@@ -42,8 +42,9 @@ const SInput = styled.input`
   border-radius: 10px;
   border: 1px solid rgb(220, 217, 217);
   padding: 10px 15px;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
   font-size: 14px;
+  border-color: ${(props) => props["aria-invalid"]};
 `;
 
 const SSignUpBtn = styled.button`
@@ -52,12 +53,13 @@ const SSignUpBtn = styled.button`
   color: white;
   text-transform: uppercase;
   border: none;
-  margin-top: 40px;
+  margin-top: 15px;
   padding: 20px;
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 10px;
   border-radius: 10px;
+  background: ${(props) => props["aria-invalid"]};
 `;
 
 const SP = styled.p`
@@ -101,21 +103,38 @@ function Register() {
           name="email"
           type="email"
           placeholder="elice@valueshare.com"
-          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+          aria-invalid={errors.email ? "#FFA500" : "#dadada"}
+          {...register("email", {
+            required: true,
+            pattern: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+          })}
         />
-        {errors.email && <SP>이메일을 입력하세요.</SP>}
+        {errors.email && errors.email.type === "required" && (
+          <SP>이메일을 입력하세요.</SP>
+        )}
+        {errors.email && errors.email.type === "pattern" && (
+          <SP>올바른 이메일 형식이 아닙니다.</SP>
+        )}
 
         <SLabel>Password</SLabel>
         <SInput
           name="password"
           type="password"
-          {...register("password", { required: true, minLength: 12 })}
+          placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
+          {...register("password", {
+            required: true,
+            pattern:
+              /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+          })}
         />
         {errors.password && errors.password.type === "required" && (
           <SP>비밀번호를 입력하세요.</SP>
         )}
-        {errors.password && errors.password.type === "minLength" && (
-          <SP>비밀번호는 최소 12자 이상으로 입력해야합니다.</SP>
+        {errors.password && errors.password.type === "pattern" && (
+          <SP>
+            비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
+            포함해야 합니다.
+          </SP>
         )}
 
         <SLabel>Confirm Password</SLabel>
@@ -140,26 +159,44 @@ function Register() {
         <SInput
           name="name"
           type="name"
-          {...register("name", { required: true, maxLength: 10 })}
+          placeholder="elice"
+          {...register("name", {
+            required: true,
+            pattern: /^[가-힣a-zA-Z]{2,10}$/,
+          })}
         />
         {errors.name && errors.name.type === "required" && (
           <SP>이름을 입력하세요.</SP>
         )}
-        {errors.name && errors.name.type === "maxLength" && (
-          <SP>최대길이를 초과하였습니다.</SP>
+        {errors.name && errors.name.type === "pattern" && (
+          <SP>이름은 2~10자 입니다.</SP>
         )}
 
         <SLabel>Phone Number</SLabel>
         <SInput
           name="phoneNumber"
           type="phoneNumber"
+          placeholder="000-0000-0000"
           {...register("phoneNumber", {
             required: true,
+            pattern: /^\d{3}-\d{4}-\d{4}$/,
           })}
         />
-        {}
+        {errors.phoneNumber && errors.phoneNumber.type === "required" && (
+          <SP>전화번호를 입력하세요.</SP>
+        )}
+        {errors.phoneNumber && errors.phoneNumber.type === "pattern" && (
+          <SP>전화번호를 형식에 맞게 입력하세요.</SP>
+        )}
       </SDiv>
-      <SSignUpBtn type="submit">CREATE ACCOUNT</SSignUpBtn>
+      <SSignUpBtn
+        name="button"
+        type="submit"
+        // disabled={!isDirty && !isValid}
+        aria-invalid={errors.button ? "#808080" : "#dadada"}
+      >
+        CREATE ACCOUNT
+      </SSignUpBtn>
     </SSection>
   );
 }
