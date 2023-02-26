@@ -34,7 +34,7 @@ function CancelOrder() {
     }
     handleMyOlder();
   }, []);
-  console.log(orderData, objectId);
+  console.log(orderData);
   return (
     <div>
       <Navbar />

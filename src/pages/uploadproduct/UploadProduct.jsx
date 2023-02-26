@@ -22,9 +22,9 @@ function UploadProduct() {
     price: "가격",
     category: "카테고리",
     brand: "브랜드",
-    desc: "설명",
+    desc: "",
   });
-
+  console.log(data);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -92,6 +92,7 @@ function UploadProduct() {
     } catch (err) {
       if (err) {
         alert("상품 등록에 실패했습니다");
+        console.log(err);
       }
     }
   };
@@ -145,7 +146,7 @@ function UploadProduct() {
       <div>
         <select
           onChange={handleChange}
-          defaultValue={Continent[0].value}
+          defaultValue="카테고리"
           name={Continent[0].id}
         >
           {Continent.map((item) => {

@@ -35,7 +35,9 @@ import AddCategory from "pages/addcategory/AddCategory";
 
 import Category from "pages/category/Category";
 import AdminProduct from "pages/adminproduct/AdminProduct";
-import MemberOrder from "pages/membermyorder/MemberOrder";
+import LoginCheck from "pages/logincheck/LoginCheck";
+import MyPage from "pages/membermypage/MyPage";
+
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -74,6 +76,9 @@ function App() {
       setPageInfo({ rootTitle: "My Order", currentTitle: "Cancle Order" })
     );
   }
+  if (pathname === "/membermypage") {
+    dispatch(setPageInfo({ rootTitle: "Profile", currentTitle: "Profile" }));
+  }
   return (
     <div>
       <NonememberHeader />
@@ -89,6 +94,8 @@ function App() {
 
         <Route path="/cart" element={<Cart />} />
 
+        <Route path="/membermypage" element={<MyPage />} />
+
         <Route exact path="/product/:productid" element={<Detail />} />
         <Route exact path="/product" element={<Product />} />
 
@@ -100,7 +107,7 @@ function App() {
         <Route path="/myorder/cancel/:userId" element={<CancelOrder />} />
 
         <Route path="/nonememberorder" element={<NoneMember />} />
-        <Route path="/memberordercheck" element={<MemberOrder />} />
+        <Route path="/memberorderchecks" element={<LoginCheck />} />
 
         {/* 어드민 페이지  */}
         <Route path="/admin" element={<Admin />} />

@@ -204,7 +204,7 @@ function Header() {
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
               <Link to="/login">Login</Link>
-              <Link to="/nonememberorder">My Order</Link>
+              <Link to="/memberorderchecks">My Order</Link>
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>
