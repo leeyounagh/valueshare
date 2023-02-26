@@ -9,9 +9,16 @@ const SSection = styled.form`
 `;
 
 const STitle = styled.h1`
-  font-weight: 100;
-  color: #333333;
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: nomal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
   text-align: center;
+
+  color: #333333;
   padding-bottom: 25px;
   border-bottom: solid 1px #bdbdbd;
 `;
@@ -55,10 +62,16 @@ const SSignUpBtn = styled.button`
   border: none;
   margin-top: 15px;
   padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
   border-radius: 10px;
+
   background: ${(props) => props["aria-invalid"]};
 `;
 
@@ -103,7 +116,7 @@ function Register() {
           name="email"
           type="email"
           placeholder="elice@valueshare.com"
-          aria-invalid={errors.email ? "#FFA500" : "#dadada"}
+          aria-invalid={errors.email ? "#bf1616" : "#dadada"}
           {...register("email", {
             required: true,
             pattern: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -121,6 +134,7 @@ function Register() {
           name="password"
           type="password"
           placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
+          aria-invalid={errors.password ? "#bf1616" : "#dadada"}
           {...register("password", {
             required: true,
             pattern:
@@ -141,6 +155,7 @@ function Register() {
         <SInput
           name="confirmPassword"
           type="password"
+          aria-invalid={errors.confirmPassword ? "#bf1616" : "#dadada"}
           {...register("confirmPassword", {
             required: true,
             validate: (value) => value === password.current,
@@ -160,6 +175,7 @@ function Register() {
           name="name"
           type="name"
           placeholder="elice"
+          aria-invalid={errors.name ? "#bf1616" : "#dadada"}
           {...register("name", {
             required: true,
             pattern: /^[가-힣a-zA-Z]{2,10}$/,
@@ -177,6 +193,7 @@ function Register() {
           name="phoneNumber"
           type="phoneNumber"
           placeholder="000-0000-0000"
+          aria-invalid={errors.phoneNumber ? "#bf1616" : "#dadada"}
           {...register("phoneNumber", {
             required: true,
             pattern: /^\d{3}-\d{4}-\d{4}$/,

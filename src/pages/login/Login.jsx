@@ -9,13 +9,19 @@ const SSection = styled.form`
 `;
 
 const STitle = styled.h1`
-  font-weight: 100;
-  color: #333333;
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: nomal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
   text-align: center;
+
+  color: #333333;
   padding-bottom: 25px;
   border-bottom: solid 1px #bdbdbd;
 `;
-
 const SDiv = styled.div`
   margin: 50px auto;
 `;
@@ -54,10 +60,17 @@ const SLogInBtn = styled.button`
   border: none;
   margin-top: 15px;
   padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
   border-radius: 10px;
+
+  background: ${(props) => props["aria-invalid"]};
 `;
 
 const SP = styled.p`
