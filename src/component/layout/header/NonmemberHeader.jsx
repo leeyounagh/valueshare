@@ -169,6 +169,10 @@ function Header() {
     return state.CartItemReducer;
   });
 
+  const user = useSelector((state) => {
+    return state.UserReducer;
+  });
+
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -206,10 +210,17 @@ function Header() {
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>
-            <SLayoutProfileInnerDiv>
-              <Link to="/login">Login</Link>
-              <Link to="/memberorderchecks">My Order</Link>
-            </SLayoutProfileInnerDiv>
+            {user ? (
+              <SLayoutProfileInnerDiv>
+                <Link to="/logout">Logout</Link>
+                <Link to="/memberorderchecks">My Order</Link>
+              </SLayoutProfileInnerDiv>
+            ) : (
+              <SLayoutProfileInnerDiv>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link>
+              </SLayoutProfileInnerDiv>
+            )}
           </SLayoutProfileDiv>
         </SLayoutIconDiv>
       </SLayoutInnerDiv>
