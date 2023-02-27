@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import { setOrderInfo } from "slice/OrderSlice";
 
 function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
@@ -51,10 +51,7 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
             };
 
             try {
-              const response = await axios.post(
-                "http://localhost:5000/checkout",
-                newData
-              );
+              const response = await AxiosInstance.post("/checkout", newData);
 
               const orderData = await response.data;
               dispatch(setOrderInfo(orderData));

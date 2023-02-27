@@ -1,4 +1,4 @@
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
@@ -100,7 +100,7 @@ function Register() {
     console.log("data", data);
 
     try {
-      const res = await axios.post("/register", data);
+      const res = await AxiosInstance.post("/register", data);
       console.log("data", res);
     } catch (err) {
       console.log(err);

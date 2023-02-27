@@ -8,7 +8,7 @@ import Btn1 from "component/button/Btn1";
 import { setCartItem } from "slice/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import DisableBtn from "component/button/DisableBtn";
 import { setOrderInfo } from "slice/OrderSlice";
 
@@ -152,10 +152,7 @@ function OrderPrice({ cartItems, setCartItems }) {
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/checkout",
-        newData
-      );
+      const response = await AxiosInstance.post("/checkout", newData);
 
       const orderData = await response.data;
       console.log(orderData, newData);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import color from "../styles/color";
 
@@ -77,8 +77,7 @@ function Navbar2() {
   const [productInformation, setProductInformation] = useState(null);
   const { productid } = useParams();
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/admin/products/${productid}`)
+    AxiosInstance.get(`/admin/products/${productid}`)
       .then((res) => {
         setProductInformation(res.data);
       })

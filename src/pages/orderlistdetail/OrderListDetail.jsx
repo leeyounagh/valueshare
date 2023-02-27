@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -43,9 +43,7 @@ function OrderListDetail() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get(
-        `http://localhost:5000/admin/orders/${objectId}`
-      );
+      const response = await AxiosInstance.get(`/admin/orders/${objectId}`);
       setOrderData([response.data.result]);
     }
     getOrderList();
@@ -56,8 +54,8 @@ function OrderListDetail() {
       shipStatus: shipSatatus,
     };
     try {
-      const response = await axios.patch(
-        `http://localhost:5000/admin/orders/${objectId}`,
+      const response = await AxiosInstance.patch(
+        `/admin/orders/${objectId}`,
         body
       );
 

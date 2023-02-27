@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import Continent from "data/Continent";
 import Brand from "data/Brand";
 import styled from "styled-components";
@@ -73,8 +73,8 @@ function UploadProduct() {
           "content-type": "multipart/form-data",
         },
       };
-      const response = await axios.post(
-        "http://localhost:5000/admin/products",
+      const response = await AxiosInstance.post(
+        "/admin/products",
         formData,
         config
       );

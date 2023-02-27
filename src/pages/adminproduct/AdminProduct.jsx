@@ -3,7 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
@@ -37,7 +37,7 @@ function AdminProduct() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get("http://localhost:5000/admin/products");
+      const response = await AxiosInstance.get("/admin/products");
       setProductData(response.data.result);
     }
     getOrderList();
@@ -45,8 +45,8 @@ function AdminProduct() {
 
   const handleDelete = async (item) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/admin/products/${item._id}`
+      const response = await AxiosInstance.delete(
+        `/admin/products/${item._id}`
       );
       if (response.status === 200) {
         alert("상품이 삭제되었습니다..");

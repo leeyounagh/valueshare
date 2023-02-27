@@ -3,7 +3,7 @@ import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
 // eslint-disable-next-line no-unused-vars
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import { useNavigate } from "react-router-dom";
 
 const { gray6, white, gray2, gray3, gray4 } = color;
@@ -121,8 +121,8 @@ function NoneMember() {
       email: nonmemberEmail,
     };
     try {
-      const response = await axios.post(
-        `http://localhost:5000/users/orders/${orderNumber}`,
+      const response = await AxiosInstance.post(
+        `/users/orders/${orderNumber}`,
         body
       );
 
