@@ -3,7 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
@@ -36,7 +36,7 @@ function OrderList() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get("http://localhost:5000/admin/orders");
+      const response = await AxiosInstance.get("/admin/orders");
       setOrderData(response.data.result);
     }
     getOrderList();
@@ -44,9 +44,7 @@ function OrderList() {
 
   const handleDelete = async (item) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5000/admin/orders/${item._id}`
-      );
+      const response = await AxiosInstance.post(`/admin/orders/${item._id}`);
       if (response.status === 200) {
         alert("주문이 취소되었습니다.");
         //  페이지 리렌더링이되어야됨

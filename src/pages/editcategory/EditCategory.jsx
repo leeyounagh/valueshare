@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 
 const SLayout = styled.div`
@@ -55,8 +55,8 @@ function EditCategory() {
       categoryName: data.changecategory,
     };
     try {
-      const response = await axios.patch(
-        `http://localhost:5000/admin/categories/${data.beforecategory}`,
+      const response = await AxiosInstance.patch(
+        `/admin/categories/${data.beforecategory}`,
         body
       );
       setData({

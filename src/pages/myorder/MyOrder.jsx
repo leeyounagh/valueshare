@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import { useLocation } from "react-router-dom";
 import Navbar from "component/Navbar";
 import OrderHistory from "component/OrderHistory";
@@ -37,9 +37,7 @@ function MyOrder() {
 
   useEffect(() => {
     async function handleMyOlder() {
-      const response = await axios.get(
-        `http://localhost:5000/myorder/${objectId}`
-      );
+      const response = await AxiosInstance.get(`/myorder/${objectId}`);
       const data = await response.data;
       setOrderData([data[0]]);
       setProducts([data[1]]);

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { decodeToken } from "react-jwt";
 import { setUserInfo } from "slice/UserSlice";
 import SetAuthorizationToken from "utils/SetAuthorizationToken";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -104,7 +104,7 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", data);
+      const res = await AxiosInstance.post("/auth/login", data);
       const token = await res.data.accessToken;
       localStorage.setItem("jwtToken", token);
       SetAuthorizationToken(token);

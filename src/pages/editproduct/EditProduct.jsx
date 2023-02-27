@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
@@ -69,9 +69,7 @@ function EditProduct() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get(
-        `http://localhost:5000/admin/products/${objectId}`
-      );
+      const response = await AxiosInstance.get(`/admin/products/${objectId}`);
       setProductData([response.data.result]);
     }
     getOrderList();
@@ -126,8 +124,8 @@ function EditProduct() {
           "content-type": "multipart/form-data",
         },
       };
-      const response = await axios.patch(
-        `http://localhost:5000/admin/products/${objectId}`,
+      const response = await AxiosInstance.patch(
+        `/admin/products/${objectId}`,
         formData,
         config
       );

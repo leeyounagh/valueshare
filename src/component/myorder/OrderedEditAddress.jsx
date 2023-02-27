@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -133,9 +133,7 @@ function OrderedEditAddress({ setIsOpen }) {
 
   useEffect(() => {
     async function handleMyOlder() {
-      const response = await axios.get(
-        `http://localhost:5000/myorder/${objectId}`
-      );
+      const response = await AxiosInstance.get(`/myorder/${objectId}`);
       const addressData = await response.data;
       setOrderData(addressData);
       console.log(response);
@@ -161,17 +159,15 @@ function OrderedEditAddress({ setIsOpen }) {
       shipNote: data.memo,
     };
     try {
-      const response = await axios.patch(
-        `http://localhost:5000/myorder/${orderData[0]._id}`,
+      const response = await AxiosInstance.patch(
+        `/myorder/${orderData[0]._id}`,
         body
       );
       console.log(response);
 
       if (response.status === 200) {
         alert("주소지 수정에 성공하였습니다!");
-        const getResponse = await axios.get(
-          `http://localhost:5000/myorder/${objectId}`
-        );
+        const getResponse = await AxiosInstance.get(`/myorder/${objectId}`);
         const addressData = await getResponse.data;
         setOrderData(addressData);
       }

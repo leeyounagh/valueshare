@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -91,7 +91,7 @@ function Card() {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await axios.get("http://localhost:5000/products", {
+      const response = await AxiosInstance.get("/products", {
         params: { categories: `${categories}`, brand: `${brand}` },
       });
 

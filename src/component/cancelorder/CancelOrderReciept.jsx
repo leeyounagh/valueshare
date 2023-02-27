@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
@@ -167,12 +167,9 @@ function CancelOrderReciept({ orderData }) {
   const navigate = useNavigate();
   const handleCancel = async () => {
     try {
-      const response = await axios.patch(
-        `http://localhost:5000/myorder/${objectId}`,
-        {
-          cancelNote: cancelReason,
-        }
-      );
+      const response = await AxiosInstance.patch(`/myorder/${objectId}`, {
+        cancelNote: cancelReason,
+      });
       if (response.status === 200) {
         alert("취소에 성공했습니다.");
         navigate("/");
