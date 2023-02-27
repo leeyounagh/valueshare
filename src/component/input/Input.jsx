@@ -20,12 +20,26 @@ const SInput = styled.input`
   outline-color: ${color.main};
 `;
 
-function Input({ name, placeholder, _onChange }) {
+function Input(props) {
+  const { _onChange, placeholder, name, value } = props;
+
   return (
     <Slayout>
-      <SInput placeholder={placeholder} onChange={_onChange} name={name} />
+      <SInput
+        placeholder={placeholder}
+        onChange={_onChange}
+        name={name}
+        value={value}
+      />
     </Slayout>
   );
 }
+
+Input.defaultProps = {
+  _onChange: () => {},
+  placeholder: "입력해주세요",
+  name: "",
+  value: "",
+};
 
 export default Input;

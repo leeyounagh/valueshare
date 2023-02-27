@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import EmailInput from "component/input/EmailInput";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
 
 const Slayout = styled.div`
   width: 100%;
@@ -204,7 +205,7 @@ function Login() {
           </SP>
         )} */}
           </SDiv>
-          <SLogInBtn type="submit">LOGIN</SLogInBtn>
+          <Btn1 type="submit" title="Log in" />
         </SSection>
       </LoginLayer>
     </Slayout>

@@ -20,10 +20,10 @@ const SInput = styled.input`
   outline-color: ${color.main};
 `;
 
-function EmailInput({ name, type, placeholder }) {
+function EmailInput({ name, type, placeholder, register }) {
   return (
     <Slayout>
-      <SInput name={name} type={type} placeholder={placeholder} />
+      <SInput name={name} type={type} placeholder={placeholder} {...register} />
     </Slayout>
   );
 }
