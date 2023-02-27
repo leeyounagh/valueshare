@@ -104,9 +104,8 @@ function Card() {
     <SLayout>
       {productData.map((item) => {
         return (
-          <SCardDiv>
+          <SCardDiv key={item._id}>
             <Link
-              key={item._id}
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >

@@ -108,10 +108,10 @@ function Brands({ searchParams, setSearchParams }) {
   return (
     <SLayout>
       <SBrandTitleDiv>Brands</SBrandTitleDiv>
-      <SBrandListDiv key={BrandName.key}>
+      <SBrandListDiv>
         {BrandName.map((item) => {
           return (
-            <SBrandNameDiv>
+            <SBrandNameDiv key={item.index}>
               <SCheckboxDiv>
                 <input
                   type="checkbox"

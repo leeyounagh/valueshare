@@ -8,6 +8,7 @@ import FeaturedBrands from "component/main/featuredBrands/FeaturedBrands";
 import Lookbooks from "component/main/lookbook/Lookbooks";
 import Customersay from "component/main/customersay/Customersay";
 import Membership from "component/main/membership/Membership";
+import TopBtn from "component/button/TopBtn";
 
 const SlayOut = styled.div`
   width: 100%;
@@ -24,6 +25,7 @@ function Main() {
       <Lookbooks />
       <Customersay />
       <Membership />
+      <TopBtn />
     </SlayOut>
   );
 }

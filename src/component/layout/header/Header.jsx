@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setUserInfo } from "slice/UserSlice";
 import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 
@@ -157,7 +159,17 @@ const SLayoutProfileDiv = styled.div`
   margin-bottom: 20px;
 `;
 const SLayoutProfileInnerDiv = styled.div``;
+const SLogout = styled.div``;
 function Header() {
+  const dispatch = useDispatch();
+  const logoutUser = useSelector((state) => {
+    return state.UserInfoReducer.userInfo;
+  });
+  console.log(logoutUser);
+  const handleLogout = () => {
+    localStorage.removeItem("jwtToken");
+    dispatch(setUserInfo(""));
+  };
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -169,6 +181,13 @@ function Header() {
 
         <SLayoutMenuDiv>
           <SInnerItemDiv>
+            <SLogout
+              onClick={() => {
+                handleLogout();
+              }}
+            >
+              로그아웃
+            </SLogout>
             <Link to="/bestseller">
               <SBestSellerDiv>Best seller</SBestSellerDiv>
             </Link>
@@ -193,6 +212,7 @@ function Header() {
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>
+
           <SLineDiv />
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>

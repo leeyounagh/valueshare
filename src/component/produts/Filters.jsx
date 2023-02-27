@@ -115,7 +115,7 @@ function Categories({ searchParams, setSearchParams }) {
           {Continent.map((categoryData, index) => {
             return (
               <SCategoryItemDiv
-                key={categoryData}
+                key={categoryData.index}
                 value={categoryData.value}
                 className={`${
                   selectedCategory === categoryData.value ? "active" : ""
