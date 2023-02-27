@@ -89,10 +89,11 @@ const SBtnDiv = styled.div`
 `;
 function Address() {
   const [modalIsOpen, setIsOpen] = useState(false);
+
   const adress = useSelector((state) => {
     return state.UserAddressReducer;
   });
-
+  console.log(adress);
   return (
     <div>
       <SLayout>

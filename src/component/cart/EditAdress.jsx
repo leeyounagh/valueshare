@@ -99,10 +99,11 @@ function EditAdress({ setIsOpen }) {
     memo: "",
     email: "",
   });
+  console.log(data);
   const dispatch = useDispatch();
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    console.log(value);
     const newData = {
       ...data,
       [name]: value,
@@ -130,6 +131,7 @@ function EditAdress({ setIsOpen }) {
           <SInfoTitle>받는사람</SInfoTitle>
           <SInputDiv>
             <Input
+              value={data.customerName}
               onChange={handleChange}
               name="customerName"
               placeholder="이름"
@@ -140,6 +142,7 @@ function EditAdress({ setIsOpen }) {
           <SInfoTitle>연락처</SInfoTitle>
           <SInputDiv>
             <Input
+              value={data.phoneNumber}
               onChange={handleChange}
               name="phoneNumber"
               placeholder="010-0000-0000"
@@ -156,6 +159,7 @@ function EditAdress({ setIsOpen }) {
           <SInfoTitle>배송메모</SInfoTitle>
           <SInputDiv>
             <Input
+              value={data.memo}
               onChange={handleChange}
               name="memo"
               placeholder="배송 후 연락 부탁드립니다."
@@ -166,6 +170,7 @@ function EditAdress({ setIsOpen }) {
           <SInfoTitle>이메일</SInfoTitle>
           <SInputDiv>
             <Input
+              value={data.email}
               onChange={handleChange}
               name="email"
               placeholder=" elice@elice.com"
