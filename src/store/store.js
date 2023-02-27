@@ -1,12 +1,25 @@
-import { configureStore } from "@reduxjs/toolkit";
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { persistReducer } from "redux-persist";
 import pageTitleReducer from "slice/PageSlice";
 import DetailReducer from "slice/DetailSlice";
 import UserAddressReducer from "slice/UserAddressSlice";
 import OrderListReducer from "slice/OrderSlice";
 import CartItemReducer from "slice/CartSlice";
 import UserInfoReducer from "slice/UserSlice";
+import storage from "redux-persist/lib/storage";
 
-export default configureStore({
+const reducers = combineReducers({});
+
+// config 작성
+const persistConfig = {
+  key: "root", // localStorage key
+  storage, // localStorage
+  whitelist: ["pageTitleReducer"], // target (reducer name)
+};
+
+const rootReducer = configureStore({
   reducer: {
     // image대신 productImageReducer라는 이름으로 reducer임을 알수있도록 수정해서 사용하면 좋을 것 같아요.
     pageTitleReducer,
@@ -17,3 +30,5 @@ export default configureStore({
     UserInfoReducer,
   },
 });
+
+export default persistReducer(persistConfig, rootReducer);
