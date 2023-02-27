@@ -39,7 +39,8 @@ import MyPage from "pages/membermypage/MyPage";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.UserInfoReducer.user);
+
+  const { user } = useSelector((state) => state.user);
 
   if (pathname === "/product") {
     dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));

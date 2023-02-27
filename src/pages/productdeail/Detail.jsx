@@ -7,7 +7,6 @@ import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
 import AxiosInstance from "data/AxiosInstance";
 import handleBasket from "utils/handleBasket";
-import { RecoilRoot } from "recoil";
 import color from "styles/color";
 
 const Slayout = styled.div`
@@ -202,9 +201,7 @@ function Detail() {
 
   return (
     <Slayout>
-      <RecoilRoot>
-        <Navbar2 />
-      </RecoilRoot>
+      <Navbar2 />
       <DetailLayout>
         <Slider {...settings}>
           <ProductImgDiv>

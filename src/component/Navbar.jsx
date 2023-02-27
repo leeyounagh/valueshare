@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import urlState from "../data/atom";
 import color from "../styles/color";
 
 const SLayout = styled.nav`
@@ -81,12 +79,6 @@ function Navbar() {
     return state.pageTitleReducer;
   });
 
-  const [url, setUrl] = useRecoilState(urlState);
-
-  setUrl(text.rootTitle);
-
-  console.log(setUrl);
-
   return (
     <SLayout>
       <SRootDiv>
@@ -100,10 +92,7 @@ function Navbar() {
           <SRootIcontImg src="/asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>
-            {text.rootTitle}
-            {url}
-          </SCategoryTitle>
+          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
         </SCategoryDiv>
       </SRootDiv>
 

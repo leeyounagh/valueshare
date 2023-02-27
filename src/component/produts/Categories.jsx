@@ -115,7 +115,7 @@ function Categories({ searchParams, setSearchParams }) {
             (categoryData, index) => {
               return (
                 <SCategoryItemDiv
-                  key={categoryData}
+                  key={categoryData.value}
                   value={categoryData.value}
                   className={`${
                     selectedCategory === categoryData.value ? "active" : ""

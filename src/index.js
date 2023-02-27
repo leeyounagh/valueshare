@@ -7,11 +7,13 @@ import { Provider } from "react-redux";
 import { setUserInfo } from "slice/UserSlice";
 import SetAuthorizationToken from "utils/SetAuthorizationToken";
 import { decodeToken } from "react-jwt";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "store/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import store from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 if (localStorage.jwtToken) {
   SetAuthorizationToken(localStorage.jwtToken);
   store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
@@ -21,9 +23,11 @@ if (localStorage.jwtToken) {
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
