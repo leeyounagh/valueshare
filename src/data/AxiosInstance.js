@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://34.64.139.64/",
 });
 const excludeURL = ["/login", "/register"];
 

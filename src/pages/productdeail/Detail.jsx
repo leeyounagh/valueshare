@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
-import color from "styles/color";
 import Navbar2 from "component/Navbar2";
 import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
 import AxiosInstance from "data/AxiosInstance";
 import handleBasket from "utils/handleBasket";
+import { RecoilRoot } from "recoil";
+import color from "styles/color";
 
 const Slayout = styled.div`
   width: 100%;
@@ -201,7 +202,9 @@ function Detail() {
 
   return (
     <Slayout>
-      <Navbar2 />
+      <RecoilRoot>
+        <Navbar2 />
+      </RecoilRoot>
       <DetailLayout>
         <Slider {...settings}>
           <ProductImgDiv>

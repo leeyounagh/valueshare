@@ -1,7 +1,7 @@
 /* eslint-disable import/newline-after-import */
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
 import OrderList from "pages/orderlist/OrderList";
@@ -32,15 +32,15 @@ import Productest from "pages/products/Productest";
 import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
 import AddCategory from "pages/addcategory/AddCategory";
-
 import Category from "pages/category/Category";
 import AdminProduct from "pages/adminproduct/AdminProduct";
 import LoginCheck from "pages/logincheck/LoginCheck";
 import MyPage from "pages/membermypage/MyPage";
-
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.UserInfoReducer.user);
+
   if (pathname === "/product") {
     dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));
   }
@@ -81,7 +81,7 @@ function App() {
   }
   return (
     <div>
-      <NonememberHeader />
+      {user?.id ? <Header /> : <NonememberHeader />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

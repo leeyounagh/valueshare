@@ -14,6 +14,6 @@ export default configureStore({
     UserAddressReducer,
     OrderListReducer,
     CartItemReducer,
-    UserInfoReducer,
-  },
+    UserInfoReducer
+  }
 });

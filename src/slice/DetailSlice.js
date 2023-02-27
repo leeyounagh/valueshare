@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: "",
+  id: ""
 };
 
 export const DetailSlice = createSlice({
@@ -10,8 +10,8 @@ export const DetailSlice = createSlice({
   reducers: {
     passId: (state, action) => {
       state.id = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { passId } = DetailSlice.actions;

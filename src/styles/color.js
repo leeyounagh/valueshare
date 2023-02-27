@@ -9,7 +9,7 @@ const color = {
   gray3: "#828282",
   gray4: "#bdbdbd",
   gray5: "#e0e0e0",
-  gray6: "#f2f2f2",
+  gray6: "#f2f2f2"
 };
 
 export default color;

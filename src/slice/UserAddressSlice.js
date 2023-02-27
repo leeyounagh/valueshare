@@ -5,7 +5,7 @@ const initialState = {
   phoneNumber: "",
   address: "",
   memo: "",
-  email: "",
+  email: ""
 };
 
 export const UserAddressSlice = createSlice({
@@ -19,8 +19,8 @@ export const UserAddressSlice = createSlice({
       state.address = action.payload.address;
       state.memo = action.payload.memo;
       state.email = action.payload.email;
-    },
-  },
+    }
+  }
 });
 
 export const { setNoneMemberInfo } = UserAddressSlice.actions;

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  orderList: [],
+  orderList: []
 };
 
 export const OrderSlice = createSlice({
@@ -12,8 +12,8 @@ export const OrderSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
 
       state.orderList.unshift(action.payload);
-    },
-  },
+    }
+  }
 });
 
 export const { setOrderInfo } = OrderSlice.actions;

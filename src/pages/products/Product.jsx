@@ -7,6 +7,7 @@ import Card from "component/produts/Card";
 import Categories from "component/produts/Categories";
 import TopBtn from "component/button/TopBtn";
 import { useSearchParams } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 
 const SLayout = styled.div`
   width: 100%;
@@ -34,7 +35,9 @@ function Product() {
 
   return (
     <SLayout>
-      <Navbar />
+      <RecoilRoot>
+        <Navbar />
+      </RecoilRoot>
       <SItemInnerDiv>
         <SCategoryDiv>
           <Categories

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   rootTitle: "",
-  currentTitle: "",
+  currentTitle: ""
 };
 
 export const PageSlice = createSlice({
@@ -15,8 +15,8 @@ export const PageSlice = createSlice({
       state.rootTitle = action.payload.rootTitle;
       // eslint-disable-next-line no-param-reassign
       state.currentTitle = action.payload.currentTitle;
-    },
-  },
+    }
+  }
 });
 
 export const { setPageInfo } = PageSlice.actions;
