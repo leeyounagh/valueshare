@@ -5,6 +5,7 @@ import Navbar from "component/Navbar";
 import Brands from "component/produts/Brands";
 import Card from "component/produts/Card";
 import Categories from "component/produts/Categories";
+import TopBtn from "component/button/TopBtn";
 import { useSearchParams } from "react-router-dom";
 
 const SLayout = styled.div`
@@ -49,6 +50,7 @@ function Product() {
           <Card />
         </SCardDiv>
       </SItemInnerDiv>
+      <TopBtn />
     </SLayout>
   );
 }
