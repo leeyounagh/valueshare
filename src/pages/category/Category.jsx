@@ -5,6 +5,7 @@
 import AxiosInstance from "data/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -91,4 +92,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default withAuth(Category);

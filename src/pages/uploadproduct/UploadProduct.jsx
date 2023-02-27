@@ -3,6 +3,7 @@ import AxiosInstance from "data/AxiosInstance";
 import Continent from "data/Continent";
 import Brand from "data/Brand";
 import styled from "styled-components";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.form`
   width: 100%;
@@ -201,4 +202,4 @@ function UploadProduct() {
   );
 }
 
-export default UploadProduct;
+export default withAuth(UploadProduct);
