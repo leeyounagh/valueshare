@@ -40,8 +40,10 @@ import MyPage from "pages/membermypage/MyPage";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  // const auth = useSelector((state) => state?.UserInfoReducer.userInfo[0].aud);
-  // console.log(auth);
+  const auth = useSelector(
+    (state) => state?.UserInfoReducer?.userInfo?.[0]?.aud
+  );
+  console.log(auth);
   if (pathname === "/product") {
     dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));
   }
@@ -82,8 +84,7 @@ function App() {
   }
   return (
     <div>
-      <Header />
-      {/* {auth === "false" ? <Header /> : auth === "true" ? "어드민헤더" : null} */}
+      {auth === "false" ? <Header /> : auth === "true" ? "어드민헤더" : null}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
