@@ -44,7 +44,7 @@ function OrderListDetail() {
   useEffect(() => {
     async function getOrderList() {
       const response = await AxiosInstance.get(`/admin/orders/${objectId}`);
-      setOrderData([response.data.result]);
+      setOrderData([response.data.result[0]]);
     }
     getOrderList();
   }, []);
@@ -69,7 +69,7 @@ function OrderListDetail() {
       }
     }
   };
-  console.log(shipSatatus);
+
   console.log(orderData);
   return (
     <div>

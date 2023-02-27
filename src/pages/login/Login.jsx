@@ -120,12 +120,12 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const res = await AxiosInstance.post("/auth/login", data);
-      const token = await res.data.accessToken;
+      const token = await res.data.user;
       localStorage.setItem("jwtToken", token);
       SetAuthorizationToken(token);
       dispatch(setUserInfo(decodeToken(token)));
-      navigate("/");
-      console.log("data", res);
+      // navigate("/");
+      console.log("data", res.data.user, decodeToken(token));
     } catch (err) {
       alert("아이디 혹은 비밀번호가 잘못되었습니다.");
       console.log(err);

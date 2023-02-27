@@ -7,6 +7,7 @@ import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -106,4 +107,4 @@ function OrderList() {
   );
 }
 
-export default OrderList;
+export default withAuth(OrderList);
