@@ -7,6 +7,7 @@ import Navbar2 from "component/Navbar2";
 import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
 import AxiosInstance from "data/AxiosInstance";
+import handleBasket from "utils/handleBasket";
 
 const Slayout = styled.div`
   width: 100%;
@@ -175,7 +176,7 @@ function Detail() {
         console.log(err);
       });
   }, []);
-
+  console.log(productInformation?.result);
   const settings = {
     /* eslint-disable */
     customPaging(i) {
@@ -256,7 +257,11 @@ function Detail() {
                 );
               })}
           </ProductDetailInfo>
-          <BtnDiv>
+          <BtnDiv
+            onClick={() => {
+              handleBasket(productInformation?.result);
+            }}
+          >
             <Btn1 title="장바구니에 추가" />
             <Btn2 title="구매하기" />
           </BtnDiv>

@@ -9,7 +9,6 @@ import MemberMyOrder from "component/membermypage/MemberMyOrder";
 
 const SLayout = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
 `;
 

@@ -114,7 +114,7 @@ function OrderSuccess() {
               고객님이 주문하신 주문번호는
             </SOrderNumberTextDiv>
             <SOrderNumberDiv>
-              {orderItem[0]?.result.userId.orderNumber}입니다.
+              {orderItem[0]?.result.orderNumber}입니다.
             </SOrderNumberDiv>
             <SOrderGuideDiv>
               <SOrderGuideItemDiv>

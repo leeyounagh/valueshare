@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
+import { withAuth } from "utils/withAuth";
 import { Link } from "react-router-dom";
 
 const SLayout = styled.div`
@@ -113,4 +114,4 @@ function AdminProduct() {
   );
 }
 
-export default AdminProduct;
+export default withAuth(AdminProduct);

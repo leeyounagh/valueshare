@@ -9,7 +9,7 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action) => {
-      state.userInfo = action.payload;
+      state.userInfo = [action.payload];
     },
   },
 });

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -117,4 +118,4 @@ function EditCategory() {
   );
 }
 
-export default EditCategory;
+export default withAuth(EditCategory);
