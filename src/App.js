@@ -41,7 +41,7 @@ function App() {
   const dispatch = useDispatch();
 
   const { UserInfoReducer: userList } = useSelector(
-    (state) => state.UserInfoReducer
+    (state) => state.persistedReducer
   );
 
   if (pathname === "/product") {
