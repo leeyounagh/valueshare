@@ -84,31 +84,15 @@ const SLabel = styled.span`
 `;
 
 const SInput = styled.input`
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
   border-radius: 10px;
-  border: 1px solid ${color.gray5}
-  padding: 10px 15px;
-  margin-bottom: 17px;
-  font-size: 14px;
-`;
-
-const SLogInBtn = styled.button`
-  width: 100%;
-  background: ${color.main};
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 15px;
-  padding: 20px;
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 7px;
-  text-align: center;
-  border-radius: 10px;
-  background: ${(props) => props["aria-invalid"]};
+  background-color: ${color.white};
+  width: 410px;
+  height: 50px;
+  padding-left: 24px;
+  border-radius: 16px;
+  border: solid 1px ${color.gray4};
+  background-color: ${color.white};
+  outline-color: ${color.main};
 `;
 
 const SP = styled.p`
@@ -159,15 +143,6 @@ function Login() {
           <STitle>Login</STitle>
           <SDiv>
             <SLabel>Email</SLabel>
-            <EmailInput
-              name="email"
-              type="email"
-              placeholder="elice@valueshare.com"
-              {...register("email", {
-                required: true,
-                pattern: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-              })}
-            />
             <SInput
               name="email"
               type="email"
