@@ -124,7 +124,7 @@ function Login() {
       localStorage.setItem("jwtToken", token);
       SetAuthorizationToken(token);
       dispatch(setUserInfo(decodeToken(token)));
-      // navigate("/");
+      navigate("/");
       console.log("data", res.data.user, decodeToken(token));
     } catch (err) {
       alert("아이디 혹은 비밀번호가 잘못되었습니다.");

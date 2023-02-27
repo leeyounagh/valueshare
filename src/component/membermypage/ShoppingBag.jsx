@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
 
 const { gray1, white, gray3, gray5 } = color;
 
 const SLayout = styled.div`
+  width: 90%;
   border-radius: 10px;
   background-color: ${white};
   padding-left: 30px;
@@ -35,14 +37,14 @@ const SShoppingBagTextDiv = styled.div`
   width: 90%;
 `;
 const SShoppingBagDiv = styled.div`
-  height: 15vh;
+  margin-bottom: 50px;
 `;
 const SProductImg = styled.img`
   height: 130px;
 `;
 const SProductDiv = styled.div`
   width: 60%;
-  border: 1px solid black;
+  margin-left: 50px;
 `;
 const SProductTitleDiv = styled.div`
   font-family: Montserrat;
@@ -82,19 +84,40 @@ const SProductPriceDiv = styled.div`
   color: ${gray1};
   height: 30%;
   padding-left: 10px;
+  margin-bottom: 20px;
 `;
 
 const SLinDiv = styled.div`
   background-color: ${gray5};
   height: 1px;
-  width: 95%;
+  width: 90%;
   margin-bottom: 10px;
+  z-index: 10;
 `;
 const SImg = styled.img`
   width: 95px;
   height: 130px;
+  z-index: 5;
 `;
-const SBrandDiv = styled.div``;
+const SBrandDiv = styled.div`
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: ${gray1};
+  padding-left: 10px;
+  height: 40%;
+  display: flex;
+  align-items: center;
+`;
+const SItemDiv = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+`;
 
 function ShoppingBag() {
   const baskets = localStorage.getItem("baskets");
@@ -105,19 +128,24 @@ function ShoppingBag() {
       <STitemItemDiv>
         <STitleDiv>
           <SShoppingBagTextDiv>Shopping Bag</SShoppingBagTextDiv>
-          <SDetailIconImg>넥스트</SDetailIconImg>
+          <Link to="/cart">
+            {" "}
+            <SDetailIconImg>넥스트</SDetailIconImg>
+          </Link>
         </STitleDiv>
       </STitemItemDiv>
       <SShoppingBagDiv>
         {basketsData.map((item) => {
           return (
             <div>
-              <SImg src={item.productImage[0]} />
-              <SProductDiv>
-                <SBrandDiv>{item.productBrand.brandName}</SBrandDiv>
-                <SProductNameDiv>{item.productTitle}</SProductNameDiv>
-                <SProductPriceDiv>₩{item.productPrice}</SProductPriceDiv>
-              </SProductDiv>
+              <SItemDiv>
+                <SImg src={item.productImage[0]} />
+                <SProductDiv>
+                  <SBrandDiv>{item.productBrand.brandName}</SBrandDiv>
+                  <SProductNameDiv>{item.productTitle}</SProductNameDiv>
+                  <SProductPriceDiv>₩{item.productPrice}</SProductPriceDiv>
+                </SProductDiv>
+              </SItemDiv>
               <SLinDiv />
             </div>
           );

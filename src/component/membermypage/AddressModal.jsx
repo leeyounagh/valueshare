@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import AxiosInstance from "data/AxiosInstance";
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
@@ -11,10 +10,10 @@ const { white, gray3, gray4 } = color;
 
 const Slayout = styled.div`
   width: 100%;
-  height: 100%;
+  height: 120%;
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
-  top: -143px;
+  top: 50px;
   left: 0;
   z-index: 998;
 `;
@@ -119,11 +118,7 @@ const SInnerButtonDiv = styled.div`
   margin-right: 20px;
   z-index: 10;
 `;
-function OrderedEditAddress({ setIsOpen }) {
-  const { pathname } = useLocation();
-  const objectId = pathname.substr(9);
-  const [orderData, setOrderData] = useState([]);
-
+function OrderedEditAddress({ setIsOpen, userInfo }) {
   const [data, setData] = useState({
     customerName: "",
     phoneNumber: "",
@@ -132,15 +127,6 @@ function OrderedEditAddress({ setIsOpen }) {
     email: "",
   });
 
-  useEffect(() => {
-    async function handleMyOlder() {
-      const response = await AxiosInstance.get(`/myorder/${objectId}`);
-      const addressData = await response.data;
-      setOrderData(addressData);
-      console.log(response);
-    }
-    handleMyOlder();
-  }, []);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -150,7 +136,7 @@ function OrderedEditAddress({ setIsOpen }) {
     };
     setData(newData);
   };
-  console.log(data);
+
   const handleAddress = async () => {
     const body = {
       phone: data.phoneNumber,
@@ -160,21 +146,19 @@ function OrderedEditAddress({ setIsOpen }) {
       shipNote: data.memo,
     };
     try {
-      const response = await AxiosInstance.patch(
-        `/myorder/${orderData[0]._id}`,
+      const response = await AxiosInstance.post(
+        AxiosInstance.get(`/users/mypage/${userInfo[0]._id}/address`),
         body
       );
       console.log(response);
 
       if (response.status === 200) {
         alert("주소지 수정에 성공하였습니다!");
-        const getResponse = await AxiosInstance.get(`/myorder/${objectId}`);
-        const addressData = await getResponse.data;
-        setOrderData(addressData);
       }
     } catch (err) {
       if (err) {
         alert("수정에 실패했습니다.");
+        console.log(err);
       }
     }
   };

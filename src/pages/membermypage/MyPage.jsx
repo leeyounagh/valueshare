@@ -1,4 +1,7 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
+import AxiosInstance from "data/AxiosInstance";
+import { useSelector } from "react-redux";
 import Navbar from "component/Navbar";
 import styled from "styled-components";
 import MyAccount from "component/membermypage/MyAccount";
@@ -26,24 +29,43 @@ const SUserShoppingbagDiv = styled.div`
 
 const SUserOrderDiv = styled.div`
   width: 25%;
-  padding-left: 55px;
   padding-top: 80px;
 `;
 
 function MyPage() {
+  const [userInfo, setUserInfo] = useState([]);
+  const [userProduct, setUserProduct] = useState([]);
+  const userId = useSelector((item) => {
+    return item.UserInfoReducer.userInfo[0].user;
+  });
+  useEffect(() => {
+    async function handleUserInfo() {
+      try {
+        const response = await AxiosInstance.get(`/users/mypage/${userId}`);
+        const data = await response.data;
+        console.log(data);
+        setUserInfo([data[0]]);
+        setUserProduct(data[1]);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    handleUserInfo();
+  }, []);
+  console.log(userInfo, userProduct);
   return (
     <div>
       <Navbar />
       <SLayout>
         <SUserInfoDiv>
-          <MyAccount />
-          <AddressList />
+          <MyAccount userInfo={userInfo} />
+          <AddressList userInfo={userInfo} />
         </SUserInfoDiv>
         <SUserShoppingbagDiv>
           <ShoppingBag />
         </SUserShoppingbagDiv>
         <SUserOrderDiv>
-          <MemberMyOrder />
+          <MemberMyOrder userProduct={userProduct} userInfo={userInfo} />
           <Help />
         </SUserOrderDiv>
       </SLayout>

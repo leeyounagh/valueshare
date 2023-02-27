@@ -1,12 +1,15 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect } from "react";
+import AxiosInstance from "data/AxiosInstance";
+import Btn1 from "component/button/Btn1";
 import styled from "styled-components";
 import color from "styles/color";
 
-const { gray1, white, gray3, gray5 } = color;
+const { gray1, white, gray3, gray5, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 80%;
+  width: 100%;
   height: 40vh;
   border-radius: 10px;
   background-color: ${white};
@@ -105,13 +108,64 @@ const SImgDiv = styled.div`
   align-items: center;
   margin-right: 10px;
 `;
-function MyAccount() {
+const SInput = styled.input`
+  width: 80%;
+  height: 100%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: 0.75px;
+  text-align: left;
+  color: ${gray3};
+  flex-grow: 0;
+  padding-left: 10px;
+  border-radius: 15px;
+  border: solid 1px ${gray4};
+  background-color: ${white};
+  outline-color: #ff985f;
+`;
+const SInputDiv = styled.div`
+  display: flex;
+  width: 100%;
+  height: 90%;
+`;
+const SBtnDiv = styled.div`
+  width: 20%;
+  margin-left: 5px;
+`;
+function MyAccount({ userInfo }) {
+  const [isEdit, setIsEdit] = useState(true);
+  const [editEmail, setEditEmail] = useState("");
+
+  async function handleEditEmail() {
+    const body = {
+      email: editEmail,
+    };
+    try {
+      const response = await AxiosInstance.post(
+        `/users/mypage/${userInfo[0]._id}/email`,
+        body
+      );
+      const data = await response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  console.log(userInfo[0]._id);
   return (
     <div>
       <SLayout>
         <STitleDiv>
           <h2> My Account</h2>
-          <SEditIconDiv>
+          <SEditIconDiv
+            onClick={() => {
+              setIsEdit(!isEdit);
+            }}
+          >
             <SEditImg src="/asset/정보수정아이콘.svg" />
           </SEditIconDiv>
         </STitleDiv>
@@ -119,7 +173,7 @@ function MyAccount() {
           <SProfileImg src="/asset/icn-profile.svg" />
 
           <SProfileInfoDiv>
-            <SProfileNameDiv>한효정</SProfileNameDiv>
+            <SProfileNameDiv>{userInfo[0]?.name}</SProfileNameDiv>
             <SMemberDiv> Member</SMemberDiv>
           </SProfileInfoDiv>
         </SProfileDiv>
@@ -130,14 +184,36 @@ function MyAccount() {
               <SPhoneImg src="/asset/Call.png" />
             </SImgDiv>
 
-            <SPhoneTextDiv>010-0000-0000</SPhoneTextDiv>
+            <SPhoneTextDiv> {userInfo[0]?.phone}</SPhoneTextDiv>
           </SIfoItemDiv>
           <SIfoItemDiv>
             <SImgDiv>
               <SPhoneImg src="/asset/Mail.png" />
             </SImgDiv>
 
-            <SPhoneTextDiv> elice@elice.test</SPhoneTextDiv>
+            <SPhoneTextDiv>
+              {" "}
+              {isEdit ? (
+                <SInputDiv>
+                  <SInput
+                    value={editEmail}
+                    onChange={(e) => {
+                      setEditEmail(e.target.value);
+                    }}
+                    placeholder="Your Email"
+                  />
+                  <SBtnDiv
+                    onClick={() => {
+                      handleEditEmail();
+                    }}
+                  >
+                    <Btn1 title="변경" />
+                  </SBtnDiv>
+                </SInputDiv>
+              ) : (
+                userInfo[0]?.email
+              )}
+            </SPhoneTextDiv>
           </SIfoItemDiv>
         </SInfoDiv>
         <SLinDiv />

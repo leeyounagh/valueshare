@@ -1,18 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import color from "styles/color";
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 
-const { white, gray1, gray3, gray5 } = color;
+import color from "styles/color";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const { white, gray1, gray3, gray4 } = color;
 
 const SLayout = styled.div`
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
   background-color: ${white};
-  padding-top: 50px;
-  position: relative;
-  padding-bottom: 20px;
+
+  padding-bottom: 50px;
+  a {
+    text-decoration: none;
+  }
 `;
-const STitleDiv = styled.div`
+const SHistoryTitle = styled.div`
   font-family: Montserrat;
   font-size: 26px;
   font-weight: bold;
@@ -22,114 +28,160 @@ const STitleDiv = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: ${gray1};
-  width: 80%;
-`;
-const SIconDiv = styled.div``;
-const STitleItemDiv = styled.div`
-  display: flex;
-  height: 20%;
-  align-items: center;
-  padding-left: 20px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  padding-top: 30px;
 `;
 const SItemDiv = styled.div`
-  padding-left: 20px;
-  height: 120px;
+  width: 100%;
+  height: 20vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  // position: relative;
 `;
-const SOrderNumberDiv = styled.div`
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: ${gray1};
-  height: 30%;
-  margin-top: 20px;
-`;
-const SPriceDiv = styled.div`
-  font-family: Montserrat;
+const OrderNumberDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   height: 30%;
 `;
-const SDateDiv = styled.div`
-  font-family: NotoSans;
+const OrderPriceDiv = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+
+  line-height: normal;
+
+  text-align: left;
+  color: ${gray1};
+`;
+const ItemQuantityDiv = styled.div`
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
+  margin-top: 6px;
 `;
-const SLinDiv = styled.div`
-  background-color: ${gray5};
-  height: 1px;
-  margin-bottom: 20px;
-  width: 90%;
-  margin-left: 20px;
+const LineDiv = styled.div`
+width: 100%;
+height: 1px;
+margin: 23px 0 0;
+background-color: ${gray4};
+margin-bottom:20px;
+}
 `;
-const SStatusDiv = styled.div`
-  width: 40%;
+const SProductStatusDiv = styled.div`
+  width: 25%;
+
+  height: 32%;
   position: absolute;
-  top: 40%;
-  left: 63%;
+  top: 10%;
+  left: 65%;
 `;
-const SStatusImg = styled.img`
-  width: 80%;
-  height: 12px;
-`;
-const SStatusItemDiv = styled.div`
-  width: 80%;
+const SStatusTopDiv = styled.div`
+  width: 100%;
+  height: 50%;
   display: flex;
-  justify-content: center;
 `;
-const SStatusIconImg = styled.img``;
+const SStatusImgDiv = styled.div``;
+const SStatusImg = styled.img`
+  width: 28px;
+  height: 28px;
+`;
 const SStatusText = styled.div`
-  white-space: nowrap;
-  font-family: NotoSans;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
   line-height: normal;
-  letter-spacing: normal;
   text-align: right;
   color: #ff985f;
-  margin-left: 5px;
+  width: 90%;
+  height: 28px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5px;
+  white-space: nowrap;
 `;
-function MemberMyOrder() {
+const SStatusIconDiv = styled.div`
+  margin-top: 10px;
+  width: 120%;
+  height: 70%;
+`;
+const SStatusIcon = styled.img`
+  width: 100%;
+  height: 50%;
+  margin-top: 5px;
+`;
+function MemberMyOrder({ userInfo, userProduct }) {
+  // console.log("확인", userInfo[0].orderNumber[0]);
+  console.log("확인", userProduct);
   return (
     <SLayout>
-      <STitleItemDiv>
-        <STitleDiv> Your Orders</STitleDiv>
-        <SIconDiv>넥스트</SIconDiv>
-      </STitleItemDiv>
+      <SHistoryTitle>Your Orders</SHistoryTitle>
       <SItemDiv>
-        <SOrderNumberDiv> #481293</SOrderNumberDiv>
-        <SPriceDiv> ₩63,000</SPriceDiv>
-        <SDateDiv>2023-02-23, at 3:30 PM</SDateDiv>
-      </SItemDiv>
-      <SLinDiv />
-      <SStatusDiv>
-        <SStatusItemDiv>
-          <div>
-            <SStatusIconImg src="/asset/배송중.png" />
-          </div>
+        {userProduct?.map((item) => {
+          return (
+            <div style={{ position: "relative" }}>
+              <Link to={`/myorder/${item._id}`}>
+                <OrderNumberDiv>{item.orderNumber}</OrderNumberDiv>
+                <OrderPriceDiv>₩{item.totalPrice * 1000}</OrderPriceDiv>
+                <ItemQuantityDiv>
+                  {" "}
+                  {item.products?.length} Items
+                </ItemQuantityDiv>
+                <LineDiv />
 
-          <SStatusText> 상품 이동중</SStatusText>
-        </SStatusItemDiv>
-        <SStatusImg src="/asset/상품이동중바.png" />
-      </SStatusDiv>
+                <SProductStatusDiv>
+                  <SStatusTopDiv>
+                    <SStatusImgDiv>
+                      <SStatusImg
+                        src={
+                          item.shipStatus === "주문접수"
+                            ? "/asset/주문접수.png"
+                            : item.shipStatus === "배송중"
+                            ? "/asset/배송중.png"
+                            : item.shipStatus === "배송완료"
+                            ? "/asset/배달완료아이콘.png"
+                            : item.shipStatus === "주문 취소"
+                            ? "/asset/취소아이콘.svg"
+                            : null
+                        }
+                      />
+                    </SStatusImgDiv>
+
+                    <SStatusText>
+                      {item.shipStatus === "주문접수"
+                        ? "상품준비중"
+                        : item.shipStatus === "배송중"
+                        ? "배송중"
+                        : item.shipStatus === "배송완료"
+                        ? "배송완료"
+                        : item.shipStatus === "주문 취소"
+                        ? "취소됨"
+                        : null}
+                    </SStatusText>
+                  </SStatusTopDiv>
+                  <SStatusIconDiv>
+                    <SStatusIcon
+                      src={
+                        item.shipStatus === "주문접수"
+                          ? "/asset/상품준비중바.png"
+                          : "/asset/상품이동중바.png"
+                      }
+                    />
+                  </SStatusIconDiv>
+                </SProductStatusDiv>
+              </Link>
+            </div>
+          );
+        })}
+      </SItemDiv>
     </SLayout>
   );
 }
