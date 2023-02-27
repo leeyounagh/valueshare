@@ -168,9 +168,7 @@ function OrderedEditAddress({ setIsOpen }) {
 
       if (response.status === 200) {
         alert("주소지 수정에 성공하였습니다!");
-        const getResponse = await AxiosInstance.get(`/myorder/${objectId}`);
-        const addressData = await getResponse.data;
-        setOrderData(addressData);
+        window.location.reload();
       }
     } catch (err) {
       if (err) {

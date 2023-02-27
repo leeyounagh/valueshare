@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useRecoilState } from "recoil";
+// import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import urlState from "../data/atom";
+// import urlState from "../data/atom";
 import color from "../styles/color";
 
 const SLayout = styled.nav`
@@ -81,11 +81,11 @@ function Navbar() {
     return state.pageTitleReducer;
   });
 
-  const [url, setUrl] = useRecoilState(urlState);
+  // const [url, setUrl] = useRecoilState(urlState);
 
-  setUrl(text.rootTitle);
+  // setUrl(text.rootTitle);
 
-  console.log(setUrl);
+  // console.log(setUrl);
 
   return (
     <SLayout>
@@ -102,7 +102,7 @@ function Navbar() {
         <SCategoryDiv>
           <SCategoryTitle>
             {text.rootTitle}
-            {url}
+            {/* {url} */}
           </SCategoryTitle>
         </SCategoryDiv>
       </SRootDiv>

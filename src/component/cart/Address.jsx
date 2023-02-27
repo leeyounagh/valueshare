@@ -149,7 +149,9 @@ function Address() {
           <Btn1 title="배송지 수정" />
         </SBtnDiv>
       </SLayout>
-      {modalIsOpen ? <EditAdress setIsOpen={setIsOpen} /> : null}
+      {modalIsOpen ? (
+        <EditAdress adress={adress} setIsOpen={setIsOpen} />
+      ) : null}
     </div>
   );
 }

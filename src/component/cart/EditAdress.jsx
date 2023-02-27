@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
@@ -114,7 +115,7 @@ const SInnerButtonDiv = styled.div`
   margin-right: 20px;
   z-index: 10;
 `;
-function EditAdress({ setIsOpen }) {
+function EditAdress({ setIsOpen, adress }) {
   const [data, setData] = useState({
     customerName: "",
     phoneNumber: "",
@@ -122,6 +123,7 @@ function EditAdress({ setIsOpen }) {
     memo: "",
     email: "",
   });
+  console.log("확인", adress);
   const dispatch = useDispatch();
   const handleChange = (event) => {
     const { name, value } = event.target;
