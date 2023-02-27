@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -36,13 +36,13 @@ const SShoppingBagTextDiv = styled.div`
 `;
 const SShoppingBagDiv = styled.div`
   height: 15vh;
-  display: flex;
 `;
 const SProductImg = styled.img`
   height: 130px;
 `;
 const SProductDiv = styled.div`
   width: 60%;
+  border: 1px solid black;
 `;
 const SProductTitleDiv = styled.div`
   font-family: Montserrat;
@@ -90,25 +90,39 @@ const SLinDiv = styled.div`
   width: 95%;
   margin-bottom: 10px;
 `;
+const SImg = styled.img`
+  width: 95px;
+  height: 130px;
+`;
+const SBrandDiv = styled.div``;
+
 function ShoppingBag() {
+  const baskets = localStorage.getItem("baskets");
+  const basketsData = baskets ? JSON.parse(baskets) : [];
+
   return (
     <SLayout>
       <STitemItemDiv>
         <STitleDiv>
-          {" "}
           <SShoppingBagTextDiv>Shopping Bag</SShoppingBagTextDiv>
           <SDetailIconImg>넥스트</SDetailIconImg>
         </STitleDiv>
       </STitemItemDiv>
       <SShoppingBagDiv>
-        <SProductImg src="/asset/테스트가방.png" />
-        <SProductDiv>
-          <SProductTitleDiv>Louis Vuitton</SProductTitleDiv>
-          <SProductNameDiv>트위스트 MM 핸드백</SProductNameDiv>
-          <SProductPriceDiv>₩60,000</SProductPriceDiv>
-        </SProductDiv>
+        {basketsData.map((item) => {
+          return (
+            <div>
+              <SImg src={item.productImage[0]} />
+              <SProductDiv>
+                <SBrandDiv>{item.productBrand.brandName}</SBrandDiv>
+                <SProductNameDiv>{item.productTitle}</SProductNameDiv>
+                <SProductPriceDiv>₩{item.productPrice}</SProductPriceDiv>
+              </SProductDiv>
+              <SLinDiv />
+            </div>
+          );
+        })}
       </SShoppingBagDiv>
-      <SLinDiv />
     </SLayout>
   );
 }
