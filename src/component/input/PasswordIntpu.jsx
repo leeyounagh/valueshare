@@ -20,12 +20,12 @@ const SInput = styled.input`
   outline-color: ${color.main};
 `;
 
-function Input({ name, placeholder, _onChange }) {
+function PasswordInput({ placeholder, _onChange }) {
   return (
     <Slayout>
-      <SInput placeholder={placeholder} onChange={_onChange} name={name} />
+      <SInput placeholder={placeholder} onChange={_onChange} />
     </Slayout>
   );
 }
 
-export default Input;
+export default PasswordInput;
