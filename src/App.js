@@ -40,7 +40,9 @@ function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
+  const { UserInfoReducer: userList } = useSelector(
+    (state) => state.UserInfoReducer
+  );
 
   if (pathname === "/product") {
     dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));
@@ -82,7 +84,7 @@ function App() {
   }
   return (
     <div>
-      {user?.id ? <Header /> : <NonememberHeader />}
+      {userList?.[0]?.id ? <Header /> : <NonememberHeader />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
