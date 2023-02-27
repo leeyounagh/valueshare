@@ -175,7 +175,9 @@ function AddressDetail({ orderData }) {
           </SBtnDiv>
         </SEditAddressDiv>
       </SButtonDiv>
-      {modalIsOpen ? <OrderedEditAddress setIsOpen={setIsOpen} /> : null}
+      {modalIsOpen ? (
+        <OrderedEditAddress orderData={orderData} setIsOpen={setIsOpen} />
+      ) : null}
     </Slayout>
   );
 }

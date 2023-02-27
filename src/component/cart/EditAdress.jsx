@@ -115,15 +115,15 @@ const SInnerButtonDiv = styled.div`
   margin-right: 20px;
   z-index: 10;
 `;
-function EditAdress({ setIsOpen, adress }) {
+function EditAdress({ setIsOpen, userInfo }) {
   const [data, setData] = useState({
-    customerName: "",
-    phoneNumber: "",
-    address: "",
+    customerName: !userInfo ? `${userInfo[0]?.name}` : "",
+    phoneNumber: !userInfo ? `${userInfo[0]?.phone}` : "",
+    address: !userInfo ? `${userInfo[0]?.address}` : "",
     memo: "",
-    email: "",
+    email: !userInfo ? `${userInfo[0]?.email}` : "",
   });
-  console.log("확인", adress);
+
   const dispatch = useDispatch();
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -156,6 +156,7 @@ function EditAdress({ setIsOpen, adress }) {
           <SInputDiv>
             <SInfoInput
               onChange={handleChange}
+              value={data.customerName}
               name="customerName"
               placeholder="이름"
             />
@@ -165,6 +166,7 @@ function EditAdress({ setIsOpen, adress }) {
           <SInfoTitle>연락처</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.phoneNumber}
               onChange={handleChange}
               name="phoneNumber"
               placeholder="010-0000-0000"
@@ -175,6 +177,7 @@ function EditAdress({ setIsOpen, adress }) {
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.address}
               onChange={handleChange}
               name="address"
               placeholder="주소"
@@ -195,6 +198,7 @@ function EditAdress({ setIsOpen, adress }) {
           <SInfoTitle>이메일</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.email}
               onChange={handleChange}
               name="email"
               placeholder=" elice@elice.com"

@@ -33,7 +33,9 @@ const STitleDiv = styled.div`
     width: 80%;
   }
 `;
-const SEditIconDiv = styled.div``;
+const SEditIconDiv = styled.div`
+  cursor: pointer;
+`;
 const SEditImg = styled.img``;
 const SProfileDiv = styled.div`
   height: 30%;
@@ -137,7 +139,7 @@ const SBtnDiv = styled.div`
   margin-left: 5px;
 `;
 function MyAccount({ userInfo }) {
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
   const [editEmail, setEditEmail] = useState("");
 
   async function handleEditEmail() {
@@ -146,16 +148,17 @@ function MyAccount({ userInfo }) {
     };
     try {
       const response = await AxiosInstance.post(
-        `/users/mypage/${userInfo[0]._id}/email`,
+        `/users/mypage/${userInfo[0]?._id}/email`,
         body
       );
-      const data = await response.data;
+      if (response.status === 200) {
+        alert("이메일수정이 완료되었습니다.");
+      }
     } catch (err) {
       console.log(err);
     }
   }
 
-  console.log(userInfo[0]._id);
   return (
     <div>
       <SLayout>

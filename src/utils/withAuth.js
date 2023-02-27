@@ -12,7 +12,7 @@ export const withAuth = (Component) => (props) => {
   });
 
   useEffect(() => {
-    if (auth === "false") {
+    if (auth === "false" || !auth) {
       alert("일반회원은 접근할수 없는 페이지 입니다.");
       navigate("/");
     }

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setUserInfo } from "slice/UserSlice";
-import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 
 const { white, gray4 } = color;
@@ -144,6 +143,7 @@ const SLayoutIconItem = styled.div`
   margin: 5px;
   height: 100%;
   width: 20%;
+  position: relative;
 `;
 const SInnerItemDiv = styled.div`
   justify-content: space-between;
@@ -158,6 +158,7 @@ const SLayoutProfileDiv = styled.div`
   height: 100%;
   margin-bottom: 20px;
 `;
+
 const SLayoutProfileInnerDiv = styled.div``;
 const SLogout = styled.div``;
 function Header() {
@@ -168,7 +169,7 @@ function Header() {
   console.log(logoutUser);
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
-    dispatch(setUserInfo(""));
+    dispatch(setUserInfo());
   };
   return (
     <SlayOut>
@@ -208,7 +209,6 @@ function Header() {
           </SLayoutIconItem>
           <SLayoutIconItem>
             <Link to="/cart">
-              <Badge bg="secondary">9</Badge>
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>

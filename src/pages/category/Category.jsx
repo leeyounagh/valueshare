@@ -50,7 +50,7 @@ const Category = () => {
       );
       if (response.status === 200) {
         alert("카테고리가 삭제되었습니다.");
-        //  페이지 리렌더링이되어야됨
+        window.location.reload();
       }
       console.log(response);
     } catch (err) {

@@ -9,6 +9,7 @@ import AddressList from "component/membermypage/AddressList";
 import ShoppingBag from "component/membermypage/ShoppingBag";
 import Help from "component/membermypage/Help";
 import MemberMyOrder from "component/membermypage/MemberMyOrder";
+import { checkAuth } from "utils/checkAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -36,14 +37,13 @@ function MyPage() {
   const [userInfo, setUserInfo] = useState([]);
   const [userProduct, setUserProduct] = useState([]);
   const userId = useSelector((item) => {
-    return item.UserInfoReducer.userInfo[0].user;
+    return item?.UserInfoReducer?.userInfo?.[0]?.user;
   });
   useEffect(() => {
     async function handleUserInfo() {
       try {
         const response = await AxiosInstance.get(`/users/mypage/${userId}`);
         const data = await response.data;
-        console.log(data);
         setUserInfo([data[0]]);
         setUserProduct(data[1]);
       } catch (err) {
@@ -73,4 +73,4 @@ function MyPage() {
   );
 }
 
-export default MyPage;
+export default checkAuth(MyPage);

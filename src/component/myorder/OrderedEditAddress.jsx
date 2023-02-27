@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import AxiosInstance from "data/AxiosInstance";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
@@ -119,28 +119,17 @@ const SInnerButtonDiv = styled.div`
   margin-right: 20px;
   z-index: 10;
 `;
-function OrderedEditAddress({ setIsOpen }) {
+function OrderedEditAddress({ setIsOpen, orderData }) {
   const { pathname } = useLocation();
   const objectId = pathname.substr(9);
-  const [orderData, setOrderData] = useState([]);
-
   const [data, setData] = useState({
-    customerName: "",
-    phoneNumber: "",
-    address: "",
-    memo: "",
-    email: "",
+    customerName: `${orderData?.[0]?.name}`,
+    phoneNumber: `${orderData?.[0]?.phone}`,
+    address: `${orderData?.[0]?.shipAdr}`,
+    memo: `${orderData?.[0]?.shipNote}`,
+    email: `${orderData?.[0]?.email}`,
   });
 
-  useEffect(() => {
-    async function handleMyOlder() {
-      const response = await AxiosInstance.get(`/myorder/${objectId}`);
-      const addressData = await response.data;
-      setOrderData(addressData);
-      console.log(response);
-    }
-    handleMyOlder();
-  }, []);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -150,7 +139,7 @@ function OrderedEditAddress({ setIsOpen }) {
     };
     setData(newData);
   };
-  console.log(data);
+
   const handleAddress = async () => {
     const body = {
       phone: data.phoneNumber,
@@ -160,10 +149,7 @@ function OrderedEditAddress({ setIsOpen }) {
       shipNote: data.memo,
     };
     try {
-      const response = await AxiosInstance.patch(
-        `/myorder/${orderData[0]._id}`,
-        body
-      );
+      const response = await AxiosInstance.patch(`/myorder/${objectId}`, body);
       console.log(response);
 
       if (response.status === 200) {
@@ -195,6 +181,7 @@ function OrderedEditAddress({ setIsOpen }) {
           <SInfoTitle>받는사람</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.customerName}
               onChange={handleChange}
               name="customerName"
               placeholder="이름"
@@ -205,6 +192,7 @@ function OrderedEditAddress({ setIsOpen }) {
           <SInfoTitle>연락처</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.phoneNumber}
               onChange={handleChange}
               name="phoneNumber"
               placeholder="010-0000-0000"
@@ -215,6 +203,7 @@ function OrderedEditAddress({ setIsOpen }) {
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.address}
               onChange={handleChange}
               name="address"
               placeholder="주소"
@@ -225,6 +214,7 @@ function OrderedEditAddress({ setIsOpen }) {
           <SInfoTitle>배송메모</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.memo}
               onChange={handleChange}
               name="memo"
               placeholder="배송 후 연락 부탁드립니다."
@@ -235,6 +225,7 @@ function OrderedEditAddress({ setIsOpen }) {
           <SInfoTitle>이메일</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.email}
               onChange={handleChange}
               name="email"
               placeholder=" elice@elice.com"
