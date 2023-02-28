@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { decodeToken } from "react-jwt";
 import { setUserInfo } from "slice/UserSlice";
-import SetAuthorizationToken from "utils/SetAuthorizationToken";
 // import AxiosInstance from "data/AxiosInstance";
 import axios from "axios";
 import styled from "styled-components";
@@ -132,20 +131,15 @@ function Login() {
   password.current = watch("password");
 
   const onSubmit = async (data) => {
-    console.log("data", data);
-
     try {
       const res = await axios.post("http://34.64.139.64/auth/login", data);
-      console.log("data", res);
       if (res.status === 200) {
         alert("로그인 성공");
       }
       const token = await res.data.user;
       localStorage.setItem("jwtToken", token);
-      SetAuthorizationToken(token);
       dispatch(setUserInfo(decodeToken(token)));
       navigate("/");
-      console.log("data", res.data.user, decodeToken(token));
     } catch (err) {
       alert("아이디 혹은 비밀번호가 잘못되었습니다.");
       console.log(err);

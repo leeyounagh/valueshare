@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import AxiosInstance from "data/AxiosInstance";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import urlState from "../data/atom";
 import color from "../styles/color";
 
 const SLayout = styled.nav`
@@ -75,12 +73,6 @@ function Navbar2() {
   });
   const [productInformation, setProductInformation] = useState(null);
   const { productid } = useParams();
-
-  const [url, setUrl] = useRecoilState(urlState);
-
-  setUrl(text.rootTitle);
-
-  console.log(text.rootTitle);
 
   useEffect(() => {
     AxiosInstance.get(`/admin/products/${productid}`)

@@ -8,6 +8,7 @@ import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
+import Btn2 from "component/button/Btn2";
 
 const { white, gray3, gray1 } = color;
 
@@ -88,15 +89,22 @@ const SBtnDiv = styled.div`
   width: 90%;
   height: 50px;
   margin-top: 50px;
+  display: flex;
+`;
+const SBtnItemDiv = styled.div`
+  width: 50%;
+  margin-left: 10px;
 `;
 
 function MemberAddress() {
   //  호출해서 유저정보 받기
   const [userInfo, setUserInfo] = useState([]);
+  const [callAddress, setCallAddress] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const userId = useSelector((item) => {
     return item?.UserInfoReducer?.userInfo?.[0]?.user;
   });
+
   useEffect(() => {
     async function handleUserInfo() {
       try {
@@ -109,7 +117,7 @@ function MemberAddress() {
     }
     handleUserInfo();
   }, []);
-  console.log(userInfo);
+
   return (
     <div>
       <SLayout>
@@ -117,33 +125,69 @@ function MemberAddress() {
         <SItemDiv>
           <SAdressTiltleDiv>받는사람</SAdressTiltleDiv>
 
-          <SAddressText>성함을 입력해주세요</SAddressText>
+          <SAddressText>
+            {callAddress && userInfo[0]?.name
+              ? `${userInfo[0].name}`
+              : "성함을 입력해주세요"}
+          </SAddressText>
         </SItemDiv>
         <SItemDiv>
           <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
-          <SAddressText>핸드폰번호를 입력해주세요</SAddressText>
+          <SAddressText>
+            {" "}
+            {callAddress && userInfo[0]?.phoneNumber
+              ? `${userInfo[0].phoneNumber}`
+              : "핸드폰번호를 입력해주세요"}
+          </SAddressText>
         </SItemDiv>
         <SItemDiv>
           <SAdressTiltleDiv>배송지</SAdressTiltleDiv>
-          <SAddressText>배송지를 입력해주세요</SAddressText>
+          <SAddressText>
+            {" "}
+            {callAddress && userInfo[0]?.shipAdr
+              ? `${userInfo[0].shipAdr}`
+              : "배송지를 입력해주세요"}
+          </SAddressText>
         </SItemDiv>
         <SItemDiv>
           <SAdressTiltleDiv>배송메모</SAdressTiltleDiv>
-          <SAddressText>배송메모를 등록해주세요</SAddressText>
+          <SAddressText>
+            {" "}
+            {callAddress && userInfo[0]?.shipNote
+              ? `${userInfo[0].shipNote}`
+              : " 배송메모를 등록해주세요"}
+          </SAddressText>
         </SItemDiv>
         <SItemDiv>
           <SAdressTiltleDiv>이메일</SAdressTiltleDiv>
-          <SAddressText>email을 등록해주세요</SAddressText>
+          <SAddressText>
+            {" "}
+            {callAddress && userInfo[0]?.email
+              ? `${userInfo[0].email}`
+              : " email 등록해주세요"}
+          </SAddressText>
         </SItemDiv>
-        <SBtnDiv
-          onClick={() => {
-            setIsOpen(!modalIsOpen);
-          }}
-        >
-          <Btn1 title="배송지 수정" />
+        <SBtnDiv>
+          <SBtnItemDiv
+            onClick={() => {
+              setCallAddress(!callAddress);
+              // 유저데이터 바뀌는 로직
+            }}
+          >
+            <Btn1 title="배송지 불러오기" />
+          </SBtnItemDiv>
+          <SBtnItemDiv
+            onClick={() => {
+              setIsOpen(!modalIsOpen);
+            }}
+          >
+            <Btn2 title="배송지 수정" />
+          </SBtnItemDiv>
         </SBtnDiv>
       </SLayout>
-      {modalIsOpen ? <MemberEditAdress setIsOpen={setIsOpen} /> : null}
+      {modalIsOpen ? (
+        <MemberEditAdress setIsOpen={setIsOpen} userInfo={userInfo} />
+      ) : null}
     </div>
   );
 }
