@@ -57,7 +57,7 @@ const STitleDiv = styled.div`
   margin-top: 30px;
   margin-bottom: 80px;
 `;
-const SItemDiv = styled.div`
+const SEditItemDiv = styled.div`
   margin-left: 90px;
   margin-bottom: 30px;
 
@@ -151,7 +151,7 @@ function EditAdress({ setIsOpen, userInfo }) {
         <STitleDiv>
           <h2>배송지 수정</h2>
         </STitleDiv>
-        <SItemDiv>
+        <SEditItemDiv>
           <SInfoTitle>받는사람</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -161,8 +161,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="이름"
             />
           </SInputDiv>
-        </SItemDiv>
-        <SItemDiv>
+        </SEditItemDiv>
+        <SEditItemDiv>
           <SInfoTitle>연락처</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -172,8 +172,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="010-0000-0000"
             />
           </SInputDiv>
-        </SItemDiv>
-        <SItemDiv>
+        </SEditItemDiv>
+        <SEditItemDiv>
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -183,8 +183,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="주소"
             />
           </SInputDiv>
-        </SItemDiv>
-        <SItemDiv>
+        </SEditItemDiv>
+        <SEditItemDiv>
           <SInfoTitle>배송메모</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -193,8 +193,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="배송 후 연락 부탁드립니다."
             />
           </SInputDiv>
-        </SItemDiv>
-        <SItemDiv>
+        </SEditItemDiv>
+        <SEditItemDiv>
           <SInfoTitle>이메일</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -204,7 +204,7 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder=" elice@elice.com"
             />
           </SInputDiv>
-        </SItemDiv>
+        </SEditItemDiv>
         <SButtonDiv>
           <SInnerButtonDiv
             onClick={() => {

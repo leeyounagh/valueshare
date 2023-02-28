@@ -10,6 +10,7 @@ import ShoppingBag from "component/membermypage/ShoppingBag";
 import Help from "component/membermypage/Help";
 import MemberMyOrder from "component/membermypage/MemberMyOrder";
 import { checkAuth } from "utils/checkAuth";
+import Btn1 from "component/button/Btn1";
 
 const SLayout = styled.div`
   width: 100%;
@@ -32,6 +33,16 @@ const SUserOrderDiv = styled.div`
   width: 25%;
   padding-top: 80px;
 `;
+const SBtnInnderDiv = styled.div`
+  width: 30%;
+`;
+const SBtnDiv = styled.div`
+  width: 90%;
+
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+`;
 
 function MyPage() {
   const [userInfo, setUserInfo] = useState([]);
@@ -52,7 +63,7 @@ function MyPage() {
     }
     handleUserInfo();
   }, []);
-  console.log(userInfo, userProduct);
+  console.log(userInfo, "확인");
   return (
     <div>
       <Navbar />
@@ -67,6 +78,11 @@ function MyPage() {
         <SUserOrderDiv>
           <MemberMyOrder userProduct={userProduct} userInfo={userInfo} />
           <Help />
+          <SBtnDiv>
+            <SBtnInnderDiv>
+              <Btn1 title="탈퇴하기" />
+            </SBtnInnderDiv>
+          </SBtnDiv>
         </SUserOrderDiv>
       </SLayout>
     </div>

@@ -153,6 +153,7 @@ function MyAccount({ userInfo }) {
       );
       if (response.status === 200) {
         alert("이메일수정이 완료되었습니다.");
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);
@@ -208,6 +209,7 @@ function MyAccount({ userInfo }) {
                   <SBtnDiv
                     onClick={() => {
                       handleEditEmail();
+                      setIsEdit(!isEdit);
                     }}
                   >
                     <Btn1 title="변경" />

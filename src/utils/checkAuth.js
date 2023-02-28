@@ -18,7 +18,7 @@ export const checkAuth = (Component) => (props) => {
     }
     if (!auth) {
       alert("로그인해주세요");
-      navigate("/");
+      navigate("/login");
     }
   }, []);
   return <Component {...props} />;

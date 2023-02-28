@@ -124,7 +124,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
     address: "",
     memo: "",
   });
-  console.log(data);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -143,7 +143,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
     };
     try {
       const response = await AxiosInstance.post(
-        AxiosInstance.post(`/users/mypage/${userInfo[0]?._id}/address`),
+        `/users/mypage/${userInfo[0]?._id}/address`,
         body
       );
       console.log(response);

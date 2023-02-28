@@ -34,7 +34,6 @@ const SHistoryTitle = styled.div`
 `;
 const SItemDiv = styled.div`
   width: 100%;
-  height: 20vh;
   padding-left: 30px;
   padding-right: 30px;
   // position: relative;
