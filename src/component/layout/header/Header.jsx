@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setUserInfo } from "slice/UserSlice";
 import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
+import Dropdown from "./Dropdown";
 
 const { white, gray4 } = color;
 
@@ -159,8 +160,9 @@ const SLayoutProfileDiv = styled.div`
   margin-bottom: 20px;
 `;
 const SLayoutProfileInnerDiv = styled.div``;
-const SLogout = styled.div``;
+const SLogout = styled.button``;
 function Header() {
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
   const dispatch = useDispatch();
   const logoutUser = useSelector((state) => {
     return state.UserInfoReducer.userInfo;
@@ -218,8 +220,11 @@ function Header() {
             <SLayoutProfileInnerDiv>
               <SProfileImg src="/asset/icn-profile.svg" />
             </SLayoutProfileInnerDiv>
-            <SLayoutProfileInnerDiv>
+            <SLayoutProfileInnerDiv
+              onClick={() => setDropdownVisibility(!dropdownVisibility)}
+            >
               <SProfileMenuImg src="/asset/Chevrons_chevron-right.svg" />
+              {dropdownVisibility ? <div /> : <Dropdown />}
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>
