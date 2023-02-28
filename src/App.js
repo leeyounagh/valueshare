@@ -84,8 +84,13 @@ function App() {
   }
   return (
     <div>
-      <Header />
-      {/* {auth === "false" ? <Header /> : auth === "true" ? "어드민헤더" : null} */}
+      {auth === "false" ? (
+        <Header />
+      ) : auth === "true" ? (
+        <NonememberHeader />
+      ) : (
+        <NonememberHeader />
+      )}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

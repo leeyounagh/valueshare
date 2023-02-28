@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setUserInfo } from "slice/UserSlice";
 import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 import Dropdown from "./Dropdown";
@@ -160,18 +159,14 @@ const SLayoutProfileDiv = styled.div`
   margin-bottom: 20px;
 `;
 const SLayoutProfileInnerDiv = styled.div``;
-const SLogout = styled.button``;
 function Header() {
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
-  const dispatch = useDispatch();
+
   const logoutUser = useSelector((state) => {
     return state.UserInfoReducer.userInfo;
   });
   console.log(logoutUser);
-  const handleLogout = () => {
-    localStorage.removeItem("jwtToken");
-    dispatch(setUserInfo(""));
-  };
+
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -180,16 +175,8 @@ function Header() {
             <h2>value shop</h2>
           </Link>
         </SLogoDiv>
-
         <SLayoutMenuDiv>
           <SInnerItemDiv>
-            <SLogout
-              onClick={() => {
-                handleLogout();
-              }}
-            >
-              로그아웃
-            </SLogout>
             <Link to="/bestseller">
               <SBestSellerDiv>Best seller</SBestSellerDiv>
             </Link>

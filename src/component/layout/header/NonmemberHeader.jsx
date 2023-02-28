@@ -164,7 +164,7 @@ const SBadageDiv = styled.div`
     background-color: ${color.main} !important;
   }
 `;
-function Header() {
+function NonememberHeader() {
   const cartQuantity = useSelector((state) => {
     return state.CartItemReducer;
   });
@@ -228,4 +228,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default NonememberHeader;
