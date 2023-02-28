@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 import Dropdown from "./Dropdown";
-
-const { white, gray4 } = color;
 
 const SlayOut = styled.header`
   width: 100%;
   height: 140px;
   padding: 35px 0 0;
-  background-color: ${white};
-  border-bottom: 1px solid ${gray4};
+  background-color: ${color.white};
+  border-bottom: 1px solid ${color.gray4};
   display: flex;
   a {
     text-decoration: none;
@@ -53,7 +49,7 @@ const SBestSellerDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 
 const SProductDiv = styled.div`
@@ -65,7 +61,7 @@ const SProductDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 
 const SLookBookDiv = styled.div`
@@ -77,7 +73,7 @@ const SLookBookDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 
 const SMembershipDiv = styled.div`
@@ -90,7 +86,7 @@ const SMembershipDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 const SLineDiv = styled.div`
   width: 1px;
@@ -144,6 +140,7 @@ const SLayoutIconItem = styled.div`
   margin: 5px;
   height: 100%;
   width: 20%;
+  position: relative;
 `;
 const SInnerItemDiv = styled.div`
   justify-content: space-between;
@@ -158,14 +155,10 @@ const SLayoutProfileDiv = styled.div`
   height: 100%;
   margin-bottom: 20px;
 `;
+
 const SLayoutProfileInnerDiv = styled.div``;
 function Header() {
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
-
-  const logoutUser = useSelector((state) => {
-    return state.UserInfoReducer.userInfo;
-  });
-  console.log(logoutUser);
 
   return (
     <SlayOut>
@@ -197,7 +190,6 @@ function Header() {
           </SLayoutIconItem>
           <SLayoutIconItem>
             <Link to="/cart">
-              <Badge bg="secondary">9</Badge>
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>

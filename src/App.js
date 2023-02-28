@@ -34,6 +34,7 @@ import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
 import AddCategory from "pages/addcategory/AddCategory";
 import Category from "pages/category/Category";
+import BestSellerDetail from "pages/bestseller/BestSellerDetail";
 import AdminProduct from "pages/adminproduct/AdminProduct";
 import LoginCheck from "pages/logincheck/LoginCheck";
 import MyPage from "pages/membermypage/MyPage";

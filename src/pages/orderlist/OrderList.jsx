@@ -48,7 +48,7 @@ function OrderList() {
       const response = await AxiosInstance.post(`/admin/orders/${item._id}`);
       if (response.status === 200) {
         alert("주문이 취소되었습니다.");
-        //  페이지 리렌더링이되어야됨
+        window.location.reload();
       }
       console.log(response);
     } catch (err) {
@@ -56,7 +56,6 @@ function OrderList() {
     }
   };
 
-  console.log(orderData);
   return (
     <div>
       <STitle>

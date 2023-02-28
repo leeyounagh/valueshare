@@ -9,6 +9,8 @@ import AddressList from "component/membermypage/AddressList";
 import ShoppingBag from "component/membermypage/ShoppingBag";
 import Help from "component/membermypage/Help";
 import MemberMyOrder from "component/membermypage/MemberMyOrder";
+import { checkAuth } from "utils/checkAuth";
+import Btn1 from "component/button/Btn1";
 
 const SLayout = styled.div`
   width: 100%;
@@ -31,19 +33,28 @@ const SUserOrderDiv = styled.div`
   width: 25%;
   padding-top: 80px;
 `;
+const SBtnInnderDiv = styled.div`
+  width: 30%;
+`;
+const SBtnDiv = styled.div`
+  width: 90%;
+
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+`;
 
 function MyPage() {
   const [userInfo, setUserInfo] = useState([]);
   const [userProduct, setUserProduct] = useState([]);
   const userId = useSelector((item) => {
-    return item.UserInfoReducer.userInfo[0].user;
+    return item?.UserInfoReducer?.userInfo?.[0]?.user;
   });
   useEffect(() => {
     async function handleUserInfo() {
       try {
         const response = await AxiosInstance.get(`/users/mypage/${userId}`);
         const data = await response.data;
-        console.log(data);
         setUserInfo([data[0]]);
         setUserProduct(data[1]);
       } catch (err) {
@@ -52,7 +63,7 @@ function MyPage() {
     }
     handleUserInfo();
   }, []);
-  console.log(userInfo, userProduct);
+  console.log(userInfo, "확인");
   return (
     <div>
       <Navbar />
@@ -67,10 +78,15 @@ function MyPage() {
         <SUserOrderDiv>
           <MemberMyOrder userProduct={userProduct} userInfo={userInfo} />
           <Help />
+          <SBtnDiv>
+            <SBtnInnderDiv>
+              <Btn1 title="탈퇴하기" />
+            </SBtnInnderDiv>
+          </SBtnDiv>
         </SUserOrderDiv>
       </SLayout>
     </div>
   );
 }
 
-export default MyPage;
+export default checkAuth(MyPage);

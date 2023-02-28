@@ -43,6 +43,7 @@ const AddCategory = () => {
         categoryName: category,
       });
       alert("카테고리 등록에 성공했습니다.");
+      window.location.reload();
       console.log(response);
     } catch (err) {
       if (err) {

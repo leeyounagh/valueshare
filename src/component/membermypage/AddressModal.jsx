@@ -121,10 +121,8 @@ const SInnerButtonDiv = styled.div`
 function OrderedEditAddress({ setIsOpen, userInfo }) {
   const [data, setData] = useState({
     customerName: "",
-    phoneNumber: "",
     address: "",
     memo: "",
-    email: "",
   });
 
   const handleChange = (event) => {
@@ -139,15 +137,13 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
 
   const handleAddress = async () => {
     const body = {
-      phone: data.phoneNumber,
-      email: data.email,
       name: data.customerName,
       shipAdr: data.address,
       shipNote: data.memo,
     };
     try {
       const response = await AxiosInstance.post(
-        AxiosInstance.get(`/users/mypage/${userInfo[0]._id}/address`),
+        `/users/mypage/${userInfo[0]?._id}/address`,
         body
       );
       console.log(response);
@@ -187,16 +183,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
             />
           </SInputDiv>
         </SItemDiv>
-        <SItemDiv>
-          <SInfoTitle>연락처</SInfoTitle>
-          <SInputDiv>
-            <SInfoInput
-              onChange={handleChange}
-              name="phoneNumber"
-              placeholder="010-0000-0000"
-            />
-          </SInputDiv>
-        </SItemDiv>
+
         <SItemDiv>
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>
@@ -217,16 +204,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
             />
           </SInputDiv>
         </SItemDiv>
-        <SItemDiv>
-          <SInfoTitle>이메일</SInfoTitle>
-          <SInputDiv>
-            <SInfoInput
-              onChange={handleChange}
-              name="email"
-              placeholder=" elice@elice.com"
-            />
-          </SInputDiv>
-        </SItemDiv>
+
         <SButtonDiv>
           <SInnerButtonDiv
             onClick={() => {

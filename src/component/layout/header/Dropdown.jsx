@@ -28,6 +28,11 @@ const Slayout = styled.div`
   }
 `;
 
+const Sbtn = styled.button`
+  color: ${color.gray1};
+  background-color: ${color.white};
+  border: none;
+`;
 function Dropdown() {
   const dispatch = useDispatch();
   const logoutUser = useSelector((state) => {
@@ -42,14 +47,16 @@ function Dropdown() {
     <Slayout>
       <ul>
         <Link to="/membermypage">Mypage</Link>
-        <button
-          type="button"
-          onClick={() => {
-            handleLogout();
-          }}
-        >
-          logout{" "}
-        </button>
+        <li>
+          <Sbtn
+            type="button"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            logout{" "}
+          </Sbtn>
+        </li>
       </ul>
     </Slayout>
   );

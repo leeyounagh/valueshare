@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -179,8 +180,7 @@ function CancelOrderReciept({ orderData }) {
       console.log(err);
     }
   };
-
-  console.log(orderData);
+  console.log(orderData[0]);
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>
@@ -214,7 +214,7 @@ function CancelOrderReciept({ orderData }) {
       </SOrderDetailDiv>
       <SOrderTitalDiv>
         <STotalTextDiv> 합계</STotalTextDiv>
-        <STotalPriceDiv> ₩240,000</STotalPriceDiv>
+        <STotalPriceDiv> ₩{orderData[0]?.totalPrice * 1000}</STotalPriceDiv>
       </SOrderTitalDiv>
       <SButtonDiv>
         <SBtnDiv>

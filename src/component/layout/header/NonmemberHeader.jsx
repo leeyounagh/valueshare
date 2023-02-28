@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setCartItem } from "slice/CartSlice";
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
@@ -202,11 +202,6 @@ function NonememberHeader() {
             <Link to="/cart">
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
-            <SBadageDiv>
-              <Badge style={{ borderRadius: "10px" }} bg="warning">
-                {cartQuantity?.cartItem}
-              </Badge>
-            </SBadageDiv>
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>
@@ -218,7 +213,7 @@ function NonememberHeader() {
             ) : (
               <SLayoutProfileInnerDiv>
                 <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
+                <Link to="/register">Sign in</Link>
               </SLayoutProfileInnerDiv>
             )}
           </SLayoutProfileDiv>
