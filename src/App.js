@@ -34,6 +34,7 @@ import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
 import AddCategory from "pages/addcategory/AddCategory";
 import Category from "pages/category/Category";
+import BestSellerDetail from "pages/bestseller/BestSellerDetail";
 import AdminProduct from "pages/adminproduct/AdminProduct";
 import LoginCheck from "pages/logincheck/LoginCheck";
 import MyPage from "pages/membermypage/MyPage";
@@ -84,8 +85,13 @@ function App() {
   }
   return (
     <div>
-      <Header />
-      {/* {auth === "false" ? <Header /> : auth === "true" ? "어드민헤더" : null} */}
+      {auth === "false" ? (
+        <Header />
+      ) : auth === "true" ? (
+        <NonememberHeader />
+      ) : (
+        <NonememberHeader />
+      )}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

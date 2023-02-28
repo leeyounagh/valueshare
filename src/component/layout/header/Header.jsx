@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setUserInfo } from "slice/UserSlice";
 import color from "../../../styles/color";
 import Dropdown from "./Dropdown";
-
-const { white, gray4 } = color;
 
 const SlayOut = styled.header`
   width: 100%;
   height: 140px;
   padding: 35px 0 0;
-  background-color: ${white};
-  border-bottom: 1px solid ${gray4};
+  background-color: ${color.white};
+  border-bottom: 1px solid ${color.gray4};
   display: flex;
   a {
     text-decoration: none;
@@ -53,7 +49,7 @@ const SBestSellerDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 
 const SProductDiv = styled.div`
@@ -65,7 +61,7 @@ const SProductDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 
 const SLookBookDiv = styled.div`
@@ -77,7 +73,7 @@ const SLookBookDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 
 const SMembershipDiv = styled.div`
@@ -90,7 +86,7 @@ const SMembershipDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
 `;
 const SLineDiv = styled.div`
   width: 1px;
@@ -161,18 +157,9 @@ const SLayoutProfileDiv = styled.div`
 `;
 
 const SLayoutProfileInnerDiv = styled.div``;
-const SLogout = styled.button``;
 function Header() {
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
-  const dispatch = useDispatch();
-  const logoutUser = useSelector((state) => {
-    return state.UserInfoReducer.userInfo;
-  });
-  console.log(logoutUser);
-  const handleLogout = () => {
-    localStorage.removeItem("jwtToken");
-    dispatch(setUserInfo());
-  };
+
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -181,16 +168,8 @@ function Header() {
             <h2>value shop</h2>
           </Link>
         </SLogoDiv>
-
         <SLayoutMenuDiv>
           <SInnerItemDiv>
-            <SLogout
-              onClick={() => {
-                handleLogout();
-              }}
-            >
-              로그아웃
-            </SLogout>
             <Link to="/bestseller">
               <SBestSellerDiv>Best seller</SBestSellerDiv>
             </Link>
