@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/newline-after-import */
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "component/layout/footer/Footer";
@@ -83,6 +83,9 @@ function App() {
   if (pathname === "/membermypage") {
     dispatch(setPageInfo({ rootTitle: "Profile", currentTitle: "Profile" }));
   }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       {auth === "false" ? (

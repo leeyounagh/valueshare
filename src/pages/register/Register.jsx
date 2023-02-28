@@ -212,7 +212,7 @@ function Register() {
               aria-invalid={errors.password ? "#bf1616" : "#dadada"}
               {...register("password", {
                 required: true,
-                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4,4}$/,
+                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4, 12}$/,
               })}
             />
             {errors.password && errors.password.type === "required" && (
@@ -220,7 +220,8 @@ function Register() {
             )}
             {errors.password && errors.password.type === "pattern" && (
               <SP>
-                비밀번호는 4자 이며 영문 소문자, 숫자를 모두 포함해야 합니다.
+                비밀번호는 4자 이상이며 영문 소문자, 숫자를 모두 포함해야
+                합니다.
               </SP>
             )}
 

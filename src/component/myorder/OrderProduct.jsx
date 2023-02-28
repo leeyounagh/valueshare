@@ -102,6 +102,7 @@ const SBrandTitleDiv = styled.div`
 `;
 function OrderProduct({ orderData, products }) {
   // console.log("상품", orderData, imgArr);
+  console.log(products);
   return (
     <SLayout>
       <SOrderTitleDiv>Order {orderData[0]?.orderNumber}</SOrderTitleDiv>

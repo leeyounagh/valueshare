@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "slice/UserSlice";
-import { Link } from "react-router-dom";
+
 import color from "styles/color";
 
 const Slayout = styled.div`
@@ -34,6 +35,7 @@ const Sbtn = styled.button`
   border: none;
 `;
 function Dropdown() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const logoutUser = useSelector((state) => {
     return state.UserInfoReducer.userInfo;
@@ -42,6 +44,7 @@ function Dropdown() {
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     dispatch(setUserInfo(""));
+    navigate("/login");
   };
   return (
     <Slayout>
