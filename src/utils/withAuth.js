@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 export const withAuth = (Component) => (props) => {
   const navigate = useNavigate();
   const auth = useSelector((item) => {
-    return item.UserInfoReducer.userInfo[0].aud;
+    return item.UserInfoReducer?.userInfo?.[0]?.aud;
   });
 
   useEffect(() => {
