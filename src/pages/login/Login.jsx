@@ -98,8 +98,11 @@ function Login() {
     console.log("data", data);
 
     try {
-      const res = await axios.post("/login", data);
+      const res = await axios.post("http://34.64.139.64/auth/login", data);
       console.log("data", res);
+      if (res.status === 200) {
+        alert("로그인완료");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -130,11 +133,11 @@ function Login() {
         <SInput
           name="password"
           type="password"
-          placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
+          placeholder="영문 대/소문자, 숫자, 특수문자 포함 4~50자"
           {...register("password", {
             required: true,
             pattern:
-              /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+              /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{4,50}$/,
           })}
         />
         {errors.password && errors.password.type === "required" && (
@@ -142,7 +145,7 @@ function Login() {
         )}
         {errors.password && errors.password.type === "pattern" && (
           <SP>
-            비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
+            비밀번호는 4~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
             포함해야 합니다.
           </SP>
         )}
