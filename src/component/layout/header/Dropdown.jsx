@@ -1,11 +1,21 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "slice/UserSlice";
 
 import color from "styles/color";
 
+const DropdownAnimation = keyframes`
+0%{
+  transform: translateY(-50%);
+  height:0;
+}
+100%{
+  transform: translateY(0);
+  height:100px;
+}
+`;
 const Slayout = styled.div`
   width: 150px;
   height: 100px;
@@ -15,7 +25,9 @@ const Slayout = styled.div`
   right: 0;
   z-index: 2;
   border-radius: 10px;
-  box-shadow: 6px 8px 10px 0 rgba(0, 0, 0, 0.1);
+  animation: ${DropdownAnimation} 0.5s ease-in-out;
+  box-shadow: 6px 8px 10px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 
   ul {
     margin: auto;

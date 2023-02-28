@@ -124,37 +124,7 @@ const SButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const SReturnButton = styled.button`
-  font-size: 16px;
-  font-weight: normal;
 
-  line-height: normal;
-
-  text-align: center;
-  color: ${gray4};
-  width: 15%;
-  height: 30%;
-  border-radius: 10px;
-  border: solid 1px ${gray4};
-  background-color: ${gray6};
-  margin-right: 20px;
-`;
-const SCancelButton = styled.button`
-  border: solid 1px ${gray3};
-  width: 15%;
-  height: 30%;
-
-  font-size: 16px;
-  font-weight: normal;
-
-  line-height: normal;
-
-  text-align: center;
-  color: #000;
-  background-color: ${white};
-  border-radius: 10px;
-  margin-right: 50px;
-`;
 const SBtnDiv = styled.div`
   width: 18%;
   height: 30%;

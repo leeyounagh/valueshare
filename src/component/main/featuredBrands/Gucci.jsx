@@ -20,12 +20,17 @@ const SlayOut = styled.div`
   a {
     text-decoration: none;
     color: ${color.gray1};
+    overflow: hidden;
   }
 `;
 const GucciImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  &:hover {
+    scale: 1.1;
+  }
 `;
 
 function Gucci() {

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "component/Navbar";
 import Preparation from "pages/Preparation";
 
 function Membership() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <div>
       <Navbar />

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import color from "styles/color";
@@ -8,7 +7,6 @@ import Card from "component/produts/Card";
 import Categories from "component/produts/Categories";
 import TopBtn from "component/button/TopBtn";
 import { useSearchParams } from "react-router-dom";
-import { RecoilRoot } from "recoil";
 
 const SLayout = styled.div`
   width: 100%;
@@ -33,17 +31,17 @@ function Product() {
     categories: "all",
     brand: "all",
   });
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }, []);
+
   return (
     <SLayout>
-      <RecoilRoot>
-        <Navbar />
-      </RecoilRoot>
+      <Navbar />
       <SItemInnerDiv>
         <SCategoryDiv>
           <Categories

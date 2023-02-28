@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import uuid from "react-uuid";
 import styled from "styled-components";
 
 const Logoimg = styled.img`
@@ -44,7 +45,7 @@ export default class AutoPlay extends Component {
       <div>
         <Slider {...settings}>
           {logoimages.map((logoimage) => (
-            <div>
+            <div key={uuid()}>
               <Logoimg src={logoimage} />
             </div>
           ))}

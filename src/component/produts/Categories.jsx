@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import uuid from "react-uuid";
 import color from "styles/color";
 import Continent from "data/Continent";
 
@@ -115,7 +116,7 @@ function Categories({ searchParams, setSearchParams }) {
             (categoryData, index) => {
               return (
                 <SCategoryItemDiv
-                  key={categoryData}
+                  key={uuid()}
                   value={categoryData.value}
                   className={`${
                     selectedCategory === categoryData.value ? "active" : ""
