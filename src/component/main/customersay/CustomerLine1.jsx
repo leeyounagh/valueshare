@@ -36,7 +36,7 @@ function CustomerLine1() {
       <CardList>
         {Array.from({ length: 6 }).map(() => {
           return (
-            <div>
+            <div key={Math.random()}>
               <CustomerComponent />
             </div>
           );
