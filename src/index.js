@@ -15,7 +15,7 @@ import store, { persistor } from "./store/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 if (localStorage.jwtToken) {
   SetAuthorizationToken(localStorage.jwtToken);
-  // store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
+  store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
 }
 // eslint-disable-next-line dot-notation
 
