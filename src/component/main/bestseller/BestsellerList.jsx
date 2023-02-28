@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import BestSellerCard from "../../BestSellerCard";
+import { Link } from "react-router-dom";
+import color from "../../../styles/color";
 
 const Slayout = styled.div`
   h2 {
@@ -84,6 +85,79 @@ function SamplePrevArrow(props) {
   );
 }
 
+const SCardDiv = styled.div`
+  width: 360px;
+  height: 550px;
+  margin: 46px 74px 50px 91px;
+  padding: 28px 25px 19px 19px;
+  border: solid 1px ${color.gray4};
+  background-color: ${color.white};
+`;
+const SCardBrand = styled.div`
+  padding-left: 10px;
+  width: 100%;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  line-height: normal;
+
+  text-align: left;
+  color: #000;
+`;
+const SCartImg = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+const SPriceText = styled.div`
+  width: 103px;
+  height: 24px;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  line-height: normal;
+
+  text-align: left;
+  color: #000;
+`;
+const SCardImg = styled.img`
+  width: 310px;
+  height: 350px;
+  margin: 0 0 22px 6px;
+  object-fit: cover;
+`;
+const SCardTitleDiv = styled.div`
+  width: 100%;
+`;
+const SCartDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  margin-top: 20px;
+`;
+const SCardBrandNameDiv = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+
+  line-height: normal;
+
+  text-align: left;
+  color: #000;
+  padding-left: 10px;
+`;
+const SCartImgDiv = styled.div``;
+
+const Bestsellerimages = [
+  "/asset/img-bestseller1.png",
+  "/asset/img-bestseller2.png",
+  "/asset/img-bestseller3.png",
+  "/asset/img-bestseller4.png",
+  "/asset/img-bestseller5.png",
+  "/asset/img-bestseller6.png",
+];
+
 export default class BestsellerList extends Component {
   render() {
     const settings = {
@@ -100,42 +174,27 @@ export default class BestsellerList extends Component {
         <div>
           <h2>Best Seller</h2>
           <Slider {...settings}>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
-            <div>
-              <BestSellerCard />
-            </div>
+            {Bestsellerimages.map((image) => {
+              return (
+                <div>
+                  <SCardDiv>
+                    <SCardImg src={image} alt="상품썸네일" />
+                    <SCardTitleDiv>
+                      <SCardBrand>Converse All Star </SCardBrand>
+                      <SCardBrandNameDiv>1970s Hi</SCardBrandNameDiv>
+                    </SCardTitleDiv>
+                    <SCartDiv>
+                      <Link to="/cart">
+                        <SCartImgDiv>
+                          <SCartImg src="asset/icn-basket.svg" alt="장바구니" />
+                        </SCartImgDiv>
+                      </Link>
+                      <SPriceText> ₩ 60,000</SPriceText>
+                    </SCartDiv>
+                  </SCardDiv>
+                </div>
+              );
+            })}
           </Slider>
         </div>
         <BgImg1 src="/asset/bg-Ellipse3.svg" />

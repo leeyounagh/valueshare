@@ -16,13 +16,10 @@ const { white, gray3, gray1 } = color;
 
 const SLayout = styled.div`
   width: 100%;
-
   flex-grow: 0;
   padding: 60px 30px;
   border-radius: 10px;
   background-color: ${white};
-  z-index: 10;
-
   .paypal-button:not(.paypal-button-card),
   .paypal-button.paypal-button-shape-rect {
     width: 90%;
