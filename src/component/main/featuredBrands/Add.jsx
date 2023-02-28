@@ -23,7 +23,7 @@ const SlayOut = styled.div`
 `;
 
 const AddDiv = styled.div`
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   background-color: ${color.gray4};
   opacity: 0.5;

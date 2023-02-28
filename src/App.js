@@ -46,7 +46,7 @@ function App() {
   const auth = useSelector(
     (state) => state?.UserInfoReducer?.userInfo?.[0]?.aud
   );
-  console.log(auth);
+
   if (pathname === "/product") {
     dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));
   }
