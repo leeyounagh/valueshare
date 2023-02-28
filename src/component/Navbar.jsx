@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { useRecoilState } from "recoil";
 import styled from "styled-components";
-// import urlState from "../data/atom";
 import color from "../styles/color";
 
 const SLayout = styled.nav`
@@ -52,7 +50,6 @@ const SRootIcontImg = styled.img`
   width: 36px;
   height: 30px;
   transform: rotate(-90deg);
-  margin-top: 10px;
 `;
 const SCategoryDiv = styled.div``;
 const SCategoryTitle = styled.div`
@@ -75,12 +72,6 @@ function Navbar() {
   const text = useSelector((state) => {
     return state.pageTitleReducer;
   });
-
-  // const [url, setUrl] = useRecoilState(urlState);
-
-  // setUrl(text.rootTitle);
-
-  // console.log(setUrl);
 
   return (
     <SLayout>
