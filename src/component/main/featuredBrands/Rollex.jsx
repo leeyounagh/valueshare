@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
@@ -24,6 +25,10 @@ const SlayOut = styled.div`
     width: 100%;
     color: ${color.gray3};
   }
+  a {
+    text-decoration: none;
+    color: ${color.gray1};
+  }
 `;
 const Button = styled.button`
   position: absolute;
@@ -46,10 +51,12 @@ const RollexImg = styled.img`
 function Rollex() {
   return (
     <SlayOut>
-      <h2>Rollex</h2>
-      <p>1%를 위한 기술, 성공의 상징 되다</p>
-      <Button>view detail</Button>
-      <RollexImg src="/asset/img-rollex.png" />
+      <Link to="/product?categories=all&brand=Balenciaga">
+        <h2>Rollex</h2>
+        <p>1%를 위한 기술, 성공의 상징 되다</p>
+        <Button>view detail</Button>
+        <RollexImg src="/asset/img-rollex.png" />
+      </Link>
     </SlayOut>
   );
 }

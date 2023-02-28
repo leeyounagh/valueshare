@@ -101,7 +101,7 @@ const SLayoutInnerDiv = styled.div`
   padding-left: 40px;
 `;
 const SLayoutMenuDiv = styled.div`
-  width: 60%;
+  width: 90%;
   height: 67px;
   display: flex;
   justify-content: flex-end;
@@ -115,11 +115,7 @@ const SLayoutIconDiv = styled.div`
   padding-top: 18px;
   margin-left: 24px;
 `;
-const SAlarmImg = styled.img`
-  width: 46px;
-  height: 40px;
-  object-fit: contain;
-`;
+
 const SBasketImg = styled.img`
   width: 46px;
   height: 40px;
@@ -135,6 +131,7 @@ const SProfileMenuImg = styled.img`
   margin-left: 10px;
   margin-top: 15px;
   object-fit: contain;
+  cursor: pointer;
 `;
 const SLayoutIconItem = styled.div`
   margin: 5px;
@@ -156,7 +153,11 @@ const SLayoutProfileDiv = styled.div`
   margin-bottom: 20px;
 `;
 
-const SLayoutProfileInnerDiv = styled.div``;
+const SLayoutProfileInnerDiv = styled.div`
+  .rotate {
+    transform: rotate(180deg);
+  }
+`;
 function Header() {
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
 
@@ -186,9 +187,6 @@ function Header() {
         </SLayoutMenuDiv>
         <SLayoutIconDiv>
           <SLayoutIconItem>
-            <SAlarmImg src="/asset/headerAlarm.svg" />
-          </SLayoutIconItem>
-          <SLayoutIconItem>
             <Link to="/cart">
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
@@ -202,8 +200,11 @@ function Header() {
             <SLayoutProfileInnerDiv
               onClick={() => setDropdownVisibility(!dropdownVisibility)}
             >
-              <SProfileMenuImg src="/asset/Chevrons_chevron-right.svg" />
-              {dropdownVisibility ? <div /> : <Dropdown />}
+              <SProfileMenuImg
+                className={dropdownVisibility ? null : "rotate"}
+                src="/asset/Chevrons_chevron-right.svg"
+              />
+              {dropdownVisibility ? null : <Dropdown />}
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

@@ -116,7 +116,6 @@ const SInnerButtonDiv = styled.div`
   width: 20%;
   height: 50px;
   margin-right: 20px;
-  z-index: 10;
 `;
 function OrderedEditAddress({ setIsOpen, userInfo }) {
   const [data, setData] = useState({

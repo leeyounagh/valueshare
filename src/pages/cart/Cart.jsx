@@ -46,7 +46,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState(getInitialCartItems());
 
   return (
-    <div style={{ zIndex: "10", position: "relative" }}>
+    <div style={{ position: "relative" }}>
       <Navbar />
       <SLayout>
         {cartItems.length === 0 ? (
