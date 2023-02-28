@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { decodeToken } from "react-jwt";
 import { setUserInfo } from "slice/UserSlice";
 import SetAuthorizationToken from "utils/SetAuthorizationToken";
-import AxiosInstance from "data/AxiosInstance";
+// import AxiosInstance from "data/AxiosInstance";
+import axios from "axios";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
@@ -123,14 +124,22 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(watch("email"), watch("password"));
-  // const password = useRef();
-  // password.current = watch("password");
+
+  const password = useRef();
+  password.current = watch("password");
+
   const onSubmit = async (data) => {
+    console.log("data", data);
+
     try {
-      const res = await AxiosInstance.post("/auth/login", data);
+      const res = await axios.post("http://34.64.139.64/auth/login", data);
+      console.log("data", res);
+      if (res.status === 200) {
+        alert("로그인 성공");
+      }
       const token = await res.data.user;
       localStorage.setItem("jwtToken", token);
       SetAuthorizationToken(token);
@@ -156,7 +165,6 @@ function Login() {
             <SLabel>Email</SLabel>
             <SInput
               name="email"
-              type="email"
               placeholder="elice@valueshare.com"
               {...register("email", {
                 required: true,
@@ -174,22 +182,21 @@ function Login() {
             <SInput
               name="password"
               type="password"
-              placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
+              placeholder="영문 대/소문자, 숫자, 특수문자 포함 4~12자"
               {...register("password", {
                 required: true,
-                // pattern:
-                //   /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4,12}$/,
               })}
             />
-            {/* {errors.password && errors.password.type === "required" && (
-          <SP>비밀번호를 입력하세요.</SP>
-        )}
-        {errors.password && errors.password.type === "pattern" && (
-          <SP>
-            비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
-            포함해야 합니다.
-          </SP>
-        )} */}
+            {errors.password && errors.password.type === "required" && (
+              <SP>비밀번호를 입력하세요.</SP>
+            )}
+            {errors.password && errors.password.type === "pattern" && (
+              <SP>
+                비밀번호는 4~12자 이며 영문 대/소문자, 숫자, 특수문자를 모두
+                포함해야 합니다.
+              </SP>
+            )}
           </SDiv>
           <BtnDiv>
             <Btn1 type="submit" title="Log in" />

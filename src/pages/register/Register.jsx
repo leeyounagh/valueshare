@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
+// import AxiosInstance from "data/AxiosInstance";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
@@ -44,8 +44,7 @@ const LoginLayer = styled.div`
 
 const SSection = styled.form`
   max-width: 500px;
-  margin: 70px auto;
-  font-family: Montserrat;
+  margin: 100px auto;
 `;
 
 const STitle = styled.h1`
@@ -92,51 +91,36 @@ const SInput = styled.input`
   margin-bottom: 17px;
   font-size: 14px;
   border-color: ${(props) => props["aria-invalid"]};
-
-  &::placeholder {
-    font-family: Montserrat;
-  }
 `;
 
-const SSignUpBtn = styled.button`
-  width: 100%;
-  background: ${color.main};
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 15px;
-  padding: 20px;
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 7px;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  text-align: center;
-  border-radius: 10px;
-`;
-// background: ${(props) => props["aria-invalid"]};
+// const SSignUpBtn = styled.button`
+//   width: 100%;
+//   background: ${color.main};
+//   color: white;
+//   text-transform: uppercase;
+//   border: none;
+//   margin-top: 15px;
+//   padding: 20px;
+//   font-family: Montserrat;
+//   font-size: 24px;
+//   font-weight: bold;
+//   letter-spacing: 7px;
+//   font-stretch: normal;
+//   font-style: normal;
+//   line-height: normal;
+//   text-align: center;
+//   border-radius: 10px;
+
+// `;
 
 const SP = styled.p`
-<<<<<<< HEAD
-  font-family: Montserrat;
-  color: #bf1616;
-=======
   color: red;
->>>>>>> 3e491f27ab201ce69d8a7e0d308f9854d16d4e16
 
   &::before {
     display: inline;
     content: "⚠";
   }
 `;
-
-// type FormValues = {
-//   checkbox: boolean,
-// };
-
-// let renderCount = 0;
 
 function Register() {
   const {
@@ -146,11 +130,6 @@ function Register() {
     formState: { errors, isDirty, isValid },
   } = useForm();
 
-  // defaultValues: {
-  //   checkbox: true,
-  // },
-
-  // console.log(watch("email"));
   const password = useRef();
   password.current = watch("password");
 
@@ -171,10 +150,6 @@ function Register() {
     }
   };
 
-  // const handleButtonChange = (e) => {
-  //   e.target.value
-  // };
-
   return (
     <Slayout>
       <ImgLayer>
@@ -188,7 +163,7 @@ function Register() {
             <SLabel>Email</SLabel>
             <SInput
               name="email"
-              type="email"
+              // type="email"
               placeholder="elice@valueshare.com"
               aria-invalid={errors.email ? "#bf1616" : `${color.gray4}`}
               {...register("email", {
@@ -207,12 +182,11 @@ function Register() {
             <SInput
               name="password"
               type="password"
-              // placeholder="영문 대/소문자, 숫자, 특수문자 포함 4자"
-              placeholder="영문 소문자, 숫자 포함 4자"
-              aria-invalid={errors.password ? "#bf1616" : "#dadada"}
+              placeholder="영문 소문자, 숫자 포함 4~12자"
+              aria-invalid={errors.password ? "#bf1616" : `${color.gray4}`}
               {...register("password", {
                 required: true,
-                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4, 12}$/,
+                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4,12}$/,
               })}
             />
             {errors.password && errors.password.type === "required" && (
@@ -220,8 +194,7 @@ function Register() {
             )}
             {errors.password && errors.password.type === "pattern" && (
               <SP>
-                비밀번호는 4자 이상이며 영문 소문자, 숫자를 모두 포함해야
-                합니다.
+                비밀번호는 4~12자 이며 영문 소문자, 숫자를 모두 포함해야 합니다.
               </SP>
             )}
 
@@ -282,8 +255,15 @@ function Register() {
               <SP>전화번호를 형식에 맞게 입력하세요.</SP>
             )}
           </SDiv>
-
-          <Btn1 type="submit" title="Creat Account" />
+          <Btn1
+            name="button"
+            type="submit"
+            title="Creat Account"
+            disabled={!isDirty && !isValid}
+          >
+            CREATE ACCOUNT
+          </Btn1>
+          {/* <Btn1 type="submit" title="Creat Account" /> */}
         </SSection>
       </LoginLayer>
     </Slayout>
