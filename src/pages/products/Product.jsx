@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Navbar from "component/Navbar";
@@ -32,7 +33,12 @@ function Product() {
     categories: "all",
     brand: "all",
   });
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <SLayout>
       <RecoilRoot>
