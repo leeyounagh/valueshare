@@ -4,6 +4,28 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
+const Logoimg = styled.img`
+  object-fit: contain;
+  align-items: center;
+  padding: 0 30px;
+  width: 180px;
+  height: 100px;
+`;
+
+const logoimages = [
+  "/asset/img-logo1.png",
+  "/asset/img-logo2.png",
+  "/asset/img-logo3.png",
+  "/asset/img-logo4.png",
+  "/asset/img-logo1.png",
+  "/asset/img-logo2.png",
+  "/asset/img-logo3.png",
+  "/asset/img-logo4.png",
+  "/asset/img-logo1.png",
+  "/asset/img-logo2.png",
+  "/asset/img-logo3.png",
+];
+
 export default class AutoPlay extends Component {
   render() {
     const settings = {
@@ -17,52 +39,15 @@ export default class AutoPlay extends Component {
       autoplaySpeed: 2000,
       cssEase: "linear",
     };
-    const Logoimg = styled.img`
-      object-fit: contain;
-      align-items: center;
-      padding: 0 30px;
-      width: 180px;
-      height: 100px;
-    `;
+
     return (
       <div>
         <Slider {...settings}>
-          <div>
-            <Logoimg src="../asset/img-logo1.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo2.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo3.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo4.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo1.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo2.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo3.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo4.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo1.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo2.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo3.png" />
-          </div>
-          <div>
-            <Logoimg src="../asset/img-logo4.png" />
-          </div>
+          {logoimages.map((logoimage) => (
+            <div>
+              <Logoimg src={logoimage} />
+            </div>
+          ))}
         </Slider>
       </div>
     );

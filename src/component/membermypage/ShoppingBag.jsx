@@ -92,15 +92,12 @@ const SLinDiv = styled.div`
   height: 1px;
   width: 90%;
   margin-bottom: 10px;
-  z-index: 10;
 `;
 const SImg = styled.img`
   width: 95px;
   height: 130px;
-  z-index: 5;
 `;
 const SBrandDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;

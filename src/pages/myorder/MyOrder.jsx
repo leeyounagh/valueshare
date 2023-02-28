@@ -20,7 +20,6 @@ const SLayout = styled.div`
 
 const SOrderHistoryDiv = styled.div`
   width: 30%;
-
   margin-right: 20px;
 `;
 const SCustomerInfoDiv = styled.div`

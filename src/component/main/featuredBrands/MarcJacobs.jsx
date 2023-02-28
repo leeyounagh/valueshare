@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
@@ -22,6 +23,10 @@ const SlayOut = styled.div`
     left: 10%;
     width: 100%;
     color: ${color.gray3};
+  }
+  a {
+    text-decoration: none;
+    color: ${color.gray1};
   }
 `;
 const Button = styled.button`
@@ -46,10 +51,12 @@ const MarcJacobsImg = styled.img`
 function MarcJacobs() {
   return (
     <SlayOut>
-      <h2>MarcJacobs</h2>
-      <p>독특하고 강렬한 마크 제이콥스로 매력을 어필하세요 </p>
-      <Button>View detail</Button>
-      <MarcJacobsImg src="/asset/img-marcjacobs.png" />
+      <Link to="/product?categories=all&brand=Chanel">
+        <h2>MarcJacobs</h2>
+        <p>독특하고 강렬한 마크 제이콥스로 매력을 어필하세요 </p>
+        <Button>View detail</Button>
+        <MarcJacobsImg src="/asset/img-marcjacobs.png" />
+      </Link>
     </SlayOut>
   );
 }

@@ -17,7 +17,6 @@ const SLayout = styled.div`
   border-radius: 10px;
   background-color: ${white};
   margin-bottom: 20px;
-  z-index: 10;
 `;
 const SAddressTitle = styled.div`
   width: 90%;
