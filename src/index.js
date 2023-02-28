@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -11,14 +10,12 @@ import SetAuthorizationToken from "utils/SetAuthorizationToken";
 import { decodeToken } from "react-jwt";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import store from "./store/store";
-
-const persistor = persistStore(store);
+import store, { persistor } from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 if (localStorage.jwtToken) {
   SetAuthorizationToken(localStorage.jwtToken);
-  store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
+  // store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
 }
 // eslint-disable-next-line dot-notation
 
