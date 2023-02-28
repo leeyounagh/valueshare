@@ -1,12 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
-import color from "styles/color";
 import Navbar2 from "component/Navbar2";
 import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
 import AxiosInstance from "data/AxiosInstance";
+import { RecoilRoot } from "recoil";
+import color from "styles/color";
 import handleBasket from "utils/handleBasket";
 
 const Slayout = styled.div`
@@ -201,7 +203,9 @@ function Detail() {
 
   return (
     <Slayout>
-      <Navbar2 />
+      <RecoilRoot>
+        <Navbar2 />
+      </RecoilRoot>
       <DetailLayout>
         <Slider {...settings}>
           <ProductImgDiv>
@@ -260,6 +264,7 @@ function Detail() {
           <BtnDiv
             onClick={() => {
               handleBasket(productInformation?.result);
+              alert("장바구니에 추가되었습니다!");
             }}
           >
             <Btn1 title="장바구니에 추가" />

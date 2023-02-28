@@ -90,6 +90,7 @@ function UploadProduct() {
           desc: "",
         });
         alert("상품 업로드에 성공하였습니다.");
+        window.location.reload();
       }
     } catch (err) {
       if (err) {

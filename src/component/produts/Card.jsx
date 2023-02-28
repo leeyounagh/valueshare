@@ -4,10 +4,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import AxiosInstance from "data/AxiosInstance";
-import handleBasket from "utils/handleBasket";
+// import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+import handleBasket from "utils/handleBasket";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -75,7 +76,6 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
-
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
     dispatch(passId(_id));
@@ -104,9 +104,8 @@ function Card() {
     <SLayout>
       {productData.map((item) => {
         return (
-          <SCardDiv>
+          <SCardDiv key={item._id}>
             <Link
-              key={item._id}
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >
@@ -119,6 +118,7 @@ function Card() {
             <SCartDiv
               onClick={() => {
                 handleBasket(item);
+                alert("장바구니에 추가되었습니다!");
               }}
             >
               <SCartImgDiv>

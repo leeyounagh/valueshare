@@ -33,8 +33,6 @@ const STableDiv = styled.div`
 function AdminProduct() {
   // eslint-disable-next-line no-unused-vars
   const [productData, setProductData] = useState();
-  const [id, setId] = useState();
-  console.log(productData);
 
   useEffect(() => {
     async function getOrderList() {
@@ -51,7 +49,7 @@ function AdminProduct() {
       );
       if (response.status === 200) {
         alert("상품이 삭제되었습니다..");
-        //  페이지 리렌더링이되어야됨
+        window.location.reload();
       }
       console.log(response);
     } catch (err) {

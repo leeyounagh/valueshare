@@ -93,6 +93,7 @@ function OrderListDetail() {
             <SButton
               onClick={() => {
                 handleEditOrder();
+                window.location.reload();
               }}
             >
               수정하기

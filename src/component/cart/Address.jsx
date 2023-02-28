@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import AxiosInstance from "data/AxiosInstance";
 import Btn1 from "component/button/Btn1";
 import styled from "styled-components";
 import color from "styles/color";
@@ -89,19 +90,42 @@ const SBtnDiv = styled.div`
 `;
 function Address() {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
+
+  const userId = useSelector((item) => {
+    return item?.UserInfoReducer?.userInfo?.[0]?.user;
+  });
+  useEffect(() => {
+    async function handleUserInfo() {
+      try {
+        const response = await AxiosInstance.get(`/users/mypage/${userId}`);
+        const data = await response.data;
+        console.log(data);
+        setUserInfo([data[0]]);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    if (userId) {
+      handleUserInfo();
+    }
+  }, []);
 
   const adress = useSelector((state) => {
     return state.UserAddressReducer;
   });
-  console.log(adress);
+
   return (
     <div>
       <SLayout>
         <SAddressTitle>Address</SAddressTitle>
         <SItemDiv>
           <SAdressTiltleDiv>받는사람</SAdressTiltleDiv>
+
           <SAddressText>
-            {adress.customerName.length > 0
+            {!userInfo
+              ? `${userInfo[0]?.name}`
+              : adress.customerName.length > 0
               ? `${adress.customerName}`
               : "성함을 입력해주세요"}
           </SAddressText>
@@ -109,7 +133,9 @@ function Address() {
         <SItemDiv>
           <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
           <SAddressText>
-            {adress.phoneNumber.length > 0
+            {!userInfo
+              ? `${userInfo[0]?.phone}`
+              : adress.phoneNumber.length > 0
               ? `${adress.phoneNumber}`
               : "핸드폰번호를 입력해주세요"}
           </SAddressText>
@@ -117,7 +143,9 @@ function Address() {
         <SItemDiv>
           <SAdressTiltleDiv>배송지</SAdressTiltleDiv>
           <SAddressText>
-            {adress.address.length >= 14
+            {!userInfo
+              ? `${userInfo[0]?.address}`
+              : adress.address.length >= 14
               ? `${adress.address.substr(0, 14)}...`
               : adress.address.length > 0
               ? `${adress.address}`
@@ -136,7 +164,9 @@ function Address() {
           <SAdressTiltleDiv>이메일</SAdressTiltleDiv>
           <SAddressText>
             {" "}
-            {adress.email.length > 0
+            {!userInfo
+              ? `${userInfo[0]?.email}`
+              : adress.email.length > 0
               ? `${adress.email}`
               : "email을 등록해주세요"}
           </SAddressText>
@@ -149,7 +179,9 @@ function Address() {
           <Btn1 title="배송지 수정" />
         </SBtnDiv>
       </SLayout>
-      {modalIsOpen ? <EditAdress setIsOpen={setIsOpen} /> : null}
+      {modalIsOpen ? (
+        <EditAdress userInfo={userInfo} setIsOpen={setIsOpen} />
+      ) : null}
     </div>
   );
 }

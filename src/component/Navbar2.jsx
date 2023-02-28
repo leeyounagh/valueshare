@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import AxiosInstance from "data/AxiosInstance";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import urlState from "../data/atom";
 import color from "../styles/color";
 
 const SLayout = styled.nav`
@@ -34,7 +36,7 @@ const SHomeImg = styled.img`
 const SRootTitle = styled.div``;
 const SRootDiv = styled.div`
   display: flex;
-  width: 50%;
+  width: auto;
   height: 30%;
   margin-left: 54px;
   font-size: 24px;
@@ -64,18 +66,22 @@ const SPageTitleDiv = styled.div`
   height: 100%;
   font-size: 24px;
   font-weight: bold;
-
   line-height: normal;
-
   text-align: left;
 `;
 function Navbar2() {
   const text = useSelector((state) => {
     return state.pageTitleReducer;
   });
-
   const [productInformation, setProductInformation] = useState(null);
   const { productid } = useParams();
+
+  const [url, setUrl] = useRecoilState(urlState);
+
+  setUrl(text.rootTitle);
+
+  console.log(text.rootTitle);
+
   useEffect(() => {
     AxiosInstance.get(`/admin/products/${productid}`)
       .then((res) => {
@@ -99,7 +105,7 @@ function Navbar2() {
           <SRootIcontImg src="../asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
+          <SCategoryTitle>{url}</SCategoryTitle>
         </SCategoryDiv>
         <SRootIconDiv>
           <SRootIcontImg src="../asset/Chevrons_chevron-right.svg" />

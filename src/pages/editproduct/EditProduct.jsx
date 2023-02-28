@@ -139,6 +139,7 @@ function EditProduct() {
           productTitle: "",
         });
         alert("상품 수정에 성공하였습니다.");
+        window.location.reload();
       }
     } catch (err) {
       if (err) {

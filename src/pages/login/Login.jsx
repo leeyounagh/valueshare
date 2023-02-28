@@ -9,7 +9,6 @@ import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import EmailInput from "component/input/EmailInput";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
 
@@ -116,7 +115,6 @@ function Login() {
   console.log(watch("email"), watch("password"));
   // const password = useRef();
   // password.current = watch("password");
-
   const onSubmit = async (data) => {
     try {
       const res = await AxiosInstance.post("/auth/login", data);
@@ -124,7 +122,7 @@ function Login() {
       localStorage.setItem("jwtToken", token);
       SetAuthorizationToken(token);
       dispatch(setUserInfo(decodeToken(token)));
-      // navigate("/");
+      navigate("/");
       console.log("data", res.data.user, decodeToken(token));
     } catch (err) {
       alert("아이디 혹은 비밀번호가 잘못되었습니다.");

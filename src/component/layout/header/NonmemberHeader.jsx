@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setCartItem } from "slice/CartSlice";
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
@@ -155,20 +155,8 @@ const SLayoutProfileInnerDiv = styled.div`
     padding: 0 10px;
   }
 `;
-const SBadageDiv = styled.div`
-  position: absolute;
-  top: -10px;
-  left: 33px;
-  .bg-warning {
-    color: ${color.white};
-    background-color: ${color.main} !important;
-  }
-`;
-function Header() {
-  const cartQuantity = useSelector((state) => {
-    return state.CartItemReducer;
-  });
 
+function Header() {
   const user = useSelector((state) => {
     return state.UserReducer;
   });
@@ -202,11 +190,6 @@ function Header() {
             <Link to="/cart">
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
-            <SBadageDiv>
-              <Badge style={{ borderRadius: "10px" }} bg="warning">
-                {cartQuantity?.cartItem}
-              </Badge>
-            </SBadageDiv>
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>

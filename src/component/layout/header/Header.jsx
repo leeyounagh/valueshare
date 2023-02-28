@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Badge from "react-bootstrap/Badge";
+import { setUserInfo } from "slice/UserSlice";
 import color from "../../../styles/color";
+import Dropdown from "./Dropdown";
 
 const { white, gray4 } = color;
 
@@ -142,6 +144,7 @@ const SLayoutIconItem = styled.div`
   margin: 5px;
   height: 100%;
   width: 20%;
+  position: relative;
 `;
 const SInnerItemDiv = styled.div`
   justify-content: space-between;
@@ -156,8 +159,20 @@ const SLayoutProfileDiv = styled.div`
   height: 100%;
   margin-bottom: 20px;
 `;
+
 const SLayoutProfileInnerDiv = styled.div``;
+const SLogout = styled.button``;
 function Header() {
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  const dispatch = useDispatch();
+  const logoutUser = useSelector((state) => {
+    return state.UserInfoReducer.userInfo;
+  });
+  console.log(logoutUser);
+  const handleLogout = () => {
+    localStorage.removeItem("jwtToken");
+    dispatch(setUserInfo());
+  };
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -169,6 +184,13 @@ function Header() {
 
         <SLayoutMenuDiv>
           <SInnerItemDiv>
+            <SLogout
+              onClick={() => {
+                handleLogout();
+              }}
+            >
+              로그아웃
+            </SLogout>
             <Link to="/bestseller">
               <SBestSellerDiv>Best seller</SBestSellerDiv>
             </Link>
@@ -189,17 +211,20 @@ function Header() {
           </SLayoutIconItem>
           <SLayoutIconItem>
             <Link to="/cart">
-              <Badge bg="secondary">9</Badge>
               <SBasketImg src="/asset/icn-basket.svg" />
             </Link>
           </SLayoutIconItem>
+
           <SLineDiv />
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
               <SProfileImg src="/asset/icn-profile.svg" />
             </SLayoutProfileInnerDiv>
-            <SLayoutProfileInnerDiv>
+            <SLayoutProfileInnerDiv
+              onClick={() => setDropdownVisibility(!dropdownVisibility)}
+            >
               <SProfileMenuImg src="/asset/Chevrons_chevron-right.svg" />
+              {dropdownVisibility ? <div /> : <Dropdown />}
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

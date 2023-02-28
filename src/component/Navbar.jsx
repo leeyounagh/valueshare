@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+// import { useRecoilState } from "recoil";
 import styled from "styled-components";
+// import urlState from "../data/atom";
 import color from "../styles/color";
-
-const { gray4 } = color;
 
 const SLayout = styled.nav`
   width: 100%;
   height: 233px;
   padding: 33px 0 0;
   background-color: var(--white);
-  border-bottom: 1px solid ${gray4};
+  border-bottom: 1px solid ${color.gray4};
   background-color: ${color.white};
 `;
 
@@ -44,7 +44,7 @@ const SRootDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 const SRootIconDiv = styled.div`
   height: 100%;
@@ -73,12 +73,19 @@ const SPageTitleDiv = styled.div`
   line-height: normal;
 
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
+
 function Navbar() {
   const text = useSelector((state) => {
     return state.pageTitleReducer;
   });
+
+  // const [url, setUrl] = useRecoilState(urlState);
+
+  // setUrl(text.rootTitle);
+
+  // console.log(setUrl);
 
   return (
     <SLayout>
@@ -93,7 +100,10 @@ function Navbar() {
           <SRootIcontImg src="/asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
+          <SCategoryTitle>
+            {text.rootTitle}
+            {/* {url} */}
+          </SCategoryTitle>
         </SCategoryDiv>
       </SRootDiv>
 

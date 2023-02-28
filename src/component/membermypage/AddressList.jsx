@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import AddressModal from "./AddressModal";
 
 const { white, gray1, gray3, gray5 } = color;
 
 const SLayout = styled.div`
-  width: 80%;
+  width: 100%;
   margin-top: 50px;
   border-radius: 10px;
   background-color: ${white};
@@ -13,7 +14,7 @@ const SLayout = styled.div`
 `;
 const STitleDiv = styled.div`
   padding-top: 40px;
-  padding-left: 20px;
+  padding-left: 30px;
   height: 100px;
   h2 {
     font-family: Montserrat;
@@ -29,7 +30,7 @@ const STitleDiv = styled.div`
   }
 `;
 const SAddressDiv = styled.div`
-  padding-left: 20px;
+  padding-left: 30px;
 `;
 const SIconDiv = styled.div`
   width: 28px;
@@ -54,7 +55,7 @@ const SAddressTextDiv = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: ${gray3};
-  padding-left: 20px;
+  padding-left: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
 `;
@@ -65,7 +66,23 @@ const SLine = styled.div`
   width: 90%;
   margin-left: 20px;
 `;
-function AddressList() {
+const SAddAddressDiv = styled.div`
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ff985f;
+  padding-left: 30px;
+}
+
+`;
+function AddressList({ userInfo }) {
+  const [isModal, setIsModal] = useState(false);
+
   return (
     <SLayout>
       <STitleDiv>
@@ -77,8 +94,18 @@ function AddressList() {
           <SMainAddressDiv> Main Address</SMainAddressDiv>
         </SIconDiv>
       </SAddressDiv>
-      <SAddressTextDiv> 엘리스시 엘리스동 엘리스로</SAddressTextDiv>
+      <SAddressTextDiv> {userInfo[0]?.address}</SAddressTextDiv>
       <SLine />
+      <SAddAddressDiv
+        onClick={() => {
+          setIsModal(!isModal);
+        }}
+      >
+        + Add New Address
+      </SAddAddressDiv>
+      {isModal ? (
+        <AddressModal userInfo={userInfo} setIsOpen={setIsModal} />
+      ) : null}
     </SLayout>
   );
 }
