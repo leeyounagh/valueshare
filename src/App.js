@@ -39,6 +39,7 @@ import BestSellerDetail from "pages/bestseller/BestSellerDetail";
 import AdminProduct from "pages/adminproduct/AdminProduct";
 import LoginCheck from "pages/logincheck/LoginCheck";
 import MyPage from "pages/membermypage/MyPage";
+import AdminHeader from "component/layout/header/AdminHeader";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -92,7 +93,7 @@ function App() {
       {auth === "false" ? (
         <Header />
       ) : auth === "true" ? (
-        <Header />
+        <AdminHeader />
       ) : (
         <NonememberHeader />
       )}

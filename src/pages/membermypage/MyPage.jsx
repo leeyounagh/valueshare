@@ -70,10 +70,18 @@ function MyPage() {
     handleUserInfo();
   }, []);
 
-  const handleDeleteUser = () => {
-    localStorage.removeItem("jwtToken");
-    dispatch(setUserInfo(""));
-    navigate("/");
+  const handleDeleteUser = async () => {
+    try {
+      const response = await AxiosInstance.delete(`users/mypage/${userId}`);
+      if (response.status === 200) {
+        localStorage.removeItem("jwtToken");
+        dispatch(setUserInfo(""));
+        navigate("/");
+      }
+    } catch (err) {
+      alert("탈퇴에 실패했습니다.");
+      console.log(err);
+    }
   };
   return (
     <div>
@@ -90,13 +98,12 @@ function MyPage() {
           <MemberMyOrder userProduct={userProduct} userInfo={myUserInfo} />
           <Help />
           <SBtnDiv>
-            <SBtnInnderDiv>
-              <Btn1
-                title="탈퇴하기"
-                onClick={() => {
-                  handleDeleteUser();
-                }}
-              />
+            <SBtnInnderDiv
+              onClick={() => {
+                handleDeleteUser();
+              }}
+            >
+              <Btn1 title="탈퇴하기" />
             </SBtnInnderDiv>
           </SBtnDiv>
         </SUserOrderDiv>
