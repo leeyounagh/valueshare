@@ -22,6 +22,7 @@ const SlayOut = styled.div`
     text-decoration: none;
     color: ${color.gray1};
     overflow: hidden;
+    width: 100%;
   }
 `;
 
