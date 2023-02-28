@@ -42,51 +42,27 @@ const SLogoDiv = styled.div`
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.gray1};
 `;
 
 const SProductDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.gray1};
 `;
 
 const SLookBookDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.gray1};
 `;
 
 const SMembershipDiv = styled.div`
   height: 100%;
   width: 130px;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.gray1};
 `;
 const SLineDiv = styled.div`
   width: 1px;
@@ -144,6 +120,15 @@ const SInnerItemDiv = styled.div`
   width: 60%;
   height: 100%;
   display: flex;
+
+  a {
+    color: ${color.gray1};
+    font-weight: 500;
+    &:hover {
+      color: ${color.main} !important;
+      font-weight: 600;
+    }
+  }
 `;
 const SLayoutProfileDiv = styled.div`
   display: flex;

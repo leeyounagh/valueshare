@@ -13,6 +13,7 @@ import Login from "pages/login/Login";
 import Main from "pages/main/Main";
 import MyOrder from "pages/myorder/MyOrder";
 import Register from "pages/register/Register";
+import RegisterComplete from "pages/register/RegisterComplete";
 import BestSeller from "pages/bestseller/BestSeller";
 import Cart from "pages/cart/Cart";
 import Detail from "pages/productdeail/Detail";
@@ -100,6 +101,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/register_complete" element={<RegisterComplete />} />
 
         <Route path="/myorder/:userid" element={<MyOrder />} />
         <Route path="/mypage/resign" element={<Resign />} />

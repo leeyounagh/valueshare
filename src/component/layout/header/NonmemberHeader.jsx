@@ -29,14 +29,10 @@ const SLogoDiv = styled.div`
 
   a {
     font-weight: bold;
-
-    line-height: normal;
-
     text-align: left;
-    color: black;
+    color: ${color.gray1};
     font-family: "Rufina", serif;
     font-weight: 900;
-
     align-items: center;
   }
   h2 {
@@ -47,51 +43,27 @@ const SLogoDiv = styled.div`
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 
 const SProductDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 
 const SLookBookDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 
 const SMembershipDiv = styled.div`
   height: 100%;
   width: 130px;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 const SLineDiv = styled.div`
   width: 1px;
@@ -138,6 +110,15 @@ const SInnerItemDiv = styled.div`
   width: 60%;
   height: 100%;
   display: flex;
+
+  a {
+    color: ${color.gray1};
+    font-weight: 500;
+    &:hover {
+      color: ${color.main} !important;
+      font-weight: 600;
+    }
+  }
 `;
 const SLayoutProfileDiv = styled.div`
   display: flex;
@@ -153,6 +134,10 @@ const SLayoutProfileInnerDiv = styled.div`
   a {
     color: ${color.gray3} !important;
     padding: 0 10px;
+    &:hover {
+      color: ${color.gray1} !important;
+      font-weight: 500;
+    }
   }
 `;
 const SBadageDiv = styled.div`
@@ -205,17 +190,10 @@ function NonememberHeader() {
           </SLayoutIconItem>
           <SLineDiv />
           <SLayoutProfileDiv>
-            {user ? (
-              <SLayoutProfileInnerDiv>
-                <Link to="/logout">Logout</Link>
-                <Link to="/memberorderchecks">My Order</Link>
-              </SLayoutProfileInnerDiv>
-            ) : (
-              <SLayoutProfileInnerDiv>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Sign in</Link>
-              </SLayoutProfileInnerDiv>
-            )}
+            <SLayoutProfileInnerDiv>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Sign up</Link>
+            </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>
       </SLayoutInnerDiv>
