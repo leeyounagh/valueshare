@@ -8,6 +8,7 @@ const { gray1, white, gray3, gray5 } = color;
 
 const SLayout = styled.div`
   width: 90%;
+  min-height: 73vh;
   border-radius: 10px;
   background-color: ${white};
   padding-left: 30px;
@@ -23,7 +24,7 @@ const STitleDiv = styled.div`
 const STitemItemDiv = styled.div`
   display: flex;
 `;
-const SDetailIconImg = styled.div``;
+const SDetailIconImg = styled.img``;
 const SShoppingBagTextDiv = styled.div`
   font-family: Montserrat;
   font-size: 26px;
@@ -127,7 +128,7 @@ function ShoppingBag() {
           <SShoppingBagTextDiv>Shopping Bag</SShoppingBagTextDiv>
           <Link to="/cart">
             {" "}
-            <SDetailIconImg>넥스트</SDetailIconImg>
+            <SDetailIconImg src="/asset/icn-rightarrow.svg" />
           </Link>
         </STitleDiv>
       </STitemItemDiv>

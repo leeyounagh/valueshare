@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
@@ -66,7 +67,7 @@ const SLine = styled.div`
   width: 90%;
   margin-left: 20px;
 `;
-const SAddAddressDiv = styled.div`
+const SAddAddressDiv = styled.button`
   font-family: Montserrat;
   font-size: 18px;
   font-weight: 600;
@@ -77,6 +78,9 @@ const SAddAddressDiv = styled.div`
   text-align: left;
   color: #ff985f;
   padding-left: 30px;
+  border:0;
+  outline:0;
+  background-color:white;
 }
 
 `;
@@ -94,7 +98,11 @@ function AddressList({ userInfo }) {
           <SMainAddressDiv> Main Address</SMainAddressDiv>
         </SIconDiv>
       </SAddressDiv>
-      <SAddressTextDiv> {userInfo[0]?.address}</SAddressTextDiv>
+      <SAddressTextDiv>
+        {userInfo?.map((item) => {
+          return <>{item?.shipAdr}</>;
+        })}
+      </SAddressTextDiv>
       <SLine />
       <SAddAddressDiv
         onClick={() => {

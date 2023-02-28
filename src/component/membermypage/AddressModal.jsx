@@ -122,6 +122,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
     customerName: "",
     address: "",
     memo: "",
+    phoneNumber: "",
   });
 
   const handleChange = (event) => {
@@ -139,6 +140,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
       name: data.customerName,
       shipAdr: data.address,
       shipNote: data.memo,
+      phone: data.phoneNumber,
     };
     try {
       const response = await AxiosInstance.post(
@@ -149,6 +151,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
 
       if (response.status === 200) {
         alert("주소지 수정에 성공하였습니다!");
+        window.location.reload();
       }
     } catch (err) {
       if (err) {
@@ -182,7 +185,16 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
             />
           </SInputDiv>
         </SItemDiv>
-
+        <SItemDiv>
+          <SInfoTitle>전화번호</SInfoTitle>
+          <SInputDiv>
+            <SInfoInput
+              onChange={handleChange}
+              name="phoneNumber"
+              placeholder="전화번호"
+            />
+          </SInputDiv>
+        </SItemDiv>
         <SItemDiv>
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>

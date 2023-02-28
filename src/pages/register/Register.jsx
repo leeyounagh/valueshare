@@ -1,4 +1,5 @@
-import AxiosInstance from "data/AxiosInstance";
+/* eslint-disable no-unused-vars */
+import axios from "axios";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
@@ -43,7 +44,8 @@ const LoginLayer = styled.div`
 
 const SSection = styled.form`
   max-width: 500px;
-  margin: 100px auto;
+  margin: 70px auto;
+  font-family: Montserrat;
 `;
 
 const STitle = styled.h1`
@@ -90,6 +92,10 @@ const SInput = styled.input`
   margin-bottom: 17px;
   font-size: 14px;
   border-color: ${(props) => props["aria-invalid"]};
+
+  &::placeholder {
+    font-family: Montserrat;
+  }
 `;
 
 const SSignUpBtn = styled.button`
@@ -109,12 +115,16 @@ const SSignUpBtn = styled.button`
   line-height: normal;
   text-align: center;
   border-radius: 10px;
-
-  background: ${(props) => props["aria-invalid"]};
 `;
+// background: ${(props) => props["aria-invalid"]};
 
 const SP = styled.p`
+<<<<<<< HEAD
+  font-family: Montserrat;
+  color: #bf1616;
+=======
   color: red;
+>>>>>>> 3e491f27ab201ce69d8a7e0d308f9854d16d4e16
 
   &::before {
     display: inline;
@@ -122,13 +132,23 @@ const SP = styled.p`
   }
 `;
 
+// type FormValues = {
+//   checkbox: boolean,
+// };
+
+// let renderCount = 0;
+
 function Register() {
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm();
+
+  // defaultValues: {
+  //   checkbox: true,
+  // },
 
   // console.log(watch("email"));
   const password = useRef();
@@ -138,12 +158,22 @@ function Register() {
     console.log("data", data);
 
     try {
-      const res = await AxiosInstance.post("/register", data);
+      const res = await axios.post("http://34.64.139.64/auth/register", data);
       console.log("data", res);
+      if (res.status === 200) {
+        alert("회원가입 성공");
+      }
     } catch (err) {
       console.log(err);
+      if (err.response.data === "Error: 동일한 이메일이 존재합니다") {
+        alert("이미 가입된 이메일입니다.");
+      }
     }
   };
+
+  // const handleButtonChange = (e) => {
+  //   e.target.value
+  // };
 
   return (
     <Slayout>
@@ -177,12 +207,12 @@ function Register() {
             <SInput
               name="password"
               type="password"
-              placeholder="영문 대/소문자, 숫자, 특수문자 포함 12~50자"
-              aria-invalid={errors.password ? "#bf1616" : `${color.gray4}`}
+              // placeholder="영문 대/소문자, 숫자, 특수문자 포함 4자"
+              placeholder="영문 소문자, 숫자 포함 4자"
+              aria-invalid={errors.password ? "#bf1616" : "#dadada"}
               {...register("password", {
                 required: true,
-                pattern:
-                  /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{12,50}$/,
+                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4, 12}$/,
               })}
             />
             {errors.password && errors.password.type === "required" && (
@@ -190,8 +220,8 @@ function Register() {
             )}
             {errors.password && errors.password.type === "pattern" && (
               <SP>
-                비밀번호는 12~50자 이며 영문 대/소문자, 숫자, 특수문자를 모두
-                포함해야 합니다.
+                비밀번호는 4자 이상이며 영문 소문자, 숫자를 모두 포함해야
+                합니다.
               </SP>
             )}
 
@@ -252,14 +282,7 @@ function Register() {
               <SP>전화번호를 형식에 맞게 입력하세요.</SP>
             )}
           </SDiv>
-          <SSignUpBtn
-            name="button"
-            type="submit"
-            // disabled={!isDirty && !isValid}
-            aria-invalid={errors.button ? "#808080" : `${color.gray4}`}
-          >
-            CREATE ACCOUNT
-          </SSignUpBtn>
+
           <Btn1 type="submit" title="Creat Account" />
         </SSection>
       </LoginLayer>

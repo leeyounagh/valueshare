@@ -188,7 +188,7 @@ function MyAccount({ userInfo }) {
               <SPhoneImg src="/asset/Call.png" />
             </SImgDiv>
 
-            <SPhoneTextDiv> {userInfo[0]?.phone}</SPhoneTextDiv>
+            <SPhoneTextDiv> {userInfo[0]?.phoneNumber}</SPhoneTextDiv>
           </SIfoItemDiv>
           <SIfoItemDiv>
             <SImgDiv>

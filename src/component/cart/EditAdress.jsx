@@ -57,7 +57,7 @@ const STitleDiv = styled.div`
   margin-top: 30px;
   margin-bottom: 80px;
 `;
-const SEditItemDiv = styled.div`
+const SItemDiv = styled.div`
   margin-left: 90px;
   margin-bottom: 30px;
 
@@ -114,13 +114,13 @@ const SInnerButtonDiv = styled.div`
   height: 50px;
   margin-right: 20px;
 `;
-function EditAdress({ setIsOpen, userInfo }) {
+function EditAdress({ setIsOpen }) {
   const [data, setData] = useState({
-    customerName: !userInfo ? `${userInfo[0]?.name}` : "",
-    phoneNumber: !userInfo ? `${userInfo[0]?.phone}` : "",
-    address: !userInfo ? `${userInfo[0]?.address}` : "",
+    customerName: "",
+    phoneNumber: "",
+    address: "",
     memo: "",
-    email: !userInfo ? `${userInfo[0]?.email}` : "",
+    email: "",
   });
 
   const dispatch = useDispatch();
@@ -150,7 +150,7 @@ function EditAdress({ setIsOpen, userInfo }) {
         <STitleDiv>
           <h2>배송지 수정</h2>
         </STitleDiv>
-        <SEditItemDiv>
+        <SItemDiv>
           <SInfoTitle>받는사람</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -160,8 +160,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="이름"
             />
           </SInputDiv>
-        </SEditItemDiv>
-        <SEditItemDiv>
+        </SItemDiv>
+        <SItemDiv>
           <SInfoTitle>연락처</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -171,8 +171,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="010-0000-0000"
             />
           </SInputDiv>
-        </SEditItemDiv>
-        <SEditItemDiv>
+        </SItemDiv>
+        <SItemDiv>
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -182,8 +182,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="주소"
             />
           </SInputDiv>
-        </SEditItemDiv>
-        <SEditItemDiv>
+        </SItemDiv>
+        <SItemDiv>
           <SInfoTitle>배송메모</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -192,8 +192,8 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder="배송 후 연락 부탁드립니다."
             />
           </SInputDiv>
-        </SEditItemDiv>
-        <SEditItemDiv>
+        </SItemDiv>
+        <SItemDiv>
           <SInfoTitle>이메일</SInfoTitle>
           <SInputDiv>
             <SInfoInput
@@ -203,7 +203,7 @@ function EditAdress({ setIsOpen, userInfo }) {
               placeholder=" elice@elice.com"
             />
           </SInputDiv>
-        </SEditItemDiv>
+        </SItemDiv>
         <SButtonDiv>
           <SInnerButtonDiv
             onClick={() => {
