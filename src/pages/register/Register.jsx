@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
+import { useNavigate } from "react-router-dom";
 
 const Slayout = styled.div`
   width: 100%;
@@ -12,6 +13,10 @@ const Slayout = styled.div`
   display: flex;
   margin: auto;
   justify-content: center;
+
+  p {
+    width: 100%;
+  }
 `;
 
 const ImgLayer = styled.div`
@@ -47,16 +52,14 @@ const SSection = styled.form`
   margin: 100px auto;
 `;
 
+const TitleDiv = styled.div`
+  width: 100%;
+  display: flex;
+`;
 const STitle = styled.h1`
-  font-family: Montserrat;
   font-size: 50px;
   font-weight: bold;
-  letter-spacing: nomal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  text-align: center;
-
+  text-align: left;
   color: ${color.gray1};
   padding-bottom: 25px;
   border-bottom: solid 1px ${color.gray4};
@@ -64,59 +67,58 @@ const STitle = styled.h1`
 
 const SDiv = styled.div`
   margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const SLabel = styled.span`
-  width: 56px;
+  width: 50%;
   height: 22px;
-  margin: 76px 280px 7px 2px;
-  font-family: Montserrat;
   font-size: 18px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-weight: 700;
   text-align: left;
-  color: #333333;
+  color: ${color.gray1};
 `;
-
+const SInputDiv = styled.div`
+  width: 48%;
+  margin: 8px 10px 8px 0;
+`;
 const SInput = styled.input`
-  display: block;
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px;
   border: 1px solid rgb(220, 217, 217);
   padding: 10px 15px;
   margin-bottom: 17px;
+  margin-right: 10px;
   font-size: 14px;
   border-color: ${(props) => props["aria-invalid"]};
+  outline-color: ${color.main};
 `;
 
-// const SSignUpBtn = styled.button`
-//   width: 100%;
-//   background: ${color.main};
-//   color: white;
-//   text-transform: uppercase;
-//   border: none;
-//   margin-top: 15px;
-//   padding: 20px;
-//   font-family: Montserrat;
-//   font-size: 24px;
-//   font-weight: bold;
-//   letter-spacing: 7px;
-//   font-stretch: normal;
-//   font-style: normal;
-//   line-height: normal;
-//   text-align: center;
-//   border-radius: 10px;
-
-// `;
+const SSignUpBtn = styled.button`
+  width: 100%;
+  background: ${color.main};
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 15px;
+  padding: 20px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+  border-radius: 10px;
+`;
+// background: ${(props) => props["aria-invalid"]};
 
 const SP = styled.p`
   color: red;
-
-  &::before {
+  >>>>>>>3e491f27ab201ce69d8a7d308f9854d16d4e16 &::before {
     display: inline;
     content: "⚠";
   }
@@ -130,6 +132,11 @@ function Register() {
     formState: { errors, isDirty, isValid },
   } = useForm();
 
+  // defaultValues: {
+  //   checkbox: true,
+  // },
+
+  // console.log(watch("email"));
   const password = useRef();
   password.current = watch("password");
 
@@ -141,6 +148,7 @@ function Register() {
       console.log("data", res);
       if (res.status === 200) {
         alert("회원가입 성공");
+        navigate("/register_complete");
       }
     } catch (err) {
       console.log(err);
@@ -160,12 +168,59 @@ function Register() {
         <SSection onSubmit={handleSubmit(onSubmit)}>
           <STitle>Sign Up</STitle>
           <SDiv>
+            <TitleDiv>
+              <SLabel>Name</SLabel>
+              <SLabel>Phone Number</SLabel>
+            </TitleDiv>
+            <SInputDiv>
+              <SInput
+                name="name"
+                type="name"
+                placeholder="elice"
+                aria-invalid={errors.name ? "#bf1616" : `${color.gray4}`}
+                {...register("name", {
+                  required: true,
+                  pattern: /^[가-힣a-zA-Z]{2,10}$/,
+                })}
+              />
+              {errors.name && errors.name.type === "required" && (
+                <SP>이름을 입력하세요.</SP>
+              )}
+              {errors.name && errors.name.type === "pattern" && (
+                <SP>이름은 2~10자 입니다.</SP>
+              )}
+            </SInputDiv>
+            <SInputDiv>
+              <SInput
+                name="phoneNumber"
+                type="phoneNumber"
+                placeholder="000-0000-0000"
+                MaxLength="11"
+                onChange={(e) => {
+                  e.target.value
+                    .replace(/[^0-9]/g, "")
+                    .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+                }}
+                aria-invalid={errors.phoneNumber ? "#bf1616" : `${color.gray4}`}
+                {...register("phoneNumber", {
+                  required: true,
+                  pattern: /^\d{3}-\d{4}-\d{4}$/,
+                })}
+              />
+
+              {errors.phoneNumber && errors.phoneNumber.type === "required" && (
+                <SP>전화번호를 입력하세요.</SP>
+              )}
+              {errors.phoneNumber && errors.phoneNumber.type === "pattern" && (
+                <SP>전화번호를 형식에 맞게 입력하세요.</SP>
+              )}
+            </SInputDiv>
             <SLabel>Email</SLabel>
-            <SInput
+            <SBigInput
               name="email"
-              // type="email"
+              type="email"
               placeholder="elice@valueshare.com"
-              aria-invalid={errors.email ? "#bf1616" : `${color.gray4}`}
+              aria-invalid={errors.email ? "red" : `${color.gray4}`}
               {...register("email", {
                 required: true,
                 pattern: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -182,11 +237,12 @@ function Register() {
             <SInput
               name="password"
               type="password"
-              placeholder="영문 소문자, 숫자 포함 4~12자"
-              aria-invalid={errors.password ? "#bf1616" : `${color.gray4}`}
+              // placeholder="영문 대/소문자, 숫자, 특수문자 포함 4자"
+              placeholder="영문 소문자, 숫자 포함 4자"
+              aria-invalid={errors.password ? "#bf1616" : "#dadada"}
               {...register("password", {
                 required: true,
-                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4,12}$/,
+                pattern: /(?=.*\d{1,50})(?=.*[a-z]{1,50}).{4, 12}$/,
               })}
             />
             {errors.password && errors.password.type === "required" && (
@@ -194,7 +250,8 @@ function Register() {
             )}
             {errors.password && errors.password.type === "pattern" && (
               <SP>
-                비밀번호는 4~12자 이며 영문 소문자, 숫자를 모두 포함해야 합니다.
+                비밀번호는 4자 이상이며 영문 소문자, 숫자를 모두 포함해야
+                합니다.
               </SP>
             )}
 
@@ -255,15 +312,8 @@ function Register() {
               <SP>전화번호를 형식에 맞게 입력하세요.</SP>
             )}
           </SDiv>
-          <Btn1
-            name="button"
-            type="submit"
-            title="Creat Account"
-            disabled={!isDirty && !isValid}
-          >
-            CREATE ACCOUNT
-          </Btn1>
-          {/* <Btn1 type="submit" title="Creat Account" /> */}
+
+          <Btn1 type="submit" title="Creat Account" />
         </SSection>
       </LoginLayer>
     </Slayout>

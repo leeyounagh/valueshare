@@ -25,11 +25,12 @@ const SLayout = styled.div`
 
 const SItemDiv = styled.div`
   width: 80%;
-  height: 80%;
+  height: 90%;
   border-radius: 10px;
   background-color: ${white};
   display: flex;
   justify-content: center;
+  padding: 40px 0;
 `;
 const SItemInnerDiv = styled.div`
   width: 50%;
@@ -61,7 +62,7 @@ const SOrderNumberTextDiv = styled.div`
 `;
 const SOrderNumberDiv = styled.div`
   font-size: 40px;
-  color: #ff985f;
+  color: ${color.main};
   display: flex;
   justify-content: center;
 `;
@@ -108,7 +109,6 @@ function OrderSuccess() {
             <SImgDiv>
               <SWalletImg src="/asset/지갑.png" />
             </SImgDiv>
-
             <SCompleteLetter>고객님, 주문이 완료되었습니다.</SCompleteLetter>
             <SOrderNumberTextDiv>
               고객님이 주문하신 주문번호는

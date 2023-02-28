@@ -97,7 +97,7 @@ function Navbar2() {
           <SRootIcontImg src="../asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>{url}</SCategoryTitle>
+          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
         </SCategoryDiv>
         <SRootIconDiv>
           <SRootIcontImg src="../asset/Chevrons_chevron-right.svg" />
