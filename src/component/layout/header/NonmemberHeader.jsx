@@ -155,8 +155,20 @@ const SLayoutProfileInnerDiv = styled.div`
     padding: 0 10px;
   }
 `;
+const SBadageDiv = styled.div`
+  position: absolute;
+  top: -10px;
+  left: 33px;
+  .bg-warning {
+    color: ${color.white};
+    background-color: ${color.main} !important;
+  }
+`;
+function NonememberHeader() {
+  const cartQuantity = useSelector((state) => {
+    return state.CartItemReducer;
+  });
 
-function Header() {
   const user = useSelector((state) => {
     return state.UserReducer;
   });
@@ -201,7 +213,7 @@ function Header() {
             ) : (
               <SLayoutProfileInnerDiv>
                 <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
+                <Link to="/register">Sign in</Link>
               </SLayoutProfileInnerDiv>
             )}
           </SLayoutProfileDiv>
@@ -211,4 +223,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default NonememberHeader;

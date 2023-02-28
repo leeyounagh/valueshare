@@ -8,9 +8,10 @@ import SetAuthorizationToken from "utils/SetAuthorizationToken";
 import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
+import Btn2 from "component/button/Btn2";
 
 const Slayout = styled.div`
   width: 100%;
@@ -85,13 +86,15 @@ const SLabel = styled.span`
 const SInput = styled.input`
   border-radius: 10px;
   background-color: ${color.white};
-  width: 410px;
+  width: 100%;
   height: 50px;
   padding-left: 24px;
   border-radius: 16px;
   border: solid 1px ${color.gray4};
   background-color: ${color.white};
   outline-color: ${color.main};
+  margin-top: 10px;
+  margin-bottom: 30px;
 `;
 
 const SP = styled.p`
@@ -100,6 +103,16 @@ const SP = styled.p`
   &::before {
     display: inline;
     content: "⚠";
+  }
+`;
+
+const BtnDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  a {
+    width: 100%;
   }
 `;
 
@@ -178,7 +191,12 @@ function Login() {
           </SP>
         )} */}
           </SDiv>
-          <Btn1 type="submit" title="Log in" />
+          <BtnDiv>
+            <Btn1 type="submit" title="Log in" />
+            <Link to="/register">
+              <Btn2 title="Sign up" />
+            </Link>
+          </BtnDiv>
         </SSection>
       </LoginLayer>
     </Slayout>
