@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import uuid from "react-uuid";
 import color from "styles/color";
 import BrandName from "data/BrandName";
 
@@ -111,7 +112,7 @@ function Brands({ searchParams, setSearchParams }) {
       <SBrandListDiv>
         {BrandName.map((item) => {
           return (
-            <SBrandNameDiv key={item.index}>
+            <SBrandNameDiv key={uuid()}>
               <SCheckboxDiv>
                 <input
                   type="checkbox"

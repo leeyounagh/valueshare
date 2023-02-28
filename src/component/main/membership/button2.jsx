@@ -20,6 +20,11 @@ const Btn1 = styled.button`
   background-color: ${color.gray1};
   color: ${color.white};
   border: 0px;
+
+  &:hover {
+    background-color: ${color.white};
+    color: ${color.gray1};
+  }
 `;
 
 function Button2() {

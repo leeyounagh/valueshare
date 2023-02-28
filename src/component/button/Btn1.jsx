@@ -21,6 +21,10 @@ const SBtn1 = styled.button`
   &:active {
     background: ${color.gray3};
   }
+
+  &:hover {
+    background: ${color.main};
+  }
 `;
 
 function Btn1({ title }) {

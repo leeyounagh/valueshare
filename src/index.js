@@ -19,7 +19,6 @@ if (localStorage.jwtToken) {
   store.dispatch(setUserInfo(decodeToken(localStorage.jwtToken)));
 }
 // eslint-disable-next-line dot-notation
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>

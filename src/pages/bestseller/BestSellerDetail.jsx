@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uuid from "react-uuid";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -59,7 +60,7 @@ function BestSellerDetail() {
             onMouseOut={() => setHoverVisible(!hoverVisible)}
           >
             {hoverVisible ? (
-              <ImgHover>
+              <ImgHover key={uuid()}>
                 상품 구경하기
                 <img src="asset/icn-rightarrow.svg" alt="바로가기" />
               </ImgHover>

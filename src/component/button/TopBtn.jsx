@@ -26,6 +26,10 @@ const SLayout = styled.div`
     border-radius: 60px;
     text-align: center;
     animation: ${animation} 0.5s ease-in-out;
+
+    &:active {
+      background: ${color.gray1};
+    }
     img {
       padding-top: 22px;
     }
