@@ -23,6 +23,7 @@ const SlayOut = styled.div`
     display: flex;
     position: relative;
     z-index: 1;
+    width: auto;
     h2 {
       font-size: 2.3rem;
       font-weight: 500;

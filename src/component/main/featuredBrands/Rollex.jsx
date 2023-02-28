@@ -32,6 +32,16 @@ const SlayOut = styled.div`
     overflow: hidden;
   }
 `;
+
+const RollexImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  ${SlayOut}:hover & {
+    scale: 1.1;
+  }
+`;
 const Button = styled.button`
   position: absolute;
   width: 136px;
@@ -43,15 +53,17 @@ const Button = styled.button`
   background-color: ${color.gray5};
   cursor: pointer;
   z-index: 1;
-`;
 
-const RollexImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  ${SlayOut}:hover & {
+    background-color: ${color.white};
+    border: 1px solid ${color.main};
+    color: ${color.main};
+  }
 
   &:hover {
-    scale: 1.1;
+    background-color: ${color.white};
+    border: 1px solid ${color.main};
+    color: ${color.main};
   }
 `;
 
