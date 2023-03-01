@@ -141,7 +141,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
 
   const handleAddress = async () => {
     const body = {
-      phone: data.phoneNumber,
+      phoneNumber: data.phoneNumber,
       email: data.email,
       name: data.customerName,
       shipAdr: data.address,
