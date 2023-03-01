@@ -102,7 +102,6 @@ const SStatusIcon = styled.img`
   margin-top: 5px;
 `;
 function OrderHistory({ orderData }) {
-  // console.log("들어갔니", orderData[0]);
   return (
     <SLayout>
       <SHistoryTitle>Order History</SHistoryTitle>

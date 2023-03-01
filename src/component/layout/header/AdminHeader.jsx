@@ -87,7 +87,7 @@ const SLayoutInnerDiv = styled.div`
   padding-left: 40px;
 `;
 const SLayoutMenuDiv = styled.div`
-  width: 90%;
+  width: 100%;
   height: 67px;
   display: flex;
   justify-content: flex-end;
@@ -147,9 +147,9 @@ function Header() {
             <Link to="/membership">
               <SMembershipDiv>Membership</SMembershipDiv>
             </Link>
-            <SLayoutIconItem>
-              <Link to="/admin">Admin</Link>
-            </SLayoutIconItem>
+            <Link to="/admin">
+              <SLayoutIconItem>Admin</SLayoutIconItem>
+            </Link>
             <SLayoutIconItem
               onClick={() => {
                 handleLogout();

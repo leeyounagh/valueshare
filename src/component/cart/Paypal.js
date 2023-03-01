@@ -40,13 +40,18 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
           actions.order.capture().then(async () => {
             const newData = {
               // eslint-disable-next-line prettier/prettier
-              phone: ShipInfo.phoneNumber,
-              email: ShipInfo.email,
-              name: ShipInfo.customerName,
+              // phone: ShipInfo[0]?.phoneNumber,
+              // email: ShipInfo[0]?.email,
+              // name: ShipInfo[0]?.customerName,
+              phone: "01072840216",
+              email: "dfs@naver.com",
+              name: "dsafds",
               products: cartItems,
               shipStatus: "주문접수",
-              shipAdr: ShipInfo.address,
-              shipNote: ShipInfo.memo,
+              // shipAdr: ShipInfo[0]?.address,
+              // shipNote: ShipInfo[0]?.memo,
+              shipAdr: "fadsfda",
+              shipNote: "asdfads",
               totalPrice: total,
             };
 
