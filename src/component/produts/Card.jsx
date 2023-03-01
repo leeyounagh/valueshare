@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
@@ -32,7 +36,6 @@ const SLayout = styled.div`
     }
   }
 `;
-
 const SCardDiv = styled.div`
   width: 340px;
   height: 550px;
@@ -103,50 +106,58 @@ function Card() {
 
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
+  const Newpage = searchParams.get("page");
 
   useEffect(() => {
     async function getProducts() {
-      const response = await AxiosInstance.get("/products", {
+      const response = await AxiosInstance.get(
+        `/products`,
+
+        {
+          params: {
+            categories: `${categories}`,
+            brand: `${brand}`,
+            page: `${page}`,
+          },
+        }
+      );
+
+      setData(response.data.result);
+    }
+    getProducts();
+  }, [categories, brand]);
+
+  useEffect(() => {
+    nextData();
+  }, [page]);
+  async function nextData() {
+    console.log("돼니");
+    setPage((prev) => {
+      return prev + 1;
+    });
+    console.log("돼니", page);
+    const response = await AxiosInstance.get(
+      `/products`,
+
+      {
         params: {
           categories: `${categories}`,
           brand: `${brand}`,
           page: `${page}`,
         },
-      });
-
-      setData([...productData, ...response.data.result]);
-    }
-    getProducts();
-  }, [categories, brand]);
-
-  const fetchData = async () => {
-    console.log("테스트");
-    setPage((prev) => {
-      return prev + 1;
-    });
-    const response = await AxiosInstance.get("/products", {
-      params: {
-        categories: `${categories}`,
-        brand: `${brand}`,
-        page: `${page}`,
-      },
-    });
-
+      }
+    );
+    console.log("다음데이터", response.data.result);
     setData([...productData, ...response.data.result]);
-  };
-  console.log(page);
+  }
+  console.log("data", page);
   return (
     <SLayout>
       <InfiniteScroll
         dataLength={productData.length}
-        next={fetchData}
-        hasMore
+        hasMore={true}
+        next={nextData}
         loader={<h4>Loading...</h4>}
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>상품을 모두 구경했습니다.</b>
-          </p>
-        }
       >
         {productData.map((item) => {
           return (
