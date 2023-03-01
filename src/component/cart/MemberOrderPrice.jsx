@@ -149,13 +149,13 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
   const handleOrder = async () => {
     const newData = {
       // eslint-disable-next-line prettier/prettier
-      phone: userInfo[0]?.phoneNumber,
-      email: userInfo[0]?.email,
-      name: userInfo[0]?.customerName,
+      phoneNumber: "01072840216",
+      email: "1111@naver.com",
+      name: "포카칩",
       products: cartItems,
       shipStatus: "주문접수",
-      shipAdr: userInfo[0]?.shipAdr,
-      shipNote: userInfo[0]?.shipNote,
+      shipAdr: "서울시",
+      shipNote: "집앞에",
       totalPrice: changeDoller,
     };
 

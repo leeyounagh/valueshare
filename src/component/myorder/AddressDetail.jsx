@@ -135,7 +135,7 @@ function AddressDetail({ orderData }) {
       </SinfoItmeDiv>
       <SinfoItmeDiv>
         <SInfoTitleDiv>연락처</SInfoTitleDiv>
-        <SInfoDiv>{orderData[0]?.phone}</SInfoDiv>
+        <SInfoDiv>{orderData[0]?.phoneNumber}</SInfoDiv>
       </SinfoItmeDiv>
       <SinfoItmeDiv>
         <SInfoTitleDiv>이메일</SInfoTitleDiv>
