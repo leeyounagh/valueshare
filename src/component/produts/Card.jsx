@@ -128,35 +128,35 @@ function Card() {
   }, [categories, brand]);
 
   useEffect(() => {
-    nextData();
-  }, [page]);
-  async function nextData() {
-    console.log("돼니");
-    setPage((prev) => {
-      return prev + 1;
-    });
-    console.log("돼니", page);
-    const response = await AxiosInstance.get(
-      `/products`,
+    async function nextData() {
+      console.log("돼니");
+      setPage((prev) => {
+        return prev + 1;
+      });
+      console.log("돼니", page);
+      const response = await AxiosInstance.get(
+        `/products`,
 
-      {
-        params: {
-          categories: `${categories}`,
-          brand: `${brand}`,
-          page: `${page}`,
-        },
-      }
-    );
-    console.log("다음데이터", response.data.result);
-    setData([...productData, ...response.data.result]);
-  }
+        {
+          params: {
+            categories: `${categories}`,
+            brand: `${brand}`,
+            page: `${page}`,
+          },
+        }
+      );
+      console.log("다음데이터", response.data.result);
+      setData([...productData, ...response.data.result]);
+    }
+  }, [page]);
+
   console.log("data", page);
   return (
     <SLayout>
       <InfiniteScroll
         dataLength={productData.length}
         hasMore={true}
-        next={nextData}
+        next={nextData()}
         loader={<h4>Loading...</h4>}
       >
         {productData.map((item) => {
