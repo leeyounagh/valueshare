@@ -75,7 +75,7 @@ const SLayoutInnerDiv = styled.div`
   display: flex;
   height: 67px;
   width: 100%;
-  padding-left: 40px;
+  padding-left: 3%;
 `;
 const SLayoutMenuDiv = styled.div`
   width: 60%;
