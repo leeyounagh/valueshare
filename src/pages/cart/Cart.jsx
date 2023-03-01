@@ -53,7 +53,7 @@ function Cart() {
     return item.UserInfoReducer?.userInfo?.[0]?.aud;
   });
 
-  console.log("확인", auth);
+  console.log("테스트");
 
   return (
     <div style={{ position: "relative" }}>
