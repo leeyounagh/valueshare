@@ -126,7 +126,7 @@ function MemberMyOrder({ userInfo, userProduct }) {
       <SItemDiv>
         {userProduct?.map((item) => {
           return (
-            <div style={{ position: "relative" }}>
+            <div key={item._id} style={{ position: "relative" }}>
               <Link to={`/myorder/${item._id}`}>
                 <OrderNumberDiv>{item.orderNumber}</OrderNumberDiv>
                 <OrderPriceDiv>₩{item.totalPrice * 1000}</OrderPriceDiv>
