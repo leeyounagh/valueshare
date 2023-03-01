@@ -140,7 +140,7 @@ function OrderedEditAddress({ setIsOpen, userInfo }) {
       name: data.customerName,
       shipAdr: data.address,
       shipNote: data.memo,
-      phone: data.phoneNumber,
+      phoneNumber: data.phoneNumber,
     };
     try {
       const response = await AxiosInstance.post(

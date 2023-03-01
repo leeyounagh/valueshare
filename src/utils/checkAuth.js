@@ -12,12 +12,15 @@ export const checkAuth = (Component) => (props) => {
   });
 
   useEffect(() => {
-    if (auth) {
+    if (auth === "true") {
       alert("어드민 계정입니다.");
       navigate("/");
-    } else {
+      // 백엔드에서 불리언값이 아닌 스트링으로 받고있어서 이런로직이 되었습니다.
+    }
+    if (!auth) {
       alert("로그인해주세요");
       navigate("/login");
+      // auth의 값이 없을때의 설정 입니다.
     }
   }, []);
   return <Component {...props} />;

@@ -3,12 +3,13 @@
 import React, { useMemo, useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
-import Paypal from "component/cart/Paypal";
 import Btn1 from "component/button/Btn1";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setOrderInfo } from "slice/OrderSlice";
 import AxiosInstance from "data/AxiosInstance";
 import DisableBtn from "component/button/DisableBtn";
+import MemberPaypal from "./MemberPaypal";
 
 const { white, gray3, gray1 } = color;
 
@@ -119,7 +120,8 @@ const BtnDiv = styled.div`
 
 function MemberOrderPrice({ cartItems, setCartItems }) {
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setMemberUserInfo] = useState([]);
+  const dispatch = useDispatch();
   const userId = useSelector((item) => {
     return item?.UserInfoReducer?.userInfo?.[0]?.user;
   });
@@ -129,8 +131,7 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
         const response = await AxiosInstance.get(`/users/mypage/${userId}`);
         // eslint-disable-next-line no-unused-vars
         const data = await response.data;
-        setUserInfo([data[0]]);
-        console.log(data);
+        setMemberUserInfo([data[0]]);
       } catch (err) {
         console.log(err);
       }
@@ -149,9 +150,9 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
   const handleOrder = async () => {
     const newData = {
       // eslint-disable-next-line prettier/prettier
-      phone: userInfo[0]?.phoneNumber,
+      phoneNumber: userInfo[0]?.phoneNumber,
       email: userInfo[0]?.email,
-      name: userInfo[0]?.customerName,
+      name: userInfo[0]?.name,
       products: cartItems,
       shipStatus: "주문접수",
       shipAdr: userInfo[0]?.shipAdr,
@@ -163,8 +164,8 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
       const response = await AxiosInstance.post("/checkout", newData);
 
       const orderData = await response.data;
-      console.log(orderData, newData);
-
+      console.log("결제확인", orderData, newData);
+      dispatch(setOrderInfo(orderData));
       localStorage.removeItem("baskets");
       navigate("/ordersuccess");
       alert("현금결제 접수가 완료되었습니다.");
@@ -202,11 +203,11 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
       ) : null}
 
       {cartItems.length > 0 ? (
-        <Paypal
+        <MemberPaypal
           total={changeDoller}
           cartItems={cartItems}
           setCartItems={setCartItems}
-          ShipInfo={userInfo}
+          userInfo={userInfo}
         />
       ) : (
         <SOrderIcon>

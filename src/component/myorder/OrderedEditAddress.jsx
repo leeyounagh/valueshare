@@ -123,7 +123,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
   const objectId = pathname.substr(9);
   const [data, setData] = useState({
     customerName: `${orderData?.[0]?.name}`,
-    phoneNumber: `${orderData?.[0]?.phone}`,
+    phoneNumber: `${orderData?.[0]?.phoneNumber}`,
     address: `${orderData?.[0]?.shipAdr}`,
     memo: `${orderData?.[0]?.shipNote}`,
     email: `${orderData?.[0]?.email}`,
@@ -141,7 +141,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
 
   const handleAddress = async () => {
     const body = {
-      phone: data.phoneNumber,
+      phoneNumber: data.phoneNumber,
       email: data.email,
       name: data.customerName,
       shipAdr: data.address,

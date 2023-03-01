@@ -138,7 +138,7 @@ function OrderPrice({ cartItems, setCartItems }) {
   const handleOrder = async () => {
     const newData = {
       // eslint-disable-next-line prettier/prettier
-      phone: ShipInfo.phoneNumber,
+      phoneNumber: ShipInfo.phoneNumber,
       email: ShipInfo.email,
       name: ShipInfo.customerName,
       products: cartItems,
