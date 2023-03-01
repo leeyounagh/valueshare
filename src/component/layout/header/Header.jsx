@@ -151,7 +151,7 @@ function Header() {
       <SLayoutInnerDiv>
         <SLogoDiv>
           <Link to="/">
-            <h2>value shop</h2>
+            <h2>value share</h2>
           </Link>
         </SLogoDiv>
         <SLayoutMenuDiv>

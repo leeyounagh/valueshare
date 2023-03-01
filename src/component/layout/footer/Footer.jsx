@@ -79,7 +79,7 @@ function Footer() {
   return (
     <SlayOut>
       <Sfooter>
-        <h2>value shop</h2>
+        <h2>value share</h2>
         <SfooterUl>
           <li>
             고객센터 <br />

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
@@ -95,7 +96,7 @@ function Card() {
         params: { categories: `${categories}`, brand: `${brand}` },
       });
 
-      setData(response.data.result);
+      setData([...productData, ...response.data.result]);
     }
     getProducts();
   }, [categories, brand]);
@@ -109,7 +110,12 @@ function Card() {
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >
-              <SCardImg src={item.productImage[0]} alt="상품썸네일" />
+              <SCardImg
+                className="lazy"
+                src={item.productImage[0]}
+                alt="상품썸네일"
+                loading="lazy"
+              />
             </Link>
             <SCardTitleDiv>
               <SCardBrand>{item.productBrand.brandName} </SCardBrand>

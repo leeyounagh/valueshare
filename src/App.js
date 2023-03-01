@@ -40,9 +40,11 @@ import AdminProduct from "pages/adminproduct/AdminProduct";
 import LoginCheck from "pages/logincheck/LoginCheck";
 import MyPage from "pages/membermypage/MyPage";
 import AdminHeader from "component/layout/header/AdminHeader";
+
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+
   const auth = useSelector(
     (state) => state?.UserInfoReducer?.userInfo?.[0]?.aud
   );
@@ -112,8 +114,9 @@ function App() {
 
         <Route path="/membermypage" element={<MyPage />} />
 
-        <Route exact path="/product/:productid" element={<Detail />} />
-        <Route exact path="/product" element={<Product />} />
+        <Route path="/product/:productid" element={<Detail />} />
+
+        <Route path="/product" element={<Product />} />
 
         <Route path="/bestseller" element={<BestSeller />} />
 
@@ -143,11 +146,7 @@ function App() {
         <Route exact path="/admin/category" element={<Category />} />
         <Route exact path="/admin/product" element={<AdminProduct />} />
 
-        <Route
-          exact
-          path="/admin/product/:productid"
-          element={<EditProduct />}
-        />
+        <Route path="/admin/product/:productid" element={<EditProduct />} />
         {/* 404  */}
         <Route path="*" element={<NotFound />} />
       </Routes>
