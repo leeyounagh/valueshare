@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
@@ -10,6 +12,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -77,6 +80,7 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
     dispatch(passId(_id));
@@ -89,52 +93,93 @@ function Card() {
 
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
+  const Newpage = searchParams.get("page");
 
   useEffect(() => {
     async function getProducts() {
-      const response = await AxiosInstance.get("/products", {
-        params: { categories: `${categories}`, brand: `${brand}` },
-      });
+      const response = await AxiosInstance.get(
+        `/products`,
+
+        {
+          params: {
+            categories: `${categories}`,
+            brand: `${brand}`,
+            page: `${page}`,
+          },
+        }
+      );
 
       setData(response.data.result);
     }
     getProducts();
   }, [categories, brand]);
 
+  useEffect(() => {
+    nextData();
+  }, [categories, brand]);
+
+  const nextData = async () => {
+    console.log("돼니");
+    setPage((prev) => {
+      return prev + 1;
+    });
+    console.log("돼니", page);
+    const response = await AxiosInstance.get(
+      `/products`,
+
+      {
+        params: {
+          categories: `${categories}`,
+          brand: `${brand}`,
+          page: `${page}`,
+        },
+      }
+    );
+    console.log("다음데이터", response.data.result);
+    setData([...productData, ...response.data.result]);
+  };
+  console.log("data", page);
   return (
     <SLayout>
-      {productData.map((item) => {
-        return (
-          <SCardDiv key={item._id}>
-            <Link
-              to={`/product/${item._id}`}
-              onClick={() => PassIdHandler(item._id)}
-            >
-              <SCardImg
-                className="lazy"
-                src={item.productImage[0]}
-                alt="상품썸네일"
-                loading="lazy"
-              />
-            </Link>
-            <SCardTitleDiv>
-              <SCardBrand>{item.productBrand.brandName} </SCardBrand>
-              <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
-            </SCardTitleDiv>
-            <SCartDiv
-              onClick={() => {
-                handleBasket(item);
-                alert("장바구니에 추가되었습니다!");
-              }}
-            >
-              <SCartImgDiv>
-                <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
-              </SCartImgDiv>
-              <SPriceText> ₩{item.productPrice}</SPriceText>
-            </SCartDiv>
-          </SCardDiv>
-        );
-      })}
+      <InfiniteScroll
+        dataLength={productData.length}
+        hasMore={true}
+        next={nextData}
+        loader={<h4>Loading...</h4>}
+      >
+        {productData.map((item) => {
+          return (
+            <SCardDiv key={item._id}>
+              <Link
+                to={`/product/${item._id}`}
+                onClick={() => PassIdHandler(item._id)}
+              >
+                <SCardImg
+                  className="lazy"
+                  src={item.productImage[0]}
+                  alt="상품썸네일"
+                  loading="lazy"
+                />
+              </Link>
+              <SCardTitleDiv>
+                <SCardBrand>{item.productBrand.brandName} </SCardBrand>
+                <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
+              </SCardTitleDiv>
+              <SCartDiv
+                onClick={() => {
+                  handleBasket(item);
+                  alert("장바구니에 추가되었습니다!");
+                }}
+              >
+                <SCartImgDiv>
+                  <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
+                </SCartImgDiv>
+                <SPriceText> ₩{item.productPrice}</SPriceText>
+              </SCartDiv>
+            </SCardDiv>
+          );
+        })}
+      </InfiniteScroll>
     </SLayout>
   );
 }
