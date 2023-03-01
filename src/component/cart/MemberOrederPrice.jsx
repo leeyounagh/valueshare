@@ -154,7 +154,7 @@ function MemberOrederPrice({ cartItems, setCartItems }) {
     const newData = {
       // eslint-disable-next-line prettier/prettier
       phone: "01072840216",
-      email: "dudgk0216@naver.com",
+      email: "1111@naver.com",
       name: "포카칩",
       products: cartItems,
       shipStatus: "주문접수",

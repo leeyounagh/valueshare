@@ -12,10 +12,10 @@ export const checkAuth = (Component) => (props) => {
   });
 
   useEffect(() => {
-    if (auth) {
+    if (auth === "true") {
       alert("어드민 계정입니다.");
       navigate("/");
-    } else {
+    } else if (auth === "false") {
       alert("로그인해주세요");
       navigate("/login");
     }
