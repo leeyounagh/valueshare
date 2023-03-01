@@ -39,6 +39,7 @@ const SItemImgDiv = styled.div`
   height: 100%;
 `;
 const SImg = styled.img`
+  width: 130px;
   height: 100%;
 `;
 const STitleDiv = styled.div`
@@ -101,8 +102,6 @@ const SBrandTitleDiv = styled.div`
   display: flex;
 `;
 function OrderProduct({ orderData, products }) {
-  // console.log("상품", orderData, imgArr);
-  console.log(products);
   return (
     <SLayout>
       <SOrderTitleDiv>Order {orderData[0]?.orderNumber}</SOrderTitleDiv>
@@ -114,13 +113,12 @@ function OrderProduct({ orderData, products }) {
                 <SImg src={item.productImage[0]} />
               </SItemImgDiv>
               <STitleDiv>
-                <SBrandNameDiv>{item.productBrand}</SBrandNameDiv>
-                <SProductNameDiv>{item.productTitle}</SProductNameDiv>
+                <SBrandNameDiv>{item?.productBrand}</SBrandNameDiv>
+                <SProductNameDiv>{item?.productTitle}</SProductNameDiv>
               </STitleDiv>
-              <SQuantityDiv>{item.productQuantity}개</SQuantityDiv>
+              <SQuantityDiv>{item?.productQuantity || 0}개</SQuantityDiv>
               <SPriceDiv>
-                {" "}
-                ₩{item.productPrice * item.productQuantity}
+                ₩{item?.productPrice || 0 * item.productQuantity || 0}
               </SPriceDiv>
             </SOrderItemDiv>
             <SLinDiv />

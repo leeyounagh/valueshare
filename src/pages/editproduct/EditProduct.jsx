@@ -60,7 +60,7 @@ function EditProduct() {
   const imgRef = useRef();
   const [data, setData] = useState({
     brandName: "",
-    productStock: 0,
+    productStock: "",
     productPrice: "",
     categoryName: "",
     productDescription: "",

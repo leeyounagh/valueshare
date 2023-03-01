@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,6 +10,7 @@ import EmptyCart from "../../component/cart/EmptyCart";
 import OrderPrice from "../../component/cart/OrderPrice";
 import GetItemCart from "../../component/cart/GetItemCart";
 import Address from "../../component/cart/Address";
+import MemberOrderPrice from "component/cart/MemberOrderPrice";
 
 const { gray6, white } = color;
 
@@ -69,8 +71,14 @@ function Cart() {
 
         <SOrderPriceDiv>
           {auth === "false" ? <MemberAddress /> : <Address />}
-
-          <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
+          {auth === "false" ? (
+            <MemberOrderPrice
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ) : (
+            <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
+          )}
         </SOrderPriceDiv>
       </SLayout>
     </div>
