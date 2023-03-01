@@ -132,7 +132,7 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://34.64.139.64/auth/login", data);
+      const res = await axios.post("http://34.64.139.64/api/auth/login", data);
       if (res.status === 200) {
         alert("로그인 성공");
       }
