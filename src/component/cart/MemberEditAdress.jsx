@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import AxiosInstance from "data/AxiosInstance";
 import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
 
@@ -120,6 +123,33 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
     memo: "",
     email: "",
   });
+
+  const handleInfoSubmit = async () => {
+    const body = {
+      name:
+        data.customerName?.length === 0 ? userInfo[0].name : data.customerName,
+      phoneNumber:
+        data.phoneNumber?.length === 0
+          ? userInfo[0].phoneNumber
+          : data.phoneNumber,
+      shipAdr: data.address?.length === 0 ? userInfo[0].shipAdr : data.address,
+      shipNote: data.memo?.length === 0 ? userInfo[0].shipNote : data.memo,
+      email: data.email?.length === 0 ? userInfo[0].email : data.email,
+    };
+
+    try {
+      const response = await AxiosInstance.post(
+        `/users/${userInfo[0]._id}/userInfo`,
+        body
+      );
+      if (response.status === 200) {
+        setIsOpen(false);
+        window.location.reload();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -129,7 +159,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
     };
     setData(newData);
   };
-  // const handleInfoSubmit = () => {};
+
   console.log(data);
   console.log(userInfo[0]);
   return (
@@ -180,7 +210,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
             <SInputDiv>
               <SInfoInput
                 defaultValue={
-                  userInfo[0]?.shipAdr ? userInfo[0].shipAdr : data.address
+                  userInfo[0]?.shipAdr ? userInfo[0].shipAdr : data.memo
                 }
                 onChange={handleChange}
                 name="address"
@@ -192,6 +222,9 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
             <SInfoTitle>배송메모</SInfoTitle>
             <SInputDiv>
               <SInfoInput
+                defaultValue={
+                  userInfo[0]?.shipNote ? userInfo[0].shipNote : data.address
+                }
                 onChange={handleChange}
                 name="memo"
                 placeholder="배송 후 연락 부탁드립니다."
@@ -212,7 +245,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
           <SButtonDiv>
             <SInnerButtonDiv
               onClick={() => {
-                setIsOpen(false);
+                handleInfoSubmit();
               }}
             >
               <Btn1 title="확인" />
