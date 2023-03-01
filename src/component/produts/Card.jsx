@@ -10,6 +10,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
+import useInfiniteScroll, { useLoadItems } from "react-infinite-scroll-hook";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -90,6 +91,16 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
+  const { loading, hasNextPage, error, loadMore } = useLoadItems();
+
+  const [sentryRef, { rootRef }] = useInfiniteScroll({
+    loading,
+    hasNextPage,
+    onLoadMore: loadMore,
+    disabled: !!error,
+    rootMargin: "0px",
+  });
+
   useEffect(() => {
     async function getProducts() {
       const response = await AxiosInstance.get("/products", {
@@ -102,7 +113,7 @@ function Card() {
   }, [categories, brand]);
 
   return (
-    <SLayout>
+    <SLayout ref={rootRef}>
       {productData.map((item) => {
         return (
           <SCardDiv key={item._id}>
@@ -135,6 +146,7 @@ function Card() {
           </SCardDiv>
         );
       })}
+      {(loading || hasNextPage) && <div ref={sentryRef}>Loading...</div>}
     </SLayout>
   );
 }
