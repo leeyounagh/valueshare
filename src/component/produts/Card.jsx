@@ -96,7 +96,7 @@ function Card() {
         params: { categories: `${categories}`, brand: `${brand}` },
       });
 
-      setData([...response.data.result]);
+      setData([...productData, ...response.data.result]);
     }
     getProducts();
   }, [categories, brand]);
