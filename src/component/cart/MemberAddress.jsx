@@ -31,8 +31,6 @@ const SAddressTitle = styled.div`
   font-size: 40px;
   font-weight: 600;
 
-  line-height: normal;
-
   text-align: left;
   color: #000;
 `;
@@ -77,8 +75,6 @@ const SEditAdress = styled.div`
   align-items: center;
   font-size: 18px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: center;
   color: ${white};

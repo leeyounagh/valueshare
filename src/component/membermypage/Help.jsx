@@ -15,10 +15,7 @@ const SLayout = styled.div`
 const STitleDiv = styled.div`
   font-size: 26px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
 `;
@@ -36,10 +33,7 @@ const SEmailText = styled.div`
 const SSpan = styled.span`
   font-size: 18px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${color.main};
   margin-left: 10px;
@@ -47,10 +41,7 @@ const SSpan = styled.span`
 const SConnectSpan = styled.span`
   font-size: 18px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
 `;

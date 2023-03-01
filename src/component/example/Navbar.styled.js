@@ -51,8 +51,6 @@ export const SPageTitleDiv = styled.div`
   font-size: 80px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: left;
   color: #000;
 `;

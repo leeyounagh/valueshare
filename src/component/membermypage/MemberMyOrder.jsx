@@ -19,13 +19,9 @@ const SLayout = styled.div`
   }
 `;
 const SHistoryTitle = styled.div`
-  font-family: Montserrat;
   font-size: 26px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   margin-bottom: 50px;
@@ -42,8 +38,6 @@ const OrderNumberDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: left;
   color: ${gray1};
   height: 30%;
@@ -52,16 +46,12 @@ const OrderPriceDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: left;
   color: ${gray1};
 `;
 const ItemQuantityDiv = styled.div`
   font-size: 18px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${gray3};
@@ -96,9 +86,9 @@ const SStatusImg = styled.img`
 const SStatusText = styled.div`
   font-size: 16px;
   font-weight: 500;
-  line-height: normal;
+
   text-align: right;
-  color: #ff985f;
+  color: ${color.main};
   width: 90%;
   height: 28px;
   display: flex;

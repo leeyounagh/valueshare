@@ -30,7 +30,6 @@ const SCardBrand = styled.div`
   width: 100%;
   font-size: 20px;
 
-  line-height: normal;
   letter-spacing: 1.5;
   text-align: left;
   color: ${color.black};

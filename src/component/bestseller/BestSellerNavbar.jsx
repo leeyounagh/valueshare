@@ -29,9 +29,6 @@ const STitle = styled.div`
   height: 100%;
 
   font-size: 22px;
-  font-weight: normal;
-
-  line-height: normal;
 
   text-align: left;
   color: #000;
@@ -44,9 +41,6 @@ const SItemDiv = styled.div`
   width: 20px;
   height: 100%;
   font-size: 40px;
-  font-weight: normal;
-
-  line-height: normal;
 
   text-align: left;
   color: #000;
@@ -61,9 +55,6 @@ const SProductTitle = styled.div`
   height: 100%;
 
   font-size: 22px;
-  font-weight: normal;
-
-  line-height: normal;
 
   text-align: left;
   color: #000;

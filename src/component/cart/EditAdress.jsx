@@ -49,8 +49,6 @@ const STitleDiv = styled.div`
   font-size: 25px;
   font-weight: 500;
 
-  line-height: normal;
-
   text-align: left;
   color: #000;
   margin-left: 90px;
@@ -70,8 +68,6 @@ const SInfoTitle = styled.div`
   font-size: 24px;
   font-weight: 500;
 
-  line-height: normal;
-
   text-align: center;
   color: ${gray3};
   display: flex;
@@ -82,7 +78,6 @@ const SInfoInput = styled.input`
   width: 90%;
   height: 100%;
   font-size: 16px;
-  font-weight: normal;
 
   line-height: 1.75;
   letter-spacing: 0.75px;
@@ -94,7 +89,7 @@ const SInfoInput = styled.input`
   border-radius: 10px;
   border: solid 1px ${gray4};
   background-color: ${white};
-  outline-color: #ff985f;
+  outline-color: ${color.main};
 `;
 const SInputDiv = styled.div`
   width: 90%;

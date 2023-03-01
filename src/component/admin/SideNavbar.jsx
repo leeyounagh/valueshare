@@ -3,11 +3,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import color from "styles/color";
 
 const SLayout = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #ff985f;
+  background-color: ${color.main};
 `;
 const STitle = styled.div`
   height: 20vh;

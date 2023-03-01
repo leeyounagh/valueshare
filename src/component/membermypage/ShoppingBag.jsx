@@ -26,13 +26,9 @@ const STitemItemDiv = styled.div`
 `;
 const SDetailIconImg = styled.img``;
 const SShoppingBagTextDiv = styled.div`
-  font-family: Montserrat;
   font-size: 26px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   width: 90%;
@@ -48,13 +44,9 @@ const SProductDiv = styled.div`
   margin-left: 50px;
 `;
 const SProductTitleDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   height: 30%;
@@ -62,26 +54,18 @@ const SProductTitleDiv = styled.div`
 `;
 
 const SProductNameDiv = styled.div`
-  font-family: NotoSans;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   height: 30%;
   padding-left: 10px;
 `;
 const SProductPriceDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   color: ${gray1};
   height: 30%;
   padding-left: 10px;
@@ -101,10 +85,7 @@ const SImg = styled.img`
 const SBrandDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   padding-left: 10px;

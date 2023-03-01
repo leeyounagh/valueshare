@@ -26,8 +26,6 @@ const SLogoDiv = styled.div`
   a {
     font-weight: bold;
 
-    line-height: normal;
-
     text-align: left;
     color: black;
     font-family: "Rufina", serif;
@@ -47,8 +45,6 @@ const SBestSellerDiv = styled.div`
   font-size: 20px;
   font-weight: 500;
 
-  line-height: normal;
-
   text-align: left;
   color: ${color.gray1};
 `;
@@ -58,8 +54,6 @@ const SProductDiv = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${color.gray1};
@@ -71,8 +65,6 @@ const SLookBookDiv = styled.div`
   font-size: 20px;
   font-weight: 500;
 
-  line-height: normal;
-
   text-align: left;
   color: ${color.gray1};
 `;
@@ -83,8 +75,6 @@ const SMembershipDiv = styled.div`
 
   font-size: 20px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${color.gray1};
@@ -110,8 +100,6 @@ const SLayoutIconItem = styled.button`
   background-color: white;
   font-size: 20px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   border: 0;

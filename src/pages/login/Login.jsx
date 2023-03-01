@@ -58,8 +58,7 @@ const SSection = styled.form`
 const STitle = styled.h1`
   font-size: 50px;
   font-weight: bold;
-  letter-spacing: normal;
-  font-stretch: normal;
+
   text-align: left;
 
   color: ${color.gray1};
@@ -76,10 +75,7 @@ const SLabel = styled.span`
   margin: 76px 280px 7px 2px;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${color.gray1};
 `;

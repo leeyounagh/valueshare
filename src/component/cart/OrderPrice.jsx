@@ -37,8 +37,6 @@ const SOrderTitleDiv = styled.div`
   font-size: 40px;
   font-weight: 600;
 
-  line-height: normal;
-
   text-align: left;
   color: ${color.black};
   margin-left: 15px;
@@ -64,7 +62,6 @@ const STotalPriceDiv = styled.div`
   font-weight: bold;
 
   font-style: 1.5;
-  line-height: normal;
 
   text-align: right;
   color: ${gray1};
@@ -93,8 +90,6 @@ const STotalTextDiv = styled.div`
   font-size: 24px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: left;
   color: #000;
 `;
@@ -104,10 +99,8 @@ const SLastTotalPriceDiv = styled.div`
   font-size: 40px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: right;
-  color: #ff985f;
+  color: ${color.main};
 `;
 const SOrderIcon = styled.div`
   width: 100%;

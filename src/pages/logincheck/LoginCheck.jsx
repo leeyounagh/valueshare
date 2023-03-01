@@ -22,13 +22,13 @@ const SItemDiv = styled.div`
   background-color: ${white};
 `;
 const STitleDiv = styled.div`
-font-family: NotoSansKR;
+
 font-size: 30px;
 font-weight: bold;
-font-stretch: normal;
-font-style: normal;
+
+
 line-height: 0.67;
-letter-spacing: normal;
+
 color: ${gray2};
 height:20%;
 display:flex;
@@ -40,13 +40,10 @@ const SNoticeTextDiv = styled.div`
   height: 20%;
 `;
 const SNoticeItemDiv = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 0.83;
-  letter-spacing: normal;
+
   text-align: center;
   color: ${gray3};
   height: 50%;

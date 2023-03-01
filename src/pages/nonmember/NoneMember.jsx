@@ -25,9 +25,7 @@ const SOrderItemDiv = styled.div`
 const STitleDiv = styled.div`
   font-size: 30px;
   font-weight: bold;
-
   line-height: 0.67;
-
   text-align: center;
   color: ${gray2};
   width: 100%;
@@ -39,7 +37,6 @@ const STitleDiv = styled.div`
 `;
 const SNoticeDiv = styled.div`
   font-size: 24px;
-  font-weight: normal;
 
   line-height: 0.83;
 
@@ -58,8 +55,6 @@ const SUserInfoDiv = styled.div`
 const SNameDiv = styled.div`
   font-size: 24px;
   font-weight: 500;
-  line-height: normal;
-
   text-align: left;
   color: ${gray3};
   display: flex;
@@ -72,12 +67,11 @@ const SInput = styled.input`
   background-color: ${white};
   width: 414px;
   height: 57px;
-
   padding-left: 10px;
   border-radius: 16px;
   border: solid 1px ${gray4};
   background-color: ${white};
-  outline-color: #ff985f;
+  outline-color: ${color.main};
 `;
 
 const SItemDiv = styled.div``;

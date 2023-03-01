@@ -17,9 +17,6 @@ const SLayout = styled.div`
 const SHistoryTitle = styled.div`
   font-size: 40px;
   font-weight: 600;
-
-  line-height: normal;
-
   text-align: left;
   color: #000;
   width: 100%;
@@ -40,9 +37,6 @@ const SItemDiv = styled.div`
 const OrderNumberDiv = styled.div`
   font-size: 24px;
   font-weight: bold;
-
-  line-height: normal;
-
   text-align: left;
   color: ${gray1};
   height: 30%;
@@ -51,16 +45,12 @@ const OrderPriceDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: left;
   color: ${gray1};
 `;
 const ItemQuantityDiv = styled.div`
   font-size: 18px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${gray3};
@@ -75,7 +65,6 @@ background-color: ${gray4};
 `;
 const SProductStatusDiv = styled.div`
   width: 25%;
-
   height: 30%;
   position: absolute;
   top: 10%;
@@ -94,11 +83,8 @@ const SStatusImg = styled.img`
 const SStatusText = styled.div`
   font-size: 16px;
   font-weight: 500;
-
-  line-height: normal;
-
   text-align: right;
-  color: #ff985f;
+  color: ${color.main};
   width: 90%;
   display: flex;
   justify-content: flex-start;

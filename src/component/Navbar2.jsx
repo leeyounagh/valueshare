@@ -38,8 +38,7 @@ const SRootDiv = styled.div`
   height: 30%;
   margin-left: 54px;
   font-size: 24px;
-  font-weight: normal;
-  line-height: normal;
+
   text-align: left;
   margin: 0 10px;
 `;
@@ -64,7 +63,7 @@ const SPageTitleDiv = styled.div`
   height: 100%;
   font-size: 24px;
   font-weight: bold;
-  line-height: normal;
+
   text-align: left;
 `;
 function Navbar2() {

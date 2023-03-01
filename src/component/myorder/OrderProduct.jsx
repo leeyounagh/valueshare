@@ -18,8 +18,6 @@ const SOrderTitleDiv = styled.div`
   font-size: 40px;
   font-weight: 600;
 
-  line-height: normal;
-
   text-align: left;
   color: #000;
   height: 10vh;
@@ -48,7 +46,6 @@ const STitleDiv = styled.div`
 const SBrandNameDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-  line-height: normal;
 
   text-align: left;
   color: ${gray1};
@@ -60,16 +57,12 @@ const SProductNameDiv = styled.div`
   font-size: 18px;
   font-weight: 500;
 
-  line-height: normal;
-
   text-align: left;
   color: ${gray3};
 `;
 const SQuantityDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-
-  line-height: normal;
 
   text-align: center;
   color: ${gray1};
@@ -81,8 +74,6 @@ const SQuantityDiv = styled.div`
 const SPriceDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-
-  line-height: normal;
 
   color: ${gray1};
   display: flex;

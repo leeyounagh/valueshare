@@ -26,13 +26,9 @@ const Slayout = styled.div`
 `;
 
 const STitleDiv = styled.div`
-  font-family: Montserrat;
   font-size: 40px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
 `;
@@ -42,13 +38,9 @@ const SinfoItmeDiv = styled.div`
   display: flex;
 `;
 const SInfoTitleDiv = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   width: 15%;
@@ -57,13 +49,9 @@ const SInfoTitleDiv = styled.div`
   white-space: nowrap;
 `;
 const SInfoDiv = styled.div`
-  font-family: NotoSans;
   font-size: 24px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   display: flex;
@@ -80,13 +68,9 @@ const STotalDiv = styled.div`
   display: flex;
 `;
 const STotalTitle = styled.div`
-  font-family: NotoSansKR;
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: #000;
   display: flex;
@@ -95,13 +79,9 @@ const STotalTitle = styled.div`
   width: 10%;
 `;
 const STotalNumberDiv = styled.div`
-  font-family: Montserrat;
   font-size: 24px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: right;
   color: ${gray1};
   width: 90%;

@@ -52,7 +52,6 @@ const SCompleteLetter = styled.div`
 `;
 const SOrderNumberTextDiv = styled.div`
   font-size: 24px;
-  font-weight: normal;
 
   line-height: 0.83;
 
@@ -68,7 +67,6 @@ const SOrderNumberDiv = styled.div`
 `;
 const SOrderGuideItemDiv = styled.div`
   font-size: 24px;
-  font-weight: normal;
 
   line-height: 0.83;
 

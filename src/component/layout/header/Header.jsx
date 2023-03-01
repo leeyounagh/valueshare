@@ -25,8 +25,6 @@ const SLogoDiv = styled.div`
   a {
     font-weight: bold;
 
-    line-height: normal;
-
     text-align: left;
     color: black;
     font-family: "Rufina", serif;

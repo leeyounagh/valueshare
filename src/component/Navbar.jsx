@@ -36,8 +36,7 @@ const SRootDiv = styled.div`
   height: 30%;
   margin-left: 54px;
   font-size: 24px;
-  font-weight: normal;
-  line-height: normal;
+
   text-align: left;
   color: ${color.black};
 `;
@@ -63,7 +62,7 @@ const SPageTitleDiv = styled.div`
   margin-left: 54px;
   font-size: 80px;
   font-weight: bold;
-  line-height: normal;
+
   text-align: left;
   color: ${color.black};
 `;

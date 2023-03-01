@@ -18,13 +18,9 @@ const STitleDiv = styled.div`
   padding-left: 30px;
   height: 100px;
   h2 {
-    font-family: Montserrat;
     font-size: 26px;
     font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
+
     text-align: left;
     color: ${gray1};
     width: 80%;
@@ -47,13 +43,9 @@ const SMainAddressDiv = styled.div`
   margin-left: 20px;
 `;
 const SAddressTextDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   padding-left: 30px;
@@ -68,15 +60,10 @@ const SLine = styled.div`
   margin-left: 20px;
 `;
 const SAddAddressDiv = styled.button`
-  font-family: Montserrat;
-  font-size: 18px;
+    font-size: 18px;
   font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #ff985f;
+  color: ${color.main};
   padding-left: 30px;
   border:0;
   outline:0;

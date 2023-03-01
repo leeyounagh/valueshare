@@ -21,13 +21,9 @@ const STitleDiv = styled.div`
   justify-content: center;
   padding-top: 40px;
   h2 {
-    font-family: Montserrat;
     font-size: 26px;
     font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
+
     text-align: left;
     color: ${gray1};
     width: 80%;
@@ -55,10 +51,7 @@ const SProfileInfoDiv = styled.div`
 const SProfileNameDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray1};
   height: 50%;
@@ -66,13 +59,9 @@ const SProfileNameDiv = styled.div`
   align-items: center;
 `;
 const SMemberDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+
   text-align: left;
   color: ${gray3};
   display: flex;
@@ -112,11 +101,9 @@ const SImgDiv = styled.div`
 const SInput = styled.input`
   width: 80%;
   height: 100%;
-  font-family: Poppins;
+
   font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+
   line-height: 1.75;
   letter-spacing: 0.75px;
   text-align: left;

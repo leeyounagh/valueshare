@@ -48,8 +48,6 @@ const SCartOptionTextDiv = styled.div`
   font-size: 18px;
   font-weight: 500;
 
-  line-height: normal;
-
   text-align: left;
   color: ${gray3};
   white-space: nowrap;
@@ -60,12 +58,8 @@ const SQuantityText = styled.div`
   justify-content: center;
   width: 12%;
 
-  font-family: NotoSans;
-
   font-size: 18px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${gray3};
@@ -78,8 +72,6 @@ const SPriceText = styled.div`
 
   font-size: 18px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${gray3};
@@ -97,8 +89,6 @@ const SItemOptionBrandTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
 
-  line-height: normal;
-
   text-align: left;
   color: ${gray1};
 `;
@@ -106,8 +96,6 @@ const SProductName = styled.div`
   margin-top: 2px;
   font-size: 20px;
   font-weight: 500;
-
-  line-height: normal;
 
   text-align: left;
   color: ${gray3};
@@ -137,8 +125,6 @@ const SQuantityTextDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: center;
   color: ${gray1};
   width: 40px;
@@ -159,8 +145,6 @@ const SItemPriceDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
 
-  line-height: normal;
-
   text-align: right;
   color: ${gray1};
 `;
@@ -169,9 +153,6 @@ const SAllDeleteIconDiv = styled.div`
   width: 160px;
 
   font-size: 16px;
-  font-weight: normal;
-
-  line-height: normal;
 
   text-align: center;
   color: ${color.gray1};
@@ -189,9 +170,6 @@ const SSelectedDeleteIconDiv = styled.div`
   width: 160px;
 
   font-size: 16px;
-  font-weight: normal;
-
-  line-height: normal;
 
   text-align: center;
   color: ${color.gray1};
