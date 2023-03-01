@@ -20,15 +20,19 @@ const SLayout = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 40px;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+  }
 `;
 
-InfiniteScroll = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 40px;
-`;
 const SCardDiv = styled.div`
   width: 340px;
   height: 550px;
