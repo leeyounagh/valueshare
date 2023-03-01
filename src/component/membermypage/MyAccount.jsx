@@ -38,7 +38,7 @@ const SEditIconDiv = styled.div`
 `;
 const SEditImg = styled.img``;
 const SProfileDiv = styled.div`
-  height: 30%;
+  height: 86px;
   display: flex;
   padding-left: 10px;
   margin-top: 20px;
@@ -53,7 +53,6 @@ const SProfileInfoDiv = styled.div`
   margin-left: 10px;
 `;
 const SProfileNameDiv = styled.div`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: bold;
   font-stretch: normal;
@@ -85,7 +84,7 @@ const SLinDiv = styled.div`
   height: 1px;
   background-color: ${gray5};
   width: 95%;
-  margin-left: 10px;
+  margin: 14px 0 0 10px;
 `;
 const SInfoDiv = styled.div`
   height: 30%;
@@ -127,15 +126,16 @@ const SInput = styled.input`
   border-radius: 15px;
   border: solid 1px ${gray4};
   background-color: ${white};
-  outline-color: #ff985f;
+  outline-color: ${color.main};
 `;
 const SInputDiv = styled.div`
   display: flex;
   width: 100%;
   height: 90%;
+  gap: 2%;
 `;
 const SBtnDiv = styled.div`
-  width: 20%;
+  width: 100px;
   margin-left: 5px;
 `;
 function MyAccount({ userInfo }) {

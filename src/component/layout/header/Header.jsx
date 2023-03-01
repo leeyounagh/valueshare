@@ -74,7 +74,7 @@ const SLayoutInnerDiv = styled.div`
   display: flex;
   height: 67px;
   width: 100%;
-  padding-left: 40px;
+  padding-left: 3%;
 `;
 const SLayoutMenuDiv = styled.div`
   width: 90%;
@@ -186,10 +186,10 @@ function Header() {
               onClick={() => setDropdownVisibility(!dropdownVisibility)}
             >
               <SProfileMenuImg
-                className={dropdownVisibility ? null : "rotate"}
+                className={dropdownVisibility ? "rotate" : null}
                 src="/asset/Chevrons_chevron-right.svg"
               />
-              {dropdownVisibility ? null : <Dropdown />}
+              {dropdownVisibility ? <Dropdown /> : null}
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

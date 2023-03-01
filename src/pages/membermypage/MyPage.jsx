@@ -28,8 +28,7 @@ const SUserInfoDiv = styled.div`
 `;
 const SUserShoppingbagDiv = styled.div`
   width: 50%;
-  padding-left: 55px;
-  padding-top: 80px;
+  padding: 80px 2% 0 2%;
 `;
 
 const SUserOrderDiv = styled.div`
