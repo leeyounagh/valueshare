@@ -10,11 +10,19 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
-import useInfiniteScroll, { useLoadItems } from "react-infinite-scroll-hook";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 // eslint-disable-next-line no-unused-vars
 
 const SLayout = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
+`;
+
+InfiniteScroll = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -91,16 +99,6 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
-  const { loading, hasNextPage, error, loadMore } = useLoadItems();
-
-  const [sentryRef, { rootRef }] = useInfiniteScroll({
-    loading,
-    hasNextPage,
-    onLoadMore: loadMore,
-    disabled: !!error,
-    rootMargin: "0px",
-  });
-
   useEffect(() => {
     async function getProducts() {
       const response = await AxiosInstance.get("/products", {
@@ -112,41 +110,64 @@ function Card() {
     getProducts();
   }, [categories, brand]);
 
+  const [state, setState] = useState({
+    productData: Array.from({ length: 20 }),
+  });
+
+  const fetchData = () => {
+    setTimeout(() => {
+      setState({
+        productData: productData.concat(Array.from({ length: 20 })),
+      });
+    }, 1500);
+  };
+
   return (
-    <SLayout ref={rootRef}>
-      {productData.map((item) => {
-        return (
-          <SCardDiv key={item._id}>
-            <Link
-              to={`/product/${item._id}`}
-              onClick={() => PassIdHandler(item._id)}
-            >
-              <SCardImg
-                className="lazy"
-                src={item.productImage[0]}
-                alt="상품썸네일"
-                loading="lazy"
-              />
-            </Link>
-            <SCardTitleDiv>
-              <SCardBrand>{item.productBrand.brandName} </SCardBrand>
-              <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
-            </SCardTitleDiv>
-            <SCartDiv
-              onClick={() => {
-                handleBasket(item);
-                alert("장바구니에 추가되었습니다!");
-              }}
-            >
-              <SCartImgDiv>
-                <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
-              </SCartImgDiv>
-              <SPriceText> ₩{item.productPrice}</SPriceText>
-            </SCartDiv>
-          </SCardDiv>
-        );
-      })}
-      {(loading || hasNextPage) && <div ref={sentryRef}>Loading...</div>}
+    <SLayout>
+      <InfiniteScroll
+        dataLength={state.productData.length}
+        next={fetchData}
+        hasMore
+        loader={<h4>Loading...</h4>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        {productData.map((item) => {
+          return (
+            <SCardDiv key={item._id}>
+              <Link
+                to={`/product/${item._id}`}
+                onClick={() => PassIdHandler(item._id)}
+              >
+                <SCardImg
+                  className="lazy"
+                  src={item.productImage[0]}
+                  alt="상품썸네일"
+                  loading="lazy"
+                />
+              </Link>
+              <SCardTitleDiv>
+                <SCardBrand>{item.productBrand.brandName} </SCardBrand>
+                <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
+              </SCardTitleDiv>
+              <SCartDiv
+                onClick={() => {
+                  handleBasket(item);
+                  alert("장바구니에 추가되었습니다!");
+                }}
+              >
+                <SCartImgDiv>
+                  <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
+                </SCartImgDiv>
+                <SPriceText> ₩{item.productPrice}</SPriceText>
+              </SCartDiv>
+            </SCardDiv>
+          );
+        })}
+      </InfiniteScroll>
     </SLayout>
   );
 }
