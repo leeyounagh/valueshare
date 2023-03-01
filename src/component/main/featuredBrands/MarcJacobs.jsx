@@ -30,6 +30,22 @@ const SlayOut = styled.div`
     overflow: hidden;
   }
 `;
+
+const MarcJacobsImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  ${SlayOut}:hover & {
+    scale: 1.1;
+    button {
+      background-color: ${color.main};
+      color: ${color.white};
+      border: 1px solid ${color.gray1};
+    }
+  }
+`;
+
 const Button = styled.button`
   position: absolute;
   width: 136px;
@@ -40,16 +56,12 @@ const Button = styled.button`
   top: 258px;
   left: 10%;
   color: ${color.main};
-  cursor: pointer;
-`;
+  z-index: 2;
 
-const MarcJacobsImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  &:hover {
-    scale: 1.1;
+  ${SlayOut}:hover & {
+    background-color: ${color.main};
+    color: ${color.white};
+    border: 1px solid ${color.gray1};
   }
 `;
 
