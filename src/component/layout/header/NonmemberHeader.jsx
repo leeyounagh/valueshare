@@ -163,7 +163,7 @@ function NonememberHeader() {
       <SLayoutInnerDiv>
         <SLogoDiv>
           <Link to="/">
-            <h2>value shop</h2>
+            <h2>value share</h2>
           </Link>
         </SLogoDiv>
         <SLayoutMenuDiv>
@@ -192,7 +192,7 @@ function NonememberHeader() {
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
               <Link to="/login">Login</Link>
-              <Link to="/register">Sign up</Link>
+              <Link to="/nonememberorder">MyOrder</Link>
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

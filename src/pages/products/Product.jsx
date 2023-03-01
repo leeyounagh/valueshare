@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Navbar from "component/Navbar";
 import Brands from "component/produts/Brands";
-import Card from "component/produts/Card";
+// import Card from "component/produts/Card";
 import Categories from "component/produts/Categories";
 import TopBtn from "component/button/TopBtn";
 import { useSearchParams } from "react-router-dom";
+
+const Card = React.lazy(() => import("component/produts/Card"));
 
 const SLayout = styled.div`
   width: 100%;
@@ -54,7 +56,9 @@ function Product() {
           />
         </SCategoryDiv>
         <SCardDiv>
-          <Card />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Card />
+          </Suspense>
         </SCardDiv>
       </SItemInnerDiv>
       <TopBtn />
