@@ -129,11 +129,10 @@ function Card() {
 
   useEffect(() => {
     async function nextData() {
-      console.log("돼니");
       setPage((prev) => {
         return prev + 1;
       });
-      console.log("돼니", page);
+
       const response = await AxiosInstance.get(
         `/products`,
 
