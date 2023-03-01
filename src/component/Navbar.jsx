@@ -3,14 +3,12 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import color from "../styles/color";
 
-const { gray4 } = color;
-
 const SLayout = styled.nav`
   width: 100%;
   height: 233px;
   padding: 33px 0 0;
   background-color: var(--white);
-  border-bottom: 1px solid ${gray4};
+  border-bottom: 1px solid ${color.gray4};
   background-color: ${color.white};
 `;
 
@@ -37,14 +35,11 @@ const SRootDiv = styled.div`
   width: 50%;
   height: 30%;
   margin-left: 54px;
-
   font-size: 24px;
   font-weight: normal;
-
   line-height: normal;
-
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
 const SRootIconDiv = styled.div`
   height: 100%;
@@ -55,7 +50,6 @@ const SRootIcontImg = styled.img`
   width: 36px;
   height: 30px;
   transform: rotate(-90deg);
-  margin-top: 10px;
 `;
 const SCategoryDiv = styled.div``;
 const SCategoryTitle = styled.div`
@@ -69,12 +63,11 @@ const SPageTitleDiv = styled.div`
   margin-left: 54px;
   font-size: 80px;
   font-weight: bold;
-
   line-height: normal;
-
   text-align: left;
-  color: #000;
+  color: ${color.black};
 `;
+
 function Navbar() {
   const text = useSelector((state) => {
     return state.pageTitleReducer;
@@ -84,16 +77,19 @@ function Navbar() {
     <SLayout>
       <SRootDiv>
         <SRootHomeDiv>
-          <SHomeImg src="asset/icon-home.svg" />
+          <SHomeImg src="/asset/icon-home.svg" />
         </SRootHomeDiv>
         <SRootTitleDiv>
           <SRootTitle>Home</SRootTitle>
         </SRootTitleDiv>
         <SRootIconDiv>
-          <SRootIcontImg src="asset/Chevrons_chevron-right.svg" />
+          <SRootIcontImg src="/asset/Chevrons_chevron-right.svg" />
         </SRootIconDiv>
         <SCategoryDiv>
-          <SCategoryTitle>{text.rootTitle}</SCategoryTitle>
+          <SCategoryTitle>
+            {text.rootTitle}
+            {/* {url} */}
+          </SCategoryTitle>
         </SCategoryDiv>
       </SRootDiv>
 

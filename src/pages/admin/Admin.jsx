@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import SideNavbar from "component/admin/SideNavbar";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -16,10 +17,12 @@ const SSideBarDiv = styled.div`
 
 const SMainDiv = styled.div`
   width: 80%;
-  display: flex;
+  display: grid;
   justify-content: center;
   padding-top: 100px;
 `;
+const SItemDiv = styled.div``;
+
 function Admin() {
   return (
     <SLayout>
@@ -27,10 +30,12 @@ function Admin() {
         <SideNavbar />
       </SSideBarDiv>
       <SMainDiv>
-        <h2>value shop 어드민페이지에 오신걸 환영합니다.</h2>
+        <SItemDiv>
+          <h2>value shop 어드민페이지에 오신걸 환영합니다.</h2>
+        </SItemDiv>
       </SMainDiv>
     </SLayout>
   );
 }
 
-export default Admin;
+export default withAuth(Admin);

@@ -23,6 +23,13 @@ const CardList = styled.div`
   height: auto;
   display: flex;
   margin: 40px 10%;
+  gap: 10px;
+
+  div {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const BgImg1 = styled.img`

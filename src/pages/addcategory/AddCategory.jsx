@@ -1,7 +1,8 @@
 /* eslint-disable react/function-component-definition */
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -38,13 +39,11 @@ const AddCategory = () => {
 
   const handleCategory = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/admin/categories",
-        {
-          categoryName: category,
-        }
-      );
+      const response = await AxiosInstance.post("/admin/categories", {
+        categoryName: category,
+      });
       alert("카테고리 등록에 성공했습니다.");
+      window.location.reload();
       console.log(response);
     } catch (err) {
       if (err) {
@@ -79,4 +78,4 @@ const AddCategory = () => {
   );
 };
 
-export default AddCategory;
+export default withAuth(AddCategory);

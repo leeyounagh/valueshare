@@ -5,6 +5,7 @@ import color from "styles/color";
 import Btn1 from "component/button/Btn1";
 import Btn2 from "component/button/Btn2";
 import Navbar from "component/Navbar";
+import { Link } from "react-router-dom";
 
 const { white, gray2, gray3 } = color;
 const SLayout = styled.div`
@@ -57,12 +58,13 @@ const SButtonItemDiv = styled.div`
   align-center: center;
 `;
 const SButtonDiv = styled.div`
-  width: 15%;
+  width: 300px;
+  height: 100%;
   display: flex;
   align-items: center;
   margin-left: 20px;
 `;
-const MemberOrder = () => {
+const LoginCheck = () => {
   return (
     <div>
       <Navbar />
@@ -80,12 +82,16 @@ const MemberOrder = () => {
             </SNoticeItemDiv>
           </SNoticeTextDiv>
           <SButtonItemDiv>
-            <SButtonDiv>
-              <Btn1 title="로그인하기" />
-            </SButtonDiv>
-            <SButtonDiv>
-              <Btn2 title=" 비회원 주문 내역 조회" />
-            </SButtonDiv>
+            <Link to="/login">
+              <SButtonDiv>
+                <Btn1 title="로그인하기" />
+              </SButtonDiv>
+            </Link>
+            <Link to="/nonememberorder">
+              <SButtonDiv>
+                <Btn2 title=" 비회원 주문 내역 조회" />
+              </SButtonDiv>
+            </Link>
           </SButtonItemDiv>
         </SItemDiv>
       </SLayout>
@@ -93,4 +99,4 @@ const MemberOrder = () => {
   );
 };
 
-export default MemberOrder;
+export default LoginCheck;

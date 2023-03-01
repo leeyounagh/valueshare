@@ -1,9 +1,12 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-unused-vars */
-import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+import DisableBtn from "component/button/DisableBtn";
 
 const { white, gray3, gray4, gray1, gray6 } = color;
 
@@ -84,7 +87,7 @@ const SReceiveTextDiv = styled.div`
 
 const SLineDiv = styled.div`
   background-color: ${gray4};
-  width: 100%;
+  width: 95%;
   height: 1px;
   margin: 59px 0 19px 1px;
 `;
@@ -121,35 +124,11 @@ const SButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const SReturnButton = styled.button`
-  font-size: 16px;
-  font-weight: normal;
 
-  line-height: normal;
-
-  text-align: center;
-  color: ${gray4};
-  width: 15%;
-  height: 30%;
-  border-radius: 10px;
-  border: solid 1px ${gray4};
-  background-color: ${gray6};
-  margin-right: 20px;
-`;
-const SCancelButton = styled.button`
-  border: solid 1px ${gray3};
-  width: 15%;
+const SBtnDiv = styled.div`
+  width: 18%;
   height: 30%;
 
-  font-size: 16px;
-  font-weight: normal;
-
-  line-height: normal;
-
-  text-align: center;
-  color: #000;
-  background-color: ${white};
-  border-radius: 10px;
   margin-right: 50px;
 `;
 function CancelOrderReciept({ orderData }) {
@@ -159,7 +138,7 @@ function CancelOrderReciept({ orderData }) {
   const navigate = useNavigate();
   const handleCancel = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/${objectId}`, {
+      const response = await AxiosInstance.patch(`/myorder/${objectId}`, {
         cancelNote: cancelReason,
       });
       if (response.status === 200) {
@@ -171,8 +150,7 @@ function CancelOrderReciept({ orderData }) {
       console.log(err);
     }
   };
-
-  console.log(objectId);
+  console.log(orderData[0]);
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>
@@ -188,37 +166,38 @@ function CancelOrderReciept({ orderData }) {
         <SOrderDetailTitle>Order Details</SOrderDetailTitle>
         <SReceiveItemDiv>
           <SReceiveTitle> 받는 사람</SReceiveTitle>
-          <SReceiveTextDiv> 이수연</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.name}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 연락처</SReceiveTitle>
-          <SReceiveTextDiv> 010-0000-0000</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.phone}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송지</SReceiveTitle>
-          <SReceiveTextDiv>
-            서울시 엘리스랩 엘리스동 엘리스로 122-12
-          </SReceiveTextDiv>
+          <SReceiveTextDiv>{orderData[0]?.shipAdr}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송메모</SReceiveTitle>
-          <SReceiveTextDiv>배송 후 연락 주세요</SReceiveTextDiv>
+          <SReceiveTextDiv>{orderData[0]?.shipNote}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SLineDiv />
       </SOrderDetailDiv>
       <SOrderTitalDiv>
         <STotalTextDiv> 합계</STotalTextDiv>
-        <STotalPriceDiv> ₩240,000</STotalPriceDiv>
+        <STotalPriceDiv> ₩{orderData[0]?.totalPrice * 1000}</STotalPriceDiv>
       </SOrderTitalDiv>
       <SButtonDiv>
-        <SReturnButton>반품신청</SReturnButton>
-        <SCancelButton
+        <SBtnDiv>
+          <DisableBtn title="반품신청" />
+        </SBtnDiv>
+
+        <SBtnDiv
           onClick={() => {
             handleCancel();
           }}
         >
-          주문취소
-        </SCancelButton>
+          <Btn1 title="주문취소" />
+        </SBtnDiv>
       </SButtonDiv>
     </SLayout>
   );

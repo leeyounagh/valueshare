@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+// eslint-disable-next-line no-unused-vars
+import AxiosInstance from "data/AxiosInstance";
+import { useNavigate } from "react-router-dom";
 
-const { gray6, white, gray2, gray3, gray4, gray1 } = color;
+const { gray6, white, gray2, gray3, gray4 } = color;
 
 const SLayout = styled.div`
   width: 100%;
@@ -89,22 +93,51 @@ const SButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Sbutton = styled.button`
-  width: 274px;
-  height: 49px;
-  border-radius: 10px;
-  background-color: ${gray1};
-
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-  color: ${white};
-  white-space: nowrap;
+const SBtnDiv = styled.div`
+  width: 20%;
 `;
 function NoneMember() {
+  const [nonmemberInfo, setNonmemberInfo] = useState({
+    nomnmemberName: "",
+    nonmemberEmail: "",
+    orderNumber: "",
+  });
+  const navigate = useNavigate();
+  console.log(nonmemberInfo);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    const newData = {
+      ...nonmemberInfo,
+      [name]: value,
+    };
+    setNonmemberInfo(newData);
+  };
+  const handleSearch = async () => {
+    console.log("클릭");
+    const { nonmemberEmail, orderNumber } = nonmemberInfo;
+
+    const body = {
+      email: nonmemberEmail,
+    };
+    try {
+      const response = await AxiosInstance.post(
+        `/users/orders/${orderNumber}`,
+        body
+      );
+
+      if (response.status === 200) {
+        navigate(`/myorder/${response.data.result}`);
+      }
+      console.log(response.data.result);
+    } catch (err) {
+      if (err) {
+        if (err) {
+          alert("주문번호혹은 이메일을 확인해주세요");
+        }
+      }
+    }
+  };
   return (
     <div>
       <SLayout>
@@ -117,23 +150,41 @@ function NoneMember() {
             <SUserInfoDiv>
               <SNameDiv>주문자 이름</SNameDiv>
               <SInputDiv>
-                <SInput placeholder="이름" />
+                <SInput
+                  name="nomnmemberName"
+                  onChange={handleChange}
+                  placeholder="이름"
+                />
               </SInputDiv>
             </SUserInfoDiv>
             <SUserInfoDiv>
               <SNameDiv> 주문자 이메일</SNameDiv>
               <SInputDiv>
-                <SInput placeholder="test@test.com" />
+                <SInput
+                  name="nonmemberEmail"
+                  onChange={handleChange}
+                  placeholder="test@test.com"
+                />
               </SInputDiv>
             </SUserInfoDiv>
             <SUserInfoDiv>
               <SNameDiv>주문번호</SNameDiv>
               <SInputDiv>
-                <SInput placeholder="주문번호" />
+                <SInput
+                  name="orderNumber"
+                  onChange={handleChange}
+                  placeholder="주문번호"
+                />
               </SInputDiv>
             </SUserInfoDiv>
             <SButtonDiv>
-              <Sbutton> 주문 내역 조회</Sbutton>
+              <SBtnDiv
+                onClick={() => {
+                  handleSearch();
+                }}
+              >
+                <Btn1 title="주문 내역 조회" />
+              </SBtnDiv>
             </SButtonDiv>
           </SOrderItemDiv>
         </SItemDiv>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -43,10 +43,8 @@ function OrderListDetail() {
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get(
-        `http://localhost:5000/admin/orders/${objectId}`
-      );
-      setOrderData([response.data.result]);
+      const response = await AxiosInstance.get(`/admin/orders/${objectId}`);
+      setOrderData([response.data.result[0]]);
     }
     getOrderList();
   }, []);
@@ -56,8 +54,8 @@ function OrderListDetail() {
       shipStatus: shipSatatus,
     };
     try {
-      const response = await axios.patch(
-        `http://localhost:5000/admin/orders/${objectId}`,
+      const response = await AxiosInstance.patch(
+        `/admin/orders/${objectId}`,
         body
       );
 
@@ -71,7 +69,7 @@ function OrderListDetail() {
       }
     }
   };
-  console.log(shipSatatus);
+
   console.log(orderData);
   return (
     <div>
@@ -81,7 +79,7 @@ function OrderListDetail() {
       <SLayout>
         <SOrderListDiv>
           <SItemDiv>주문번호: {orderData[0]?.orderNumber}</SItemDiv>
-          <SItemDiv>핸드폰번호: {orderData[0]?.phone}</SItemDiv>
+          <SItemDiv>핸드폰번호: {orderData[0]?.phoNumber}</SItemDiv>
           <SItemDiv>배송지: {orderData[0]?.shipAdr}</SItemDiv>
           <SItemDiv>배송상태: {orderData[0]?.shipStatus}</SItemDiv>
           <SItemDiv>
@@ -95,6 +93,7 @@ function OrderListDetail() {
             <SButton
               onClick={() => {
                 handleEditOrder();
+                window.location.reload();
               }}
             >
               수정하기

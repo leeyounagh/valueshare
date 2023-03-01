@@ -3,14 +3,12 @@ import styled from "styled-components";
 // import color from "../../styles/color";
 import color from "styles/color";
 
-const { gray4 } = color;
-
 const SlayOut = styled.nav`
   width: 100%;
   height: 100px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid ${gray4};
+  border-bottom: 1px solid ${color.gray4};
   background-color: ${color.white};
 `;
 const SHomeImg = styled.img`
@@ -23,35 +21,28 @@ const SIconImg = styled.img`
   width: 36px;
   height: 30px;
   transform: rotate(-90deg);
-  margin-top: 10px;
 `;
 const STitle = styled.div`
   text-align: center;
-  width: 120px;
+  width: auto;
   height: 100%;
-
   font-size: 22px;
-  font-weight: normal;
-
-  line-height: normal;
-
+  font-weight: 500;
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 10px;
 `;
 
 const SItemDiv = styled.div`
   width: 20px;
   height: 100%;
   font-size: 40px;
-  font-weight: normal;
-
-  line-height: normal;
-
+  font-weight: 500;
   text-align: left;
-  color: #000;
+  color: ${color.gray1};
   display: flex;
   justify-content: center;
   align-items: center;

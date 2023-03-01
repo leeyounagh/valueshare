@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
@@ -17,19 +18,31 @@ const SlayOut = styled.div`
     width: 100%;
     transform: translate(-50%, -50%);
   }
+  a {
+    text-decoration: none;
+    color: ${color.gray1};
+    overflow: hidden;
+    width: 100%;
+  }
 `;
 
 const VersaceImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  &:hover {
+    scale: 1.1;
+  }
 `;
 
 function Versace() {
   return (
     <SlayOut>
-      <h2>VERSACE</h2>
-      <VersaceImg src="/asset/img-versace.png" />
+      <Link to="/product?categories=all&brand=Miu+Miu">
+        <h2>VERSACE</h2>
+        <VersaceImg src="/asset/img-versace.png" />
+      </Link>
     </SlayOut>
   );
 }

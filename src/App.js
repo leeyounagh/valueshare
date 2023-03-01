@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/newline-after-import */
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "component/layout/footer/Footer";
 import UserInfo from "pages/userinfo/UserInfo";
 import OrderList from "pages/orderlist/OrderList";
@@ -12,6 +13,7 @@ import Login from "pages/login/Login";
 import Main from "pages/main/Main";
 import MyOrder from "pages/myorder/MyOrder";
 import Register from "pages/register/Register";
+import RegisterComplete from "pages/register/RegisterComplete";
 import BestSeller from "pages/bestseller/BestSeller";
 import Cart from "pages/cart/Cart";
 import Detail from "pages/productdeail/Detail";
@@ -32,13 +34,19 @@ import Productest from "pages/products/Productest";
 import NotFound from "pages/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
 import AddCategory from "pages/addcategory/AddCategory";
-
 import Category from "pages/category/Category";
+import BestSellerDetail from "pages/bestseller/BestSellerDetail";
 import AdminProduct from "pages/adminproduct/AdminProduct";
-import MemberOrder from "pages/membermyorder/MemberOrder";
+import LoginCheck from "pages/logincheck/LoginCheck";
+import MyPage from "pages/membermypage/MyPage";
+import AdminHeader from "component/layout/header/AdminHeader";
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const auth = useSelector(
+    (state) => state?.UserInfoReducer?.userInfo?.[0]?.aud
+  );
+
   if (pathname === "/product") {
     dispatch(setPageInfo({ rootTitle: "Category", currentTitle: "Products" }));
   }
@@ -69,13 +77,31 @@ function App() {
   if (pathname === "/memberordercheck") {
     dispatch(setPageInfo({ rootTitle: "My Order", currentTitle: "My Order" }));
   }
+  if (pathname === "/myorder/cancel") {
+    dispatch(
+      setPageInfo({ rootTitle: "My Order", currentTitle: "Cancle Order" })
+    );
+  }
+  if (pathname === "/membermypage") {
+    dispatch(setPageInfo({ rootTitle: "Profile", currentTitle: "Profile" }));
+  }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
-      <NonememberHeader />
+      {auth === "false" ? (
+        <Header />
+      ) : auth === "true" ? (
+        <AdminHeader />
+      ) : (
+        <NonememberHeader />
+      )}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/register_complete" element={<RegisterComplete />} />
 
         <Route path="/myorder/:userid" element={<MyOrder />} />
         <Route path="/mypage/resign" element={<Resign />} />
@@ -83,6 +109,8 @@ function App() {
         <Route path="/ordersuccess" element={<OrderSuccess />} />
 
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="/membermypage" element={<MyPage />} />
 
         <Route exact path="/product/:productid" element={<Detail />} />
         <Route exact path="/product" element={<Product />} />
@@ -94,8 +122,8 @@ function App() {
         <Route path="/membership" element={<Membership />} />
         <Route path="/myorder/cancel/:userId" element={<CancelOrder />} />
 
-        <Route path="/nonmemberorder" element={<NoneMember />} />
-        <Route path="/memberordercheck" element={<MemberOrder />} />
+        <Route path="/nonememberorder" element={<NoneMember />} />
+        <Route path="/memberorderchecks" element={<LoginCheck />} />
 
         {/* 어드민 페이지  */}
         <Route path="/admin" element={<Admin />} />
@@ -117,7 +145,7 @@ function App() {
 
         <Route
           exact
-          path="/admin/category/editproduct"
+          path="/admin/product/:productid"
           element={<EditProduct />}
         />
         {/* 404  */}

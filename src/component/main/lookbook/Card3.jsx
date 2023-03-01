@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
@@ -16,6 +17,10 @@ const SlayOut = styled.div`
     color: ${color.gray3};
     text-align: center;
   }
+  a {
+    text-decoration: none;
+    color: ${color.gray1};
+  }
 `;
 
 const CardImg = styled.img`
@@ -28,9 +33,11 @@ const CardImg = styled.img`
 function Card3() {
   return (
     <SlayOut>
-      <CardImg src="/asset/img-lookbook3.png" />
-      <h3>Louis Vuitton</h3>
-      <p>Coussin MM</p>
+      <Link to="/lookbook">
+        <CardImg src="/asset/img-lookbook3.png" />
+        <h3>Louis Vuitton</h3>
+        <p>Coussin MM</p>
+      </Link>
     </SlayOut>
   );
 }

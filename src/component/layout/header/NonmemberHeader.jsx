@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 import color from "../../../styles/color";
 
 const { white, gray4 } = color;
@@ -25,14 +29,10 @@ const SLogoDiv = styled.div`
 
   a {
     font-weight: bold;
-
-    line-height: normal;
-
     text-align: left;
-    color: black;
+    color: ${color.gray1};
     font-family: "Rufina", serif;
     font-weight: 900;
-
     align-items: center;
   }
   h2 {
@@ -43,51 +43,27 @@ const SLogoDiv = styled.div`
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 
 const SProductDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 
 const SLookBookDiv = styled.div`
   height: 100%;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 
 const SMembershipDiv = styled.div`
   height: 100%;
   width: 130px;
-
   font-size: 20px;
-  font-weight: 500;
-
-  line-height: normal;
-
   text-align: left;
-  color: ${color.black};
 `;
 const SLineDiv = styled.div`
   width: 1px;
@@ -99,7 +75,7 @@ const SLayoutInnerDiv = styled.div`
   display: flex;
   height: 67px;
   width: 100%;
-  padding-left: 40px;
+  padding-left: 3%;
 `;
 const SLayoutMenuDiv = styled.div`
   width: 60%;
@@ -127,12 +103,22 @@ const SLayoutIconItem = styled.div`
   margin: 5px;
   height: 100%;
   width: 20%;
+  position: relative;
 `;
 const SInnerItemDiv = styled.div`
   justify-content: space-between;
   width: 60%;
   height: 100%;
   display: flex;
+
+  a {
+    color: ${color.gray1};
+    font-weight: 500;
+    &:hover {
+      color: ${color.main} !important;
+      font-weight: 600;
+    }
+  }
 `;
 const SLayoutProfileDiv = styled.div`
   display: flex;
@@ -148,9 +134,30 @@ const SLayoutProfileInnerDiv = styled.div`
   a {
     color: ${color.gray3} !important;
     padding: 0 10px;
+    &:hover {
+      color: ${color.gray1} !important;
+      font-weight: 500;
+    }
   }
 `;
-function Header() {
+const SBadageDiv = styled.div`
+  position: absolute;
+  top: -10px;
+  left: 33px;
+  .bg-warning {
+    color: ${color.white};
+    background-color: ${color.main} !important;
+  }
+`;
+function NonememberHeader() {
+  const cartQuantity = useSelector((state) => {
+    return state.CartItemReducer;
+  });
+
+  const user = useSelector((state) => {
+    return state.UserReducer;
+  });
+
   return (
     <SlayOut>
       <SLayoutInnerDiv>
@@ -185,7 +192,7 @@ function Header() {
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
               <Link to="/login">Login</Link>
-              <Link to="/myorder">My Order</Link>
+              <Link to="/register">Sign up</Link>
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>
@@ -194,4 +201,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default NonememberHeader;

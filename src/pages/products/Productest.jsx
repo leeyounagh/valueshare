@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar from "component/Navbar";
 import Brands from "component/produts/Brands";
 import Card from "component/produts/Card";
-import Filters from "component/produts/Filters";
+import Filters from "component/produts/Categories";
 
 const SLayout = styled.div`
   width: 100%;

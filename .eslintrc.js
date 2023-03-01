@@ -29,6 +29,7 @@ module.exports = {
       "error",
       {
         endOfLine: "auto",
+        useTabs: false,
       },
     ],
     "import/no-unresolved": 0,

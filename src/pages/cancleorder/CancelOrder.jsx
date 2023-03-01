@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import Navbar from "component/Navbar";
 import color from "styles/color";
@@ -25,16 +25,14 @@ function CancelOrder() {
   const [orderData, setOrderData] = useState([]);
   useEffect(() => {
     async function handleMyOlder() {
-      const response = await axios.get(
-        `http://localhost:5000/myorder/${objectId}`
-      );
+      const response = await AxiosInstance.get(`/myorder/${objectId}`);
       const data = await response.data;
-      setOrderData(data);
+      setOrderData([data[0]]);
       console.log(response);
     }
     handleMyOlder();
   }, []);
-  console.log(orderData, objectId);
+  console.log(orderData);
   return (
     <div>
       <Navbar />

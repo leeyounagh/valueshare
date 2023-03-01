@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 
+import { useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
 
@@ -38,6 +39,7 @@ const SItemImgDiv = styled.div`
   height: 100%;
 `;
 const SImg = styled.img`
+  width: 130px;
   height: 100%;
 `;
 const STitleDiv = styled.div`
@@ -47,7 +49,6 @@ const STitleDiv = styled.div`
 const SBrandNameDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
-
   line-height: normal;
 
   text-align: left;
@@ -97,27 +98,28 @@ const SLinDiv = styled.div`
   margin-bottom: 20px;
   margin-left: 20px;
 `;
-function OrderProduct({ orderData }) {
-  console.log(orderData);
-
+const SBrandTitleDiv = styled.div`
+  display: flex;
+`;
+function OrderProduct({ orderData, products }) {
   return (
     <SLayout>
-      {orderData.map((item) => {
+      <SOrderTitleDiv>Order {orderData[0]?.orderNumber}</SOrderTitleDiv>
+      {products?.map((item) => {
         return (
           <>
-            <SOrderTitleDiv>Order {item.orderNumber}</SOrderTitleDiv>
             <SOrderItemDiv>
               <SItemImgDiv>
-                <SImg src={item.products[0].productImage[0]} />
+                <SImg src={item.productImage[0]} />
               </SItemImgDiv>
               <STitleDiv>
-                {/* <SBrandNameDiv>{item.result}</SBrandNameDiv> */}
-                <SProductNameDiv>
-                  트위스트 MM 핸드백 외 {item.products.length - 1}개
-                </SProductNameDiv>
+                <SBrandNameDiv>{item?.productBrand}</SBrandNameDiv>
+                <SProductNameDiv>{item?.productTitle}</SProductNameDiv>
               </STitleDiv>
-              <SQuantityDiv>{item.products.length}개</SQuantityDiv>
-              <SPriceDiv> ₩{item.totalPrice * 1000}</SPriceDiv>
+              <SQuantityDiv>{item?.productQuantity || 0}개</SQuantityDiv>
+              <SPriceDiv>
+                ₩{item?.productPrice || 0 * item.productQuantity || 0}
+              </SPriceDiv>
             </SOrderItemDiv>
             <SLinDiv />
           </>

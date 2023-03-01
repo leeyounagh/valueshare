@@ -3,9 +3,11 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
+import { withAuth } from "utils/withAuth";
+import { Link } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -31,11 +33,10 @@ const STableDiv = styled.div`
 function AdminProduct() {
   // eslint-disable-next-line no-unused-vars
   const [productData, setProductData] = useState();
-  const [id, setId] = useState();
 
   useEffect(() => {
     async function getOrderList() {
-      const response = await axios.get("http://localhost:5000/admin/products");
+      const response = await AxiosInstance.get("/admin/products");
       setProductData(response.data.result);
     }
     getOrderList();
@@ -43,12 +44,12 @@ function AdminProduct() {
 
   const handleDelete = async (item) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/admin/products/${item._id}`
+      const response = await AxiosInstance.delete(
+        `/admin/products/${item._id}`
       );
       if (response.status === 200) {
         alert("상품이 삭제되었습니다..");
-        //  페이지 리렌더링이되어야됨
+        window.location.reload();
       }
       console.log(response);
     } catch (err) {
@@ -59,7 +60,7 @@ function AdminProduct() {
   return (
     <div>
       <STitle>
-        <h1>주문 리스트</h1>
+        <h1>상품 리스트</h1>
       </STitle>
       <SLayout>
         <STableDiv>
@@ -72,6 +73,7 @@ function AdminProduct() {
                 <th>가격</th>
                 <th>재고</th>
                 <th>상품삭제</th>
+                <th>상품수정</th>
               </tr>
             </thead>
             <tbody>
@@ -96,6 +98,9 @@ function AdminProduct() {
                         상품삭제
                       </button>
                     </td>
+                    <Link to={`${item._id}`}>
+                      <td>상품수정</td>
+                    </Link>
                   </tr>
                 );
               })}
@@ -107,4 +112,4 @@ function AdminProduct() {
   );
 }
 
-export default AdminProduct;
+export default withAuth(AdminProduct);

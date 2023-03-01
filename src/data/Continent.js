@@ -1,4 +1,5 @@
 const Continents = [
+  { id: "category", key: 0, value: "카테고리" },
   { id: "category", key: 1, value: "bags" },
   { id: "category", key: 2, value: "accessories" },
   { id: "category", key: 3, value: "dress" },

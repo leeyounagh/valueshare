@@ -1,4 +1,5 @@
 const Brand = [
+  { id: "brand", key: 0, value: "브랜드" },
   { id: "brand", key: 1, value: "Dior" },
   { id: "brand", key: 2, value: "Chanel" },
   { id: "brand", key: 3, value: "Gucci" },

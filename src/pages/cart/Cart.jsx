@@ -1,11 +1,16 @@
+/* eslint-disable import/order */
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Navbar from "component/Navbar";
 import styled from "styled-components";
 import color from "styles/color";
+import MemberAddress from "component/cart/MemberAddress";
 import EmptyCart from "../../component/cart/EmptyCart";
 import OrderPrice from "../../component/cart/OrderPrice";
 import GetItemCart from "../../component/cart/GetItemCart";
 import Address from "../../component/cart/Address";
+import MemberOrderPrice from "component/cart/MemberOrderPrice";
 
 const { gray6, white } = color;
 
@@ -44,9 +49,14 @@ const getInitialCartItems = () => {
 
 function Cart() {
   const [cartItems, setCartItems] = useState(getInitialCartItems());
+  const auth = useSelector((item) => {
+    return item.UserInfoReducer?.userInfo?.[0]?.aud;
+  });
+
+  console.log("확인", auth);
 
   return (
-    <div style={{ zIndex: "10", position: "relative" }}>
+    <div style={{ position: "relative" }}>
       <Navbar />
       <SLayout>
         {cartItems.length === 0 ? (
@@ -60,8 +70,15 @@ function Cart() {
         )}
 
         <SOrderPriceDiv>
-          <Address />
-          <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
+          {auth === "false" ? <MemberAddress /> : <Address />}
+          {auth === "false" ? (
+            <MemberOrderPrice
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ) : (
+            <OrderPrice cartItems={cartItems} setCartItems={setCartItems} />
+          )}
         </SOrderPriceDiv>
       </SLayout>
     </div>

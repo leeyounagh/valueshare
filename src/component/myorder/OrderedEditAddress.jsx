@@ -1,10 +1,13 @@
 /* eslint-disable no-underscore-dangle */
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import color from "styles/color";
+import Btn1 from "component/button/Btn1";
+import Btn2 from "component/button/Btn2";
 
-const { white, gray3, gray4, gray1 } = color;
+const { white, gray3, gray4 } = color;
 
 const Slayout = styled.div`
   width: 100%;
@@ -95,6 +98,7 @@ const SInfoInput = styled.input`
   border-radius: 10px;
   border: solid 1px ${gray4};
   background-color: ${white};
+  outline-color: #ff985f;
 `;
 const SInputDiv = styled.div`
   width: 90%;
@@ -108,53 +112,21 @@ const SButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const SCheckButton = styled.button`
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  background-color: ${gray1};
-  color: ${white};
-  font-family: NotoSans;
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  z-index: 50;
-  cursor: pointer;
-`;
-const SCancelButton = styled.button`
-  border: solid 1px ${gray1};
-  background-color: ${white};
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  font-family: NotoSans;
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: ${gray1};
-  cursor: pointer;
-`;
+
 const SInnerButtonDiv = styled.div`
   width: 20%;
   height: 50px;
   margin-right: 20px;
-  z-index: 10;
 `;
 function OrderedEditAddress({ setIsOpen, orderData }) {
+  const { pathname } = useLocation();
+  const objectId = pathname.substr(9);
   const [data, setData] = useState({
-    customerName: "",
-    phoneNumber: "",
-    address: "",
-    memo: "",
-    email: "",
+    customerName: `${orderData?.[0]?.name}`,
+    phoneNumber: `${orderData?.[0]?.phoneNumber}`,
+    address: `${orderData?.[0]?.shipAdr}`,
+    memo: `${orderData?.[0]?.shipNote}`,
+    email: `${orderData?.[0]?.email}`,
   });
 
   const handleChange = (event) => {
@@ -166,21 +138,30 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
     };
     setData(newData);
   };
-  console.log(data);
+
   const handleAddress = async () => {
     const body = {
-      phone: data.phoneNumber,
-      email: data.phoneNumber,
+      phoneNumber: data.phoneNumber,
+      email: data.email,
       name: data.customerName,
       shipAdr: data.address,
       shipNote: data.memo,
     };
-    const response = await axios.patch(
-      `http://localhost:5000/users/orders/${orderData[0]._id}`,
-      body
-    );
-    console.log(response);
+    try {
+      const response = await AxiosInstance.patch(`/myorder/${objectId}`, body);
+      console.log(response);
+
+      if (response.status === 200) {
+        alert("주소지 수정에 성공하였습니다!");
+        window.location.reload();
+      }
+    } catch (err) {
+      if (err) {
+        alert("수정에 실패했습니다.");
+      }
+    }
   };
+
   return (
     <Slayout>
       <SModal>
@@ -199,6 +180,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           <SInfoTitle>받는사람</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.customerName}
               onChange={handleChange}
               name="customerName"
               placeholder="이름"
@@ -209,6 +191,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           <SInfoTitle>연락처</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.phoneNumber}
               onChange={handleChange}
               name="phoneNumber"
               placeholder="010-0000-0000"
@@ -219,6 +202,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           <SInfoTitle>배송지</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.address}
               onChange={handleChange}
               name="address"
               placeholder="주소"
@@ -229,6 +213,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           <SInfoTitle>배송메모</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.memo}
               onChange={handleChange}
               name="memo"
               placeholder="배송 후 연락 부탁드립니다."
@@ -239,6 +224,7 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           <SInfoTitle>이메일</SInfoTitle>
           <SInputDiv>
             <SInfoInput
+              value={data.email}
               onChange={handleChange}
               name="email"
               placeholder=" elice@elice.com"
@@ -246,24 +232,20 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
           </SInputDiv>
         </SItemDiv>
         <SButtonDiv>
-          <SInnerButtonDiv>
-            <SCheckButton
-              onClick={() => {
-                handleAddress();
-                setIsOpen(false);
-              }}
-            >
-              확인
-            </SCheckButton>
+          <SInnerButtonDiv
+            onClick={() => {
+              handleAddress();
+              setIsOpen(false);
+            }}
+          >
+            <Btn1 title="확인" />
           </SInnerButtonDiv>
-          <SInnerButtonDiv>
-            <SCancelButton
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              취소
-            </SCancelButton>
+          <SInnerButtonDiv
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            <Btn2 title="취소" />
           </SInnerButtonDiv>
         </SButtonDiv>
       </SModal>

@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import styled from "styled-components";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -55,8 +56,8 @@ function EditCategory() {
       categoryName: data.changecategory,
     };
     try {
-      const response = await axios.patch(
-        `http://localhost:5000/admin/categories/${data.beforecategory}`,
+      const response = await AxiosInstance.patch(
+        `/admin/categories/${data.beforecategory}`,
         body
       );
       setData({
@@ -66,6 +67,7 @@ function EditCategory() {
       console.log(response);
       if (response.status === 200) {
         alert("카테고리 수정에 성공했습니다");
+        window.location.reload();
       }
     } catch (err) {
       if (err) {
@@ -117,4 +119,4 @@ function EditCategory() {
   );
 }
 
-export default EditCategory;
+export default withAuth(EditCategory);

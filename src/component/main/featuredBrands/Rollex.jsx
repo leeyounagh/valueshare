@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
@@ -20,9 +21,25 @@ const SlayOut = styled.div`
   p {
     position: absolute;
     top: 45%;
-    left: 60%;
+    left: 59%;
     width: 100%;
     color: ${color.gray3};
+    z-index: 1;
+  }
+  a {
+    text-decoration: none;
+    color: ${color.gray1};
+    overflow: hidden;
+  }
+`;
+
+const RollexImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  ${SlayOut}:hover & {
+    scale: 1.1;
   }
 `;
 const Button = styled.button`
@@ -32,24 +49,33 @@ const Button = styled.button`
   border-radius: 10px 10px 10px 0;
   border: 1px solid ${color.gray2};
   top: 230px;
-  right: 25%;
+  right: 23%;
   background-color: ${color.gray5};
   cursor: pointer;
-`;
+  z-index: 1;
 
-const RollexImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  ${SlayOut}:hover & {
+    background-color: ${color.white};
+    border: 1px solid ${color.main};
+    color: ${color.main};
+  }
+
+  &:hover {
+    background-color: ${color.white};
+    border: 1px solid ${color.main};
+    color: ${color.main};
+  }
 `;
 
 function Rollex() {
   return (
     <SlayOut>
-      <h2>Rollex</h2>
-      <p>1%를 위한 기술, 성공의 상징 되다</p>
-      <Button>view detail</Button>
-      <RollexImg src="/asset/img-rollex.png" />
+      <Link to="/product?categories=all&brand=Balenciaga">
+        <h2>Rollex</h2>
+        <p>1%를 위한 기술, 성공의 상징 되다</p>
+        <Button>view detail</Button>
+        <RollexImg src="/asset/img-rollex.png" />
+      </Link>
     </SlayOut>
   );
 }

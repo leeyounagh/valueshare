@@ -2,9 +2,10 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/self-closing-comp */
-import axios from "axios";
+import AxiosInstance from "data/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { withAuth } from "utils/withAuth";
 
 const SLayout = styled.div`
   width: 100%;
@@ -33,9 +34,7 @@ const Category = () => {
 
   useEffect(() => {
     async function handleCategory() {
-      const response = await axios.get(
-        "http://localhost:5000/admin/categories"
-      );
+      const response = await AxiosInstance.get("/admin/categories");
 
       const data = await response.data.result;
       setCategory(data);
@@ -46,12 +45,12 @@ const Category = () => {
 
   const handleDeleteCategory = async (item) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/admin/categories/${item._id}`
+      const response = await AxiosInstance.delete(
+        `/admin/categories/${item._id}`
       );
       if (response.status === 200) {
         alert("카테고리가 삭제되었습니다.");
-        //  페이지 리렌더링이되어야됨
+        window.location.reload();
       }
       console.log(response);
     } catch (err) {
@@ -93,4 +92,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default withAuth(Category);

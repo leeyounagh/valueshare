@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import color from "../../../styles/color";
 
 const SlayOut = styled.div`
@@ -19,11 +20,32 @@ const SlayOut = styled.div`
   p {
     position: absolute;
     top: 50%;
-    left: 12%;
+    left: 10%;
     width: 100%;
     color: ${color.gray3};
   }
+  a {
+    text-decoration: none;
+    color: ${color.gray1};
+    overflow: hidden;
+  }
 `;
+
+const MarcJacobsImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  ${SlayOut}:hover & {
+    scale: 1.1;
+    button {
+      background-color: ${color.main};
+      color: ${color.white};
+      border: 1px solid ${color.gray1};
+    }
+  }
+`;
+
 const Button = styled.button`
   position: absolute;
   width: 136px;
@@ -32,24 +54,26 @@ const Button = styled.button`
   border: 1px solid ${color.main};
   background-color: ${color.white};
   top: 258px;
-  left: 12%;
+  left: 10%;
   color: ${color.main};
-  cursor: pointer;
-`;
+  z-index: 2;
 
-const MarcJacobsImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  ${SlayOut}:hover & {
+    background-color: ${color.main};
+    color: ${color.white};
+    border: 1px solid ${color.gray1};
+  }
 `;
 
 function MarcJacobs() {
   return (
     <SlayOut>
-      <h2>MarcJacobs</h2>
-      <p>독특하고 강렬한 마크 제이콥스로 매력을 어필하세요 </p>
-      <Button>View detail</Button>
-      <MarcJacobsImg src="/asset/img-marcjacobs.png" />
+      <Link to="/product?categories=all&brand=Chanel">
+        <h2>MarcJacobs</h2>
+        <p>독특하고 강렬한 마크 제이콥스로 매력을 어필하세요 </p>
+        <Button>View detail</Button>
+        <MarcJacobsImg src="/asset/img-marcjacobs.png" />
+      </Link>
     </SlayOut>
   );
 }

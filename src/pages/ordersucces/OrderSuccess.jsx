@@ -3,10 +3,13 @@ import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Navbar from "component/Navbar";
+import Btn1 from "component/button/Btn1";
+// eslint-disable-next-line no-unused-vars
+import Btn2 from "component/button/Btn2";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const { gray6, white, gray2, gray3, gray1 } = color;
+const { gray6, white, gray2, gray3 } = color;
 
 const SLayout = styled.div`
   width: 100%;
@@ -15,15 +18,19 @@ const SLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  a {
+    text-decoration: none;
+  }
 `;
 
 const SItemDiv = styled.div`
   width: 80%;
-  height: 80%;
+  height: 90%;
   border-radius: 10px;
   background-color: ${white};
   display: flex;
   justify-content: center;
+  padding: 40px 0;
 `;
 const SItemInnerDiv = styled.div`
   width: 50%;
@@ -55,7 +62,7 @@ const SOrderNumberTextDiv = styled.div`
 `;
 const SOrderNumberDiv = styled.div`
   font-size: 40px;
-  color: #ff985f;
+  color: ${color.main};
   display: flex;
   justify-content: center;
 `;
@@ -84,38 +91,9 @@ const SbuttonDiv = styled.div`
   height: 7%;
   margin-top: 60px;
 `;
-const SCheckbutton = styled.button`
-  border-radius: 10px;
-  background-color: ${gray1};
-  width: 30%;
-  height: 100%;
-
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-
-  a {
-    text-decoration: none;
-    color: ${white};
-  }
-`;
-const SCancelButton = styled.button`
-  font-size: 18px;
-  font-weight: 500;
-
-  line-height: normal;
-
-  text-align: center;
-  color: ${gray1};
-  border-radius: 10px;
-  border: solid 1px ${gray1};
-  background-color: ${white};
-  width: 30%;
-  height: 100%;
-  margin-left: 10px;
+const SBtnDiv = styled.div`
+  width: 50%;
+  margin-right: 10px;
 `;
 function OrderSuccess() {
   const orderItem = useSelector((state) => {
@@ -131,13 +109,12 @@ function OrderSuccess() {
             <SImgDiv>
               <SWalletImg src="/asset/지갑.png" />
             </SImgDiv>
-
             <SCompleteLetter>고객님, 주문이 완료되었습니다.</SCompleteLetter>
             <SOrderNumberTextDiv>
               고객님이 주문하신 주문번호는
             </SOrderNumberTextDiv>
             <SOrderNumberDiv>
-              {orderItem[0]?.result.userId.orderNumber}입니다.
+              {orderItem[0]?.result.orderNumber}입니다.
             </SOrderNumberDiv>
             <SOrderGuideDiv>
               <SOrderGuideItemDiv>
@@ -148,14 +125,17 @@ function OrderSuccess() {
               </SOrderGuideItemDiv>
             </SOrderGuideDiv>
             <SbuttonDiv>
-              <SCheckbutton>
+              <SBtnDiv>
                 <Link to={`/myorder/${orderItem[0]?.result._id}`}>
-                  {" "}
-                  주문 내역 조회{" "}
+                  <Btn1 title="주문 내역 조회"> 주문 내역 조회 </Btn1>
                 </Link>
-              </SCheckbutton>
+              </SBtnDiv>
 
-              <SCancelButton> 주문 취소 요청</SCancelButton>
+              <SBtnDiv>
+                <Link to={`/myorder/cancel/${orderItem[0]?.result._id}`}>
+                  <Btn2 title="주문 취소 요청" />
+                </Link>
+              </SBtnDiv>
             </SbuttonDiv>
           </SItemInnerDiv>
         </SItemDiv>

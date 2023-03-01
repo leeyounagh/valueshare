@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import color from "styles/color";
-import axios from "axios";
-import handleBasket from "utils/handleBasket";
+import AxiosInstance from "data/AxiosInstance";
+// import handleBasket from "utils/handleBasket";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
+import handleBasket from "utils/handleBasket";
+
 // eslint-disable-next-line no-unused-vars
 
 const SLayout = styled.div`
@@ -74,7 +76,6 @@ const SCartImgDiv = styled.div`
 
 function Card() {
   const [productData, setData] = useState([]);
-
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
     dispatch(passId(_id));
@@ -88,14 +89,12 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
-  console.log(categories, brand);
-
   useEffect(() => {
     async function getProducts() {
-      const response = await axios.get("http://localhost:5000/products", {
+      const response = await AxiosInstance.get("/products", {
         params: { categories: `${categories}`, brand: `${brand}` },
       });
-      console.log(response);
+
       setData(response.data.result);
     }
     getProducts();
@@ -105,9 +104,8 @@ function Card() {
     <SLayout>
       {productData.map((item) => {
         return (
-          <SCardDiv>
+          <SCardDiv key={item._id}>
             <Link
-              key={item._id}
               to={`/product/${item._id}`}
               onClick={() => PassIdHandler(item._id)}
             >
@@ -120,6 +118,7 @@ function Card() {
             <SCartDiv
               onClick={() => {
                 handleBasket(item);
+                alert("장바구니에 추가되었습니다!");
               }}
             >
               <SCartImgDiv>
