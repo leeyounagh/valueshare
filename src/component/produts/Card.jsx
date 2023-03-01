@@ -106,32 +106,33 @@ function Card() {
 
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
-  const Newpage = searchParams.get("page");
+
+  async function getProducts() {
+    const response = await AxiosInstance.get(
+      `/products`,
+
+      {
+        params: {
+          categories: `${categories}`,
+          brand: `${brand}`,
+          page: 1,
+        },
+      }
+    );
+
+    setData(response.data.result);
+  }
 
   useEffect(() => {
-    async function getProducts() {
-      const response = await AxiosInstance.get(
-        `/products`,
-
-        {
-          params: {
-            categories: `${categories}`,
-            brand: `${brand}`,
-            page: `${page}`,
-          },
-        }
-      );
-
-      setData(response.data.result);
-    }
+    console.log("init");
     getProducts();
   }, [categories, brand]);
 
-  useEffect(() => {
-    async function nextData() {
-      setPage((prev) => {
-        return prev + 1;
-      });
+  const nextData = async () => {
+    try {
+      setPage(page + 1);
+
+      if (page === 1) return;
 
       const response = await AxiosInstance.get(
         `/products`,
@@ -144,18 +145,19 @@ function Card() {
           },
         }
       );
-      console.log("다음데이터", response.data.result);
-      setData([...productData, ...response.data.result]);
-    }
-  }, [page]);
 
-  console.log("data", page);
+      setData([...productData, ...response.data.result]);
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
+
   return (
     <SLayout>
       <InfiniteScroll
         dataLength={productData.length}
         hasMore={true}
-        next={nextData()}
+        next={nextData}
         loader={<h4>Loading...</h4>}
       >
         {productData.map((item) => {
@@ -166,7 +168,6 @@ function Card() {
                 onClick={() => PassIdHandler(item._id)}
               >
                 <SCardImg
-                  className="lazy"
                   src={item.productImage[0]}
                   alt="상품썸네일"
                   loading="lazy"
