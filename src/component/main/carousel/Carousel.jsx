@@ -119,7 +119,7 @@ function Carousel() {
   return (
     <SlayOut>
       <SbannerText>
-        <h2>About value shop</h2>
+        <h2>About value share</h2>
         <p>
           특별한 날의 명품이 아니라 일상의 명품을 누리세요
           <br />
