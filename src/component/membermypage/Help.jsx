@@ -5,7 +5,7 @@ import color from "styles/color";
 const { white, gray1 } = color;
 
 const SLayout = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
   width: 90%;
   height: 238px;
   padding: 30px 30px 64.2px 29px;
@@ -13,7 +13,6 @@ const SLayout = styled.div`
   background-color: ${white};
 `;
 const STitleDiv = styled.div`
-  font-family: Montserrat;
   font-size: 26px;
   font-weight: bold;
   font-stretch: normal;
@@ -35,7 +34,6 @@ const SEmailText = styled.div`
   display: flex;
 `;
 const SSpan = styled.span`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
@@ -43,11 +41,10 @@ const SSpan = styled.span`
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #ff985f;
+  color: ${color.main};
   margin-left: 10px;
 `;
 const SConnectSpan = styled.span`
-  font-family: Montserrat;
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
