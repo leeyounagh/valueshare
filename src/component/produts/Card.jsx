@@ -22,6 +22,17 @@ const SLayout = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 40px;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+  }
 `;
 const SCardDiv = styled.div`
   width: 340px;
