@@ -56,7 +56,7 @@ const SUserInfoDiv = styled.div`
   justify-content: center;
 `;
 const SNameDiv = styled.div`
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   line-height: normal;
 
