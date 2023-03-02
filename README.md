@@ -45,15 +45,12 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 **상품페이지**
 <br>
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTkzNmE4NjhhYzUwMzNhNTVmYTgyYjQ0MTZhNmNjNjBhNjdiMTYxMiZjdD1n/05MsfDVbn1fvfPW6gw/giphy.gif)
-
 <br>
 <br>
 **장바구니페이지**
 <br>
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTMxY2RmMjc3ZmZmODk5OGViZDg3ZWM4NGNiNTY3OTJlMWI0NjgzMSZjdD1n/v88fIE8OCYl3GqsGiJ/giphy.gif)
 
-<br>
-<br>
 ## 주요기능
 
 **어드민 계정 테스트시 카테고리 삭제 또는 수정, 기존에 있는 상품삭제,수정은 지양해주시길 부탁드립니다.**
