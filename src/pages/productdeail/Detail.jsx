@@ -169,7 +169,7 @@ function Detail() {
   const { productid } = useParams();
 
   useEffect(() => {
-    AxiosInstance.get(`/admin/products/${productid}`)
+    AxiosInstance.get(`/products/${productid}`)
       .then((res) => {
         setProductInformation(res.data);
       })

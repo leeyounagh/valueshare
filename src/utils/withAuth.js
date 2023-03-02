@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import { useEffect } from "react";
@@ -13,7 +14,7 @@ export const withAuth = (Component) => (props) => {
 
   useEffect(() => {
     if (auth === "false" || !auth) {
-      alert("일반회원은 접근할수 없는 페이지 입니다.");
+      window.confirm("일반회원은 접근할수 없는 페이지 입니다.");
       navigate("/");
     }
   }, []);

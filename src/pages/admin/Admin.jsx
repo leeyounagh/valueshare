@@ -31,7 +31,7 @@ function Admin() {
       </SSideBarDiv>
       <SMainDiv>
         <SItemDiv>
-          <h2>value shop 어드민페이지에 오신걸 환영합니다.</h2>
+          <h2>value share 어드민페이지에 오신걸 환영합니다.</h2>
         </SItemDiv>
       </SMainDiv>
     </SLayout>

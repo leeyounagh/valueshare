@@ -119,12 +119,12 @@ function Carousel() {
   return (
     <SlayOut>
       <SbannerText>
-        <h2>About value shop</h2>
+        <h2>About value share</h2>
         <p>
           특별한 날의 명품이 아니라 일상의 명품을 누리세요
           <br />
-          브랜드 소개 어쩌고저쩌고... <br />
-          쇼핑몰 목적, 소개문구,
+          Value Share는 합리적인 소비를 추구하는 <br /> MZ세대를 위한 온라인
+          명품 대여 서비스입니다. <br />
         </p>
         <SbannerIcon>
           <CarouselIcn />

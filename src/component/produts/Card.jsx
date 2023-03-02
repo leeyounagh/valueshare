@@ -1,3 +1,8 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react";
@@ -9,6 +14,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from "react-bootstrap/Spinner";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -18,6 +25,17 @@ const SLayout = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 40px;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+  }
 `;
 const SCardDiv = styled.div`
   width: 340px;
@@ -27,13 +45,16 @@ const SCardDiv = styled.div`
   border: solid 1px ${color.gray5};
 `;
 const SCardBrand = styled.div`
+  display: block;
   width: 100%;
   font-size: 20px;
-
   line-height: normal;
   letter-spacing: 1.5;
   text-align: left;
   color: ${color.black};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const SCartImg = styled.img`
   width: 30px;
@@ -66,16 +87,31 @@ const SCartDiv = styled.div`
   margin-top: 20px;
 `;
 const SCardBrandNameDiv = styled.div`
+  display: block !important;
   font-size: 20px;
   text-align: left;
   color: ${color.gray1};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
+const SpinnerDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 
+  .spinner-border.text-secondary {
+    color: ${color.main} !important;
+  }
+`;
 function Card() {
+  const [isLastPage, setIsLastPage] = useState(false);
   const [productData, setData] = useState([]);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const PassIdHandler = (_id) => {
     dispatch(passId(_id));
@@ -89,46 +125,107 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
-  useEffect(() => {
-    async function getProducts() {
-      const response = await AxiosInstance.get("/products", {
-        params: { categories: `${categories}`, brand: `${brand}` },
-      });
+  async function getProducts() {
+    const response = await AxiosInstance.get(
+      `/products`,
 
-      setData(response.data.result);
+      {
+        params: {
+          categories: `${categories}`,
+          brand: `${brand}`,
+          page: 1,
+        },
+      }
+    );
+
+    const { products, page: responsePage } = response.data.result;
+
+    setData(products);
+    if (responsePage.totalPage <= responsePage.current) {
+      setIsLastPage(true);
+    } else {
+      setPage(2);
     }
+  }
+
+  useEffect(() => {
     getProducts();
   }, [categories, brand]);
 
+  const nextData = async () => {
+    try {
+      if (page === 1 || isLastPage) return;
+
+      const response = await AxiosInstance.get(
+        `/products`,
+
+        {
+          params: {
+            categories: `${categories}`,
+            brand: `${brand}`,
+            page: `${page}`,
+          },
+        }
+      );
+
+      const { products, page: responsePage } = response.data.result;
+      setTimeout(() => {
+        setData([...productData, ...products]);
+      }, 1000);
+      if (responsePage.totalPage <= responsePage.current) {
+        setIsLastPage(true);
+      } else {
+        setPage(page + 1);
+      }
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
+
   return (
     <SLayout>
-      {productData.map((item) => {
-        return (
-          <SCardDiv key={item._id}>
-            <Link
-              to={`/product/${item._id}`}
-              onClick={() => PassIdHandler(item._id)}
-            >
-              <SCardImg src={item.productImage[0]} alt="상품썸네일" />
-            </Link>
-            <SCardTitleDiv>
-              <SCardBrand>{item.productBrand.brandName} </SCardBrand>
-              <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
-            </SCardTitleDiv>
-            <SCartDiv
-              onClick={() => {
-                handleBasket(item);
-                alert("장바구니에 추가되었습니다!");
-              }}
-            >
-              <SCartImgDiv>
-                <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
-              </SCartImgDiv>
-              <SPriceText> ₩{item.productPrice}</SPriceText>
-            </SCartDiv>
-          </SCardDiv>
-        );
-      })}
+      <InfiniteScroll
+        dataLength={productData.length}
+        hasMore={!isLastPage}
+        next={nextData}
+        loader={
+          <SpinnerDiv>
+            <Spinner animation="border" variant="secondary" />
+          </SpinnerDiv>
+        }
+      >
+        {productData.map((item) => {
+          return (
+            <SCardDiv key={item._id}>
+              <Link
+                to={`/product/${item._id}`}
+                onClick={() => PassIdHandler(item._id)}
+              >
+                <SCardImg
+                  src={item.productImage[0]}
+                  alt="상품썸네일"
+                  loading="lazy"
+                />
+              </Link>
+              <SCardTitleDiv>
+                <SCardBrand>{item.productBrand.brandName} </SCardBrand>
+                <SCardBrandNameDiv>{item.productTitle}</SCardBrandNameDiv>
+              </SCardTitleDiv>
+              <SCartDiv
+                onClick={() => {
+                  handleBasket(item);
+                  alert("장바구니에 추가되었습니다!");
+                }}
+              >
+                <SCartImgDiv>
+                  <SCartImg src="/asset/icn-basket.svg" alt="장바구니" />
+                </SCartImgDiv>
+                <SPriceText> ₩{item.productPrice}</SPriceText>
+              </SCartDiv>
+            </SCardDiv>
+          );
+        })}
+      </InfiniteScroll>
     </SLayout>
   );
 }

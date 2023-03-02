@@ -56,7 +56,7 @@ function UploadProduct() {
     event.preventDefault();
 
     const formData = new FormData();
-    // back-end에서 imageFile로 넘겨받고 있으므로 for문을 돌며 image를 formData에 셋팅해주세요.
+
     images.forEach((image) => {
       formData.append("productImage", image);
     });
@@ -68,7 +68,6 @@ function UploadProduct() {
     formData.append("productDescription", desc);
 
     try {
-      // 헤더값은 아래와 같이 설정해줍니다.
       const config = {
         headers: {
           "content-type": "multipart/form-data",
