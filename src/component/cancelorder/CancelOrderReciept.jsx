@@ -151,6 +151,8 @@ function CancelOrderReciept({ orderData }) {
     }
   };
 
+  console.log(orderData[0]);
+
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>
@@ -170,7 +172,7 @@ function CancelOrderReciept({ orderData }) {
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 연락처</SReceiveTitle>
-          <SReceiveTextDiv> {orderData[0]?.phone}</SReceiveTextDiv>
+          <SReceiveTextDiv> {orderData[0]?.phoneNumber}</SReceiveTextDiv>
         </SReceiveItemDiv>
         <SReceiveItemDiv>
           <SReceiveTitle> 배송지</SReceiveTitle>
