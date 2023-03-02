@@ -44,13 +44,16 @@ const SCardDiv = styled.div`
   border: solid 1px ${color.gray5};
 `;
 const SCardBrand = styled.div`
+  display: block;
   width: 100%;
   font-size: 20px;
-
   line-height: normal;
   letter-spacing: 1.5;
   text-align: left;
   color: ${color.black};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const SCartImg = styled.img`
   width: 30px;
@@ -83,9 +86,13 @@ const SCartDiv = styled.div`
   margin-top: 20px;
 `;
 const SCardBrandNameDiv = styled.div`
+  display: block !important;
   font-size: 20px;
   text-align: left;
   color: ${color.gray1};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const SCartImgDiv = styled.div`
   cursor: pointer;
