@@ -51,7 +51,7 @@ function Paypal({ total, cartItems, setCartItems, userInfo }) {
 
             try {
               const response = await AxiosInstance.post("/checkout", newData);
-              console.log("테스트", newData);
+
               const orderData = await response.data;
               dispatch(setOrderInfo(orderData));
               localStorage.removeItem("baskets");
@@ -61,7 +61,7 @@ function Paypal({ total, cartItems, setCartItems, userInfo }) {
             } catch (err) {
               if (err) {
                 console.log(err);
-                console.log("테스트", newData);
+
                 alert("주문접수에 실패했습니다.");
               }
             }

@@ -59,7 +59,7 @@ function Cart() {
     <div style={{ position: "relative" }}>
       <Navbar />
       <SLayout>
-        {cartItems.length === 0 ? (
+        {cartItems?.length === 0 ? (
           <SEmptyCartDiv>
             <EmptyCart />
           </SEmptyCartDiv>

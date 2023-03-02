@@ -51,7 +51,7 @@ const SImg = styled.img``;
 
 function EditProduct() {
   const { pathname } = useLocation();
-  // console.log(pathname);15
+
   const objectId = pathname.substr(15);
   const [productData, setProductData] = useState();
   const [images, setImages] = useState([]);
@@ -109,7 +109,7 @@ function EditProduct() {
     } = data;
     const formData = new FormData();
     images.forEach((image) => {
-      formData.append("productimage", image);
+      formData.append("productImage", image);
     });
     formData.append("productTitle", productTitle);
     formData.append("productStock", productStock);
@@ -132,7 +132,7 @@ function EditProduct() {
       if (response.status === 200) {
         setData({
           brandName: "",
-          productStock: 0,
+          productStock: "",
           productPrice: "",
           categoryName: "",
           productDescription: "",

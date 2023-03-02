@@ -64,7 +64,7 @@ function EditCategory() {
         changecategory: "",
         beforecategory: "",
       });
-      console.log(response);
+
       if (response.status === 200) {
         alert("카테고리 수정에 성공했습니다");
         window.location.reload();

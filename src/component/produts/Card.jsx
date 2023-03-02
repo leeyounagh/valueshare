@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from "react-bootstrap/Spinner";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -44,13 +45,16 @@ const SCardDiv = styled.div`
   border: solid 1px ${color.gray5};
 `;
 const SCardBrand = styled.div`
+  display: block;
   width: 100%;
   font-size: 20px;
-
   line-height: normal;
   letter-spacing: 1.5;
   text-align: left;
   color: ${color.black};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const SCartImg = styled.img`
   width: 30px;
@@ -83,15 +87,29 @@ const SCartDiv = styled.div`
   margin-top: 20px;
 `;
 const SCardBrandNameDiv = styled.div`
+  display: block !important;
   font-size: 20px;
   text-align: left;
   color: ${color.gray1};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
+const SpinnerDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 
+  .spinner-border.text-secondary {
+    color: ${color.main} !important;
+  }
+`;
 function Card() {
+  const [isLastPage, setIsLastPage] = useState(false);
   const [productData, setData] = useState([]);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
@@ -120,19 +138,23 @@ function Card() {
       }
     );
 
-    setData(response.data.result);
+    const { products, page: responsePage } = response.data.result;
+
+    setData(products);
+    if (responsePage.totalPage <= responsePage.current) {
+      setIsLastPage(true);
+    } else {
+      setPage(2);
+    }
   }
 
   useEffect(() => {
-    console.log("init");
     getProducts();
   }, [categories, brand]);
 
   const nextData = async () => {
     try {
-      setPage(page + 1);
-
-      if (page === 1) return;
+      if (page === 1 || isLastPage) return;
 
       const response = await AxiosInstance.get(
         `/products`,
@@ -146,7 +168,15 @@ function Card() {
         }
       );
 
-      setData([...productData, ...response.data.result]);
+      const { products, page: responsePage } = response.data.result;
+      setTimeout(() => {
+        setData([...productData, ...products]);
+      }, 1000);
+      if (responsePage.totalPage <= responsePage.current) {
+        setIsLastPage(true);
+      } else {
+        setPage(page + 1);
+      }
     } catch (e) {
       console.log("error", e);
     }
@@ -156,9 +186,13 @@ function Card() {
     <SLayout>
       <InfiniteScroll
         dataLength={productData.length}
-        hasMore={true}
+        hasMore={!isLastPage}
         next={nextData}
-        loader={<h4>Loading...</h4>}
+        loader={
+          <SpinnerDiv>
+            <Spinner animation="border" variant="secondary" />
+          </SpinnerDiv>
+        }
       >
         {productData.map((item) => {
           return (

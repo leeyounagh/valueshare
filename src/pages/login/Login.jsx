@@ -188,8 +188,7 @@ function Login() {
             )}
             {errors.password && errors.password.type === "pattern" && (
               <SP>
-                비밀번호는 4~12자 이며 영문 대/소문자, 숫자, 특수문자를 모두
-                포함해야 합니다.
+                비밀번호는 4~12자 이며 영문 소문자, 숫자를 모두 포함해야합니다.
               </SP>
             )}
           </SDiv>

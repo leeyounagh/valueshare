@@ -60,7 +60,7 @@ function MyPage() {
         const response = await AxiosInstance.get(`/users/mypage/${userId}`);
         const data = await response.data;
         setMyUserInfo([data[0]]);
-        console.log(data);
+
         setUserProduct(data[1]);
       } catch (err) {
         console.log(err);
@@ -73,9 +73,10 @@ function MyPage() {
     try {
       const response = await AxiosInstance.delete(`users/mypage/${userId}`);
       if (response.status === 200) {
+        window.confirm(" 회원탈퇴가 완료되었습니다");
         localStorage.removeItem("jwtToken");
         dispatch(setUserInfo(""));
-        navigate("/");
+        navigate("/login");
       }
     } catch (err) {
       alert("탈퇴에 실패했습니다.");

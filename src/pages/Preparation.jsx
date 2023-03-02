@@ -1,8 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import color from "styles/color";
 import Btn1 from "component/button/Btn1";
 import { Link } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 const Slayout = styled.div`
   width: 100%;
@@ -45,6 +48,7 @@ function Preparation() {
       <Modal>
         <NotfoundIcn src="/asset/icn-preparation.png" />
         <h2>서비스 준비중입니다.</h2>
+
         <BtnDiv>
           <Link to="/">
             <Btn1 title="메인으로 가기" />

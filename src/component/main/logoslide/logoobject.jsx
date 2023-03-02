@@ -1,5 +1,5 @@
-/* eslint-disable react/function-component-definition */
 /* eslint-disable no-unused-vars */
+
 import React from "react";
 import styled from "styled-components";
 
@@ -8,7 +8,7 @@ const Slayout = styled.div`
   height: auto;
 `;
 
-const LogoObject = () => {
+function LogoObject() {
   return (
     <Slayout>
       <div>
@@ -16,4 +16,4 @@ const LogoObject = () => {
       </div>
     </Slayout>
   );
-};
+}

@@ -2,12 +2,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
 import AxiosInstance from "data/AxiosInstance";
 import { setOrderInfo } from "slice/OrderSlice";
+import { setNoneMemberInfo } from "slice/UserAddressSlice";
 
 function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
   const navigate = useNavigate();
@@ -39,19 +40,13 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
         onApprove={(data, actions) => {
           actions.order.capture().then(async () => {
             const newData = {
-              // eslint-disable-next-line prettier/prettier
-              // phone: ShipInfo[0]?.phoneNumber,
-              // email: ShipInfo[0]?.email,
-              // name: ShipInfo[0]?.customerName,
-              phone: "01072840216",
-              email: "dfs@naver.com",
-              name: "dsafds",
+              phoneNumber: ShipInfo?.phoneNumber,
+              email: ShipInfo?.email,
+              name: ShipInfo?.customerName,
               products: cartItems,
               shipStatus: "주문접수",
-              // shipAdr: ShipInfo[0]?.address,
-              // shipNote: ShipInfo[0]?.memo,
-              shipAdr: "fadsfda",
-              shipNote: "asdfads",
+              shipAdr: ShipInfo?.address,
+              shipNote: ShipInfo?.memo,
               totalPrice: total,
             };
 
@@ -67,7 +62,7 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
             } catch (err) {
               if (err) {
                 console.log(err);
-                console.log(ShipInfo, "확인");
+
                 alert("주문접수에 실패했습니다.");
               }
             }

@@ -28,11 +28,10 @@ function CancelOrder() {
       const response = await AxiosInstance.get(`/myorder/${objectId}`);
       const data = await response.data;
       setOrderData([data[0]]);
-      console.log(response);
     }
     handleMyOlder();
   }, []);
-  console.log(orderData);
+
   return (
     <div>
       <Navbar />

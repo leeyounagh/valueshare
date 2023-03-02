@@ -35,16 +35,17 @@ const SButton = styled.button`
 `;
 const AddCategory = () => {
   const [category, setCategory] = useState("");
-  console.log(category);
 
   const handleCategory = async () => {
     try {
       const response = await AxiosInstance.post("/admin/categories", {
         categoryName: category,
       });
-      alert("카테고리 등록에 성공했습니다.");
+      if (response.status === 200) {
+        alert("카테고리 등록에 성공했습니다.");
+      }
+
       window.location.reload();
-      console.log(response);
     } catch (err) {
       if (err) {
         alert("카테고리 수정에  실패했습니다.");

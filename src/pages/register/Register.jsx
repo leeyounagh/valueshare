@@ -131,14 +131,12 @@ function Register() {
   password.current = watch("password");
 
   const onSubmit = async (data) => {
-    console.log("data", data);
-
     try {
       const res = await axios.post(
         "http://34.64.139.64/api/auth/register",
         data
       );
-      console.log("data", res);
+
       if (res.status === 200) {
         alert("회원가입 성공");
         navigate("/register_complete");
@@ -253,7 +251,7 @@ function Register() {
               <SInput
                 name="confirmPassword"
                 type="password"
-                placeholder="영문 소문자, 숫자 포함 4자 이상"
+                placeholder="영문 소문자, 숫자 포함 4~12자"
                 aria-invalid={
                   errors.confirmPassword ? "#bf1616" : `${color.gray4}`
                 }
