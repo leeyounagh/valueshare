@@ -128,6 +128,7 @@ function Card() {
     );
 
     setData(response.data.result);
+    setPage(2);
   }
 
   useEffect(() => {
