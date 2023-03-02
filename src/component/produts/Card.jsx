@@ -153,7 +153,6 @@ function Card() {
       setPage(page + 1);
 
       if (page === 1) return;
-
       const response = await AxiosInstance.get(
         `/products`,
 
@@ -165,8 +164,9 @@ function Card() {
           },
         }
       );
-
-      setData([...productData, ...response.data.result]);
+      setTimeout(() => {
+        setData([...productData, ...response.data.result]);
+      }, 500);
     } catch (e) {
       console.log("error", e);
     }
