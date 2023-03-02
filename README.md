@@ -50,6 +50,14 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 아이디: sb-siena16207480@personal.example.com
 비번: 12345678
 
+아이디:[sb-siena16207480@personal.example.com](mailto:sb-siena16207480@personal.example.com)
+
+비번:12345678
+
+[sb-nvc6w16136049@business.example.com](mailto:sb-nvc6w16136049@business.example.com)
+
+비번:12345678
+
 ### Installing
 
 <!-- A step by step series of examples that tell you how to get a development

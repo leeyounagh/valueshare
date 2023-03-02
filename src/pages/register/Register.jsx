@@ -253,7 +253,7 @@ function Register() {
               <SInput
                 name="confirmPassword"
                 type="password"
-                placeholder="영문 소문자, 숫자 포함 4자 이상"
+                placeholder="영문 소문자, 숫자 포함 4~12자"
                 aria-invalid={
                   errors.confirmPassword ? "#bf1616" : `${color.gray4}`
                 }

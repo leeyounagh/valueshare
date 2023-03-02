@@ -114,6 +114,11 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
+  useEffect(() => {
+    console.log("init");
+    getProducts();
+  }, [categories, brand]);
+
   async function getProducts() {
     const response = await AxiosInstance.get(
       `/products`,
@@ -128,12 +133,8 @@ function Card() {
     );
 
     setData(response.data.result);
+    setPage(2);
   }
-
-  useEffect(() => {
-    console.log("init");
-    getProducts();
-  }, [categories, brand]);
 
   const nextData = async () => {
     try {
