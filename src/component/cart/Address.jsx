@@ -103,7 +103,7 @@ function Address() {
 
           <SAddressText>
             {adress?.customerName?.length > 0
-              ? `${adress.customerName}`
+              ? `${adress?.customerName}`
               : "성함을 입력해주세요"}
           </SAddressText>
         </SItemDiv>
@@ -111,7 +111,7 @@ function Address() {
           <SAdressTiltleDiv>연락처</SAdressTiltleDiv>
           <SAddressText>
             {adress?.phoneNumber?.length > 0
-              ? `${adress.phoneNumber}`
+              ? `${adress?.phoneNumber}`
               : "핸드폰번호를 입력해주세요"}
           </SAddressText>
         </SItemDiv>
@@ -121,14 +121,14 @@ function Address() {
             {adress?.address?.length >= 14
               ? `${adress?.address?.substr(0, 14)}...`
               : adress?.address?.length > 0
-              ? `${adress.address}`
+              ? `${adress?.address}`
               : "배송지를 입력해주세요"}
           </SAddressText>
         </SItemDiv>
         <SItemDiv>
           <SAdressTiltleDiv>배송메모</SAdressTiltleDiv>
           <SAddressText>
-            {adress.memo.length > 0
+            {adress?.memo?.length > 0
               ? `${adress.memo}`
               : "배송메모를 등록해주세요"}
           </SAddressText>
