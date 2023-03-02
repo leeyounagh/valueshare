@@ -38,6 +38,7 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 <br>
 <br>![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2RlZmE0NDM4Zjc4OTFhZDVmOGNkY2IwYjE2MDc5MTQ1ODIxZWRiYiZjdD1n/V29TEsrFo0GYz0rLU6/giphy.gif)
 <br>
+<br>
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTkzNmE4NjhhYzUwMzNhNTVmYTgyYjQ0MTZhNmNjNjBhNjdiMTYxMiZjdD1n/05MsfDVbn1fvfPW6gw/giphy.gif)
 
 <br>
