@@ -167,7 +167,11 @@ function Card() {
         dataLength={productData.length}
         hasMore={true}
         next={nextData}
-        loader={<Spinner animation="border" variant="secondary" />}
+        loader={
+          <div>
+            <Spinner animation="border" variant="secondary" />
+          </div>
+        }
       >
         {productData.map((item) => {
           return (
