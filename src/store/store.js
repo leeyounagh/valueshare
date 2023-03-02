@@ -15,7 +15,7 @@ import persistStore from "redux-persist/es/persistStore";
 const persistConfig = {
   key: "root", // localStorage key
   storage, // localStorage
-  blacklist: ["UserInfoReducer"],
+  blacklist: ["UserInfoReducer", UserAddressReducer],
 };
 
 export const rootReducer = combineReducers({
