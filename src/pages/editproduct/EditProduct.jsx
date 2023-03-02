@@ -109,7 +109,7 @@ function EditProduct() {
     } = data;
     const formData = new FormData();
     images.forEach((image) => {
-      formData.append("productimage", image);
+      formData.append("productImage", image);
     });
     formData.append("productTitle", productTitle);
     formData.append("productStock", productStock);
@@ -132,7 +132,7 @@ function EditProduct() {
       if (response.status === 200) {
         setData({
           brandName: "",
-          productStock: 0,
+          productStock: "",
           productPrice: "",
           categoryName: "",
           productDescription: "",
