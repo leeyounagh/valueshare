@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import Navbar2 from "component/Navbar2";
 import Btn1 from "component/button/Btn1";
@@ -163,9 +163,10 @@ const BtnDiv = styled.div`
   }
 `;
 
+const BtnInnerDiv = styled.div``;
 function Detail() {
   const [productInformation, setProductInformation] = useState(null);
-
+  const navigate = useNavigate();
   const { productid } = useParams();
 
   useEffect(() => {
@@ -177,6 +178,13 @@ function Detail() {
         console.log(err);
       });
   }, []);
+
+  const handlePurchase = () => {
+    console.log("확인");
+    handleBasket(productInformation?.result);
+    window.confirm("장바구니에 추가되었습니다!");
+    navigate("/cart");
+  };
 
   const settings = {
     /* eslint-disable */
@@ -258,15 +266,25 @@ function Detail() {
                 );
               })}
           </ProductDetailInfo>
-          <BtnDiv
-            onClick={() => {
-              handleBasket(productInformation?.result);
-              alert("장바구니에 추가되었습니다!");
-            }}
-          >
-            <Btn1 title="장바구니에 추가" />
-            <Btn2 title="구매하기" />
+          <BtnDiv>
+            <BtnInnerDiv
+              onClick={() => {
+                handleBasket(productInformation?.result);
+                alert("장바구니에 추가되었습니다!");
+                ("확인");
+              }}
+            >
+              <Btn1 title="장바구니에 추가" />
+            </BtnInnerDiv>
+            <BtnInnerDiv
+              onClick={() => {
+                handlePurchase();
+              }}
+            >
+              <Btn2 title="구매하기" />
+            </BtnInnerDiv>
           </BtnDiv>
+
           <ProductPrice>
             ₩{productInformation?.result.productPrice}
           </ProductPrice>

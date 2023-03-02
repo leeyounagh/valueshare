@@ -187,7 +187,7 @@ function EditAdress({ setIsOpen }) {
           <SInfoTitle>배송메모</SInfoTitle>
           <SInputDiv>
             <SInfoInput
-              value={data.address}
+              value={data.memo}
               onChange={handleChange}
               name="memo"
               placeholder="배송 후 연락 부탁드립니다."
