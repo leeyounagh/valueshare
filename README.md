@@ -35,7 +35,7 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 ## 서비스 소개
 
 **특별한 날의 명품이 아니라 일상의 명품을 누리세요**
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
+<img src="메인페이지썸네일.gif" width="100" height="100" />
 
 ## 주요기능
 
