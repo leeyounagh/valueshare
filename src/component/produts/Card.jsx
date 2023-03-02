@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from "react-bootstrap/Spinner";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -166,7 +167,7 @@ function Card() {
         dataLength={productData.length}
         hasMore={true}
         next={nextData}
-        loader={<h4>Loading...</h4>}
+        loader={<Spinner animation="border" variant="secondary" />}
       >
         {productData.map((item) => {
           return (
