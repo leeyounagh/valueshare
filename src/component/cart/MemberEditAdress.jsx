@@ -208,7 +208,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
             <SInputDiv>
               <SInfoInput
                 defaultValue={
-                  userInfo[0]?.shipAdr ? userInfo[0].shipAdr : data.memo
+                  userInfo[0]?.shipAdr ? userInfo[0].shipAdr : data.address
                 }
                 onChange={handleChange}
                 name="address"
@@ -221,7 +221,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
             <SInputDiv>
               <SInfoInput
                 defaultValue={
-                  userInfo[0]?.shipNote ? userInfo[0].shipNote : data.address
+                  userInfo[0]?.shipNote ? userInfo[0].shipNote : data.memo
                 }
                 onChange={handleChange}
                 name="memo"
