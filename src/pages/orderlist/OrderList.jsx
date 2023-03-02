@@ -50,7 +50,6 @@ function OrderList() {
         alert("주문이 취소되었습니다.");
         window.location.reload();
       }
-      console.log(response);
     } catch (err) {
       alert("취소에 실패했습니다.");
     }

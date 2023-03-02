@@ -103,7 +103,7 @@ function NoneMember() {
     orderNumber: "",
   });
   const navigate = useNavigate();
-  console.log(nonmemberInfo);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -114,7 +114,6 @@ function NoneMember() {
     setNonmemberInfo(newData);
   };
   const handleSearch = async () => {
-    console.log("클릭");
     const { nonmemberEmail, orderNumber } = nonmemberInfo;
 
     const body = {

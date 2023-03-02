@@ -51,7 +51,7 @@ const SImg = styled.img``;
 
 function EditProduct() {
   const { pathname } = useLocation();
-  // console.log(pathname);15
+
   const objectId = pathname.substr(15);
   const [productData, setProductData] = useState();
   const [images, setImages] = useState([]);

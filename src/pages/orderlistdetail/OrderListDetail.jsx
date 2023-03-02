@@ -59,7 +59,6 @@ function OrderListDetail() {
         body
       );
 
-      console.log(response);
       if (response.status === 200) {
         alert("카테고리 수정에 성공했습니다");
       }
@@ -70,7 +69,6 @@ function OrderListDetail() {
     }
   };
 
-  console.log(orderData);
   return (
     <div>
       <STitle>

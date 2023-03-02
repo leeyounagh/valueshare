@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserInfo } from "slice/UserSlice";
 
 import color from "styles/color";
@@ -49,10 +49,7 @@ const Sbtn = styled.button`
 function Dropdown() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const logoutUser = useSelector((state) => {
-    return state.UserInfoReducer.userInfo;
-  });
-  console.log(logoutUser);
+
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     dispatch(setUserInfo(""));

@@ -150,7 +150,7 @@ function CancelOrderReciept({ orderData }) {
       console.log(err);
     }
   };
-  console.log(orderData[0]);
+
   return (
     <SLayout>
       <SCancelTitle>주문 취소하기</SCancelTitle>

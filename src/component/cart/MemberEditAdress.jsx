@@ -160,8 +160,6 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
     setData(newData);
   };
 
-  console.log(data);
-  console.log(userInfo[0]);
   return (
     <div>
       <Slayout>

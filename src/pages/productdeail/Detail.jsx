@@ -177,7 +177,7 @@ function Detail() {
         console.log(err);
       });
   }, []);
-  console.log(productInformation?.result);
+
   const settings = {
     /* eslint-disable */
     customPaging(i) {
