@@ -5,8 +5,8 @@
 - [팀구성](#팀구성)
 - [서비스설명](#서비스설명)
 - [서비스소개](#서비스소개)
-- [Authors](#authors)
-- [License](#license)
+- [Installing](#Installing)
+- [배포사이트링크](#배포사이트링크)
 <!--  Other options to write Readme
 - [Deployment](#deployment)
 - [Used or Referenced Projects](Used-or-Referenced-Projects)
@@ -16,10 +16,6 @@
 
 프론트엔드: 이수연, 양효빈
 백앤드: 김상도, 한효정
-
-<!--Wirte one paragraph of project description -->
-
-This project's purpose is to create a make Repository with a collection of default settings
 
 ## 서비스설명
 
@@ -43,52 +39,47 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 
 - 상품페이지: 필터기능, 무한스크롤,상세페이지
 - 장바구니: 장바구니 상품삭제, 부분삭제, 결제, 주문접수
-- MyOrder페이지:
+- MyOrder페이지: 비회원 주문조회, 주문번호별 주문내역조회, 주문취소, 주소수정
+- MyPage: 회원정보 조회
 
 ## PayPal 테스트결제 아이디, 비밀번호 공유
 
-아이디: sb-siena16207480@personal.example.com
+아이디: sb-siena16207480@personal.example.com<br>
 비번: 12345678
 
-아이디:[sb-siena16207480@personal.example.com](mailto:sb-siena16207480@personal.example.com)
+아이디:[sb-siena16207480@personal.example.com](mailto:sb-siena16207480@personal.example.com)<br>
 
 비번:12345678
 
-[sb-nvc6w16136049@business.example.com](mailto:sb-nvc6w16136049@business.example.com)
+[sb-nvc6w16136049@business.example.com](mailto:sb-nvc6w16136049@business.example.com)<br>
 
 비번:12345678
 
 ### Installing
 
-<!-- A step by step series of examples that tell you how to get a development
-env running
+1. 깃클론을 합니다.
+2. npm install
+3. npm run start 하시면 프로젝트를 보실수 있습니다
 
-Say what the step will be
+## 배포사이트링크
 
-    Give the example
+http://34.64.139.64/
 
-And repeat
+## 깃 커밋 컨벤션
 
-    until finished
--->
+- feature : 새로운 기능 추가
 
-1. Click `Use this template` button
-2. Create New Repository
-3. Update Readme and Others(Other features are noted in comments.)
-<!--
+- fix : 버그 수정
 
-## Deployment
+- docs : 문서 수정
 
-Add additional notes about how to deploy this on a live system
--->
+- test : 테스트 코드 추가
 
-## Contributing
+- refactor : 코드 리팩토링
 
-<!-- Write the way to contribute -->
+- style : 코드 의미에 영향을 주지 않는 변경사항
 
-I am looking for someone to help with this project. Please advise and point out.  
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
+- chore : 빌드 부분 혹은 패키지 매니저 수정사항
 
 ## Authors
 
@@ -96,22 +87,6 @@ of conduct, and the process for submitting pull requests to us.
 
 See also the list of [contributors](https://github.com/always0ne/readmeTemplate/contributors)
 who participated in this project.
-
-# git 커밋 컨벤션
-
-# feature : 새로운 기능 추가
-
-# fix : 버그 수정
-
-# docs : 문서 수정
-
-# test : 테스트 코드 추가
-
-# refactor : 코드 리팩토링
-
-# style : 코드 의미에 영향을 주지 않는 변경사항
-
-# chore : 빌드 부분 혹은 패키지 매니저 수정사항
 
 ```
 
