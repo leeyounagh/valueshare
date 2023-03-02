@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { passId } from "slice/DetailSlice";
 import handleBasket from "utils/handleBasket";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from "react-bootstrap/Spinner";
 
 // eslint-disable-next-line no-unused-vars
 
@@ -114,6 +115,11 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
+  useEffect(() => {
+    console.log("init");
+    getProducts();
+  }, [categories, brand]);
+
   async function getProducts() {
     const response = await AxiosInstance.get(
       `/products`,
@@ -130,11 +136,6 @@ function Card() {
     setData(response.data.result);
     setPage(2);
   }
-
-  useEffect(() => {
-    console.log("init");
-    getProducts();
-  }, [categories, brand]);
 
   const nextData = async () => {
     try {
@@ -166,7 +167,7 @@ function Card() {
         dataLength={productData.length}
         hasMore={true}
         next={nextData}
-        loader={<h4>Loading...</h4>}
+        loader={<Spinner animation="border" variant="secondary" />}
       >
         {productData.map((item) => {
           return (
