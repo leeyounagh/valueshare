@@ -50,6 +50,10 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 **장바구니페이지**
 <br>
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTMxY2RmMjc3ZmZmODk5OGViZDg3ZWM4NGNiNTY3OTJlMWI0NjgzMSZjdD1n/v88fIE8OCYl3GqsGiJ/giphy.gif)
+<br>
+**마이페이지**
+<br>
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGRhZGM3NGY5ZjllMTM1ZmM4YjU3ZjAyMmFhYjI1NzUwOGExNjdjYyZjdD1n/JUIiOmC5Wfq4kRmVST/giphy.gif)
 
 ## 주요기능
 
