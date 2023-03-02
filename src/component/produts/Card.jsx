@@ -99,6 +99,17 @@ const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
 
+const SpinnerDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+
+  .spinner-border.text-secondary {
+    color: ${color.main} !important;
+  }
+`;
+
 function Card() {
   const [productData, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -167,7 +178,11 @@ function Card() {
         dataLength={productData.length}
         hasMore={true}
         next={nextData}
-        loader={<Spinner animation="border" variant="secondary" />}
+        loader={
+          <SpinnerDiv>
+            <Spinner animation="border" variant="secondary" />
+          </SpinnerDiv>
+        }
       >
         {productData.map((item) => {
           return (
