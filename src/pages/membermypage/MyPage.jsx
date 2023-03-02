@@ -73,7 +73,7 @@ function MyPage() {
     try {
       const response = await AxiosInstance.delete(`users/mypage/${userId}`);
       if (response.status === 200) {
-        alert(" 회원탈퇴가 완료되었습니다");
+        window.confirm(" 회원탈퇴가 완료되었습니다");
         localStorage.removeItem("jwtToken");
         dispatch(setUserInfo(""));
         navigate("/login");

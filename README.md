@@ -4,6 +4,7 @@
 
 - [팀구성](#팀구성)
 - [서비스설명](#서비스설명)
+- [주요기능](#주요기능)
 - [서비스소개](#서비스소개)
 - [Installing](#Installing)
 - [배포사이트링크](#배포사이트링크)
@@ -34,13 +35,19 @@ Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 
 ## 서비스 소개
 
 **특별한 날의 명품이 아니라 일상의 명품을 누리세요**
+<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
 
-주요기능
+## 주요기능
+
+**어드민 계정 테스트시 카테고리 삭제 또는 수정, 기존에 있는 상품삭제,수정은 지양해주시길 부탁드립니다.**
 
 - 상품페이지: 필터기능, 무한스크롤,상세페이지
 - 장바구니: 장바구니 상품삭제, 부분삭제, 결제, 주문접수
 - MyOrder페이지: 비회원 주문조회, 주문번호별 주문내역조회, 주문취소, 주소수정
-- MyPage: 회원정보 조회
+- MyPage: 회원정보 조회, 정보수정, 회원주소 정보, 주소수정, 장바구니 상품목록,주문내역조회, 회원탈퇴
+- admin페이지: 회원주문내역조회, 고객별 주문상세페이지, 주문취소, 주문상태수정기능,
+  상품조회페이지, 상품삭제, 상품등록페이지, 상품수정, 카테고리조회,카테고리삭제,카테고리수정,
+  카테고리추가
 
 ## PayPal 테스트결제 아이디, 비밀번호 공유
 
@@ -80,14 +87,3 @@ http://34.64.139.64/
 - style : 코드 의미에 영향을 주지 않는 변경사항
 
 - chore : 빌드 부분 혹은 패키지 매니저 수정사항
-
-## Authors
-
-- [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
-
-See also the list of [contributors](https://github.com/always0ne/readmeTemplate/contributors)
-who participated in this project.
-
-```
-
-```

@@ -14,8 +14,8 @@ export const withAuth = (Component) => (props) => {
 
   useEffect(() => {
     if (auth === "false" || !auth) {
+      window.confirm("일반회원은 접근할수 없는 페이지 입니다.");
       navigate("/");
-      alert("일반회원은 접근할수 없는 페이지 입니다.");
     }
   }, []);
   return <Component {...props} />;
