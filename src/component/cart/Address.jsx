@@ -119,8 +119,8 @@ function Address() {
           <SAdressTiltleDiv>배송지</SAdressTiltleDiv>
           <SAddressText>
             {adress?.address?.length >= 14
-              ? `${adress.address.substr(0, 14)}...`
-              : adress.address.length > 0
+              ? `${adress?.address?.substr(0, 14)}...`
+              : adress?.address?.length > 0
               ? `${adress.address}`
               : "배송지를 입력해주세요"}
           </SAddressText>
