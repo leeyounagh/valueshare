@@ -109,7 +109,7 @@ function AddressList({ userInfo }) {
           setIsModal(!isModal);
         }}
       >
-        + Add New Address
+        + Edit Address
       </SAddAddressDiv>
       {isModal ? (
         <AddressModal userInfo={userInfo} setIsOpen={setIsModal} />
