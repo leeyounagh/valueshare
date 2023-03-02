@@ -99,6 +99,17 @@ const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
 
+const SpinnerDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+
+  .spinner-border.text-secondary {
+    color: ${color.main} !important;
+  }
+`;
+
 function Card() {
   const [productData, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -142,7 +153,6 @@ function Card() {
       setPage(page + 1);
 
       if (page === 1) return;
-
       const response = await AxiosInstance.get(
         `/products`,
 
@@ -154,8 +164,9 @@ function Card() {
           },
         }
       );
-
-      setData([...productData, ...response.data.result]);
+      setTimeout(() => {
+        setData([...productData, ...response.data.result]);
+      }, 500);
     } catch (e) {
       console.log("error", e);
     }
@@ -168,9 +179,9 @@ function Card() {
         hasMore={true}
         next={nextData}
         loader={
-          <div>
+          <SpinnerDiv>
             <Spinner animation="border" variant="secondary" />
-          </div>
+          </SpinnerDiv>
         }
       >
         {productData.map((item) => {
