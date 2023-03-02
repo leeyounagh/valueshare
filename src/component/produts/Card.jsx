@@ -98,7 +98,6 @@ const SCardBrandNameDiv = styled.div`
 const SCartImgDiv = styled.div`
   cursor: pointer;
 `;
-
 const SpinnerDiv = styled.div`
   width: 100%;
   height: 100px;
@@ -109,8 +108,8 @@ const SpinnerDiv = styled.div`
     color: ${color.main} !important;
   }
 `;
-
 function Card() {
+  const [isLastPage, setIsLastPage] = useState(false);
   const [productData, setData] = useState([]);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
@@ -126,11 +125,6 @@ function Card() {
   const categories = searchParams.get("categories");
   const brand = searchParams.get("brand");
 
-  useEffect(() => {
-    console.log("init");
-    getProducts();
-  }, [categories, brand]);
-
   async function getProducts() {
     const response = await AxiosInstance.get(
       `/products`,
@@ -144,15 +138,24 @@ function Card() {
       }
     );
 
-    setData(response.data.result.products);
-    setPage(2);
+    const { products, page: responsePage } = response.data.result;
+
+    setData(products);
+    if (responsePage.totalPage <= responsePage.current) {
+      setIsLastPage(true);
+    } else {
+      setPage(2);
+    }
   }
+
+  useEffect(() => {
+    getProducts();
+  }, [categories, brand]);
 
   const nextData = async () => {
     try {
-      setPage(page + 1);
+      if (page === 1 || isLastPage) return;
 
-      if (page === 1) return;
       const response = await AxiosInstance.get(
         `/products`,
 
@@ -164,9 +167,16 @@ function Card() {
           },
         }
       );
+
+      const { products, page: responsePage } = response.data.result;
       setTimeout(() => {
-        setData([...productData, ...response.data.result.products]);
+        setData([...productData, ...products]);
       }, 1000);
+      if (responsePage.totalPage <= responsePage.current) {
+        setIsLastPage(true);
+      } else {
+        setPage(page + 1);
+      }
     } catch (e) {
       console.log("error", e);
     }
@@ -176,7 +186,7 @@ function Card() {
     <SLayout>
       <InfiniteScroll
         dataLength={productData.length}
-        hasMore={true}
+        hasMore={!isLastPage}
         next={nextData}
         loader={
           <SpinnerDiv>
