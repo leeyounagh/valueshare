@@ -40,13 +40,13 @@ function Paypal({ total, cartItems, setCartItems, ShipInfo }) {
         onApprove={(data, actions) => {
           actions.order.capture().then(async () => {
             const newData = {
-              phoneNumber: ShipInfo.phoneNumber,
-              email: ShipInfo.email,
-              name: ShipInfo.customerName,
+              phoneNumber: ShipInfo?.phoneNumber,
+              email: ShipInfo?.email,
+              name: ShipInfo?.customerName,
               products: cartItems,
               shipStatus: "주문접수",
-              shipAdr: ShipInfo.address,
-              shipNote: ShipInfo.memo,
+              shipAdr: ShipInfo?.address,
+              shipNote: ShipInfo?.memo,
               totalPrice: total,
             };
 

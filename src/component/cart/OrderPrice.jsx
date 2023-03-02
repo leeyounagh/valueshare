@@ -182,7 +182,7 @@ function OrderPrice({ cartItems, setCartItems }) {
         <STotalTextDiv>합계</STotalTextDiv>
         <SLastTotalPriceDiv> ₩{sum}</SLastTotalPriceDiv>
       </SLastTotalDiv>
-      {cartItems.length > 0 ? (
+      {cartItems?.length > 0 ? (
         <BtnDiv
           onClick={() => {
             handleOrder();
@@ -192,7 +192,7 @@ function OrderPrice({ cartItems, setCartItems }) {
         </BtnDiv>
       ) : null}
 
-      {cartItems.length > 0 ? (
+      {cartItems?.length > 0 ? (
         <Paypal
           total={changeDoller}
           cartItems={cartItems}
