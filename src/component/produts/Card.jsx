@@ -144,7 +144,7 @@ function Card() {
       }
     );
 
-    setData(response.data.result);
+    setData(response.data.result.products);
     setPage(2);
   }
 
@@ -165,8 +165,8 @@ function Card() {
         }
       );
       setTimeout(() => {
-        setData([...productData, ...response.data.result]);
-      }, 500);
+        setData([...productData, ...response.data.result.products]);
+      }, 1000);
     } catch (e) {
       console.log("error", e);
     }
