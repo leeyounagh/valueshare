@@ -90,7 +90,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  console.log("테스트");
+
   return (
     <div>
       {auth === "false" ? (

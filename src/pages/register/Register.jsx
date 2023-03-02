@@ -131,14 +131,12 @@ function Register() {
   password.current = watch("password");
 
   const onSubmit = async (data) => {
-    console.log("data", data);
-
     try {
       const res = await axios.post(
         "http://34.64.139.64/api/auth/register",
         data
       );
-      console.log("data", res);
+
       if (res.status === 200) {
         alert("회원가입 성공");
         navigate("/register_complete");

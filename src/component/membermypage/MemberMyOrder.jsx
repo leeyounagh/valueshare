@@ -118,8 +118,6 @@ const SStatusIcon = styled.img`
   margin-top: 5px;
 `;
 function MemberMyOrder({ userInfo, userProduct }) {
-  // console.log("확인", userInfo[0].orderNumber[0]);
-  console.log("확인", userProduct);
   return (
     <SLayout>
       <SHistoryTitle>Your Orders</SHistoryTitle>
