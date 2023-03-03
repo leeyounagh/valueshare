@@ -26,7 +26,7 @@ function UploadProduct() {
     brand: "브랜드",
     desc: "",
   });
-  console.log(data);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 

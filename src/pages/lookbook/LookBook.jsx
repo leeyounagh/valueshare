@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../../component/Navbar";
-import Preparation from "../Preparation";
+import Preparation from "../../component/Preparation";
 
 function LookBook() {
   useEffect(() => {

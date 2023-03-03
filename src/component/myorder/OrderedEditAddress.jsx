@@ -149,7 +149,6 @@ function OrderedEditAddress({ setIsOpen, orderData }) {
     };
     try {
       const response = await AxiosInstance.patch(`/myorder/${objectId}`, body);
-      console.log(response);
 
       if (response.status === 200) {
         alert("주소지 수정에 성공하였습니다!");

@@ -38,7 +38,6 @@ const Category = () => {
 
       const data = await response.data.result;
       setCategory(data);
-      console.log(data);
     }
     handleCategory();
   }, []);
@@ -52,7 +51,6 @@ const Category = () => {
         alert("카테고리가 삭제되었습니다.");
         window.location.reload();
       }
-      console.log(response);
     } catch (err) {
       console.log(err);
       alert("삭제에 실패했습니다.");

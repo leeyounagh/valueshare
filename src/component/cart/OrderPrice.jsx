@@ -132,7 +132,7 @@ function OrderPrice({ cartItems, setCartItems }) {
       return acc + Number(cur.productPrice) * cur.quantity;
     }, 0);
   }, [cartItems]);
-  console.log(cartItems);
+
   const changeDoller = Number(sum.toString().slice(0, -3));
   // 한화 달러화
   const handleOrder = async () => {
@@ -152,7 +152,7 @@ function OrderPrice({ cartItems, setCartItems }) {
       const response = await AxiosInstance.post("/checkout", newData);
 
       const orderData = await response.data;
-      console.log(orderData, newData);
+
       dispatch(setOrderInfo(orderData));
       dispatch(setCartItem(0));
       localStorage.removeItem("baskets");
@@ -162,7 +162,7 @@ function OrderPrice({ cartItems, setCartItems }) {
     } catch (err) {
       if (err) {
         console.log(err);
-        console.log(ShipInfo, "확인");
+
         alert("주문접수에 실패했습니다.");
       }
     }
@@ -182,7 +182,7 @@ function OrderPrice({ cartItems, setCartItems }) {
         <STotalTextDiv>합계</STotalTextDiv>
         <SLastTotalPriceDiv> ₩{sum}</SLastTotalPriceDiv>
       </SLastTotalDiv>
-      {cartItems.length > 0 ? (
+      {cartItems?.length > 0 ? (
         <BtnDiv
           onClick={() => {
             handleOrder();
@@ -192,7 +192,7 @@ function OrderPrice({ cartItems, setCartItems }) {
         </BtnDiv>
       ) : null}
 
-      {cartItems.length > 0 ? (
+      {cartItems?.length > 0 ? (
         <Paypal
           total={changeDoller}
           cartItems={cartItems}

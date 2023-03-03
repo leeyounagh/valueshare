@@ -59,7 +59,6 @@ function OrderListDetail() {
         body
       );
 
-      console.log(response);
       if (response.status === 200) {
         alert("카테고리 수정에 성공했습니다");
       }
@@ -70,7 +69,6 @@ function OrderListDetail() {
     }
   };
 
-  console.log(orderData);
   return (
     <div>
       <STitle>
@@ -79,7 +77,7 @@ function OrderListDetail() {
       <SLayout>
         <SOrderListDiv>
           <SItemDiv>주문번호: {orderData[0]?.orderNumber}</SItemDiv>
-          <SItemDiv>핸드폰번호: {orderData[0]?.phoNumber}</SItemDiv>
+          <SItemDiv>핸드폰번호: {orderData[0].phoneNumber}</SItemDiv>
           <SItemDiv>배송지: {orderData[0]?.shipAdr}</SItemDiv>
           <SItemDiv>배송상태: {orderData[0]?.shipStatus}</SItemDiv>
           <SItemDiv>

@@ -136,7 +136,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
       shipNote: data.memo?.length === 0 ? userInfo[0].shipNote : data.memo,
       email: data.email?.length === 0 ? userInfo[0].email : data.email,
     };
-
+    console.log(body);
     try {
       const response = await AxiosInstance.post(
         `/users/${userInfo[0]._id}/userInfo`,
@@ -160,8 +160,6 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
     setData(newData);
   };
 
-  console.log(data);
-  console.log(userInfo[0]);
   return (
     <div>
       <Slayout>
@@ -210,7 +208,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
             <SInputDiv>
               <SInfoInput
                 defaultValue={
-                  userInfo[0]?.shipAdr ? userInfo[0].shipAdr : data.memo
+                  userInfo[0]?.shipAdr ? userInfo[0].shipAdr : data.address
                 }
                 onChange={handleChange}
                 name="address"
@@ -223,7 +221,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
             <SInputDiv>
               <SInfoInput
                 defaultValue={
-                  userInfo[0]?.shipNote ? userInfo[0].shipNote : data.address
+                  userInfo[0]?.shipNote ? userInfo[0].shipNote : data.memo
                 }
                 onChange={handleChange}
                 name="memo"

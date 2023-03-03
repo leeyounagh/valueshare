@@ -60,7 +60,7 @@ function MyPage() {
         const response = await AxiosInstance.get(`/users/mypage/${userId}`);
         const data = await response.data;
         setMyUserInfo([data[0]]);
-        console.log(data);
+
         setUserProduct(data[1]);
       } catch (err) {
         console.log(err);

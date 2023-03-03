@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "component/Navbar";
-import Preparation from "pages/Preparation";
+import Preparation from "component/Preparation";
 
 function Membership() {
   useEffect(() => {

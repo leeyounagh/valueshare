@@ -229,6 +229,7 @@ function GetItemCart({ cartItems, setCartItems }) {
   const handleAllDeleteCartItems = () => {
     setCartItems([]);
     localStorage.removeItem("baskets");
+    alert("상품이 삭제되었습니다.");
   };
 
   const handleAllChecked = (e) => {
@@ -266,6 +267,7 @@ function GetItemCart({ cartItems, setCartItems }) {
     );
     setCartItems(newCartItems);
     localStorage.setItem("baskets", JSON.stringify(newCartItems));
+    alert("상품이 삭제되었습니다.");
   };
 
   const handlePlusQuantity = (itemId) => {
@@ -363,12 +365,19 @@ function GetItemCart({ cartItems, setCartItems }) {
         : null}
 
       <SCartIconDiv>
-        <SAllDeleteIconDiv onClick={handleAllDeleteCartItems}>
+        <SAllDeleteIconDiv
+          onClick={() => {
+            handleAllDeleteCartItems();
+          }}
+        >
           {" "}
           전체 상품 삭제
         </SAllDeleteIconDiv>
-        <SSelectedDeleteIconDiv onClick={handleDeleteCartItem}>
-          {/* <SSelectedDeleteIconDiv onClick={() => handleDeleteCheckedItem()}> */}
+        <SSelectedDeleteIconDiv
+          onClick={() => {
+            handleDeleteCartItem();
+          }}
+        >
           선택 상품 삭제
         </SSelectedDeleteIconDiv>
       </SCartIconDiv>

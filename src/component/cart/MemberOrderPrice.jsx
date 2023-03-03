@@ -138,7 +138,6 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
     }
     handleUserInfo();
   }, []);
-  console.log(userInfo);
   const sum = useMemo(() => {
     return cartItems.reduce((acc, cur) => {
       return acc + Number(cur.productPrice) * cur.quantity;
@@ -164,7 +163,7 @@ function MemberOrderPrice({ cartItems, setCartItems }) {
       const response = await AxiosInstance.post("/checkout", newData);
 
       const orderData = await response.data;
-      console.log("결제확인", orderData, newData);
+
       dispatch(setOrderInfo(orderData));
       localStorage.removeItem("baskets");
       navigate("/ordersuccess");

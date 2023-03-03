@@ -15,11 +15,10 @@ import persistStore from "redux-persist/es/persistStore";
 const persistConfig = {
   key: "root", // localStorage key
   storage, // localStorage
-  blacklist: ["UserAddressReducer", "UserInfoReducer"],
+  blacklist: ["UserInfoReducer", UserAddressReducer],
 };
 
 export const rootReducer = combineReducers({
-  // image대신 productImageReducer라는 이름으로 reducer임을 알수있도록 수정해서 사용하면 좋을 것 같아요.
   pageTitleReducer,
   DetailReducer,
   UserAddressReducer,
