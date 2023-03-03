@@ -136,7 +136,7 @@ function MemberEditAdress({ setIsOpen, userInfo }) {
       shipNote: data.memo?.length === 0 ? userInfo[0].shipNote : data.memo,
       email: data.email?.length === 0 ? userInfo[0].email : data.email,
     };
-
+    console.log(body);
     try {
       const response = await AxiosInstance.post(
         `/users/${userInfo[0]._id}/userInfo`,
