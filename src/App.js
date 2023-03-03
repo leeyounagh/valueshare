@@ -19,7 +19,6 @@ import BestSeller from "pages/bestseller/BestSeller";
 import Cart from "pages/cart/Cart";
 import Detail from "pages/productdeail/Detail";
 import Admin from "pages/admin/Admin";
-import Resign from "pages/resign/Resign";
 import UploadProduct from "pages/uploadproduct/UploadProduct";
 import EditProduct from "pages/editproduct/EditProduct";
 import LookBook from "pages/lookbook/LookBook";
@@ -32,7 +31,7 @@ import NoneMember from "pages/nonmember/NoneMember";
 import { setPageInfo } from "slice/PageSlice";
 // eslint-disable-next-line no-unused-vars
 import Productest from "pages/products/Productest";
-import NotFound from "pages/NotFound";
+import NotFound from "pages/notfound/NotFound";
 import EditCategory from "pages/editcategory/EditCategory";
 import AddCategory from "pages/addcategory/AddCategory";
 import Category from "pages/category/Category";
@@ -114,7 +113,6 @@ function App() {
           <Route path="/register_complete" element={<RegisterComplete />} />
 
           <Route path="/myorder/:userid" element={<MyOrder />} />
-          <Route path="/mypage/resign" element={<Resign />} />
           <Route path="/mypage/userinfo" element={<UserInfo />} />
           <Route path="/ordersuccess" element={<OrderSuccess />} />
 
