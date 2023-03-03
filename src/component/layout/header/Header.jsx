@@ -1,92 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import color from "../../../styles/color";
-
-const { white, gray4 } = color;
+import Dropdown from "./Dropdown";
 
 const SlayOut = styled.header`
   width: 100%;
   height: 140px;
-  margin: 0 0 16px;
   padding: 35px 0 0;
-  background-color: ${white};
-  border-bottom: 1px solid ${gray4};
+  background-color: ${color.white};
+  border-bottom: 1px solid ${color.gray4};
   display: flex;
-  justify-content: center;
   a {
     text-decoration: none;
     border: black;
-    font-family: "Montserrat", "Noto Sans KR", "Rufina", "sans-serif";
   }
 `;
 const SLogoDiv = styled.div`
   width: 20%;
   height: 100%;
-  font-size: 45px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
   color: black;
   white-space: nowrap;
+
   a {
+    font-weight: bold;
+
+    line-height: normal;
+
+    text-align: left;
     color: black;
+    font-family: "Rufina", serif;
+    font-weight: 900;
+
+    align-items: center;
+  }
+  h2 {
+    font-family: "Rufina", serif;
+    font-size: 60px;
+    font-weight: 900;
   }
 `;
 const SBestSellerDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
   font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #000;
 `;
 
 const SProductDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
   font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #000;
 `;
 
 const SLookBookDiv = styled.div`
   height: 100%;
-  font-family: Montserrat;
   font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #000;
 `;
 
 const SMembershipDiv = styled.div`
   height: 100%;
   width: 130px;
-  font-family: Montserrat;
   font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #000;
 `;
 const SLineDiv = styled.div`
   width: 1px;
@@ -98,13 +74,13 @@ const SLayoutInnerDiv = styled.div`
   display: flex;
   height: 67px;
   width: 100%;
-  padding-left: 40px;
+  padding-left: 3%;
 `;
 const SLayoutMenuDiv = styled.div`
-  width: 60%;
+  width: 90%;
   height: 67px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 25px;
 `;
 const SLayoutIconDiv = styled.div`
@@ -112,14 +88,10 @@ const SLayoutIconDiv = styled.div`
   align-items: center;
   height: 40px;
   width: 25%;
-  padding-top: 10px;
-  margin-left: 60px;
+  padding-top: 18px;
+  margin-left: 24px;
 `;
-const SAlarmImg = styled.img`
-  width: 46px;
-  height: 40px;
-  object-fit: contain;
-`;
+
 const SBasketImg = styled.img`
   width: 46px;
   height: 40px;
@@ -135,18 +107,28 @@ const SProfileMenuImg = styled.img`
   margin-left: 10px;
   margin-top: 15px;
   object-fit: contain;
+  cursor: pointer;
 `;
 const SLayoutIconItem = styled.div`
   margin: 5px;
-
   height: 100%;
   width: 20%;
+  position: relative;
 `;
 const SInnerItemDiv = styled.div`
   justify-content: space-between;
   width: 60%;
   height: 100%;
   display: flex;
+
+  a {
+    color: ${color.gray1};
+    font-weight: 500;
+    &:hover {
+      color: ${color.main} !important;
+      font-weight: 600;
+    }
+  }
 `;
 const SLayoutProfileDiv = styled.div`
   display: flex;
@@ -155,17 +137,23 @@ const SLayoutProfileDiv = styled.div`
   height: 100%;
   margin-bottom: 20px;
 `;
+
 const SLayoutProfileInnerDiv = styled.div`
-  width: 25%;
+  .rotate {
+    transform: rotate(180deg);
+  }
 `;
 function Header() {
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
+
   return (
     <SlayOut>
       <SLayoutInnerDiv>
         <SLogoDiv>
-          <Link to="/">Value shop</Link>
+          <Link to="/">
+            <h2>value share</h2>
+          </Link>
         </SLogoDiv>
-
         <SLayoutMenuDiv>
           <SInnerItemDiv>
             <Link to="/bestseller">
@@ -177,25 +165,31 @@ function Header() {
             <Link to="/lookbook">
               <SLookBookDiv>lookbook</SLookBookDiv>
             </Link>
-            <Link to="/Membership">
+            <Link to="/membership">
               <SMembershipDiv>Membership</SMembershipDiv>
             </Link>
           </SInnerItemDiv>
         </SLayoutMenuDiv>
         <SLayoutIconDiv>
           <SLayoutIconItem>
-            <SAlarmImg src="asset/headerAlarm.svg" />
+            <Link to="/cart">
+              <SBasketImg src="/asset/icn-basket.svg" />
+            </Link>
           </SLayoutIconItem>
-          <SLayoutIconItem>
-            <SBasketImg src="asset/icn-basket.svg" />
-          </SLayoutIconItem>
+
           <SLineDiv />
           <SLayoutProfileDiv>
             <SLayoutProfileInnerDiv>
-              <SProfileImg src="asset/icn-profile.svg" />
+              <SProfileImg src="/asset/icn-profile.svg" />
             </SLayoutProfileInnerDiv>
-            <SLayoutProfileInnerDiv>
-              <SProfileMenuImg src="asset/Chevrons_chevron-right.svg" />
+            <SLayoutProfileInnerDiv
+              onClick={() => setDropdownVisibility(!dropdownVisibility)}
+            >
+              <SProfileMenuImg
+                className={dropdownVisibility ? "rotate" : null}
+                src="/asset/Chevrons_chevron-right.svg"
+              />
+              {dropdownVisibility ? <Dropdown /> : null}
             </SLayoutProfileInnerDiv>
           </SLayoutProfileDiv>
         </SLayoutIconDiv>

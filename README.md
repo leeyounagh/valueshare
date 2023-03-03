@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Value Share
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 목차
 
-## Available Scripts
+- [팀구성](#팀구성)
+- [서비스설명](#서비스설명)
+- [서비스소개](#서비스소개)
+- [주요기능](#주요기능)
+- [Installing](#Installing)
+- [배포사이트링크](#배포사이트링크)
+<!--  Other options to write Readme
+- [Deployment](#deployment)
+- [Used or Referenced Projects](Used-or-Referenced-Projects)
+  -->
 
-In the project directory, you can run:
+## 팀구성
 
-### `npm start`
+프론트엔드: 이수연, 양효빈
+백앤드: 김상도, 한효정
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 서비스설명
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Value Share는 합리적인 소비를 추구하는 MZ세대를 위한 온라인 명품 대여 서비스입니다.
+구매하지 않고 다양한 스타일을 시도해보며 가치소비를 실현할 수 있습니다.
+고객의 일상에 명품이라는 선택지를 제안합니다.
 
-### `npm test`
+**사용기술스택**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- JavaScript
+- React.js
+- Redux Toolkit
+- node Js
+- mongoDb
 
-### `npm run build`
+## 서비스 소개
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**특별한 날의 명품이 아니라 일상의 명품을 누리세요**
+<br>
+<br>
+**메인페이지**
+<br>
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2RlZmE0NDM4Zjc4OTFhZDVmOGNkY2IwYjE2MDc5MTQ1ODIxZWRiYiZjdD1n/V29TEsrFo0GYz0rLU6/giphy.gif)
+<br>
+<br>
+**상품페이지**
+<br>
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTkzNmE4NjhhYzUwMzNhNTVmYTgyYjQ0MTZhNmNjNjBhNjdiMTYxMiZjdD1n/05MsfDVbn1fvfPW6gw/giphy.gif)
+<br>
+<br>
+**장바구니페이지**
+<br>
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTMxY2RmMjc3ZmZmODk5OGViZDg3ZWM4NGNiNTY3OTJlMWI0NjgzMSZjdD1n/v88fIE8OCYl3GqsGiJ/giphy.gif)
+<br>
+**마이페이지**
+<br>
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGRhZGM3NGY5ZjllMTM1ZmM4YjU3ZjAyMmFhYjI1NzUwOGExNjdjYyZjdD1n/JUIiOmC5Wfq4kRmVST/giphy.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 주요기능
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**어드민 계정 테스트시 카테고리 삭제 또는 수정, 기존에 있는 상품삭제,수정은 지양해주시길 부탁드립니다.**
 
-### `npm run eject`
+- 상품페이지: 필터기능, 무한스크롤,상세페이지
+- 장바구니: 장바구니 상품삭제, 부분삭제, 결제, 주문접수
+- MyOrder페이지: 비회원 주문조회, 주문번호별 주문내역조회, 주문취소, 주소수정
+- MyPage: 회원정보 조회, 정보수정, 회원주소 정보, 주소수정, 장바구니 상품목록,주문내역조회, 회원탈퇴
+- admin페이지: 회원주문내역조회, 고객별 주문상세페이지, 주문취소, 주문상태수정기능,
+  상품조회페이지, 상품삭제, 상품등록페이지, 상품수정, 카테고리조회,카테고리삭제,카테고리수정,
+  카테고리추가
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## PayPal 테스트결제 아이디, 비밀번호 공유
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**지속적인 결제가 일어날경우 결제에러가 발생할수 있으며, 에러가 발생할 경우 현금결제하기로 주문테스트하실수 있습니다**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+아이디: sb-siena16207480@personal.example.com<br>
+비번: 12345678
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+아이디:[sb-siena16207480@personal.example.com](mailto:sb-siena16207480@personal.example.com)<br>
 
-## Learn More
+비번:12345678
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[sb-nvc6w16136049@business.example.com](mailto:sb-nvc6w16136049@business.example.com)<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+비번:12345678
 
-### Code Splitting
+### Installing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. 깃클론을 합니다.
+2. npm install
+3. npm run start 하시면 프로젝트를 보실수 있습니다
 
-### Analyzing the Bundle Size
+## 배포사이트링크
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+http://34.64.139.64/
 
-### Making a Progressive Web App
+## 깃 커밋 컨벤션
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- feature : 새로운 기능 추가
 
-### Advanced Configuration
+- fix : 버그 수정
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- docs : 문서 수정
 
-### Deployment
+- test : 테스트 코드 추가
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- refactor : 코드 리팩토링
 
-### `npm run build` fails to minify
+- style : 코드 의미에 영향을 주지 않는 변경사항
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- chore : 빌드 부분 혹은 패키지 매니저 수정사항
